@@ -129,6 +129,46 @@ rate_limiter/fast:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/rate_limiter.dir/build.make CMakeFiles/rate_limiter.dir/build
 .PHONY : rate_limiter/fast
 
+#=============================================================================
+# Target rules for targets named fixed_window_test
+
+# Build rule for target.
+fixed_window_test: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 fixed_window_test
+.PHONY : fixed_window_test
+
+# fast build rule for target.
+fixed_window_test/fast:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/fixed_window_test.dir/build.make CMakeFiles/fixed_window_test.dir/build
+.PHONY : fixed_window_test/fast
+
+src/fixedWindowLimiter.o: src/fixedWindowLimiter.cpp.o
+.PHONY : src/fixedWindowLimiter.o
+
+# target to build an object file
+src/fixedWindowLimiter.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/rate_limiter.dir/build.make CMakeFiles/rate_limiter.dir/src/fixedWindowLimiter.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/fixed_window_test.dir/build.make CMakeFiles/fixed_window_test.dir/src/fixedWindowLimiter.cpp.o
+.PHONY : src/fixedWindowLimiter.cpp.o
+
+src/fixedWindowLimiter.i: src/fixedWindowLimiter.cpp.i
+.PHONY : src/fixedWindowLimiter.i
+
+# target to preprocess a source file
+src/fixedWindowLimiter.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/rate_limiter.dir/build.make CMakeFiles/rate_limiter.dir/src/fixedWindowLimiter.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/fixed_window_test.dir/build.make CMakeFiles/fixed_window_test.dir/src/fixedWindowLimiter.cpp.i
+.PHONY : src/fixedWindowLimiter.cpp.i
+
+src/fixedWindowLimiter.s: src/fixedWindowLimiter.cpp.s
+.PHONY : src/fixedWindowLimiter.s
+
+# target to generate assembly for a file
+src/fixedWindowLimiter.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/rate_limiter.dir/build.make CMakeFiles/rate_limiter.dir/src/fixedWindowLimiter.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/fixed_window_test.dir/build.make CMakeFiles/fixed_window_test.dir/src/fixedWindowLimiter.cpp.s
+.PHONY : src/fixedWindowLimiter.cpp.s
+
 src/main.o: src/main.cpp.o
 .PHONY : src/main.o
 
@@ -153,6 +193,30 @@ src/main.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/rate_limiter.dir/build.make CMakeFiles/rate_limiter.dir/src/main.cpp.s
 .PHONY : src/main.cpp.s
 
+tests/fixedWindowLimiterTest.o: tests/fixedWindowLimiterTest.cpp.o
+.PHONY : tests/fixedWindowLimiterTest.o
+
+# target to build an object file
+tests/fixedWindowLimiterTest.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/fixed_window_test.dir/build.make CMakeFiles/fixed_window_test.dir/tests/fixedWindowLimiterTest.cpp.o
+.PHONY : tests/fixedWindowLimiterTest.cpp.o
+
+tests/fixedWindowLimiterTest.i: tests/fixedWindowLimiterTest.cpp.i
+.PHONY : tests/fixedWindowLimiterTest.i
+
+# target to preprocess a source file
+tests/fixedWindowLimiterTest.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/fixed_window_test.dir/build.make CMakeFiles/fixed_window_test.dir/tests/fixedWindowLimiterTest.cpp.i
+.PHONY : tests/fixedWindowLimiterTest.cpp.i
+
+tests/fixedWindowLimiterTest.s: tests/fixedWindowLimiterTest.cpp.s
+.PHONY : tests/fixedWindowLimiterTest.s
+
+# target to generate assembly for a file
+tests/fixedWindowLimiterTest.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/fixed_window_test.dir/build.make CMakeFiles/fixed_window_test.dir/tests/fixedWindowLimiterTest.cpp.s
+.PHONY : tests/fixedWindowLimiterTest.cpp.s
+
 # Help Target
 help:
 	@echo "The following are some of the valid targets for this Makefile:"
@@ -161,10 +225,17 @@ help:
 	@echo "... depend"
 	@echo "... edit_cache"
 	@echo "... rebuild_cache"
+	@echo "... fixed_window_test"
 	@echo "... rate_limiter"
+	@echo "... src/fixedWindowLimiter.o"
+	@echo "... src/fixedWindowLimiter.i"
+	@echo "... src/fixedWindowLimiter.s"
 	@echo "... src/main.o"
 	@echo "... src/main.i"
 	@echo "... src/main.s"
+	@echo "... tests/fixedWindowLimiterTest.o"
+	@echo "... tests/fixedWindowLimiterTest.i"
+	@echo "... tests/fixedWindowLimiterTest.s"
 .PHONY : help
 
 

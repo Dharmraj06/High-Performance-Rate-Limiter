@@ -1,5 +1,5 @@
-CMakeFiles/rate_limiter.dir/src/main.cpp.o: \
- /home/dharmraj/projects/rate-limiter/src/main.cpp \
+CMakeFiles/fixed_window_test.dir/tests/fixedWindowLimiterTest.cpp.o: \
+ /home/dharmraj/projects/rate-limiter/tests/fixedWindowLimiterTest.cpp \
  /usr/include/stdc-predef.h /usr/include/c++/13/cassert \
  /usr/include/x86_64-linux-gnu/c++/13/bits/c++config.h \
  /usr/include/x86_64-linux-gnu/c++/13/bits/os_defines.h \
