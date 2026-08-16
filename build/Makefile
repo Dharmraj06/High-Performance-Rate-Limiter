@@ -155,6 +155,19 @@ sliding_window_test/fast:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/sliding_window_test.dir/build.make CMakeFiles/sliding_window_test.dir/build
 .PHONY : sliding_window_test/fast
 
+#=============================================================================
+# Target rules for targets named token_bucket_test
+
+# Build rule for target.
+token_bucket_test: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 token_bucket_test
+.PHONY : token_bucket_test
+
+# fast build rule for target.
+token_bucket_test/fast:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/token_bucket_test.dir/build.make CMakeFiles/token_bucket_test.dir/build
+.PHONY : token_bucket_test/fast
+
 src/fixedWindowLimiter.o: src/fixedWindowLimiter.cpp.o
 .PHONY : src/fixedWindowLimiter.o
 
@@ -233,6 +246,33 @@ src/slidingWindowLimiter.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/sliding_window_test.dir/build.make CMakeFiles/sliding_window_test.dir/src/slidingWindowLimiter.cpp.s
 .PHONY : src/slidingWindowLimiter.cpp.s
 
+src/tokenBucketLimiter.o: src/tokenBucketLimiter.cpp.o
+.PHONY : src/tokenBucketLimiter.o
+
+# target to build an object file
+src/tokenBucketLimiter.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/rate_limiter.dir/build.make CMakeFiles/rate_limiter.dir/src/tokenBucketLimiter.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/token_bucket_test.dir/build.make CMakeFiles/token_bucket_test.dir/src/tokenBucketLimiter.cpp.o
+.PHONY : src/tokenBucketLimiter.cpp.o
+
+src/tokenBucketLimiter.i: src/tokenBucketLimiter.cpp.i
+.PHONY : src/tokenBucketLimiter.i
+
+# target to preprocess a source file
+src/tokenBucketLimiter.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/rate_limiter.dir/build.make CMakeFiles/rate_limiter.dir/src/tokenBucketLimiter.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/token_bucket_test.dir/build.make CMakeFiles/token_bucket_test.dir/src/tokenBucketLimiter.cpp.i
+.PHONY : src/tokenBucketLimiter.cpp.i
+
+src/tokenBucketLimiter.s: src/tokenBucketLimiter.cpp.s
+.PHONY : src/tokenBucketLimiter.s
+
+# target to generate assembly for a file
+src/tokenBucketLimiter.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/rate_limiter.dir/build.make CMakeFiles/rate_limiter.dir/src/tokenBucketLimiter.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/token_bucket_test.dir/build.make CMakeFiles/token_bucket_test.dir/src/tokenBucketLimiter.cpp.s
+.PHONY : src/tokenBucketLimiter.cpp.s
+
 tests/fixedWindowLimiterTest.o: tests/fixedWindowLimiterTest.cpp.o
 .PHONY : tests/fixedWindowLimiterTest.o
 
@@ -281,6 +321,30 @@ tests/slidingWindowLimiterTest.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/sliding_window_test.dir/build.make CMakeFiles/sliding_window_test.dir/tests/slidingWindowLimiterTest.cpp.s
 .PHONY : tests/slidingWindowLimiterTest.cpp.s
 
+tests/tokenBucketLimiterTest.o: tests/tokenBucketLimiterTest.cpp.o
+.PHONY : tests/tokenBucketLimiterTest.o
+
+# target to build an object file
+tests/tokenBucketLimiterTest.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/token_bucket_test.dir/build.make CMakeFiles/token_bucket_test.dir/tests/tokenBucketLimiterTest.cpp.o
+.PHONY : tests/tokenBucketLimiterTest.cpp.o
+
+tests/tokenBucketLimiterTest.i: tests/tokenBucketLimiterTest.cpp.i
+.PHONY : tests/tokenBucketLimiterTest.i
+
+# target to preprocess a source file
+tests/tokenBucketLimiterTest.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/token_bucket_test.dir/build.make CMakeFiles/token_bucket_test.dir/tests/tokenBucketLimiterTest.cpp.i
+.PHONY : tests/tokenBucketLimiterTest.cpp.i
+
+tests/tokenBucketLimiterTest.s: tests/tokenBucketLimiterTest.cpp.s
+.PHONY : tests/tokenBucketLimiterTest.s
+
+# target to generate assembly for a file
+tests/tokenBucketLimiterTest.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/token_bucket_test.dir/build.make CMakeFiles/token_bucket_test.dir/tests/tokenBucketLimiterTest.cpp.s
+.PHONY : tests/tokenBucketLimiterTest.cpp.s
+
 # Help Target
 help:
 	@echo "The following are some of the valid targets for this Makefile:"
@@ -292,6 +356,7 @@ help:
 	@echo "... fixed_window_test"
 	@echo "... rate_limiter"
 	@echo "... sliding_window_test"
+	@echo "... token_bucket_test"
 	@echo "... src/fixedWindowLimiter.o"
 	@echo "... src/fixedWindowLimiter.i"
 	@echo "... src/fixedWindowLimiter.s"
@@ -301,12 +366,18 @@ help:
 	@echo "... src/slidingWindowLimiter.o"
 	@echo "... src/slidingWindowLimiter.i"
 	@echo "... src/slidingWindowLimiter.s"
+	@echo "... src/tokenBucketLimiter.o"
+	@echo "... src/tokenBucketLimiter.i"
+	@echo "... src/tokenBucketLimiter.s"
 	@echo "... tests/fixedWindowLimiterTest.o"
 	@echo "... tests/fixedWindowLimiterTest.i"
 	@echo "... tests/fixedWindowLimiterTest.s"
 	@echo "... tests/slidingWindowLimiterTest.o"
 	@echo "... tests/slidingWindowLimiterTest.i"
 	@echo "... tests/slidingWindowLimiterTest.s"
+	@echo "... tests/tokenBucketLimiterTest.o"
+	@echo "... tests/tokenBucketLimiterTest.i"
+	@echo "... tests/tokenBucketLimiterTest.s"
 .PHONY : help
 
 

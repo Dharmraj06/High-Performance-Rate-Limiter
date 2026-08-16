@@ -10,6 +10,7 @@ add_executable(rate_limiter
     src/main.cpp
     src/fixedWindowLimiter.cpp
     src/slidingWindowLimiter.cpp
+    src/tokenBucketLimiter.cpp
 )
 
 target_include_directories(rate_limiter PRIVATE include)
@@ -19,11 +20,18 @@ add_executable(fixed_window_test
     src/fixedWindowLimiter.cpp
 )
 
-
 target_include_directories(fixed_window_test PRIVATE include)
+
 add_executable(sliding_window_test
     tests/slidingWindowLimiterTest.cpp
     src/slidingWindowLimiter.cpp
 )
 
 target_include_directories(sliding_window_test PRIVATE include)
+
+add_executable(token_bucket_test
+    tests/tokenBucketLimiterTest.cpp
+    src/tokenBucketLimiter.cpp
+)
+
+target_include_directories(token_bucket_test PRIVATE include)
