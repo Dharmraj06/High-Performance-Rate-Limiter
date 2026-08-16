@@ -19,4 +19,11 @@ add_executable(fixed_window_test
     src/fixedWindowLimiter.cpp
 )
 
+
 target_include_directories(fixed_window_test PRIVATE include)
+add_executable(sliding_window_test
+    tests/slidingWindowLimiterTest.cpp
+    src/slidingWindowLimiter.cpp
+)
+
+target_include_directories(sliding_window_test PRIVATE include)

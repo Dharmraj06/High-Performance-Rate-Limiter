@@ -142,6 +142,19 @@ fixed_window_test/fast:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/fixed_window_test.dir/build.make CMakeFiles/fixed_window_test.dir/build
 .PHONY : fixed_window_test/fast
 
+#=============================================================================
+# Target rules for targets named sliding_window_test
+
+# Build rule for target.
+sliding_window_test: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 sliding_window_test
+.PHONY : sliding_window_test
+
+# fast build rule for target.
+sliding_window_test/fast:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sliding_window_test.dir/build.make CMakeFiles/sliding_window_test.dir/build
+.PHONY : sliding_window_test/fast
+
 src/fixedWindowLimiter.o: src/fixedWindowLimiter.cpp.o
 .PHONY : src/fixedWindowLimiter.o
 
@@ -199,6 +212,7 @@ src/slidingWindowLimiter.o: src/slidingWindowLimiter.cpp.o
 # target to build an object file
 src/slidingWindowLimiter.cpp.o:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/rate_limiter.dir/build.make CMakeFiles/rate_limiter.dir/src/slidingWindowLimiter.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sliding_window_test.dir/build.make CMakeFiles/sliding_window_test.dir/src/slidingWindowLimiter.cpp.o
 .PHONY : src/slidingWindowLimiter.cpp.o
 
 src/slidingWindowLimiter.i: src/slidingWindowLimiter.cpp.i
@@ -207,6 +221,7 @@ src/slidingWindowLimiter.i: src/slidingWindowLimiter.cpp.i
 # target to preprocess a source file
 src/slidingWindowLimiter.cpp.i:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/rate_limiter.dir/build.make CMakeFiles/rate_limiter.dir/src/slidingWindowLimiter.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sliding_window_test.dir/build.make CMakeFiles/sliding_window_test.dir/src/slidingWindowLimiter.cpp.i
 .PHONY : src/slidingWindowLimiter.cpp.i
 
 src/slidingWindowLimiter.s: src/slidingWindowLimiter.cpp.s
@@ -215,6 +230,7 @@ src/slidingWindowLimiter.s: src/slidingWindowLimiter.cpp.s
 # target to generate assembly for a file
 src/slidingWindowLimiter.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/rate_limiter.dir/build.make CMakeFiles/rate_limiter.dir/src/slidingWindowLimiter.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sliding_window_test.dir/build.make CMakeFiles/sliding_window_test.dir/src/slidingWindowLimiter.cpp.s
 .PHONY : src/slidingWindowLimiter.cpp.s
 
 tests/fixedWindowLimiterTest.o: tests/fixedWindowLimiterTest.cpp.o
@@ -241,6 +257,30 @@ tests/fixedWindowLimiterTest.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/fixed_window_test.dir/build.make CMakeFiles/fixed_window_test.dir/tests/fixedWindowLimiterTest.cpp.s
 .PHONY : tests/fixedWindowLimiterTest.cpp.s
 
+tests/slidingWindowLimiterTest.o: tests/slidingWindowLimiterTest.cpp.o
+.PHONY : tests/slidingWindowLimiterTest.o
+
+# target to build an object file
+tests/slidingWindowLimiterTest.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sliding_window_test.dir/build.make CMakeFiles/sliding_window_test.dir/tests/slidingWindowLimiterTest.cpp.o
+.PHONY : tests/slidingWindowLimiterTest.cpp.o
+
+tests/slidingWindowLimiterTest.i: tests/slidingWindowLimiterTest.cpp.i
+.PHONY : tests/slidingWindowLimiterTest.i
+
+# target to preprocess a source file
+tests/slidingWindowLimiterTest.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sliding_window_test.dir/build.make CMakeFiles/sliding_window_test.dir/tests/slidingWindowLimiterTest.cpp.i
+.PHONY : tests/slidingWindowLimiterTest.cpp.i
+
+tests/slidingWindowLimiterTest.s: tests/slidingWindowLimiterTest.cpp.s
+.PHONY : tests/slidingWindowLimiterTest.s
+
+# target to generate assembly for a file
+tests/slidingWindowLimiterTest.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sliding_window_test.dir/build.make CMakeFiles/sliding_window_test.dir/tests/slidingWindowLimiterTest.cpp.s
+.PHONY : tests/slidingWindowLimiterTest.cpp.s
+
 # Help Target
 help:
 	@echo "The following are some of the valid targets for this Makefile:"
@@ -251,6 +291,7 @@ help:
 	@echo "... rebuild_cache"
 	@echo "... fixed_window_test"
 	@echo "... rate_limiter"
+	@echo "... sliding_window_test"
 	@echo "... src/fixedWindowLimiter.o"
 	@echo "... src/fixedWindowLimiter.i"
 	@echo "... src/fixedWindowLimiter.s"
@@ -263,6 +304,9 @@ help:
 	@echo "... tests/fixedWindowLimiterTest.o"
 	@echo "... tests/fixedWindowLimiterTest.i"
 	@echo "... tests/fixedWindowLimiterTest.s"
+	@echo "... tests/slidingWindowLimiterTest.o"
+	@echo "... tests/slidingWindowLimiterTest.i"
+	@echo "... tests/slidingWindowLimiterTest.s"
 .PHONY : help
 
 

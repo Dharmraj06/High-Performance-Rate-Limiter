@@ -1,4 +1,5 @@
 /home/dharmraj/projects/rate-limiter/build/CMakeFiles/rate_limiter.dir
 /home/dharmraj/projects/rate-limiter/build/CMakeFiles/fixed_window_test.dir
+/home/dharmraj/projects/rate-limiter/build/CMakeFiles/sliding_window_test.dir
 /home/dharmraj/projects/rate-limiter/build/CMakeFiles/edit_cache.dir
 /home/dharmraj/projects/rate-limiter/build/CMakeFiles/rebuild_cache.dir
