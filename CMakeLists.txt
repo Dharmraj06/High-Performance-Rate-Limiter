@@ -9,6 +9,7 @@ set(CMAKE_CXX_EXTENSIONS OFF)
 add_executable(rate_limiter
     src/main.cpp
     src/fixedWindowLimiter.cpp
+    src/slidingWindowLimiter.cpp
 )
 
 target_include_directories(rate_limiter PRIVATE include)

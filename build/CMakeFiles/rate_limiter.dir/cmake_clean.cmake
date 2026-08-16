@@ -3,6 +3,8 @@ file(REMOVE_RECURSE
   "CMakeFiles/rate_limiter.dir/src/fixedWindowLimiter.cpp.o.d"
   "CMakeFiles/rate_limiter.dir/src/main.cpp.o"
   "CMakeFiles/rate_limiter.dir/src/main.cpp.o.d"
+  "CMakeFiles/rate_limiter.dir/src/slidingWindowLimiter.cpp.o"
+  "CMakeFiles/rate_limiter.dir/src/slidingWindowLimiter.cpp.o.d"
   "rate_limiter"
   "rate_limiter.pdb"
 )

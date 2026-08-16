@@ -193,6 +193,30 @@ src/main.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/rate_limiter.dir/build.make CMakeFiles/rate_limiter.dir/src/main.cpp.s
 .PHONY : src/main.cpp.s
 
+src/slidingWindowLimiter.o: src/slidingWindowLimiter.cpp.o
+.PHONY : src/slidingWindowLimiter.o
+
+# target to build an object file
+src/slidingWindowLimiter.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/rate_limiter.dir/build.make CMakeFiles/rate_limiter.dir/src/slidingWindowLimiter.cpp.o
+.PHONY : src/slidingWindowLimiter.cpp.o
+
+src/slidingWindowLimiter.i: src/slidingWindowLimiter.cpp.i
+.PHONY : src/slidingWindowLimiter.i
+
+# target to preprocess a source file
+src/slidingWindowLimiter.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/rate_limiter.dir/build.make CMakeFiles/rate_limiter.dir/src/slidingWindowLimiter.cpp.i
+.PHONY : src/slidingWindowLimiter.cpp.i
+
+src/slidingWindowLimiter.s: src/slidingWindowLimiter.cpp.s
+.PHONY : src/slidingWindowLimiter.s
+
+# target to generate assembly for a file
+src/slidingWindowLimiter.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/rate_limiter.dir/build.make CMakeFiles/rate_limiter.dir/src/slidingWindowLimiter.cpp.s
+.PHONY : src/slidingWindowLimiter.cpp.s
+
 tests/fixedWindowLimiterTest.o: tests/fixedWindowLimiterTest.cpp.o
 .PHONY : tests/fixedWindowLimiterTest.o
 
@@ -233,6 +257,9 @@ help:
 	@echo "... src/main.o"
 	@echo "... src/main.i"
 	@echo "... src/main.s"
+	@echo "... src/slidingWindowLimiter.o"
+	@echo "... src/slidingWindowLimiter.i"
+	@echo "... src/slidingWindowLimiter.s"
 	@echo "... tests/fixedWindowLimiterTest.o"
 	@echo "... tests/fixedWindowLimiterTest.i"
 	@echo "... tests/fixedWindowLimiterTest.s"
