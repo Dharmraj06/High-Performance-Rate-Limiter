@@ -6,9 +6,11 @@
 
 using namespace std;
 
-class fixedWindowLimiter{
-    private:
-    struct clientState{
+class fixedWindowLimiter
+{
+private:
+    struct clientState
+    {
         int reqCount;
         chrono::steady_clock::time_point winStart;
     };
@@ -17,8 +19,8 @@ class fixedWindowLimiter{
     chrono::seconds winDuration;
     unordered_map<string, clientState> clients;
 
-    public:
+public:
     fixedWindowLimiter(int limit, chrono::seconds winDuration);
 
-    bool allow(const string& clientId, chrono::steady_clock::time_point currTime);
+    bool allow(const string &clientId, chrono::steady_clock::time_point currTime);
 };

@@ -6,7 +6,8 @@ fixedWindowLimiter::fixedWindowLimiter(int limit, chrono::seconds winDuration)
     this->winDuration = winDuration;
 }
 
-bool fixedWindowLimiter::allow(const string &clientId,chrono::steady_clock::time_point currTime){
+bool fixedWindowLimiter::allow(const string &clientId, chrono::steady_clock::time_point currTime)
+{
     auto it = clients.find(clientId);
 
     if (it == clients.end())
