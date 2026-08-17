@@ -234,6 +234,30 @@ src/fixedWindowLimiter.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/fixed_window_test.dir/build.make CMakeFiles/fixed_window_test.dir/src/fixedWindowLimiter.cpp.s
 .PHONY : src/fixedWindowLimiter.cpp.s
 
+src/httpServer.o: src/httpServer.cpp.o
+.PHONY : src/httpServer.o
+
+# target to build an object file
+src/httpServer.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/rate_limiter.dir/build.make CMakeFiles/rate_limiter.dir/src/httpServer.cpp.o
+.PHONY : src/httpServer.cpp.o
+
+src/httpServer.i: src/httpServer.cpp.i
+.PHONY : src/httpServer.i
+
+# target to preprocess a source file
+src/httpServer.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/rate_limiter.dir/build.make CMakeFiles/rate_limiter.dir/src/httpServer.cpp.i
+.PHONY : src/httpServer.cpp.i
+
+src/httpServer.s: src/httpServer.cpp.s
+.PHONY : src/httpServer.s
+
+# target to generate assembly for a file
+src/httpServer.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/rate_limiter.dir/build.make CMakeFiles/rate_limiter.dir/src/httpServer.cpp.s
+.PHONY : src/httpServer.cpp.s
+
 src/main.o: src/main.cpp.o
 .PHONY : src/main.o
 
@@ -504,6 +528,9 @@ help:
 	@echo "... src/fixedWindowLimiter.o"
 	@echo "... src/fixedWindowLimiter.i"
 	@echo "... src/fixedWindowLimiter.s"
+	@echo "... src/httpServer.o"
+	@echo "... src/httpServer.i"
+	@echo "... src/httpServer.s"
 	@echo "... src/main.o"
 	@echo "... src/main.i"
 	@echo "... src/main.s"
