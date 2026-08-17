@@ -39,3 +39,8 @@ RateLimitResult fixedWindowLimiter::allow(const string &clientId, chrono::steady
 
     return {1, limit - client.reqCount, 0};
 }
+
+int fixedWindowLimiter::getLimit() const
+{
+    return limit;
+}

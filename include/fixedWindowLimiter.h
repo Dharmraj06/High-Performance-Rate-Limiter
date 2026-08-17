@@ -27,4 +27,6 @@ public:
     fixedWindowLimiter(int limit, chrono::seconds winDuration);
 
     RateLimitResult allow(const string &clientId, chrono::steady_clock::time_point currTime);
+
+    int getLimit() const;
 };
