@@ -35,3 +35,10 @@ add_executable(token_bucket_test
 )
 
 target_include_directories(token_bucket_test PRIVATE include)
+
+add_executable(sliding_window_counter_test
+    tests/slidingWindowCounterLimiterTest.cpp
+    src/slidingWindowCounterLimiter.cpp
+)
+
+target_include_directories(sliding_window_counter_test PRIVATE include)
