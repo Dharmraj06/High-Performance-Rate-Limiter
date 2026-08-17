@@ -5,7 +5,10 @@
 #include <unordered_map>
 #include <mutex>
 
+#include "rateLimitResult.h"
+
 using namespace std;
+using namespace chrono;
 
 class slidingWindowCounterLimiter
 {
@@ -15,15 +18,15 @@ private:
     {
         int prevCount;
         int currCount;
-        chrono::steady_clock::time_point winStart;
+        steady_clock::time_point winStart;
     };
 
     int limit;
-    chrono::seconds winDuration;
-    unordered_map<string, clientState> clients;
+    seconds winDuration;
+    unordered_map<string,clientState> clients;
 
 public:
-    slidingWindowCounterLimiter(int limit, chrono::seconds winDuration);
+    slidingWindowCounterLimiter(int limit,seconds winDuration);
 
-    bool allow(const string &clientId, chrono::steady_clock::time_point currTime);
+    RateLimitResult allow(const string &clientId,steady_clock::time_point currTime);
 };

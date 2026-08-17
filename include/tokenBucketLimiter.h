@@ -4,8 +4,12 @@
 #include <string>
 #include <unordered_map>
 #include <mutex>
+#include <cmath>
+
+#include "rateLimitResult.h"
 
 using namespace std;
+using namespace chrono;
 
 class tokenBucketLimiter
 {
@@ -14,7 +18,7 @@ private:
     struct clientState
     {
         double tokens;
-        chrono::steady_clock::time_point lastRefill;
+        steady_clock::time_point lastRefill;
     };
 
     double capacity;
@@ -25,5 +29,5 @@ public:
 
     tokenBucketLimiter(double capacity,double refillRate);
 
-    bool allow(const string& clientId,chrono::steady_clock::time_point currTime);
+    RateLimitResult allow(const string& clientId,steady_clock::time_point currTime);
 };

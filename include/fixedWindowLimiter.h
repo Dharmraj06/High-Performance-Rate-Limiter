@@ -5,6 +5,8 @@
 #include <unordered_map>
 #include <mutex>
 
+#include "rateLimitResult.h"
+
 using namespace std;
 
 class fixedWindowLimiter
@@ -24,5 +26,5 @@ private:
 public:
     fixedWindowLimiter(int limit, chrono::seconds winDuration);
 
-    bool allow(const string &clientId, chrono::steady_clock::time_point currTime);
+    RateLimitResult allow(const string &clientId, chrono::steady_clock::time_point currTime);
 };

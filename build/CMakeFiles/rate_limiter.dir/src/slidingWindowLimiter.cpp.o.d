@@ -203,4 +203,5 @@ CMakeFiles/rate_limiter.dir/src/slidingWindowLimiter.cpp.o: \
  /usr/include/c++/13/bits/node_handle.h \
  /usr/include/c++/13/bits/erase_if.h /usr/include/c++/13/mutex \
  /usr/include/c++/13/bits/std_mutex.h \
- /usr/include/c++/13/bits/unique_lock.h
+ /usr/include/c++/13/bits/unique_lock.h \
+ /home/dharmraj/projects/rate-limiter/include/rateLimitResult.h

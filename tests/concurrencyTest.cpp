@@ -23,7 +23,7 @@ int main(){
     for(int i = 0;i<threadCount;i++){
         threads.emplace_back([&](){
             for(int j = 0;j<requestsPerThread;j++){
-                if(limiter.allow("clientA",currTime)){
+               if(limiter.allow("clientA",currTime).allowed){
                     allowed++;
                 }
             }

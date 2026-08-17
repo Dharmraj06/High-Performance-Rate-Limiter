@@ -229,4 +229,5 @@ CMakeFiles/concurrency_multi_client_test.dir/tests/concurrencyMultiClientTest.cp
  /usr/include/c++/13/bits/hashtable_policy.h \
  /usr/include/c++/13/bits/node_handle.h \
  /usr/include/c++/13/bits/erase_if.h /usr/include/c++/13/mutex \
- /usr/include/c++/13/bits/unique_lock.h
+ /usr/include/c++/13/bits/unique_lock.h \
+ /home/dharmraj/projects/rate-limiter/include/rateLimitResult.h

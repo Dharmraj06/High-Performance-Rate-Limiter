@@ -6,7 +6,10 @@
 #include <unordered_map>
 #include <mutex>
 
+#include "rateLimitResult.h"
+
 using namespace std;
+using namespace chrono;
 
 class slidingWindowLimiter
 {
@@ -14,16 +17,16 @@ private:
     mutex mtx;
     struct clientState
     {
-        queue<chrono::steady_clock::time_point> reqTime;
+        queue<steady_clock::time_point> reqTime;
     };
 
     int limit;
-    chrono::seconds winDuration;
+    seconds winDuration;
     unordered_map<string,clientState> clients;
 
 public:
 
-    slidingWindowLimiter(int limit,chrono::seconds winDuration);
+    slidingWindowLimiter(int limit,seconds winDuration);
 
-    bool allow(const string& clientId,chrono::steady_clock::time_point currTime);
+    RateLimitResult allow(const string& clientId,steady_clock::time_point currTime);
 };

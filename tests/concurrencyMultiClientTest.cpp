@@ -25,7 +25,7 @@ int main(){
             string clientId = "client"+to_string(i);
 
             for(int j = 0;j<requestsPerThread;j++){
-                if(limiter.allow(clientId,currTime)){
+                if(limiter.allow(clientId,currTime).allowed){
                     allowed++;
                 }
             }
