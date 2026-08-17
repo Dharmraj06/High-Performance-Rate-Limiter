@@ -45,4 +45,6 @@ set(CMAKE_DEPEND_INFO_FILES
   "CMakeFiles/sliding_window_test.dir/DependInfo.cmake"
   "CMakeFiles/token_bucket_test.dir/DependInfo.cmake"
   "CMakeFiles/sliding_window_counter_test.dir/DependInfo.cmake"
+  "CMakeFiles/concurrency_test.dir/DependInfo.cmake"
+  "CMakeFiles/concurrency_multi_client_test.dir/DependInfo.cmake"
   )

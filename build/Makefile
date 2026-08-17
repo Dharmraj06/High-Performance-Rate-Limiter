@@ -181,6 +181,32 @@ sliding_window_counter_test/fast:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/sliding_window_counter_test.dir/build.make CMakeFiles/sliding_window_counter_test.dir/build
 .PHONY : sliding_window_counter_test/fast
 
+#=============================================================================
+# Target rules for targets named concurrency_test
+
+# Build rule for target.
+concurrency_test: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 concurrency_test
+.PHONY : concurrency_test
+
+# fast build rule for target.
+concurrency_test/fast:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/concurrency_test.dir/build.make CMakeFiles/concurrency_test.dir/build
+.PHONY : concurrency_test/fast
+
+#=============================================================================
+# Target rules for targets named concurrency_multi_client_test
+
+# Build rule for target.
+concurrency_multi_client_test: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 concurrency_multi_client_test
+.PHONY : concurrency_multi_client_test
+
+# fast build rule for target.
+concurrency_multi_client_test/fast:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/concurrency_multi_client_test.dir/build.make CMakeFiles/concurrency_multi_client_test.dir/build
+.PHONY : concurrency_multi_client_test/fast
+
 src/fixedWindowLimiter.o: src/fixedWindowLimiter.cpp.o
 .PHONY : src/fixedWindowLimiter.o
 
@@ -238,6 +264,8 @@ src/slidingWindowCounterLimiter.o: src/slidingWindowCounterLimiter.cpp.o
 # target to build an object file
 src/slidingWindowCounterLimiter.cpp.o:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/sliding_window_counter_test.dir/build.make CMakeFiles/sliding_window_counter_test.dir/src/slidingWindowCounterLimiter.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/concurrency_test.dir/build.make CMakeFiles/concurrency_test.dir/src/slidingWindowCounterLimiter.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/concurrency_multi_client_test.dir/build.make CMakeFiles/concurrency_multi_client_test.dir/src/slidingWindowCounterLimiter.cpp.o
 .PHONY : src/slidingWindowCounterLimiter.cpp.o
 
 src/slidingWindowCounterLimiter.i: src/slidingWindowCounterLimiter.cpp.i
@@ -246,6 +274,8 @@ src/slidingWindowCounterLimiter.i: src/slidingWindowCounterLimiter.cpp.i
 # target to preprocess a source file
 src/slidingWindowCounterLimiter.cpp.i:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/sliding_window_counter_test.dir/build.make CMakeFiles/sliding_window_counter_test.dir/src/slidingWindowCounterLimiter.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/concurrency_test.dir/build.make CMakeFiles/concurrency_test.dir/src/slidingWindowCounterLimiter.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/concurrency_multi_client_test.dir/build.make CMakeFiles/concurrency_multi_client_test.dir/src/slidingWindowCounterLimiter.cpp.i
 .PHONY : src/slidingWindowCounterLimiter.cpp.i
 
 src/slidingWindowCounterLimiter.s: src/slidingWindowCounterLimiter.cpp.s
@@ -254,6 +284,8 @@ src/slidingWindowCounterLimiter.s: src/slidingWindowCounterLimiter.cpp.s
 # target to generate assembly for a file
 src/slidingWindowCounterLimiter.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/sliding_window_counter_test.dir/build.make CMakeFiles/sliding_window_counter_test.dir/src/slidingWindowCounterLimiter.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/concurrency_test.dir/build.make CMakeFiles/concurrency_test.dir/src/slidingWindowCounterLimiter.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/concurrency_multi_client_test.dir/build.make CMakeFiles/concurrency_multi_client_test.dir/src/slidingWindowCounterLimiter.cpp.s
 .PHONY : src/slidingWindowCounterLimiter.cpp.s
 
 src/slidingWindowLimiter.o: src/slidingWindowLimiter.cpp.o
@@ -309,6 +341,54 @@ src/tokenBucketLimiter.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/rate_limiter.dir/build.make CMakeFiles/rate_limiter.dir/src/tokenBucketLimiter.cpp.s
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/token_bucket_test.dir/build.make CMakeFiles/token_bucket_test.dir/src/tokenBucketLimiter.cpp.s
 .PHONY : src/tokenBucketLimiter.cpp.s
+
+tests/concurrencyMultiClientTest.o: tests/concurrencyMultiClientTest.cpp.o
+.PHONY : tests/concurrencyMultiClientTest.o
+
+# target to build an object file
+tests/concurrencyMultiClientTest.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/concurrency_multi_client_test.dir/build.make CMakeFiles/concurrency_multi_client_test.dir/tests/concurrencyMultiClientTest.cpp.o
+.PHONY : tests/concurrencyMultiClientTest.cpp.o
+
+tests/concurrencyMultiClientTest.i: tests/concurrencyMultiClientTest.cpp.i
+.PHONY : tests/concurrencyMultiClientTest.i
+
+# target to preprocess a source file
+tests/concurrencyMultiClientTest.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/concurrency_multi_client_test.dir/build.make CMakeFiles/concurrency_multi_client_test.dir/tests/concurrencyMultiClientTest.cpp.i
+.PHONY : tests/concurrencyMultiClientTest.cpp.i
+
+tests/concurrencyMultiClientTest.s: tests/concurrencyMultiClientTest.cpp.s
+.PHONY : tests/concurrencyMultiClientTest.s
+
+# target to generate assembly for a file
+tests/concurrencyMultiClientTest.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/concurrency_multi_client_test.dir/build.make CMakeFiles/concurrency_multi_client_test.dir/tests/concurrencyMultiClientTest.cpp.s
+.PHONY : tests/concurrencyMultiClientTest.cpp.s
+
+tests/concurrencyTest.o: tests/concurrencyTest.cpp.o
+.PHONY : tests/concurrencyTest.o
+
+# target to build an object file
+tests/concurrencyTest.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/concurrency_test.dir/build.make CMakeFiles/concurrency_test.dir/tests/concurrencyTest.cpp.o
+.PHONY : tests/concurrencyTest.cpp.o
+
+tests/concurrencyTest.i: tests/concurrencyTest.cpp.i
+.PHONY : tests/concurrencyTest.i
+
+# target to preprocess a source file
+tests/concurrencyTest.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/concurrency_test.dir/build.make CMakeFiles/concurrency_test.dir/tests/concurrencyTest.cpp.i
+.PHONY : tests/concurrencyTest.cpp.i
+
+tests/concurrencyTest.s: tests/concurrencyTest.cpp.s
+.PHONY : tests/concurrencyTest.s
+
+# target to generate assembly for a file
+tests/concurrencyTest.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/concurrency_test.dir/build.make CMakeFiles/concurrency_test.dir/tests/concurrencyTest.cpp.s
+.PHONY : tests/concurrencyTest.cpp.s
 
 tests/fixedWindowLimiterTest.o: tests/fixedWindowLimiterTest.cpp.o
 .PHONY : tests/fixedWindowLimiterTest.o
@@ -414,6 +494,8 @@ help:
 	@echo "... depend"
 	@echo "... edit_cache"
 	@echo "... rebuild_cache"
+	@echo "... concurrency_multi_client_test"
+	@echo "... concurrency_test"
 	@echo "... fixed_window_test"
 	@echo "... rate_limiter"
 	@echo "... sliding_window_counter_test"
@@ -434,6 +516,12 @@ help:
 	@echo "... src/tokenBucketLimiter.o"
 	@echo "... src/tokenBucketLimiter.i"
 	@echo "... src/tokenBucketLimiter.s"
+	@echo "... tests/concurrencyMultiClientTest.o"
+	@echo "... tests/concurrencyMultiClientTest.i"
+	@echo "... tests/concurrencyMultiClientTest.s"
+	@echo "... tests/concurrencyTest.o"
+	@echo "... tests/concurrencyTest.i"
+	@echo "... tests/concurrencyTest.s"
 	@echo "... tests/fixedWindowLimiterTest.o"
 	@echo "... tests/fixedWindowLimiterTest.i"
 	@echo "... tests/fixedWindowLimiterTest.s"

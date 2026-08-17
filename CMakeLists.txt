@@ -42,3 +42,21 @@ add_executable(sliding_window_counter_test
 )
 
 target_include_directories(sliding_window_counter_test PRIVATE include)
+
+add_executable(concurrency_test
+    tests/concurrencyTest.cpp
+    src/slidingWindowCounterLimiter.cpp
+)
+
+target_include_directories(concurrency_test PRIVATE include)
+
+target_link_libraries(concurrency_test PRIVATE pthread)
+
+add_executable(concurrency_multi_client_test
+    tests/concurrencyMultiClientTest.cpp
+    src/slidingWindowCounterLimiter.cpp
+)
+
+target_include_directories(concurrency_multi_client_test PRIVATE include)
+
+target_link_libraries(concurrency_multi_client_test PRIVATE pthread)
