@@ -168,6 +168,19 @@ token_bucket_test/fast:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/token_bucket_test.dir/build.make CMakeFiles/token_bucket_test.dir/build
 .PHONY : token_bucket_test/fast
 
+#=============================================================================
+# Target rules for targets named sliding_window_counter_test
+
+# Build rule for target.
+sliding_window_counter_test: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 sliding_window_counter_test
+.PHONY : sliding_window_counter_test
+
+# fast build rule for target.
+sliding_window_counter_test/fast:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sliding_window_counter_test.dir/build.make CMakeFiles/sliding_window_counter_test.dir/build
+.PHONY : sliding_window_counter_test/fast
+
 src/fixedWindowLimiter.o: src/fixedWindowLimiter.cpp.o
 .PHONY : src/fixedWindowLimiter.o
 
@@ -218,6 +231,30 @@ src/main.s: src/main.cpp.s
 src/main.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/rate_limiter.dir/build.make CMakeFiles/rate_limiter.dir/src/main.cpp.s
 .PHONY : src/main.cpp.s
+
+src/slidingWindowCounterLimiter.o: src/slidingWindowCounterLimiter.cpp.o
+.PHONY : src/slidingWindowCounterLimiter.o
+
+# target to build an object file
+src/slidingWindowCounterLimiter.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sliding_window_counter_test.dir/build.make CMakeFiles/sliding_window_counter_test.dir/src/slidingWindowCounterLimiter.cpp.o
+.PHONY : src/slidingWindowCounterLimiter.cpp.o
+
+src/slidingWindowCounterLimiter.i: src/slidingWindowCounterLimiter.cpp.i
+.PHONY : src/slidingWindowCounterLimiter.i
+
+# target to preprocess a source file
+src/slidingWindowCounterLimiter.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sliding_window_counter_test.dir/build.make CMakeFiles/sliding_window_counter_test.dir/src/slidingWindowCounterLimiter.cpp.i
+.PHONY : src/slidingWindowCounterLimiter.cpp.i
+
+src/slidingWindowCounterLimiter.s: src/slidingWindowCounterLimiter.cpp.s
+.PHONY : src/slidingWindowCounterLimiter.s
+
+# target to generate assembly for a file
+src/slidingWindowCounterLimiter.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sliding_window_counter_test.dir/build.make CMakeFiles/sliding_window_counter_test.dir/src/slidingWindowCounterLimiter.cpp.s
+.PHONY : src/slidingWindowCounterLimiter.cpp.s
 
 src/slidingWindowLimiter.o: src/slidingWindowLimiter.cpp.o
 .PHONY : src/slidingWindowLimiter.o
@@ -297,6 +334,30 @@ tests/fixedWindowLimiterTest.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/fixed_window_test.dir/build.make CMakeFiles/fixed_window_test.dir/tests/fixedWindowLimiterTest.cpp.s
 .PHONY : tests/fixedWindowLimiterTest.cpp.s
 
+tests/slidingWindowCounterLimiterTest.o: tests/slidingWindowCounterLimiterTest.cpp.o
+.PHONY : tests/slidingWindowCounterLimiterTest.o
+
+# target to build an object file
+tests/slidingWindowCounterLimiterTest.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sliding_window_counter_test.dir/build.make CMakeFiles/sliding_window_counter_test.dir/tests/slidingWindowCounterLimiterTest.cpp.o
+.PHONY : tests/slidingWindowCounterLimiterTest.cpp.o
+
+tests/slidingWindowCounterLimiterTest.i: tests/slidingWindowCounterLimiterTest.cpp.i
+.PHONY : tests/slidingWindowCounterLimiterTest.i
+
+# target to preprocess a source file
+tests/slidingWindowCounterLimiterTest.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sliding_window_counter_test.dir/build.make CMakeFiles/sliding_window_counter_test.dir/tests/slidingWindowCounterLimiterTest.cpp.i
+.PHONY : tests/slidingWindowCounterLimiterTest.cpp.i
+
+tests/slidingWindowCounterLimiterTest.s: tests/slidingWindowCounterLimiterTest.cpp.s
+.PHONY : tests/slidingWindowCounterLimiterTest.s
+
+# target to generate assembly for a file
+tests/slidingWindowCounterLimiterTest.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sliding_window_counter_test.dir/build.make CMakeFiles/sliding_window_counter_test.dir/tests/slidingWindowCounterLimiterTest.cpp.s
+.PHONY : tests/slidingWindowCounterLimiterTest.cpp.s
+
 tests/slidingWindowLimiterTest.o: tests/slidingWindowLimiterTest.cpp.o
 .PHONY : tests/slidingWindowLimiterTest.o
 
@@ -355,6 +416,7 @@ help:
 	@echo "... rebuild_cache"
 	@echo "... fixed_window_test"
 	@echo "... rate_limiter"
+	@echo "... sliding_window_counter_test"
 	@echo "... sliding_window_test"
 	@echo "... token_bucket_test"
 	@echo "... src/fixedWindowLimiter.o"
@@ -363,6 +425,9 @@ help:
 	@echo "... src/main.o"
 	@echo "... src/main.i"
 	@echo "... src/main.s"
+	@echo "... src/slidingWindowCounterLimiter.o"
+	@echo "... src/slidingWindowCounterLimiter.i"
+	@echo "... src/slidingWindowCounterLimiter.s"
 	@echo "... src/slidingWindowLimiter.o"
 	@echo "... src/slidingWindowLimiter.i"
 	@echo "... src/slidingWindowLimiter.s"
@@ -372,6 +437,9 @@ help:
 	@echo "... tests/fixedWindowLimiterTest.o"
 	@echo "... tests/fixedWindowLimiterTest.i"
 	@echo "... tests/fixedWindowLimiterTest.s"
+	@echo "... tests/slidingWindowCounterLimiterTest.o"
+	@echo "... tests/slidingWindowCounterLimiterTest.i"
+	@echo "... tests/slidingWindowCounterLimiterTest.s"
 	@echo "... tests/slidingWindowLimiterTest.o"
 	@echo "... tests/slidingWindowLimiterTest.i"
 	@echo "... tests/slidingWindowLimiterTest.s"

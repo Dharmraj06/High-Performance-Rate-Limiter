@@ -1,7 +1,7 @@
-CMakeFiles/fixed_window_test.dir/src/fixedWindowLimiter.cpp.o: \
- /home/dharmraj/projects/rate-limiter/src/fixedWindowLimiter.cpp \
+CMakeFiles/sliding_window_counter_test.dir/src/slidingWindowCounterLimiter.cpp.o: \
+ /home/dharmraj/projects/rate-limiter/src/slidingWindowCounterLimiter.cpp \
  /usr/include/stdc-predef.h \
- /home/dharmraj/projects/rate-limiter/include/fixedWindowLimiter.h \
+ /home/dharmraj/projects/rate-limiter/include/slidingWindowCounterLimiter.h \
  /usr/include/c++/13/chrono /usr/include/c++/13/bits/requires_hosted.h \
  /usr/include/x86_64-linux-gnu/c++/13/bits/c++config.h \
  /usr/include/x86_64-linux-gnu/c++/13/bits/os_defines.h \

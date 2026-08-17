@@ -6,6 +6,7 @@ slidingWindowCounterLimiter::slidingWindowCounterLimiter(int limit,chrono::secon
 }
 
 bool slidingWindowCounterLimiter::allow(const string& clientId,chrono::steady_clock::time_point currTime){
+    lock_guard<mutex> lock(mtx);
     auto it = clients.find(clientId);
 
     if(it == clients.end()){

@@ -4,12 +4,14 @@
 #include <queue>
 #include <string>
 #include <unordered_map>
+#include <mutex>
 
 using namespace std;
 
 class slidingWindowLimiter
 {
 private:
+    mutex mtx;
     struct clientState
     {
         queue<chrono::steady_clock::time_point> reqTime;

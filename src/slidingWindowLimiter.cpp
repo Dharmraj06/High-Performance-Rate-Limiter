@@ -6,6 +6,7 @@ slidingWindowLimiter::slidingWindowLimiter(int limit,chrono::seconds winDuration
 }
 
 bool slidingWindowLimiter::allow(const string& clientId,chrono::steady_clock::time_point currTime){
+    lock_guard<mutex> lock(mtx);
     auto it = clients.find(clientId);
 
     // new client

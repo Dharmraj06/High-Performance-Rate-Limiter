@@ -3,12 +3,14 @@
 #include <chrono>
 #include <string>
 #include <unordered_map>
+#include <mutex>
 
 using namespace std;
 
 class tokenBucketLimiter
 {
 private:
+    mutex mtx;
     struct clientState
     {
         double tokens;

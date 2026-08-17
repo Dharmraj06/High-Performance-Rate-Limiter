@@ -44,4 +44,5 @@ set(CMAKE_DEPEND_INFO_FILES
   "CMakeFiles/fixed_window_test.dir/DependInfo.cmake"
   "CMakeFiles/sliding_window_test.dir/DependInfo.cmake"
   "CMakeFiles/token_bucket_test.dir/DependInfo.cmake"
+  "CMakeFiles/sliding_window_counter_test.dir/DependInfo.cmake"
   )
