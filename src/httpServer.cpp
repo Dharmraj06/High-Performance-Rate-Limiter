@@ -16,24 +16,41 @@ HttpServer::HttpServer(int limit, chrono::seconds winDuration)
 
     server.Get("/limited", [this](const Request &req, Response &res)
                {
-        string clientIp=req.remote_addr;
+    string clientIp = req.remote_addr;
 
-        RateLimitResult result=limiter.allow(clientIp,chrono::steady_clock::now());
+    RateLimitResult result = limiter.allow(
+        clientIp,
+        chrono::steady_clock::now()
+    );
 
-        res.set_header("X-RateLimit-Limit",to_string(limiter.getLimit()));
-        res.set_header("X-RateLimit-Remaining",to_string(result.remaining));
+    if(result.allowed)
+    {
+        res.status = 200;
 
-        if(result.allowed){
-            res.set_content("{\"message\":\"Request allowed\"}","application/json");
-        }
-        else{
-            res.status=429;
-            res.set_header("Retry-After",to_string(result.retryAfter));
-            res.set_content("{\"message\":\"Too many requests\"}","application/json");
-        } });
+        res.set_header("X-RateLimit-Remaining",
+                       to_string(result.remaining));
+
+        res.set_content(
+            "{\"message\":\"Request allowed\"}",
+            "application/json"
+        );
+    }
+    else
+    {
+        res.status = 429;
+
+        res.set_header("Retry-After",to_string(result.retryAfter));
+
+        res.set_header("X-RateLimit-Remaining", "0");
+
+        res.set_content(
+            "{\"message\":\"Too many requests\"}",
+            "application/json"
+        );
+    } });
 }
 
-void HttpServer::start(const string &host,int port)
+void HttpServer::start(const string &host, int port)
 {
-    server.listen(host.c_str(),port);
+    server.listen(host.c_str(), port);
 }

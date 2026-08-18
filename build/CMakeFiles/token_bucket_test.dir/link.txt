@@ -1,1 +1,1 @@
-/usr/bin/c++ CMakeFiles/token_bucket_test.dir/tests/tokenBucketLimiterTest.cpp.o CMakeFiles/token_bucket_test.dir/src/tokenBucketLimiter.cpp.o -o token_bucket_test 
+/usr/bin/g++ CMakeFiles/token_bucket_test.dir/tests/tokenBucketLimiterTest.cpp.o CMakeFiles/token_bucket_test.dir/src/tokenBucketLimiter.cpp.o -o token_bucket_test 

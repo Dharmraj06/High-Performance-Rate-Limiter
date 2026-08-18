@@ -73,29 +73,29 @@ CMakeFiles/sliding_window_test.dir/tests/slidingWindowLimiterTest.cpp.o: CMakeFi
 CMakeFiles/sliding_window_test.dir/tests/slidingWindowLimiterTest.cpp.o: /home/dharmraj/projects/rate-limiter/tests/slidingWindowLimiterTest.cpp
 CMakeFiles/sliding_window_test.dir/tests/slidingWindowLimiterTest.cpp.o: CMakeFiles/sliding_window_test.dir/compiler_depend.ts
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/dharmraj/projects/rate-limiter/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/sliding_window_test.dir/tests/slidingWindowLimiterTest.cpp.o"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/sliding_window_test.dir/tests/slidingWindowLimiterTest.cpp.o -MF CMakeFiles/sliding_window_test.dir/tests/slidingWindowLimiterTest.cpp.o.d -o CMakeFiles/sliding_window_test.dir/tests/slidingWindowLimiterTest.cpp.o -c /home/dharmraj/projects/rate-limiter/tests/slidingWindowLimiterTest.cpp
+	/usr/bin/g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/sliding_window_test.dir/tests/slidingWindowLimiterTest.cpp.o -MF CMakeFiles/sliding_window_test.dir/tests/slidingWindowLimiterTest.cpp.o.d -o CMakeFiles/sliding_window_test.dir/tests/slidingWindowLimiterTest.cpp.o -c /home/dharmraj/projects/rate-limiter/tests/slidingWindowLimiterTest.cpp
 
 CMakeFiles/sliding_window_test.dir/tests/slidingWindowLimiterTest.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/sliding_window_test.dir/tests/slidingWindowLimiterTest.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/dharmraj/projects/rate-limiter/tests/slidingWindowLimiterTest.cpp > CMakeFiles/sliding_window_test.dir/tests/slidingWindowLimiterTest.cpp.i
+	/usr/bin/g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/dharmraj/projects/rate-limiter/tests/slidingWindowLimiterTest.cpp > CMakeFiles/sliding_window_test.dir/tests/slidingWindowLimiterTest.cpp.i
 
 CMakeFiles/sliding_window_test.dir/tests/slidingWindowLimiterTest.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/sliding_window_test.dir/tests/slidingWindowLimiterTest.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/dharmraj/projects/rate-limiter/tests/slidingWindowLimiterTest.cpp -o CMakeFiles/sliding_window_test.dir/tests/slidingWindowLimiterTest.cpp.s
+	/usr/bin/g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/dharmraj/projects/rate-limiter/tests/slidingWindowLimiterTest.cpp -o CMakeFiles/sliding_window_test.dir/tests/slidingWindowLimiterTest.cpp.s
 
 CMakeFiles/sliding_window_test.dir/src/slidingWindowLimiter.cpp.o: CMakeFiles/sliding_window_test.dir/flags.make
 CMakeFiles/sliding_window_test.dir/src/slidingWindowLimiter.cpp.o: /home/dharmraj/projects/rate-limiter/src/slidingWindowLimiter.cpp
 CMakeFiles/sliding_window_test.dir/src/slidingWindowLimiter.cpp.o: CMakeFiles/sliding_window_test.dir/compiler_depend.ts
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/dharmraj/projects/rate-limiter/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object CMakeFiles/sliding_window_test.dir/src/slidingWindowLimiter.cpp.o"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/sliding_window_test.dir/src/slidingWindowLimiter.cpp.o -MF CMakeFiles/sliding_window_test.dir/src/slidingWindowLimiter.cpp.o.d -o CMakeFiles/sliding_window_test.dir/src/slidingWindowLimiter.cpp.o -c /home/dharmraj/projects/rate-limiter/src/slidingWindowLimiter.cpp
+	/usr/bin/g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/sliding_window_test.dir/src/slidingWindowLimiter.cpp.o -MF CMakeFiles/sliding_window_test.dir/src/slidingWindowLimiter.cpp.o.d -o CMakeFiles/sliding_window_test.dir/src/slidingWindowLimiter.cpp.o -c /home/dharmraj/projects/rate-limiter/src/slidingWindowLimiter.cpp
 
 CMakeFiles/sliding_window_test.dir/src/slidingWindowLimiter.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/sliding_window_test.dir/src/slidingWindowLimiter.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/dharmraj/projects/rate-limiter/src/slidingWindowLimiter.cpp > CMakeFiles/sliding_window_test.dir/src/slidingWindowLimiter.cpp.i
+	/usr/bin/g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/dharmraj/projects/rate-limiter/src/slidingWindowLimiter.cpp > CMakeFiles/sliding_window_test.dir/src/slidingWindowLimiter.cpp.i
 
 CMakeFiles/sliding_window_test.dir/src/slidingWindowLimiter.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/sliding_window_test.dir/src/slidingWindowLimiter.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/dharmraj/projects/rate-limiter/src/slidingWindowLimiter.cpp -o CMakeFiles/sliding_window_test.dir/src/slidingWindowLimiter.cpp.s
+	/usr/bin/g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/dharmraj/projects/rate-limiter/src/slidingWindowLimiter.cpp -o CMakeFiles/sliding_window_test.dir/src/slidingWindowLimiter.cpp.s
 
 # Object files for target sliding_window_test
 sliding_window_test_OBJECTS = \

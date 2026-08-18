@@ -1,0 +1,114 @@
+{
+	"configurations" : 
+	[
+		{
+			"directories" : 
+			[
+				{
+					"build" : ".",
+					"jsonFile" : "directory-.-f5ebdc15457944623624.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.20"
+					},
+					"projectIndex" : 0,
+					"source" : ".",
+					"targetIndexes" : 
+					[
+						0,
+						1,
+						2,
+						3,
+						4,
+						5,
+						6
+					]
+				}
+			],
+			"name" : "",
+			"projects" : 
+			[
+				{
+					"directoryIndexes" : 
+					[
+						0
+					],
+					"name" : "rate_limiter",
+					"targetIndexes" : 
+					[
+						0,
+						1,
+						2,
+						3,
+						4,
+						5,
+						6
+					]
+				}
+			],
+			"targets" : 
+			[
+				{
+					"directoryIndex" : 0,
+					"id" : "concurrency_multi_client_test::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-concurrency_multi_client_test-84c1f4779e04ba0d1ad4.json",
+					"name" : "concurrency_multi_client_test",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "concurrency_test::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-concurrency_test-9f61885cd7d630b4d1d9.json",
+					"name" : "concurrency_test",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "fixed_window_test::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-fixed_window_test-abd63ef788cb9007d30e.json",
+					"name" : "fixed_window_test",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "rate_limiter::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-rate_limiter-cecd08316efadb75b3fa.json",
+					"name" : "rate_limiter",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "sliding_window_counter_test::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-sliding_window_counter_test-5d5c2b355bdb349e6b4d.json",
+					"name" : "sliding_window_counter_test",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "sliding_window_test::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-sliding_window_test-9f84d5a52c721337b72a.json",
+					"name" : "sliding_window_test",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "token_bucket_test::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-token_bucket_test-e83b1a38a51bd7b144c4.json",
+					"name" : "token_bucket_test",
+					"projectIndex" : 0
+				}
+			]
+		}
+	],
+	"kind" : "codemodel",
+	"paths" : 
+	{
+		"build" : "/home/dharmraj/projects/rate-limiter/build",
+		"source" : "/home/dharmraj/projects/rate-limiter"
+	},
+	"version" : 
+	{
+		"major" : 2,
+		"minor" : 6
+	}
+}

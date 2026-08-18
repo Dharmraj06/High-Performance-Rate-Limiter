@@ -73,29 +73,29 @@ CMakeFiles/fixed_window_test.dir/tests/fixedWindowLimiterTest.cpp.o: CMakeFiles/
 CMakeFiles/fixed_window_test.dir/tests/fixedWindowLimiterTest.cpp.o: /home/dharmraj/projects/rate-limiter/tests/fixedWindowLimiterTest.cpp
 CMakeFiles/fixed_window_test.dir/tests/fixedWindowLimiterTest.cpp.o: CMakeFiles/fixed_window_test.dir/compiler_depend.ts
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/dharmraj/projects/rate-limiter/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/fixed_window_test.dir/tests/fixedWindowLimiterTest.cpp.o"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/fixed_window_test.dir/tests/fixedWindowLimiterTest.cpp.o -MF CMakeFiles/fixed_window_test.dir/tests/fixedWindowLimiterTest.cpp.o.d -o CMakeFiles/fixed_window_test.dir/tests/fixedWindowLimiterTest.cpp.o -c /home/dharmraj/projects/rate-limiter/tests/fixedWindowLimiterTest.cpp
+	/usr/bin/g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/fixed_window_test.dir/tests/fixedWindowLimiterTest.cpp.o -MF CMakeFiles/fixed_window_test.dir/tests/fixedWindowLimiterTest.cpp.o.d -o CMakeFiles/fixed_window_test.dir/tests/fixedWindowLimiterTest.cpp.o -c /home/dharmraj/projects/rate-limiter/tests/fixedWindowLimiterTest.cpp
 
 CMakeFiles/fixed_window_test.dir/tests/fixedWindowLimiterTest.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/fixed_window_test.dir/tests/fixedWindowLimiterTest.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/dharmraj/projects/rate-limiter/tests/fixedWindowLimiterTest.cpp > CMakeFiles/fixed_window_test.dir/tests/fixedWindowLimiterTest.cpp.i
+	/usr/bin/g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/dharmraj/projects/rate-limiter/tests/fixedWindowLimiterTest.cpp > CMakeFiles/fixed_window_test.dir/tests/fixedWindowLimiterTest.cpp.i
 
 CMakeFiles/fixed_window_test.dir/tests/fixedWindowLimiterTest.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/fixed_window_test.dir/tests/fixedWindowLimiterTest.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/dharmraj/projects/rate-limiter/tests/fixedWindowLimiterTest.cpp -o CMakeFiles/fixed_window_test.dir/tests/fixedWindowLimiterTest.cpp.s
+	/usr/bin/g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/dharmraj/projects/rate-limiter/tests/fixedWindowLimiterTest.cpp -o CMakeFiles/fixed_window_test.dir/tests/fixedWindowLimiterTest.cpp.s
 
 CMakeFiles/fixed_window_test.dir/src/fixedWindowLimiter.cpp.o: CMakeFiles/fixed_window_test.dir/flags.make
 CMakeFiles/fixed_window_test.dir/src/fixedWindowLimiter.cpp.o: /home/dharmraj/projects/rate-limiter/src/fixedWindowLimiter.cpp
 CMakeFiles/fixed_window_test.dir/src/fixedWindowLimiter.cpp.o: CMakeFiles/fixed_window_test.dir/compiler_depend.ts
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/dharmraj/projects/rate-limiter/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object CMakeFiles/fixed_window_test.dir/src/fixedWindowLimiter.cpp.o"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/fixed_window_test.dir/src/fixedWindowLimiter.cpp.o -MF CMakeFiles/fixed_window_test.dir/src/fixedWindowLimiter.cpp.o.d -o CMakeFiles/fixed_window_test.dir/src/fixedWindowLimiter.cpp.o -c /home/dharmraj/projects/rate-limiter/src/fixedWindowLimiter.cpp
+	/usr/bin/g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/fixed_window_test.dir/src/fixedWindowLimiter.cpp.o -MF CMakeFiles/fixed_window_test.dir/src/fixedWindowLimiter.cpp.o.d -o CMakeFiles/fixed_window_test.dir/src/fixedWindowLimiter.cpp.o -c /home/dharmraj/projects/rate-limiter/src/fixedWindowLimiter.cpp
 
 CMakeFiles/fixed_window_test.dir/src/fixedWindowLimiter.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/fixed_window_test.dir/src/fixedWindowLimiter.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/dharmraj/projects/rate-limiter/src/fixedWindowLimiter.cpp > CMakeFiles/fixed_window_test.dir/src/fixedWindowLimiter.cpp.i
+	/usr/bin/g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/dharmraj/projects/rate-limiter/src/fixedWindowLimiter.cpp > CMakeFiles/fixed_window_test.dir/src/fixedWindowLimiter.cpp.i
 
 CMakeFiles/fixed_window_test.dir/src/fixedWindowLimiter.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/fixed_window_test.dir/src/fixedWindowLimiter.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/dharmraj/projects/rate-limiter/src/fixedWindowLimiter.cpp -o CMakeFiles/fixed_window_test.dir/src/fixedWindowLimiter.cpp.s
+	/usr/bin/g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/dharmraj/projects/rate-limiter/src/fixedWindowLimiter.cpp -o CMakeFiles/fixed_window_test.dir/src/fixedWindowLimiter.cpp.s
 
 # Object files for target fixed_window_test
 fixed_window_test_OBJECTS = \

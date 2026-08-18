@@ -73,71 +73,71 @@ CMakeFiles/rate_limiter.dir/src/main.cpp.o: CMakeFiles/rate_limiter.dir/flags.ma
 CMakeFiles/rate_limiter.dir/src/main.cpp.o: /home/dharmraj/projects/rate-limiter/src/main.cpp
 CMakeFiles/rate_limiter.dir/src/main.cpp.o: CMakeFiles/rate_limiter.dir/compiler_depend.ts
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/dharmraj/projects/rate-limiter/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/rate_limiter.dir/src/main.cpp.o"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/rate_limiter.dir/src/main.cpp.o -MF CMakeFiles/rate_limiter.dir/src/main.cpp.o.d -o CMakeFiles/rate_limiter.dir/src/main.cpp.o -c /home/dharmraj/projects/rate-limiter/src/main.cpp
+	/usr/bin/g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/rate_limiter.dir/src/main.cpp.o -MF CMakeFiles/rate_limiter.dir/src/main.cpp.o.d -o CMakeFiles/rate_limiter.dir/src/main.cpp.o -c /home/dharmraj/projects/rate-limiter/src/main.cpp
 
 CMakeFiles/rate_limiter.dir/src/main.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/rate_limiter.dir/src/main.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/dharmraj/projects/rate-limiter/src/main.cpp > CMakeFiles/rate_limiter.dir/src/main.cpp.i
+	/usr/bin/g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/dharmraj/projects/rate-limiter/src/main.cpp > CMakeFiles/rate_limiter.dir/src/main.cpp.i
 
 CMakeFiles/rate_limiter.dir/src/main.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/rate_limiter.dir/src/main.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/dharmraj/projects/rate-limiter/src/main.cpp -o CMakeFiles/rate_limiter.dir/src/main.cpp.s
+	/usr/bin/g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/dharmraj/projects/rate-limiter/src/main.cpp -o CMakeFiles/rate_limiter.dir/src/main.cpp.s
 
 CMakeFiles/rate_limiter.dir/src/httpServer.cpp.o: CMakeFiles/rate_limiter.dir/flags.make
 CMakeFiles/rate_limiter.dir/src/httpServer.cpp.o: /home/dharmraj/projects/rate-limiter/src/httpServer.cpp
 CMakeFiles/rate_limiter.dir/src/httpServer.cpp.o: CMakeFiles/rate_limiter.dir/compiler_depend.ts
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/dharmraj/projects/rate-limiter/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object CMakeFiles/rate_limiter.dir/src/httpServer.cpp.o"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/rate_limiter.dir/src/httpServer.cpp.o -MF CMakeFiles/rate_limiter.dir/src/httpServer.cpp.o.d -o CMakeFiles/rate_limiter.dir/src/httpServer.cpp.o -c /home/dharmraj/projects/rate-limiter/src/httpServer.cpp
+	/usr/bin/g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/rate_limiter.dir/src/httpServer.cpp.o -MF CMakeFiles/rate_limiter.dir/src/httpServer.cpp.o.d -o CMakeFiles/rate_limiter.dir/src/httpServer.cpp.o -c /home/dharmraj/projects/rate-limiter/src/httpServer.cpp
 
 CMakeFiles/rate_limiter.dir/src/httpServer.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/rate_limiter.dir/src/httpServer.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/dharmraj/projects/rate-limiter/src/httpServer.cpp > CMakeFiles/rate_limiter.dir/src/httpServer.cpp.i
+	/usr/bin/g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/dharmraj/projects/rate-limiter/src/httpServer.cpp > CMakeFiles/rate_limiter.dir/src/httpServer.cpp.i
 
 CMakeFiles/rate_limiter.dir/src/httpServer.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/rate_limiter.dir/src/httpServer.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/dharmraj/projects/rate-limiter/src/httpServer.cpp -o CMakeFiles/rate_limiter.dir/src/httpServer.cpp.s
+	/usr/bin/g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/dharmraj/projects/rate-limiter/src/httpServer.cpp -o CMakeFiles/rate_limiter.dir/src/httpServer.cpp.s
 
 CMakeFiles/rate_limiter.dir/src/fixedWindowLimiter.cpp.o: CMakeFiles/rate_limiter.dir/flags.make
 CMakeFiles/rate_limiter.dir/src/fixedWindowLimiter.cpp.o: /home/dharmraj/projects/rate-limiter/src/fixedWindowLimiter.cpp
 CMakeFiles/rate_limiter.dir/src/fixedWindowLimiter.cpp.o: CMakeFiles/rate_limiter.dir/compiler_depend.ts
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/dharmraj/projects/rate-limiter/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object CMakeFiles/rate_limiter.dir/src/fixedWindowLimiter.cpp.o"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/rate_limiter.dir/src/fixedWindowLimiter.cpp.o -MF CMakeFiles/rate_limiter.dir/src/fixedWindowLimiter.cpp.o.d -o CMakeFiles/rate_limiter.dir/src/fixedWindowLimiter.cpp.o -c /home/dharmraj/projects/rate-limiter/src/fixedWindowLimiter.cpp
+	/usr/bin/g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/rate_limiter.dir/src/fixedWindowLimiter.cpp.o -MF CMakeFiles/rate_limiter.dir/src/fixedWindowLimiter.cpp.o.d -o CMakeFiles/rate_limiter.dir/src/fixedWindowLimiter.cpp.o -c /home/dharmraj/projects/rate-limiter/src/fixedWindowLimiter.cpp
 
 CMakeFiles/rate_limiter.dir/src/fixedWindowLimiter.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/rate_limiter.dir/src/fixedWindowLimiter.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/dharmraj/projects/rate-limiter/src/fixedWindowLimiter.cpp > CMakeFiles/rate_limiter.dir/src/fixedWindowLimiter.cpp.i
+	/usr/bin/g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/dharmraj/projects/rate-limiter/src/fixedWindowLimiter.cpp > CMakeFiles/rate_limiter.dir/src/fixedWindowLimiter.cpp.i
 
 CMakeFiles/rate_limiter.dir/src/fixedWindowLimiter.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/rate_limiter.dir/src/fixedWindowLimiter.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/dharmraj/projects/rate-limiter/src/fixedWindowLimiter.cpp -o CMakeFiles/rate_limiter.dir/src/fixedWindowLimiter.cpp.s
+	/usr/bin/g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/dharmraj/projects/rate-limiter/src/fixedWindowLimiter.cpp -o CMakeFiles/rate_limiter.dir/src/fixedWindowLimiter.cpp.s
 
 CMakeFiles/rate_limiter.dir/src/slidingWindowLimiter.cpp.o: CMakeFiles/rate_limiter.dir/flags.make
 CMakeFiles/rate_limiter.dir/src/slidingWindowLimiter.cpp.o: /home/dharmraj/projects/rate-limiter/src/slidingWindowLimiter.cpp
 CMakeFiles/rate_limiter.dir/src/slidingWindowLimiter.cpp.o: CMakeFiles/rate_limiter.dir/compiler_depend.ts
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/dharmraj/projects/rate-limiter/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building CXX object CMakeFiles/rate_limiter.dir/src/slidingWindowLimiter.cpp.o"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/rate_limiter.dir/src/slidingWindowLimiter.cpp.o -MF CMakeFiles/rate_limiter.dir/src/slidingWindowLimiter.cpp.o.d -o CMakeFiles/rate_limiter.dir/src/slidingWindowLimiter.cpp.o -c /home/dharmraj/projects/rate-limiter/src/slidingWindowLimiter.cpp
+	/usr/bin/g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/rate_limiter.dir/src/slidingWindowLimiter.cpp.o -MF CMakeFiles/rate_limiter.dir/src/slidingWindowLimiter.cpp.o.d -o CMakeFiles/rate_limiter.dir/src/slidingWindowLimiter.cpp.o -c /home/dharmraj/projects/rate-limiter/src/slidingWindowLimiter.cpp
 
 CMakeFiles/rate_limiter.dir/src/slidingWindowLimiter.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/rate_limiter.dir/src/slidingWindowLimiter.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/dharmraj/projects/rate-limiter/src/slidingWindowLimiter.cpp > CMakeFiles/rate_limiter.dir/src/slidingWindowLimiter.cpp.i
+	/usr/bin/g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/dharmraj/projects/rate-limiter/src/slidingWindowLimiter.cpp > CMakeFiles/rate_limiter.dir/src/slidingWindowLimiter.cpp.i
 
 CMakeFiles/rate_limiter.dir/src/slidingWindowLimiter.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/rate_limiter.dir/src/slidingWindowLimiter.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/dharmraj/projects/rate-limiter/src/slidingWindowLimiter.cpp -o CMakeFiles/rate_limiter.dir/src/slidingWindowLimiter.cpp.s
+	/usr/bin/g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/dharmraj/projects/rate-limiter/src/slidingWindowLimiter.cpp -o CMakeFiles/rate_limiter.dir/src/slidingWindowLimiter.cpp.s
 
 CMakeFiles/rate_limiter.dir/src/tokenBucketLimiter.cpp.o: CMakeFiles/rate_limiter.dir/flags.make
 CMakeFiles/rate_limiter.dir/src/tokenBucketLimiter.cpp.o: /home/dharmraj/projects/rate-limiter/src/tokenBucketLimiter.cpp
 CMakeFiles/rate_limiter.dir/src/tokenBucketLimiter.cpp.o: CMakeFiles/rate_limiter.dir/compiler_depend.ts
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/dharmraj/projects/rate-limiter/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building CXX object CMakeFiles/rate_limiter.dir/src/tokenBucketLimiter.cpp.o"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/rate_limiter.dir/src/tokenBucketLimiter.cpp.o -MF CMakeFiles/rate_limiter.dir/src/tokenBucketLimiter.cpp.o.d -o CMakeFiles/rate_limiter.dir/src/tokenBucketLimiter.cpp.o -c /home/dharmraj/projects/rate-limiter/src/tokenBucketLimiter.cpp
+	/usr/bin/g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/rate_limiter.dir/src/tokenBucketLimiter.cpp.o -MF CMakeFiles/rate_limiter.dir/src/tokenBucketLimiter.cpp.o.d -o CMakeFiles/rate_limiter.dir/src/tokenBucketLimiter.cpp.o -c /home/dharmraj/projects/rate-limiter/src/tokenBucketLimiter.cpp
 
 CMakeFiles/rate_limiter.dir/src/tokenBucketLimiter.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/rate_limiter.dir/src/tokenBucketLimiter.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/dharmraj/projects/rate-limiter/src/tokenBucketLimiter.cpp > CMakeFiles/rate_limiter.dir/src/tokenBucketLimiter.cpp.i
+	/usr/bin/g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/dharmraj/projects/rate-limiter/src/tokenBucketLimiter.cpp > CMakeFiles/rate_limiter.dir/src/tokenBucketLimiter.cpp.i
 
 CMakeFiles/rate_limiter.dir/src/tokenBucketLimiter.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/rate_limiter.dir/src/tokenBucketLimiter.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/dharmraj/projects/rate-limiter/src/tokenBucketLimiter.cpp -o CMakeFiles/rate_limiter.dir/src/tokenBucketLimiter.cpp.s
+	/usr/bin/g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/dharmraj/projects/rate-limiter/src/tokenBucketLimiter.cpp -o CMakeFiles/rate_limiter.dir/src/tokenBucketLimiter.cpp.s
 
 # Object files for target rate_limiter
 rate_limiter_OBJECTS = \

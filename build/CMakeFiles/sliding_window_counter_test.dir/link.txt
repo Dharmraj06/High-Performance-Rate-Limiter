@@ -1,1 +1,1 @@
-/usr/bin/c++ CMakeFiles/sliding_window_counter_test.dir/tests/slidingWindowCounterLimiterTest.cpp.o CMakeFiles/sliding_window_counter_test.dir/src/slidingWindowCounterLimiter.cpp.o -o sliding_window_counter_test 
+/usr/bin/g++ CMakeFiles/sliding_window_counter_test.dir/tests/slidingWindowCounterLimiterTest.cpp.o CMakeFiles/sliding_window_counter_test.dir/src/slidingWindowCounterLimiter.cpp.o -o sliding_window_counter_test 
