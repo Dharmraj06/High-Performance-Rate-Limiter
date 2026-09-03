@@ -152,3 +152,23 @@ target_link_libraries(rate_limiter_benchmark PRIVATE
     benchmark::benchmark
     pthread
 )
+
+
+add_executable(final_benchmark
+    benchmarks/final_benchmark.cpp
+    src/fixedWindowLimiter.cpp
+    src/slidingWindowLimiter.cpp
+    src/slidingWindowCounterLimiter.cpp
+    src/tokenBucketLimiter.cpp
+    src/redisTokenBucketLimiter.cpp
+)
+
+target_include_directories(final_benchmark PRIVATE
+    include
+    ${hiredis_SOURCE_DIR}
+)
+
+target_link_libraries(final_benchmark PRIVATE
+    hiredis
+    pthread
+)

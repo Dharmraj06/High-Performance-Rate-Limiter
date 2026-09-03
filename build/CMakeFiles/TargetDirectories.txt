@@ -8,6 +8,7 @@
 /home/dharmraj/projects/rate-limiter/build/CMakeFiles/cleanup_test.dir
 /home/dharmraj/projects/rate-limiter/build/CMakeFiles/redis_token_bucket_test.dir
 /home/dharmraj/projects/rate-limiter/build/CMakeFiles/rate_limiter_benchmark.dir
+/home/dharmraj/projects/rate-limiter/build/CMakeFiles/final_benchmark.dir
 /home/dharmraj/projects/rate-limiter/build/CMakeFiles/package.dir
 /home/dharmraj/projects/rate-limiter/build/CMakeFiles/package_source.dir
 /home/dharmraj/projects/rate-limiter/build/CMakeFiles/edit_cache.dir
