@@ -6,20 +6,41 @@ set(CMAKE_CXX_STANDARD 23)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 set(CMAKE_CXX_EXTENSIONS OFF)
 
+include(FetchContent)
+
+# ── hiredis (Redis C Client) ─────────────────────────────────────────────────
+FetchContent_Declare(
+    hiredis
+    GIT_REPOSITORY https://github.com/redis/hiredis.git
+    GIT_TAG        v1.2.0
+)
+
+set(DISABLE_TESTS ON CACHE BOOL "" FORCE)
+set(ENABLE_SSL    OFF CACHE BOOL "" FORCE)
+
+FetchContent_MakeAvailable(hiredis)
+
+
 add_executable(rate_limiter
     src/main.cpp
     src/httpServer.cpp
     src/fixedWindowLimiter.cpp
     src/slidingWindowLimiter.cpp
+    src/slidingWindowCounterLimiter.cpp
     src/tokenBucketLimiter.cpp
+    src/redisTokenBucketLimiter.cpp
 )
 
 target_include_directories(rate_limiter PRIVATE
     include
     external
+    ${hiredis_SOURCE_DIR}
 )
 
-target_link_libraries(rate_limiter PRIVATE pthread)
+target_link_libraries(rate_limiter PRIVATE
+    hiredis
+    pthread
+)
 
 
 add_executable(fixed_window_test
@@ -87,12 +108,23 @@ target_include_directories(cleanup_test PRIVATE include)
 target_link_libraries(cleanup_test PRIVATE pthread)
 
 
+add_executable(redis_token_bucket_test
+    tests/redisTokenBucketLimiterTest.cpp
+    src/redisTokenBucketLimiter.cpp
+)
+
+target_include_directories(redis_token_bucket_test PRIVATE
+    include
+    ${hiredis_SOURCE_DIR}
+)
+
+target_link_libraries(redis_token_bucket_test PRIVATE
+    hiredis
+    pthread
+)
+
 
 # ── Google Benchmark ─────────────────────────────────────────────────────────
-# Downloaded at configure time via FetchContent; cached after the first run.
-# GTest integration is disabled so we don't pull in an unneeded dependency.
-include(FetchContent)
-
 FetchContent_Declare(
     googlebenchmark
     GIT_REPOSITORY https://github.com/google/benchmark.git
@@ -118,34 +150,5 @@ target_include_directories(rate_limiter_benchmark PRIVATE include)
 
 target_link_libraries(rate_limiter_benchmark PRIVATE
     benchmark::benchmark
-    pthread
-)
-
-
-# ── hiredis (Redis C Client) ─────────────────────────────────────────────────
-FetchContent_Declare(
-    hiredis
-    GIT_REPOSITORY https://github.com/redis/hiredis.git
-    GIT_TAG        v1.2.0
-)
-
-set(DISABLE_TESTS ON CACHE BOOL "" FORCE)
-set(ENABLE_SSL    OFF CACHE BOOL "" FORCE)
-
-FetchContent_MakeAvailable(hiredis)
-
-
-add_executable(redis_token_bucket_test
-    tests/redisTokenBucketLimiterTest.cpp
-    src/redisTokenBucketLimiter.cpp
-)
-
-target_include_directories(redis_token_bucket_test PRIVATE
-    include
-    ${hiredis_SOURCE_DIR}
-)
-
-target_link_libraries(redis_token_bucket_test PRIVATE
-    hiredis
     pthread
 )

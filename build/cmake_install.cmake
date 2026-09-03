@@ -44,12 +44,12 @@ endif()
 
 if(NOT CMAKE_INSTALL_LOCAL_ONLY)
   # Include the install script for the subdirectory.
-  include("/home/dharmraj/projects/rate-limiter/build/_deps/googlebenchmark-build/cmake_install.cmake")
+  include("/home/dharmraj/projects/rate-limiter/build/_deps/hiredis-build/cmake_install.cmake")
 endif()
 
 if(NOT CMAKE_INSTALL_LOCAL_ONLY)
   # Include the install script for the subdirectory.
-  include("/home/dharmraj/projects/rate-limiter/build/_deps/hiredis-build/cmake_install.cmake")
+  include("/home/dharmraj/projects/rate-limiter/build/_deps/googlebenchmark-build/cmake_install.cmake")
 endif()
 
 if(CMAKE_INSTALL_COMPONENT)

@@ -1,2 +1,1 @@
-/usr/bin/ar qc libbenchmark_main.a CMakeFiles/benchmark_main.dir/benchmark_main.cc.o
-/usr/bin/ranlib libbenchmark_main.a
+/usr/bin/c++ -fPIC   -Wall  -Wextra  -Wshadow  -Wfloat-equal  -Wold-style-cast  -Werror  -Wsuggest-override  -pedantic  -pedantic-errors  -fstrict-aliasing  -Wno-deprecated-declarations  -Wno-deprecated  -Wstrict-aliasing -O3 -DNDEBUG -shared -Wl,-soname,libbenchmark_main.so.1 -o libbenchmark_main.so.1.8.3 CMakeFiles/benchmark_main.dir/benchmark_main.cc.o  -Wl,-rpath,/home/dharmraj/projects/rate-limiter/build/_deps/googlebenchmark-build/src libbenchmark.so.1.8.3 

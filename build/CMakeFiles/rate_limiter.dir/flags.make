@@ -4,7 +4,7 @@
 # compile CXX with /usr/bin/c++
 CXX_DEFINES = 
 
-CXX_INCLUDES = -I/home/dharmraj/projects/rate-limiter/include -I/home/dharmraj/projects/rate-limiter/external
+CXX_INCLUDES = -I/home/dharmraj/projects/rate-limiter/include -I/home/dharmraj/projects/rate-limiter/external -I/home/dharmraj/projects/rate-limiter/build/_deps/hiredis-src
 
 CXX_FLAGS = -O3 -DNDEBUG -std=c++23
 

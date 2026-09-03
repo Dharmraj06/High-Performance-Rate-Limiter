@@ -156,7 +156,7 @@ rate_limiter_benchmark: CMakeFiles/rate_limiter_benchmark.dir/src/slidingWindowL
 rate_limiter_benchmark: CMakeFiles/rate_limiter_benchmark.dir/src/slidingWindowCounterLimiter.cpp.o
 rate_limiter_benchmark: CMakeFiles/rate_limiter_benchmark.dir/src/tokenBucketLimiter.cpp.o
 rate_limiter_benchmark: CMakeFiles/rate_limiter_benchmark.dir/build.make
-rate_limiter_benchmark: _deps/googlebenchmark-build/src/libbenchmark.a
+rate_limiter_benchmark: _deps/googlebenchmark-build/src/libbenchmark.so.1.8.3
 rate_limiter_benchmark: CMakeFiles/rate_limiter_benchmark.dir/link.txt
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir=/home/dharmraj/projects/rate-limiter/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Linking CXX executable rate_limiter_benchmark"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/rate_limiter_benchmark.dir/link.txt --verbose=$(VERBOSE)

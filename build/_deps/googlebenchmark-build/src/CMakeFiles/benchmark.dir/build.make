@@ -360,33 +360,39 @@ benchmark_OBJECTS = \
 # External object files for target benchmark
 benchmark_EXTERNAL_OBJECTS =
 
-_deps/googlebenchmark-build/src/libbenchmark.a: _deps/googlebenchmark-build/src/CMakeFiles/benchmark.dir/benchmark.cc.o
-_deps/googlebenchmark-build/src/libbenchmark.a: _deps/googlebenchmark-build/src/CMakeFiles/benchmark.dir/benchmark_api_internal.cc.o
-_deps/googlebenchmark-build/src/libbenchmark.a: _deps/googlebenchmark-build/src/CMakeFiles/benchmark.dir/benchmark_name.cc.o
-_deps/googlebenchmark-build/src/libbenchmark.a: _deps/googlebenchmark-build/src/CMakeFiles/benchmark.dir/benchmark_register.cc.o
-_deps/googlebenchmark-build/src/libbenchmark.a: _deps/googlebenchmark-build/src/CMakeFiles/benchmark.dir/benchmark_runner.cc.o
-_deps/googlebenchmark-build/src/libbenchmark.a: _deps/googlebenchmark-build/src/CMakeFiles/benchmark.dir/check.cc.o
-_deps/googlebenchmark-build/src/libbenchmark.a: _deps/googlebenchmark-build/src/CMakeFiles/benchmark.dir/colorprint.cc.o
-_deps/googlebenchmark-build/src/libbenchmark.a: _deps/googlebenchmark-build/src/CMakeFiles/benchmark.dir/commandlineflags.cc.o
-_deps/googlebenchmark-build/src/libbenchmark.a: _deps/googlebenchmark-build/src/CMakeFiles/benchmark.dir/complexity.cc.o
-_deps/googlebenchmark-build/src/libbenchmark.a: _deps/googlebenchmark-build/src/CMakeFiles/benchmark.dir/console_reporter.cc.o
-_deps/googlebenchmark-build/src/libbenchmark.a: _deps/googlebenchmark-build/src/CMakeFiles/benchmark.dir/counter.cc.o
-_deps/googlebenchmark-build/src/libbenchmark.a: _deps/googlebenchmark-build/src/CMakeFiles/benchmark.dir/csv_reporter.cc.o
-_deps/googlebenchmark-build/src/libbenchmark.a: _deps/googlebenchmark-build/src/CMakeFiles/benchmark.dir/json_reporter.cc.o
-_deps/googlebenchmark-build/src/libbenchmark.a: _deps/googlebenchmark-build/src/CMakeFiles/benchmark.dir/perf_counters.cc.o
-_deps/googlebenchmark-build/src/libbenchmark.a: _deps/googlebenchmark-build/src/CMakeFiles/benchmark.dir/reporter.cc.o
-_deps/googlebenchmark-build/src/libbenchmark.a: _deps/googlebenchmark-build/src/CMakeFiles/benchmark.dir/statistics.cc.o
-_deps/googlebenchmark-build/src/libbenchmark.a: _deps/googlebenchmark-build/src/CMakeFiles/benchmark.dir/string_util.cc.o
-_deps/googlebenchmark-build/src/libbenchmark.a: _deps/googlebenchmark-build/src/CMakeFiles/benchmark.dir/sysinfo.cc.o
-_deps/googlebenchmark-build/src/libbenchmark.a: _deps/googlebenchmark-build/src/CMakeFiles/benchmark.dir/timers.cc.o
-_deps/googlebenchmark-build/src/libbenchmark.a: _deps/googlebenchmark-build/src/CMakeFiles/benchmark.dir/build.make
-_deps/googlebenchmark-build/src/libbenchmark.a: _deps/googlebenchmark-build/src/CMakeFiles/benchmark.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir=/home/dharmraj/projects/rate-limiter/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_20) "Linking CXX static library libbenchmark.a"
-	cd /home/dharmraj/projects/rate-limiter/build/_deps/googlebenchmark-build/src && $(CMAKE_COMMAND) -P CMakeFiles/benchmark.dir/cmake_clean_target.cmake
+_deps/googlebenchmark-build/src/libbenchmark.so.1.8.3: _deps/googlebenchmark-build/src/CMakeFiles/benchmark.dir/benchmark.cc.o
+_deps/googlebenchmark-build/src/libbenchmark.so.1.8.3: _deps/googlebenchmark-build/src/CMakeFiles/benchmark.dir/benchmark_api_internal.cc.o
+_deps/googlebenchmark-build/src/libbenchmark.so.1.8.3: _deps/googlebenchmark-build/src/CMakeFiles/benchmark.dir/benchmark_name.cc.o
+_deps/googlebenchmark-build/src/libbenchmark.so.1.8.3: _deps/googlebenchmark-build/src/CMakeFiles/benchmark.dir/benchmark_register.cc.o
+_deps/googlebenchmark-build/src/libbenchmark.so.1.8.3: _deps/googlebenchmark-build/src/CMakeFiles/benchmark.dir/benchmark_runner.cc.o
+_deps/googlebenchmark-build/src/libbenchmark.so.1.8.3: _deps/googlebenchmark-build/src/CMakeFiles/benchmark.dir/check.cc.o
+_deps/googlebenchmark-build/src/libbenchmark.so.1.8.3: _deps/googlebenchmark-build/src/CMakeFiles/benchmark.dir/colorprint.cc.o
+_deps/googlebenchmark-build/src/libbenchmark.so.1.8.3: _deps/googlebenchmark-build/src/CMakeFiles/benchmark.dir/commandlineflags.cc.o
+_deps/googlebenchmark-build/src/libbenchmark.so.1.8.3: _deps/googlebenchmark-build/src/CMakeFiles/benchmark.dir/complexity.cc.o
+_deps/googlebenchmark-build/src/libbenchmark.so.1.8.3: _deps/googlebenchmark-build/src/CMakeFiles/benchmark.dir/console_reporter.cc.o
+_deps/googlebenchmark-build/src/libbenchmark.so.1.8.3: _deps/googlebenchmark-build/src/CMakeFiles/benchmark.dir/counter.cc.o
+_deps/googlebenchmark-build/src/libbenchmark.so.1.8.3: _deps/googlebenchmark-build/src/CMakeFiles/benchmark.dir/csv_reporter.cc.o
+_deps/googlebenchmark-build/src/libbenchmark.so.1.8.3: _deps/googlebenchmark-build/src/CMakeFiles/benchmark.dir/json_reporter.cc.o
+_deps/googlebenchmark-build/src/libbenchmark.so.1.8.3: _deps/googlebenchmark-build/src/CMakeFiles/benchmark.dir/perf_counters.cc.o
+_deps/googlebenchmark-build/src/libbenchmark.so.1.8.3: _deps/googlebenchmark-build/src/CMakeFiles/benchmark.dir/reporter.cc.o
+_deps/googlebenchmark-build/src/libbenchmark.so.1.8.3: _deps/googlebenchmark-build/src/CMakeFiles/benchmark.dir/statistics.cc.o
+_deps/googlebenchmark-build/src/libbenchmark.so.1.8.3: _deps/googlebenchmark-build/src/CMakeFiles/benchmark.dir/string_util.cc.o
+_deps/googlebenchmark-build/src/libbenchmark.so.1.8.3: _deps/googlebenchmark-build/src/CMakeFiles/benchmark.dir/sysinfo.cc.o
+_deps/googlebenchmark-build/src/libbenchmark.so.1.8.3: _deps/googlebenchmark-build/src/CMakeFiles/benchmark.dir/timers.cc.o
+_deps/googlebenchmark-build/src/libbenchmark.so.1.8.3: _deps/googlebenchmark-build/src/CMakeFiles/benchmark.dir/build.make
+_deps/googlebenchmark-build/src/libbenchmark.so.1.8.3: _deps/googlebenchmark-build/src/CMakeFiles/benchmark.dir/link.txt
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir=/home/dharmraj/projects/rate-limiter/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_20) "Linking CXX shared library libbenchmark.so"
 	cd /home/dharmraj/projects/rate-limiter/build/_deps/googlebenchmark-build/src && $(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/benchmark.dir/link.txt --verbose=$(VERBOSE)
+	cd /home/dharmraj/projects/rate-limiter/build/_deps/googlebenchmark-build/src && $(CMAKE_COMMAND) -E cmake_symlink_library libbenchmark.so.1.8.3 libbenchmark.so.1 libbenchmark.so
+
+_deps/googlebenchmark-build/src/libbenchmark.so.1: _deps/googlebenchmark-build/src/libbenchmark.so.1.8.3
+	@$(CMAKE_COMMAND) -E touch_nocreate _deps/googlebenchmark-build/src/libbenchmark.so.1
+
+_deps/googlebenchmark-build/src/libbenchmark.so: _deps/googlebenchmark-build/src/libbenchmark.so.1.8.3
+	@$(CMAKE_COMMAND) -E touch_nocreate _deps/googlebenchmark-build/src/libbenchmark.so
 
 # Rule to build all files generated by this target.
-_deps/googlebenchmark-build/src/CMakeFiles/benchmark.dir/build: _deps/googlebenchmark-build/src/libbenchmark.a
+_deps/googlebenchmark-build/src/CMakeFiles/benchmark.dir/build: _deps/googlebenchmark-build/src/libbenchmark.so
 .PHONY : _deps/googlebenchmark-build/src/CMakeFiles/benchmark.dir/build
 
 _deps/googlebenchmark-build/src/CMakeFiles/benchmark.dir/clean:

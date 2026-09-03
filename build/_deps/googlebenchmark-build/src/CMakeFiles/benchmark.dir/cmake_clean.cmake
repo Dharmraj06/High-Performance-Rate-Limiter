@@ -1,4 +1,5 @@
 file(REMOVE_RECURSE
+  ".1"
   "CMakeFiles/benchmark.dir/benchmark.cc.o"
   "CMakeFiles/benchmark.dir/benchmark.cc.o.d"
   "CMakeFiles/benchmark.dir/benchmark_api_internal.cc.o"
@@ -37,8 +38,10 @@ file(REMOVE_RECURSE
   "CMakeFiles/benchmark.dir/sysinfo.cc.o.d"
   "CMakeFiles/benchmark.dir/timers.cc.o"
   "CMakeFiles/benchmark.dir/timers.cc.o.d"
-  "libbenchmark.a"
   "libbenchmark.pdb"
+  "libbenchmark.so"
+  "libbenchmark.so.1"
+  "libbenchmark.so.1.8.3"
 )
 
 # Per-language clean rules from dependency scanning.

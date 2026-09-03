@@ -286,6 +286,19 @@ cleanup_test/fast:
 .PHONY : cleanup_test/fast
 
 #=============================================================================
+# Target rules for targets named redis_token_bucket_test
+
+# Build rule for target.
+redis_token_bucket_test: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 redis_token_bucket_test
+.PHONY : redis_token_bucket_test
+
+# fast build rule for target.
+redis_token_bucket_test/fast:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/redis_token_bucket_test.dir/build.make CMakeFiles/redis_token_bucket_test.dir/build
+.PHONY : redis_token_bucket_test/fast
+
+#=============================================================================
 # Target rules for targets named rate_limiter_benchmark
 
 # Build rule for target.
@@ -299,17 +312,17 @@ rate_limiter_benchmark/fast:
 .PHONY : rate_limiter_benchmark/fast
 
 #=============================================================================
-# Target rules for targets named redis_token_bucket_test
+# Target rules for targets named hiredis
 
 # Build rule for target.
-redis_token_bucket_test: cmake_check_build_system
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 redis_token_bucket_test
-.PHONY : redis_token_bucket_test
+hiredis: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 hiredis
+.PHONY : hiredis
 
 # fast build rule for target.
-redis_token_bucket_test/fast:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/redis_token_bucket_test.dir/build.make CMakeFiles/redis_token_bucket_test.dir/build
-.PHONY : redis_token_bucket_test/fast
+hiredis/fast:
+	$(MAKE) $(MAKESILENT) -f _deps/hiredis-build/CMakeFiles/hiredis.dir/build.make _deps/hiredis-build/CMakeFiles/hiredis.dir/build
+.PHONY : hiredis/fast
 
 #=============================================================================
 # Target rules for targets named benchmark
@@ -336,19 +349,6 @@ benchmark_main: cmake_check_build_system
 benchmark_main/fast:
 	$(MAKE) $(MAKESILENT) -f _deps/googlebenchmark-build/src/CMakeFiles/benchmark_main.dir/build.make _deps/googlebenchmark-build/src/CMakeFiles/benchmark_main.dir/build
 .PHONY : benchmark_main/fast
-
-#=============================================================================
-# Target rules for targets named hiredis
-
-# Build rule for target.
-hiredis: cmake_check_build_system
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 hiredis
-.PHONY : hiredis
-
-# fast build rule for target.
-hiredis/fast:
-	$(MAKE) $(MAKESILENT) -f _deps/hiredis-build/CMakeFiles/hiredis.dir/build.make _deps/hiredis-build/CMakeFiles/hiredis.dir/build
-.PHONY : hiredis/fast
 
 benchmarks/rate_limiter_benchmark.o: benchmarks/rate_limiter_benchmark.cpp.o
 .PHONY : benchmarks/rate_limiter_benchmark.o
@@ -460,6 +460,7 @@ src/redisTokenBucketLimiter.o: src/redisTokenBucketLimiter.cpp.o
 
 # target to build an object file
 src/redisTokenBucketLimiter.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/rate_limiter.dir/build.make CMakeFiles/rate_limiter.dir/src/redisTokenBucketLimiter.cpp.o
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/redis_token_bucket_test.dir/build.make CMakeFiles/redis_token_bucket_test.dir/src/redisTokenBucketLimiter.cpp.o
 .PHONY : src/redisTokenBucketLimiter.cpp.o
 
@@ -468,6 +469,7 @@ src/redisTokenBucketLimiter.i: src/redisTokenBucketLimiter.cpp.i
 
 # target to preprocess a source file
 src/redisTokenBucketLimiter.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/rate_limiter.dir/build.make CMakeFiles/rate_limiter.dir/src/redisTokenBucketLimiter.cpp.i
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/redis_token_bucket_test.dir/build.make CMakeFiles/redis_token_bucket_test.dir/src/redisTokenBucketLimiter.cpp.i
 .PHONY : src/redisTokenBucketLimiter.cpp.i
 
@@ -476,6 +478,7 @@ src/redisTokenBucketLimiter.s: src/redisTokenBucketLimiter.cpp.s
 
 # target to generate assembly for a file
 src/redisTokenBucketLimiter.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/rate_limiter.dir/build.make CMakeFiles/rate_limiter.dir/src/redisTokenBucketLimiter.cpp.s
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/redis_token_bucket_test.dir/build.make CMakeFiles/redis_token_bucket_test.dir/src/redisTokenBucketLimiter.cpp.s
 .PHONY : src/redisTokenBucketLimiter.cpp.s
 
@@ -484,6 +487,7 @@ src/slidingWindowCounterLimiter.o: src/slidingWindowCounterLimiter.cpp.o
 
 # target to build an object file
 src/slidingWindowCounterLimiter.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/rate_limiter.dir/build.make CMakeFiles/rate_limiter.dir/src/slidingWindowCounterLimiter.cpp.o
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/sliding_window_counter_test.dir/build.make CMakeFiles/sliding_window_counter_test.dir/src/slidingWindowCounterLimiter.cpp.o
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/concurrency_test.dir/build.make CMakeFiles/concurrency_test.dir/src/slidingWindowCounterLimiter.cpp.o
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/concurrency_multi_client_test.dir/build.make CMakeFiles/concurrency_multi_client_test.dir/src/slidingWindowCounterLimiter.cpp.o
@@ -496,6 +500,7 @@ src/slidingWindowCounterLimiter.i: src/slidingWindowCounterLimiter.cpp.i
 
 # target to preprocess a source file
 src/slidingWindowCounterLimiter.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/rate_limiter.dir/build.make CMakeFiles/rate_limiter.dir/src/slidingWindowCounterLimiter.cpp.i
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/sliding_window_counter_test.dir/build.make CMakeFiles/sliding_window_counter_test.dir/src/slidingWindowCounterLimiter.cpp.i
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/concurrency_test.dir/build.make CMakeFiles/concurrency_test.dir/src/slidingWindowCounterLimiter.cpp.i
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/concurrency_multi_client_test.dir/build.make CMakeFiles/concurrency_multi_client_test.dir/src/slidingWindowCounterLimiter.cpp.i
@@ -508,6 +513,7 @@ src/slidingWindowCounterLimiter.s: src/slidingWindowCounterLimiter.cpp.s
 
 # target to generate assembly for a file
 src/slidingWindowCounterLimiter.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/rate_limiter.dir/build.make CMakeFiles/rate_limiter.dir/src/slidingWindowCounterLimiter.cpp.s
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/sliding_window_counter_test.dir/build.make CMakeFiles/sliding_window_counter_test.dir/src/slidingWindowCounterLimiter.cpp.s
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/concurrency_test.dir/build.make CMakeFiles/concurrency_test.dir/src/slidingWindowCounterLimiter.cpp.s
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/concurrency_multi_client_test.dir/build.make CMakeFiles/concurrency_multi_client_test.dir/src/slidingWindowCounterLimiter.cpp.s
