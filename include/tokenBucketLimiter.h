@@ -5,6 +5,7 @@
 #include <unordered_map>
 #include <mutex>
 #include <cmath>
+#include <functional>
 
 #include "rateLimitResult.h"
 
@@ -14,20 +15,28 @@ using namespace chrono;
 class tokenBucketLimiter
 {
 private:
-    mutex mtx;
     struct clientState
     {
         double tokens;
         steady_clock::time_point lastRefill;
     };
 
+    struct Shard
+    {
+        mutex mtx;
+        unordered_map<string, clientState> clients;
+    };
+
+    static const int numShards = 64;
+    Shard shards[numShards];
+
     double capacity;
     double refillRate;
-    unordered_map<string,clientState> clients;
+
+    size_t getShard(const string &clientId) const;
 
 public:
+    tokenBucketLimiter(double capacity, double refillRate);
 
-    tokenBucketLimiter(double capacity,double refillRate);
-
-    RateLimitResult allow(const string& clientId,steady_clock::time_point currTime);
+    RateLimitResult allow(const string &clientId, steady_clock::time_point currTime);
 };

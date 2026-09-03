@@ -6,14 +6,21 @@ fixedWindowLimiter::fixedWindowLimiter(int limit, chrono::seconds winDuration)
     this->winDuration = winDuration;
 }
 
+size_t fixedWindowLimiter::getShard(const string &clientId) const
+{
+    return hash<string>{}(clientId) % numShards;
+}
+
 RateLimitResult fixedWindowLimiter::allow(const string &clientId, chrono::steady_clock::time_point currTime)
 {
-    lock_guard<mutex> lock(mtx);
-    auto it = clients.find(clientId);
+    Shard &shard = shards[getShard(clientId)];
+    lock_guard<mutex> lock(shard.mtx);
 
-    if (it == clients.end())
+    auto it = shard.clients.find(clientId);
+
+    if (it == shard.clients.end())
     {
-        clients[clientId] = {1, currTime};
+        shard.clients[clientId] = {1, currTime};
         return {1, limit - 1, 0};
     }
 

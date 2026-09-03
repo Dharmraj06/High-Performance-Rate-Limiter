@@ -7,14 +7,21 @@ slidingWindowCounterLimiter::slidingWindowCounterLimiter(int limit, seconds winD
     this->winDuration = winDuration;
 }
 
+size_t slidingWindowCounterLimiter::getShard(const string &clientId) const
+{
+    return hash<string>{}(clientId) % numShards;
+}
+
 RateLimitResult slidingWindowCounterLimiter::allow(const string &clientId, steady_clock::time_point currTime)
 {
-    lock_guard<mutex> lock(mtx);
-    auto it = clients.find(clientId);
+    Shard &shard = shards[getShard(clientId)];
+    lock_guard<mutex> lock(shard.mtx);
 
-    if (it == clients.end())
+    auto it = shard.clients.find(clientId);
+
+    if (it == shard.clients.end())
     {
-        clients[clientId] = {0, 1, currTime};
+        shard.clients[clientId] = {0, 1, currTime};
         return {1, limit - 1, 0};
     }
 
