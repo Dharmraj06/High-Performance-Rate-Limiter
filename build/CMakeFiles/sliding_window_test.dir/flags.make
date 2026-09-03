@@ -6,5 +6,5 @@ CXX_DEFINES =
 
 CXX_INCLUDES = -I/home/dharmraj/projects/rate-limiter/include
 
-CXX_FLAGS = -std=c++23
+CXX_FLAGS = -g -std=c++23
 

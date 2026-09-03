@@ -16,7 +16,7 @@ RateLimitResult slidingWindowLimiter::allow(const string& clientId,steady_clock:
 
     clientState& timeWindow = it->second;
 
-    while(!timeWindow.reqTime.empty()&&currTime-timeWindow.reqTime.front() >= winDuration){
+    while(!timeWindow.reqTime.empty() && (currTime-timeWindow.reqTime.front() >= winDuration)){
         timeWindow.reqTime.pop();
     }
 
