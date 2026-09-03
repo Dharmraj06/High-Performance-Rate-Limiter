@@ -74,6 +74,20 @@ target_include_directories(concurrency_multi_client_test PRIVATE include)
 target_link_libraries(concurrency_multi_client_test PRIVATE pthread)
 
 
+add_executable(cleanup_test
+    tests/cleanupTest.cpp
+    src/fixedWindowLimiter.cpp
+    src/slidingWindowLimiter.cpp
+    src/slidingWindowCounterLimiter.cpp
+    src/tokenBucketLimiter.cpp
+)
+
+target_include_directories(cleanup_test PRIVATE include)
+
+target_link_libraries(cleanup_test PRIVATE pthread)
+
+
+
 # ── Google Benchmark ─────────────────────────────────────────────────────────
 # Downloaded at configure time via FetchContent; cached after the first run.
 # GTest integration is disabled so we don't pull in an unneeded dependency.

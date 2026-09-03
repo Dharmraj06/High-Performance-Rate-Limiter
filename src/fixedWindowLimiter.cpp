@@ -4,6 +4,7 @@ fixedWindowLimiter::fixedWindowLimiter(int limit, chrono::seconds winDuration)
 {
     this->limit = limit;
     this->winDuration = winDuration;
+    this->cleanupInterval = max(chrono::seconds(10), winDuration);
 }
 
 size_t fixedWindowLimiter::getShard(const string &clientId) const
@@ -11,20 +12,46 @@ size_t fixedWindowLimiter::getShard(const string &clientId) const
     return hash<string>{}(clientId) % numShards;
 }
 
+void fixedWindowLimiter::cleanupShard(Shard &shard, chrono::steady_clock::time_point currTime)
+{
+    for (auto it = shard.clients.begin(); it != shard.clients.end(); )
+    {
+        if (currTime - it->second.lastAccess >= winDuration * 2)
+        {
+            it = shard.clients.erase(it);
+        }
+        else
+        {
+            ++it;
+        }
+    }
+}
+
 RateLimitResult fixedWindowLimiter::allow(const string &clientId, chrono::steady_clock::time_point currTime)
 {
     Shard &shard = shards[getShard(clientId)];
     lock_guard<mutex> lock(shard.mtx);
 
+    if (shard.lastCleanup.time_since_epoch().count() == 0)
+    {
+        shard.lastCleanup = currTime;
+    }
+    else if (currTime - shard.lastCleanup >= cleanupInterval)
+    {
+        cleanupShard(shard, currTime);
+        shard.lastCleanup = currTime;
+    }
+
     auto it = shard.clients.find(clientId);
 
     if (it == shard.clients.end())
     {
-        shard.clients[clientId] = {1, currTime};
+        shard.clients[clientId] = {1, currTime, currTime};
         return {1, limit - 1, 0};
     }
 
     clientState &client = it->second;
+    client.lastAccess = currTime;
 
     if (currTime - client.winStart >= winDuration)
     {
@@ -45,6 +72,27 @@ RateLimitResult fixedWindowLimiter::allow(const string &clientId, chrono::steady
     client.reqCount++;
 
     return {1, limit - client.reqCount, 0};
+}
+
+void fixedWindowLimiter::cleanup(chrono::steady_clock::time_point currTime)
+{
+    for (int i = 0; i < numShards; i++)
+    {
+        lock_guard<mutex> lock(shards[i].mtx);
+        cleanupShard(shards[i], currTime);
+        shards[i].lastCleanup = currTime;
+    }
+}
+
+int fixedWindowLimiter::getClientCount() const
+{
+    int count = 0;
+    for (int i = 0; i < numShards; i++)
+    {
+        lock_guard<mutex> lock(const_cast<mutex&>(shards[i].mtx));
+        count += (int)shards[i].clients.size();
+    }
+    return count;
 }
 
 int fixedWindowLimiter::getLimit() const

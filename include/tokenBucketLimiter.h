@@ -19,12 +19,14 @@ private:
     {
         double tokens;
         steady_clock::time_point lastRefill;
+        steady_clock::time_point lastAccess;
     };
 
     struct Shard
     {
         mutex mtx;
         unordered_map<string, clientState> clients;
+        steady_clock::time_point lastCleanup;
     };
 
     static const int numShards = 64;
@@ -32,11 +34,17 @@ private:
 
     double capacity;
     double refillRate;
+    seconds cleanupInterval;
 
     size_t getShard(const string &clientId) const;
+    void cleanupShard(Shard &shard, steady_clock::time_point currTime);
 
 public:
     tokenBucketLimiter(double capacity, double refillRate);
 
     RateLimitResult allow(const string &clientId, steady_clock::time_point currTime);
+
+    void cleanup(steady_clock::time_point currTime);
+
+    int getClientCount() const;
 };

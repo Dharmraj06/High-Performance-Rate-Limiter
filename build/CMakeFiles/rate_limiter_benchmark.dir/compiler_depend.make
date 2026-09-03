@@ -65,7 +65,9 @@ CMakeFiles/rate_limiter_benchmark.dir/benchmarks/rate_limiter_benchmark.cpp.o: /
   /usr/include/c++/13/bits/max_size_type.h \
   /usr/include/c++/13/bits/memory_resource.h \
   /usr/include/c++/13/bits/memoryfwd.h \
+  /usr/include/c++/13/bits/mofunc_impl.h \
   /usr/include/c++/13/bits/move.h \
+  /usr/include/c++/13/bits/move_only_function.h \
   /usr/include/c++/13/bits/nested_exception.h \
   /usr/include/c++/13/bits/new_allocator.h \
   /usr/include/c++/13/bits/node_handle.h \
@@ -89,6 +91,7 @@ CMakeFiles/rate_limiter_benchmark.dir/benchmarks/rate_limiter_benchmark.cpp.o: /
   /usr/include/c++/13/bits/specfun.h \
   /usr/include/c++/13/bits/sstream.tcc \
   /usr/include/c++/13/bits/std_abs.h \
+  /usr/include/c++/13/bits/std_function.h \
   /usr/include/c++/13/bits/std_mutex.h \
   /usr/include/c++/13/bits/stl_algo.h \
   /usr/include/c++/13/bits/stl_algobase.h \
@@ -152,6 +155,7 @@ CMakeFiles/rate_limiter_benchmark.dir/benchmarks/rate_limiter_benchmark.cpp.o: /
   /usr/include/c++/13/ext/string_conversions.h \
   /usr/include/c++/13/ext/type_traits.h \
   /usr/include/c++/13/format \
+  /usr/include/c++/13/functional \
   /usr/include/c++/13/initializer_list \
   /usr/include/c++/13/iomanip \
   /usr/include/c++/13/ios \
@@ -394,7 +398,9 @@ CMakeFiles/rate_limiter_benchmark.dir/src/fixedWindowLimiter.cpp.o: /home/dharmr
   /usr/include/c++/13/bits/max_size_type.h \
   /usr/include/c++/13/bits/memory_resource.h \
   /usr/include/c++/13/bits/memoryfwd.h \
+  /usr/include/c++/13/bits/mofunc_impl.h \
   /usr/include/c++/13/bits/move.h \
+  /usr/include/c++/13/bits/move_only_function.h \
   /usr/include/c++/13/bits/nested_exception.h \
   /usr/include/c++/13/bits/new_allocator.h \
   /usr/include/c++/13/bits/node_handle.h \
@@ -416,6 +422,7 @@ CMakeFiles/rate_limiter_benchmark.dir/src/fixedWindowLimiter.cpp.o: /home/dharmr
   /usr/include/c++/13/bits/shared_ptr_base.h \
   /usr/include/c++/13/bits/sstream.tcc \
   /usr/include/c++/13/bits/std_abs.h \
+  /usr/include/c++/13/bits/std_function.h \
   /usr/include/c++/13/bits/std_mutex.h \
   /usr/include/c++/13/bits/stl_algo.h \
   /usr/include/c++/13/bits/stl_algobase.h \
@@ -467,6 +474,7 @@ CMakeFiles/rate_limiter_benchmark.dir/src/fixedWindowLimiter.cpp.o: /home/dharmr
   /usr/include/c++/13/ext/string_conversions.h \
   /usr/include/c++/13/ext/type_traits.h \
   /usr/include/c++/13/format \
+  /usr/include/c++/13/functional \
   /usr/include/c++/13/initializer_list \
   /usr/include/c++/13/iomanip \
   /usr/include/c++/13/ios \
@@ -657,7 +665,9 @@ CMakeFiles/rate_limiter_benchmark.dir/src/slidingWindowCounterLimiter.cpp.o: /ho
   /usr/include/c++/13/bits/max_size_type.h \
   /usr/include/c++/13/bits/memory_resource.h \
   /usr/include/c++/13/bits/memoryfwd.h \
+  /usr/include/c++/13/bits/mofunc_impl.h \
   /usr/include/c++/13/bits/move.h \
+  /usr/include/c++/13/bits/move_only_function.h \
   /usr/include/c++/13/bits/nested_exception.h \
   /usr/include/c++/13/bits/new_allocator.h \
   /usr/include/c++/13/bits/node_handle.h \
@@ -680,6 +690,7 @@ CMakeFiles/rate_limiter_benchmark.dir/src/slidingWindowCounterLimiter.cpp.o: /ho
   /usr/include/c++/13/bits/specfun.h \
   /usr/include/c++/13/bits/sstream.tcc \
   /usr/include/c++/13/bits/std_abs.h \
+  /usr/include/c++/13/bits/std_function.h \
   /usr/include/c++/13/bits/std_mutex.h \
   /usr/include/c++/13/bits/stl_algo.h \
   /usr/include/c++/13/bits/stl_algobase.h \
@@ -732,6 +743,7 @@ CMakeFiles/rate_limiter_benchmark.dir/src/slidingWindowCounterLimiter.cpp.o: /ho
   /usr/include/c++/13/ext/string_conversions.h \
   /usr/include/c++/13/ext/type_traits.h \
   /usr/include/c++/13/format \
+  /usr/include/c++/13/functional \
   /usr/include/c++/13/initializer_list \
   /usr/include/c++/13/iomanip \
   /usr/include/c++/13/ios \
@@ -945,7 +957,9 @@ CMakeFiles/rate_limiter_benchmark.dir/src/slidingWindowLimiter.cpp.o: /home/dhar
   /usr/include/c++/13/bits/max_size_type.h \
   /usr/include/c++/13/bits/memory_resource.h \
   /usr/include/c++/13/bits/memoryfwd.h \
+  /usr/include/c++/13/bits/mofunc_impl.h \
   /usr/include/c++/13/bits/move.h \
+  /usr/include/c++/13/bits/move_only_function.h \
   /usr/include/c++/13/bits/nested_exception.h \
   /usr/include/c++/13/bits/new_allocator.h \
   /usr/include/c++/13/bits/node_handle.h \
@@ -967,6 +981,7 @@ CMakeFiles/rate_limiter_benchmark.dir/src/slidingWindowLimiter.cpp.o: /home/dhar
   /usr/include/c++/13/bits/shared_ptr_base.h \
   /usr/include/c++/13/bits/sstream.tcc \
   /usr/include/c++/13/bits/std_abs.h \
+  /usr/include/c++/13/bits/std_function.h \
   /usr/include/c++/13/bits/std_mutex.h \
   /usr/include/c++/13/bits/stl_algo.h \
   /usr/include/c++/13/bits/stl_algobase.h \
@@ -1021,6 +1036,7 @@ CMakeFiles/rate_limiter_benchmark.dir/src/slidingWindowLimiter.cpp.o: /home/dhar
   /usr/include/c++/13/ext/string_conversions.h \
   /usr/include/c++/13/ext/type_traits.h \
   /usr/include/c++/13/format \
+  /usr/include/c++/13/functional \
   /usr/include/c++/13/initializer_list \
   /usr/include/c++/13/iomanip \
   /usr/include/c++/13/ios \
@@ -1212,7 +1228,9 @@ CMakeFiles/rate_limiter_benchmark.dir/src/tokenBucketLimiter.cpp.o: /home/dharmr
   /usr/include/c++/13/bits/max_size_type.h \
   /usr/include/c++/13/bits/memory_resource.h \
   /usr/include/c++/13/bits/memoryfwd.h \
+  /usr/include/c++/13/bits/mofunc_impl.h \
   /usr/include/c++/13/bits/move.h \
+  /usr/include/c++/13/bits/move_only_function.h \
   /usr/include/c++/13/bits/nested_exception.h \
   /usr/include/c++/13/bits/new_allocator.h \
   /usr/include/c++/13/bits/node_handle.h \
@@ -1235,6 +1253,7 @@ CMakeFiles/rate_limiter_benchmark.dir/src/tokenBucketLimiter.cpp.o: /home/dharmr
   /usr/include/c++/13/bits/specfun.h \
   /usr/include/c++/13/bits/sstream.tcc \
   /usr/include/c++/13/bits/std_abs.h \
+  /usr/include/c++/13/bits/std_function.h \
   /usr/include/c++/13/bits/std_mutex.h \
   /usr/include/c++/13/bits/stl_algo.h \
   /usr/include/c++/13/bits/stl_algobase.h \
@@ -1287,6 +1306,7 @@ CMakeFiles/rate_limiter_benchmark.dir/src/tokenBucketLimiter.cpp.o: /home/dharmr
   /usr/include/c++/13/ext/string_conversions.h \
   /usr/include/c++/13/ext/type_traits.h \
   /usr/include/c++/13/format \
+  /usr/include/c++/13/functional \
   /usr/include/c++/13/initializer_list \
   /usr/include/c++/13/iomanip \
   /usr/include/c++/13/ios \
@@ -1554,19 +1574,17 @@ CMakeFiles/rate_limiter_benchmark.dir/src/tokenBucketLimiter.cpp.o: /home/dharmr
 
 /usr/include/x86_64-linux-gnu/bits/stdint-least.h:
 
+/usr/include/x86_64-linux-gnu/bits/time.h:
+
+/usr/include/x86_64-linux-gnu/bits/select.h:
+
+/usr/include/x86_64-linux-gnu/bits/select-decl.h:
+
+/usr/include/x86_64-linux-gnu/bits/sched.h:
+
 /usr/include/c++/13/bits/uses_allocator_args.h:
 
 /usr/include/c++/13/bits/atomic_base.h:
-
-/usr/include/c++/13/bits/uses_allocator.h:
-
-/usr/include/c++/13/bits/postypes.h:
-
-/usr/include/c++/13/bits/stl_multiset.h:
-
-/usr/include/c++/13/iomanip:
-
-/usr/include/x86_64-linux-gnu/bits/mathcalls-narrow.h:
 
 /usr/include/x86_64-linux-gnu/bits/types/mbstate_t.h:
 
@@ -1604,11 +1622,23 @@ CMakeFiles/rate_limiter_benchmark.dir/src/tokenBucketLimiter.cpp.o: /home/dharmr
 
 /usr/include/c++/13/bits/stl_algobase.h:
 
-/usr/include/c++/13/chrono:
-
 /usr/include/c++/13/bits/stl_algo.h:
 
 /usr/include/c++/13/cstddef:
+
+/usr/include/c++/13/bits/uses_allocator.h:
+
+/usr/include/c++/13/bits/postypes.h:
+
+/usr/include/c++/13/bits/stl_multiset.h:
+
+/usr/include/c++/13/iomanip:
+
+/usr/include/x86_64-linux-gnu/bits/mathcalls-narrow.h:
+
+/usr/include/c++/13/cstdint:
+
+/usr/include/c++/13/cstdlib:
 
 /usr/include/c++/13/bits/sstream.tcc:
 
@@ -1640,9 +1670,17 @@ CMakeFiles/rate_limiter_benchmark.dir/src/tokenBucketLimiter.cpp.o: /home/dharmr
 
 /usr/include/c++/13/bits/move.h:
 
+/usr/include/c++/13/bits/mofunc_impl.h:
+
+/usr/include/c++/13/bits/stl_iterator_base_types.h:
+
+/usr/include/stdio.h:
+
 /usr/include/c++/13/bits/memoryfwd.h:
 
-/usr/include/c++/13/cerrno:
+/usr/include/c++/13/bits/move_only_function.h:
+
+/usr/include/c++/13/bits/localefwd.h:
 
 /usr/include/c++/13/bits/locale_facets_nonio.tcc:
 
@@ -1776,14 +1814,6 @@ _deps/googlebenchmark-src/include/benchmark/benchmark.h:
 
 /home/dharmraj/projects/rate-limiter/include/slidingWindowCounterLimiter.h:
 
-/usr/include/x86_64-linux-gnu/bits/time.h:
-
-/usr/include/x86_64-linux-gnu/bits/select.h:
-
-/usr/include/c++/13/charconv:
-
-/usr/include/c++/13/backward/binders.h:
-
 /usr/include/c++/13/bits/ostream.tcc:
 
 /usr/include/c++/13/numbers:
@@ -1858,6 +1888,8 @@ _deps/googlebenchmark-src/include/benchmark/benchmark.h:
 
 /usr/include/x86_64-linux-gnu/c++/13/bits/ctype_inline.h:
 
+/usr/include/c++/13/bits/std_function.h:
+
 /usr/include/c++/13/bits/char_traits.h:
 
 /usr/include/c++/13/bits/hashtable_policy.h:
@@ -1880,6 +1912,10 @@ _deps/googlebenchmark-src/include/benchmark/benchmark.h:
 
 /usr/include/c++/13/bits/locale_conv.h:
 
+/usr/include/x86_64-linux-gnu/bits/flt-eval-method.h:
+
+/usr/include/c++/13/bits/streambuf_iterator.h:
+
 /usr/include/c++/13/ostream:
 
 /usr/include/c++/13/cassert:
@@ -1891,12 +1927,6 @@ _deps/googlebenchmark-src/include/benchmark/benchmark.h:
 /usr/include/x86_64-linux-gnu/bits/wchar2-decl.h:
 
 /usr/include/c++/13/bits/erase_if.h:
-
-/usr/include/c++/13/bits/localefwd.h:
-
-/usr/include/c++/13/bits/streambuf_iterator.h:
-
-/usr/include/x86_64-linux-gnu/bits/flt-eval-method.h:
 
 /usr/include/c++/13/bits/cxxabi_init_exception.h:
 
@@ -1934,9 +1964,21 @@ _deps/googlebenchmark-src/include/benchmark/benchmark.h:
 
 /usr/include/c++/13/bits/locale_facets_nonio.h:
 
+/usr/include/c++/13/cerrno:
+
+/usr/include/c++/13/backward/binders.h:
+
+/usr/include/c++/13/charconv:
+
+/usr/include/c++/13/chrono:
+
 /usr/include/x86_64-linux-gnu/bits/posix_opt.h:
 
 /usr/include/c++/13/climits:
+
+/usr/include/x86_64-linux-gnu/bits/select2.h:
+
+/usr/include/c++/13/cmath:
 
 /usr/include/c++/13/system_error:
 
@@ -1945,10 +1987,6 @@ _deps/googlebenchmark-src/include/benchmark/benchmark.h:
 /usr/include/c++/13/concepts:
 
 /usr/include/x86_64-linux-gnu/bits/floatn.h:
-
-/usr/include/c++/13/cstdint:
-
-/usr/include/c++/13/cstdlib:
 
 /usr/include/c++/13/ctime:
 
@@ -1959,8 +1997,6 @@ _deps/googlebenchmark-src/include/benchmark/benchmark.h:
 /usr/include/c++/13/cwchar:
 
 /usr/include/c++/13/debug/assertions.h:
-
-/usr/include/x86_64-linux-gnu/bits/select-decl.h:
 
 /usr/include/c++/13/exception:
 
@@ -1995,6 +2031,8 @@ _deps/googlebenchmark-src/include/benchmark/benchmark.h:
 _deps/googlebenchmark-src/include/benchmark/export.h:
 
 /usr/include/c++/13/ext/type_traits.h:
+
+/usr/include/c++/13/functional:
 
 /usr/include/c++/13/ios:
 
@@ -2092,10 +2130,6 @@ _deps/googlebenchmark-src/include/benchmark/export.h:
 
 /usr/include/sched.h:
 
-/usr/include/c++/13/bits/stl_iterator_base_types.h:
-
-/usr/include/stdio.h:
-
 /usr/include/stdlib.h:
 
 /usr/include/c++/13/tr1/riemann_zeta.tcc:
@@ -2129,9 +2163,3 @@ _deps/googlebenchmark-src/include/benchmark/export.h:
 /usr/include/x86_64-linux-gnu/bits/mathcalls-helper-functions.h:
 
 /usr/include/x86_64-linux-gnu/bits/pthreadtypes.h:
-
-/usr/include/x86_64-linux-gnu/bits/sched.h:
-
-/usr/include/c++/13/cmath:
-
-/usr/include/x86_64-linux-gnu/bits/select2.h:

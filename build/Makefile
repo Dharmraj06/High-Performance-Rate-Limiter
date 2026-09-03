@@ -208,6 +208,19 @@ concurrency_multi_client_test/fast:
 .PHONY : concurrency_multi_client_test/fast
 
 #=============================================================================
+# Target rules for targets named cleanup_test
+
+# Build rule for target.
+cleanup_test: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 cleanup_test
+.PHONY : cleanup_test
+
+# fast build rule for target.
+cleanup_test/fast:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/cleanup_test.dir/build.make CMakeFiles/cleanup_test.dir/build
+.PHONY : cleanup_test/fast
+
+#=============================================================================
 # Target rules for targets named rate_limiter_benchmark
 
 # Build rule for target.
@@ -277,6 +290,7 @@ src/fixedWindowLimiter.o: src/fixedWindowLimiter.cpp.o
 src/fixedWindowLimiter.cpp.o:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/rate_limiter.dir/build.make CMakeFiles/rate_limiter.dir/src/fixedWindowLimiter.cpp.o
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/fixed_window_test.dir/build.make CMakeFiles/fixed_window_test.dir/src/fixedWindowLimiter.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/cleanup_test.dir/build.make CMakeFiles/cleanup_test.dir/src/fixedWindowLimiter.cpp.o
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/rate_limiter_benchmark.dir/build.make CMakeFiles/rate_limiter_benchmark.dir/src/fixedWindowLimiter.cpp.o
 .PHONY : src/fixedWindowLimiter.cpp.o
 
@@ -287,6 +301,7 @@ src/fixedWindowLimiter.i: src/fixedWindowLimiter.cpp.i
 src/fixedWindowLimiter.cpp.i:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/rate_limiter.dir/build.make CMakeFiles/rate_limiter.dir/src/fixedWindowLimiter.cpp.i
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/fixed_window_test.dir/build.make CMakeFiles/fixed_window_test.dir/src/fixedWindowLimiter.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/cleanup_test.dir/build.make CMakeFiles/cleanup_test.dir/src/fixedWindowLimiter.cpp.i
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/rate_limiter_benchmark.dir/build.make CMakeFiles/rate_limiter_benchmark.dir/src/fixedWindowLimiter.cpp.i
 .PHONY : src/fixedWindowLimiter.cpp.i
 
@@ -297,6 +312,7 @@ src/fixedWindowLimiter.s: src/fixedWindowLimiter.cpp.s
 src/fixedWindowLimiter.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/rate_limiter.dir/build.make CMakeFiles/rate_limiter.dir/src/fixedWindowLimiter.cpp.s
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/fixed_window_test.dir/build.make CMakeFiles/fixed_window_test.dir/src/fixedWindowLimiter.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/cleanup_test.dir/build.make CMakeFiles/cleanup_test.dir/src/fixedWindowLimiter.cpp.s
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/rate_limiter_benchmark.dir/build.make CMakeFiles/rate_limiter_benchmark.dir/src/fixedWindowLimiter.cpp.s
 .PHONY : src/fixedWindowLimiter.cpp.s
 
@@ -356,6 +372,7 @@ src/slidingWindowCounterLimiter.cpp.o:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/sliding_window_counter_test.dir/build.make CMakeFiles/sliding_window_counter_test.dir/src/slidingWindowCounterLimiter.cpp.o
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/concurrency_test.dir/build.make CMakeFiles/concurrency_test.dir/src/slidingWindowCounterLimiter.cpp.o
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/concurrency_multi_client_test.dir/build.make CMakeFiles/concurrency_multi_client_test.dir/src/slidingWindowCounterLimiter.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/cleanup_test.dir/build.make CMakeFiles/cleanup_test.dir/src/slidingWindowCounterLimiter.cpp.o
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/rate_limiter_benchmark.dir/build.make CMakeFiles/rate_limiter_benchmark.dir/src/slidingWindowCounterLimiter.cpp.o
 .PHONY : src/slidingWindowCounterLimiter.cpp.o
 
@@ -367,6 +384,7 @@ src/slidingWindowCounterLimiter.cpp.i:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/sliding_window_counter_test.dir/build.make CMakeFiles/sliding_window_counter_test.dir/src/slidingWindowCounterLimiter.cpp.i
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/concurrency_test.dir/build.make CMakeFiles/concurrency_test.dir/src/slidingWindowCounterLimiter.cpp.i
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/concurrency_multi_client_test.dir/build.make CMakeFiles/concurrency_multi_client_test.dir/src/slidingWindowCounterLimiter.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/cleanup_test.dir/build.make CMakeFiles/cleanup_test.dir/src/slidingWindowCounterLimiter.cpp.i
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/rate_limiter_benchmark.dir/build.make CMakeFiles/rate_limiter_benchmark.dir/src/slidingWindowCounterLimiter.cpp.i
 .PHONY : src/slidingWindowCounterLimiter.cpp.i
 
@@ -378,6 +396,7 @@ src/slidingWindowCounterLimiter.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/sliding_window_counter_test.dir/build.make CMakeFiles/sliding_window_counter_test.dir/src/slidingWindowCounterLimiter.cpp.s
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/concurrency_test.dir/build.make CMakeFiles/concurrency_test.dir/src/slidingWindowCounterLimiter.cpp.s
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/concurrency_multi_client_test.dir/build.make CMakeFiles/concurrency_multi_client_test.dir/src/slidingWindowCounterLimiter.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/cleanup_test.dir/build.make CMakeFiles/cleanup_test.dir/src/slidingWindowCounterLimiter.cpp.s
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/rate_limiter_benchmark.dir/build.make CMakeFiles/rate_limiter_benchmark.dir/src/slidingWindowCounterLimiter.cpp.s
 .PHONY : src/slidingWindowCounterLimiter.cpp.s
 
@@ -388,6 +407,7 @@ src/slidingWindowLimiter.o: src/slidingWindowLimiter.cpp.o
 src/slidingWindowLimiter.cpp.o:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/rate_limiter.dir/build.make CMakeFiles/rate_limiter.dir/src/slidingWindowLimiter.cpp.o
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/sliding_window_test.dir/build.make CMakeFiles/sliding_window_test.dir/src/slidingWindowLimiter.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/cleanup_test.dir/build.make CMakeFiles/cleanup_test.dir/src/slidingWindowLimiter.cpp.o
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/rate_limiter_benchmark.dir/build.make CMakeFiles/rate_limiter_benchmark.dir/src/slidingWindowLimiter.cpp.o
 .PHONY : src/slidingWindowLimiter.cpp.o
 
@@ -398,6 +418,7 @@ src/slidingWindowLimiter.i: src/slidingWindowLimiter.cpp.i
 src/slidingWindowLimiter.cpp.i:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/rate_limiter.dir/build.make CMakeFiles/rate_limiter.dir/src/slidingWindowLimiter.cpp.i
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/sliding_window_test.dir/build.make CMakeFiles/sliding_window_test.dir/src/slidingWindowLimiter.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/cleanup_test.dir/build.make CMakeFiles/cleanup_test.dir/src/slidingWindowLimiter.cpp.i
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/rate_limiter_benchmark.dir/build.make CMakeFiles/rate_limiter_benchmark.dir/src/slidingWindowLimiter.cpp.i
 .PHONY : src/slidingWindowLimiter.cpp.i
 
@@ -408,6 +429,7 @@ src/slidingWindowLimiter.s: src/slidingWindowLimiter.cpp.s
 src/slidingWindowLimiter.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/rate_limiter.dir/build.make CMakeFiles/rate_limiter.dir/src/slidingWindowLimiter.cpp.s
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/sliding_window_test.dir/build.make CMakeFiles/sliding_window_test.dir/src/slidingWindowLimiter.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/cleanup_test.dir/build.make CMakeFiles/cleanup_test.dir/src/slidingWindowLimiter.cpp.s
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/rate_limiter_benchmark.dir/build.make CMakeFiles/rate_limiter_benchmark.dir/src/slidingWindowLimiter.cpp.s
 .PHONY : src/slidingWindowLimiter.cpp.s
 
@@ -418,6 +440,7 @@ src/tokenBucketLimiter.o: src/tokenBucketLimiter.cpp.o
 src/tokenBucketLimiter.cpp.o:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/rate_limiter.dir/build.make CMakeFiles/rate_limiter.dir/src/tokenBucketLimiter.cpp.o
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/token_bucket_test.dir/build.make CMakeFiles/token_bucket_test.dir/src/tokenBucketLimiter.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/cleanup_test.dir/build.make CMakeFiles/cleanup_test.dir/src/tokenBucketLimiter.cpp.o
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/rate_limiter_benchmark.dir/build.make CMakeFiles/rate_limiter_benchmark.dir/src/tokenBucketLimiter.cpp.o
 .PHONY : src/tokenBucketLimiter.cpp.o
 
@@ -428,6 +451,7 @@ src/tokenBucketLimiter.i: src/tokenBucketLimiter.cpp.i
 src/tokenBucketLimiter.cpp.i:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/rate_limiter.dir/build.make CMakeFiles/rate_limiter.dir/src/tokenBucketLimiter.cpp.i
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/token_bucket_test.dir/build.make CMakeFiles/token_bucket_test.dir/src/tokenBucketLimiter.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/cleanup_test.dir/build.make CMakeFiles/cleanup_test.dir/src/tokenBucketLimiter.cpp.i
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/rate_limiter_benchmark.dir/build.make CMakeFiles/rate_limiter_benchmark.dir/src/tokenBucketLimiter.cpp.i
 .PHONY : src/tokenBucketLimiter.cpp.i
 
@@ -438,8 +462,33 @@ src/tokenBucketLimiter.s: src/tokenBucketLimiter.cpp.s
 src/tokenBucketLimiter.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/rate_limiter.dir/build.make CMakeFiles/rate_limiter.dir/src/tokenBucketLimiter.cpp.s
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/token_bucket_test.dir/build.make CMakeFiles/token_bucket_test.dir/src/tokenBucketLimiter.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/cleanup_test.dir/build.make CMakeFiles/cleanup_test.dir/src/tokenBucketLimiter.cpp.s
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/rate_limiter_benchmark.dir/build.make CMakeFiles/rate_limiter_benchmark.dir/src/tokenBucketLimiter.cpp.s
 .PHONY : src/tokenBucketLimiter.cpp.s
+
+tests/cleanupTest.o: tests/cleanupTest.cpp.o
+.PHONY : tests/cleanupTest.o
+
+# target to build an object file
+tests/cleanupTest.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/cleanup_test.dir/build.make CMakeFiles/cleanup_test.dir/tests/cleanupTest.cpp.o
+.PHONY : tests/cleanupTest.cpp.o
+
+tests/cleanupTest.i: tests/cleanupTest.cpp.i
+.PHONY : tests/cleanupTest.i
+
+# target to preprocess a source file
+tests/cleanupTest.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/cleanup_test.dir/build.make CMakeFiles/cleanup_test.dir/tests/cleanupTest.cpp.i
+.PHONY : tests/cleanupTest.cpp.i
+
+tests/cleanupTest.s: tests/cleanupTest.cpp.s
+.PHONY : tests/cleanupTest.s
+
+# target to generate assembly for a file
+tests/cleanupTest.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/cleanup_test.dir/build.make CMakeFiles/cleanup_test.dir/tests/cleanupTest.cpp.s
+.PHONY : tests/cleanupTest.cpp.s
 
 tests/concurrencyMultiClientTest.o: tests/concurrencyMultiClientTest.cpp.o
 .PHONY : tests/concurrencyMultiClientTest.o
@@ -595,6 +644,7 @@ help:
 	@echo "... rebuild_cache"
 	@echo "... benchmark"
 	@echo "... benchmark_main"
+	@echo "... cleanup_test"
 	@echo "... concurrency_multi_client_test"
 	@echo "... concurrency_test"
 	@echo "... fixed_window_test"
@@ -624,6 +674,9 @@ help:
 	@echo "... src/tokenBucketLimiter.o"
 	@echo "... src/tokenBucketLimiter.i"
 	@echo "... src/tokenBucketLimiter.s"
+	@echo "... tests/cleanupTest.o"
+	@echo "... tests/cleanupTest.i"
+	@echo "... tests/cleanupTest.s"
 	@echo "... tests/concurrencyMultiClientTest.o"
 	@echo "... tests/concurrencyMultiClientTest.i"
 	@echo "... tests/concurrencyMultiClientTest.s"
