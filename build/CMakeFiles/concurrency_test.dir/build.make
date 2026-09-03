@@ -73,29 +73,29 @@ CMakeFiles/concurrency_test.dir/tests/concurrencyTest.cpp.o: CMakeFiles/concurre
 CMakeFiles/concurrency_test.dir/tests/concurrencyTest.cpp.o: /home/dharmraj/projects/rate-limiter/tests/concurrencyTest.cpp
 CMakeFiles/concurrency_test.dir/tests/concurrencyTest.cpp.o: CMakeFiles/concurrency_test.dir/compiler_depend.ts
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/dharmraj/projects/rate-limiter/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/concurrency_test.dir/tests/concurrencyTest.cpp.o"
-	/usr/bin/g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/concurrency_test.dir/tests/concurrencyTest.cpp.o -MF CMakeFiles/concurrency_test.dir/tests/concurrencyTest.cpp.o.d -o CMakeFiles/concurrency_test.dir/tests/concurrencyTest.cpp.o -c /home/dharmraj/projects/rate-limiter/tests/concurrencyTest.cpp
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/concurrency_test.dir/tests/concurrencyTest.cpp.o -MF CMakeFiles/concurrency_test.dir/tests/concurrencyTest.cpp.o.d -o CMakeFiles/concurrency_test.dir/tests/concurrencyTest.cpp.o -c /home/dharmraj/projects/rate-limiter/tests/concurrencyTest.cpp
 
 CMakeFiles/concurrency_test.dir/tests/concurrencyTest.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/concurrency_test.dir/tests/concurrencyTest.cpp.i"
-	/usr/bin/g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/dharmraj/projects/rate-limiter/tests/concurrencyTest.cpp > CMakeFiles/concurrency_test.dir/tests/concurrencyTest.cpp.i
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/dharmraj/projects/rate-limiter/tests/concurrencyTest.cpp > CMakeFiles/concurrency_test.dir/tests/concurrencyTest.cpp.i
 
 CMakeFiles/concurrency_test.dir/tests/concurrencyTest.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/concurrency_test.dir/tests/concurrencyTest.cpp.s"
-	/usr/bin/g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/dharmraj/projects/rate-limiter/tests/concurrencyTest.cpp -o CMakeFiles/concurrency_test.dir/tests/concurrencyTest.cpp.s
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/dharmraj/projects/rate-limiter/tests/concurrencyTest.cpp -o CMakeFiles/concurrency_test.dir/tests/concurrencyTest.cpp.s
 
 CMakeFiles/concurrency_test.dir/src/slidingWindowCounterLimiter.cpp.o: CMakeFiles/concurrency_test.dir/flags.make
 CMakeFiles/concurrency_test.dir/src/slidingWindowCounterLimiter.cpp.o: /home/dharmraj/projects/rate-limiter/src/slidingWindowCounterLimiter.cpp
 CMakeFiles/concurrency_test.dir/src/slidingWindowCounterLimiter.cpp.o: CMakeFiles/concurrency_test.dir/compiler_depend.ts
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/dharmraj/projects/rate-limiter/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object CMakeFiles/concurrency_test.dir/src/slidingWindowCounterLimiter.cpp.o"
-	/usr/bin/g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/concurrency_test.dir/src/slidingWindowCounterLimiter.cpp.o -MF CMakeFiles/concurrency_test.dir/src/slidingWindowCounterLimiter.cpp.o.d -o CMakeFiles/concurrency_test.dir/src/slidingWindowCounterLimiter.cpp.o -c /home/dharmraj/projects/rate-limiter/src/slidingWindowCounterLimiter.cpp
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/concurrency_test.dir/src/slidingWindowCounterLimiter.cpp.o -MF CMakeFiles/concurrency_test.dir/src/slidingWindowCounterLimiter.cpp.o.d -o CMakeFiles/concurrency_test.dir/src/slidingWindowCounterLimiter.cpp.o -c /home/dharmraj/projects/rate-limiter/src/slidingWindowCounterLimiter.cpp
 
 CMakeFiles/concurrency_test.dir/src/slidingWindowCounterLimiter.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/concurrency_test.dir/src/slidingWindowCounterLimiter.cpp.i"
-	/usr/bin/g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/dharmraj/projects/rate-limiter/src/slidingWindowCounterLimiter.cpp > CMakeFiles/concurrency_test.dir/src/slidingWindowCounterLimiter.cpp.i
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/dharmraj/projects/rate-limiter/src/slidingWindowCounterLimiter.cpp > CMakeFiles/concurrency_test.dir/src/slidingWindowCounterLimiter.cpp.i
 
 CMakeFiles/concurrency_test.dir/src/slidingWindowCounterLimiter.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/concurrency_test.dir/src/slidingWindowCounterLimiter.cpp.s"
-	/usr/bin/g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/dharmraj/projects/rate-limiter/src/slidingWindowCounterLimiter.cpp -o CMakeFiles/concurrency_test.dir/src/slidingWindowCounterLimiter.cpp.s
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/dharmraj/projects/rate-limiter/src/slidingWindowCounterLimiter.cpp -o CMakeFiles/concurrency_test.dir/src/slidingWindowCounterLimiter.cpp.s
 
 # Object files for target concurrency_test
 concurrency_test_OBJECTS = \

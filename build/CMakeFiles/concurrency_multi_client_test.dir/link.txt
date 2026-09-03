@@ -1,1 +1,1 @@
-/usr/bin/g++ -g CMakeFiles/concurrency_multi_client_test.dir/tests/concurrencyMultiClientTest.cpp.o CMakeFiles/concurrency_multi_client_test.dir/src/slidingWindowCounterLimiter.cpp.o -o concurrency_multi_client_test  -lpthread 
+/usr/bin/c++ -O3 -DNDEBUG CMakeFiles/concurrency_multi_client_test.dir/tests/concurrencyMultiClientTest.cpp.o CMakeFiles/concurrency_multi_client_test.dir/src/slidingWindowCounterLimiter.cpp.o -o concurrency_multi_client_test  -lpthread 

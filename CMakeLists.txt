@@ -72,3 +72,37 @@ add_executable(concurrency_multi_client_test
 target_include_directories(concurrency_multi_client_test PRIVATE include)
 
 target_link_libraries(concurrency_multi_client_test PRIVATE pthread)
+
+
+# ── Google Benchmark ─────────────────────────────────────────────────────────
+# Downloaded at configure time via FetchContent; cached after the first run.
+# GTest integration is disabled so we don't pull in an unneeded dependency.
+include(FetchContent)
+
+FetchContent_Declare(
+    googlebenchmark
+    GIT_REPOSITORY https://github.com/google/benchmark.git
+    GIT_TAG        v1.8.3
+)
+
+set(BENCHMARK_ENABLE_TESTING     OFF CACHE BOOL "" FORCE)
+set(BENCHMARK_ENABLE_GTEST_TESTS OFF CACHE BOOL "" FORCE)
+set(BENCHMARK_ENABLE_INSTALL     OFF CACHE BOOL "" FORCE)
+
+FetchContent_MakeAvailable(googlebenchmark)
+
+
+add_executable(rate_limiter_benchmark
+    benchmarks/rate_limiter_benchmark.cpp
+    src/fixedWindowLimiter.cpp
+    src/slidingWindowLimiter.cpp
+    src/slidingWindowCounterLimiter.cpp
+    src/tokenBucketLimiter.cpp
+)
+
+target_include_directories(rate_limiter_benchmark PRIVATE include)
+
+target_link_libraries(rate_limiter_benchmark PRIVATE
+    benchmark::benchmark
+    pthread
+)

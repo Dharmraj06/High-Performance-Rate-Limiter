@@ -5,5 +5,12 @@
 /home/dharmraj/projects/rate-limiter/build/CMakeFiles/sliding_window_counter_test.dir
 /home/dharmraj/projects/rate-limiter/build/CMakeFiles/concurrency_test.dir
 /home/dharmraj/projects/rate-limiter/build/CMakeFiles/concurrency_multi_client_test.dir
+/home/dharmraj/projects/rate-limiter/build/CMakeFiles/rate_limiter_benchmark.dir
 /home/dharmraj/projects/rate-limiter/build/CMakeFiles/edit_cache.dir
 /home/dharmraj/projects/rate-limiter/build/CMakeFiles/rebuild_cache.dir
+/home/dharmraj/projects/rate-limiter/build/_deps/googlebenchmark-build/CMakeFiles/edit_cache.dir
+/home/dharmraj/projects/rate-limiter/build/_deps/googlebenchmark-build/CMakeFiles/rebuild_cache.dir
+/home/dharmraj/projects/rate-limiter/build/_deps/googlebenchmark-build/src/CMakeFiles/benchmark.dir
+/home/dharmraj/projects/rate-limiter/build/_deps/googlebenchmark-build/src/CMakeFiles/benchmark_main.dir
+/home/dharmraj/projects/rate-limiter/build/_deps/googlebenchmark-build/src/CMakeFiles/edit_cache.dir
+/home/dharmraj/projects/rate-limiter/build/_deps/googlebenchmark-build/src/CMakeFiles/rebuild_cache.dir
