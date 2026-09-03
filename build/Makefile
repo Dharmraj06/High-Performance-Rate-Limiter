@@ -65,6 +65,26 @@ CMAKE_BINARY_DIR = /home/dharmraj/projects/rate-limiter/build
 #=============================================================================
 # Targets provided globally by CMake.
 
+# Special rule for the target package
+package: preinstall
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --cyan "Run CPack packaging tool..."
+	/usr/bin/cpack --config ./CPackConfig.cmake
+.PHONY : package
+
+# Special rule for the target package
+package/fast: package
+.PHONY : package/fast
+
+# Special rule for the target package_source
+package_source:
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --cyan "Run CPack packaging tool for source..."
+	/usr/bin/cpack --config ./CPackSourceConfig.cmake /home/dharmraj/projects/rate-limiter/build/CPackSourceConfig.cmake
+.PHONY : package_source
+
+# Special rule for the target package_source
+package_source/fast: package_source
+.PHONY : package_source/fast
+
 # Special rule for the target edit_cache
 edit_cache:
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --cyan "No interactive CMake dialog available..."
@@ -84,6 +104,51 @@ rebuild_cache:
 # Special rule for the target rebuild_cache
 rebuild_cache/fast: rebuild_cache
 .PHONY : rebuild_cache/fast
+
+# Special rule for the target list_install_components
+list_install_components:
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --cyan "Available install components are: \"Unspecified\""
+.PHONY : list_install_components
+
+# Special rule for the target list_install_components
+list_install_components/fast: list_install_components
+.PHONY : list_install_components/fast
+
+# Special rule for the target install
+install: preinstall
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --cyan "Install the project..."
+	/usr/bin/cmake -P cmake_install.cmake
+.PHONY : install
+
+# Special rule for the target install
+install/fast: preinstall/fast
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --cyan "Install the project..."
+	/usr/bin/cmake -P cmake_install.cmake
+.PHONY : install/fast
+
+# Special rule for the target install/local
+install/local: preinstall
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --cyan "Installing only the local directory..."
+	/usr/bin/cmake -DCMAKE_INSTALL_LOCAL_ONLY=1 -P cmake_install.cmake
+.PHONY : install/local
+
+# Special rule for the target install/local
+install/local/fast: preinstall/fast
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --cyan "Installing only the local directory..."
+	/usr/bin/cmake -DCMAKE_INSTALL_LOCAL_ONLY=1 -P cmake_install.cmake
+.PHONY : install/local/fast
+
+# Special rule for the target install/strip
+install/strip: preinstall
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --cyan "Installing the project stripped..."
+	/usr/bin/cmake -DCMAKE_INSTALL_DO_STRIP=1 -P cmake_install.cmake
+.PHONY : install/strip
+
+# Special rule for the target install/strip
+install/strip/fast: preinstall/fast
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --cyan "Installing the project stripped..."
+	/usr/bin/cmake -DCMAKE_INSTALL_DO_STRIP=1 -P cmake_install.cmake
+.PHONY : install/strip/fast
 
 # The main all target
 all: cmake_check_build_system
@@ -234,6 +299,19 @@ rate_limiter_benchmark/fast:
 .PHONY : rate_limiter_benchmark/fast
 
 #=============================================================================
+# Target rules for targets named redis_token_bucket_test
+
+# Build rule for target.
+redis_token_bucket_test: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 redis_token_bucket_test
+.PHONY : redis_token_bucket_test
+
+# fast build rule for target.
+redis_token_bucket_test/fast:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/redis_token_bucket_test.dir/build.make CMakeFiles/redis_token_bucket_test.dir/build
+.PHONY : redis_token_bucket_test/fast
+
+#=============================================================================
 # Target rules for targets named benchmark
 
 # Build rule for target.
@@ -258,6 +336,19 @@ benchmark_main: cmake_check_build_system
 benchmark_main/fast:
 	$(MAKE) $(MAKESILENT) -f _deps/googlebenchmark-build/src/CMakeFiles/benchmark_main.dir/build.make _deps/googlebenchmark-build/src/CMakeFiles/benchmark_main.dir/build
 .PHONY : benchmark_main/fast
+
+#=============================================================================
+# Target rules for targets named hiredis
+
+# Build rule for target.
+hiredis: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 hiredis
+.PHONY : hiredis
+
+# fast build rule for target.
+hiredis/fast:
+	$(MAKE) $(MAKESILENT) -f _deps/hiredis-build/CMakeFiles/hiredis.dir/build.make _deps/hiredis-build/CMakeFiles/hiredis.dir/build
+.PHONY : hiredis/fast
 
 benchmarks/rate_limiter_benchmark.o: benchmarks/rate_limiter_benchmark.cpp.o
 .PHONY : benchmarks/rate_limiter_benchmark.o
@@ -363,6 +454,30 @@ src/main.s: src/main.cpp.s
 src/main.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/rate_limiter.dir/build.make CMakeFiles/rate_limiter.dir/src/main.cpp.s
 .PHONY : src/main.cpp.s
+
+src/redisTokenBucketLimiter.o: src/redisTokenBucketLimiter.cpp.o
+.PHONY : src/redisTokenBucketLimiter.o
+
+# target to build an object file
+src/redisTokenBucketLimiter.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/redis_token_bucket_test.dir/build.make CMakeFiles/redis_token_bucket_test.dir/src/redisTokenBucketLimiter.cpp.o
+.PHONY : src/redisTokenBucketLimiter.cpp.o
+
+src/redisTokenBucketLimiter.i: src/redisTokenBucketLimiter.cpp.i
+.PHONY : src/redisTokenBucketLimiter.i
+
+# target to preprocess a source file
+src/redisTokenBucketLimiter.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/redis_token_bucket_test.dir/build.make CMakeFiles/redis_token_bucket_test.dir/src/redisTokenBucketLimiter.cpp.i
+.PHONY : src/redisTokenBucketLimiter.cpp.i
+
+src/redisTokenBucketLimiter.s: src/redisTokenBucketLimiter.cpp.s
+.PHONY : src/redisTokenBucketLimiter.s
+
+# target to generate assembly for a file
+src/redisTokenBucketLimiter.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/redis_token_bucket_test.dir/build.make CMakeFiles/redis_token_bucket_test.dir/src/redisTokenBucketLimiter.cpp.s
+.PHONY : src/redisTokenBucketLimiter.cpp.s
 
 src/slidingWindowCounterLimiter.o: src/slidingWindowCounterLimiter.cpp.o
 .PHONY : src/slidingWindowCounterLimiter.o
@@ -562,6 +677,30 @@ tests/fixedWindowLimiterTest.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/fixed_window_test.dir/build.make CMakeFiles/fixed_window_test.dir/tests/fixedWindowLimiterTest.cpp.s
 .PHONY : tests/fixedWindowLimiterTest.cpp.s
 
+tests/redisTokenBucketLimiterTest.o: tests/redisTokenBucketLimiterTest.cpp.o
+.PHONY : tests/redisTokenBucketLimiterTest.o
+
+# target to build an object file
+tests/redisTokenBucketLimiterTest.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/redis_token_bucket_test.dir/build.make CMakeFiles/redis_token_bucket_test.dir/tests/redisTokenBucketLimiterTest.cpp.o
+.PHONY : tests/redisTokenBucketLimiterTest.cpp.o
+
+tests/redisTokenBucketLimiterTest.i: tests/redisTokenBucketLimiterTest.cpp.i
+.PHONY : tests/redisTokenBucketLimiterTest.i
+
+# target to preprocess a source file
+tests/redisTokenBucketLimiterTest.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/redis_token_bucket_test.dir/build.make CMakeFiles/redis_token_bucket_test.dir/tests/redisTokenBucketLimiterTest.cpp.i
+.PHONY : tests/redisTokenBucketLimiterTest.cpp.i
+
+tests/redisTokenBucketLimiterTest.s: tests/redisTokenBucketLimiterTest.cpp.s
+.PHONY : tests/redisTokenBucketLimiterTest.s
+
+# target to generate assembly for a file
+tests/redisTokenBucketLimiterTest.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/redis_token_bucket_test.dir/build.make CMakeFiles/redis_token_bucket_test.dir/tests/redisTokenBucketLimiterTest.cpp.s
+.PHONY : tests/redisTokenBucketLimiterTest.cpp.s
+
 tests/slidingWindowCounterLimiterTest.o: tests/slidingWindowCounterLimiterTest.cpp.o
 .PHONY : tests/slidingWindowCounterLimiterTest.o
 
@@ -641,6 +780,12 @@ help:
 	@echo "... clean"
 	@echo "... depend"
 	@echo "... edit_cache"
+	@echo "... install"
+	@echo "... install/local"
+	@echo "... install/strip"
+	@echo "... list_install_components"
+	@echo "... package"
+	@echo "... package_source"
 	@echo "... rebuild_cache"
 	@echo "... benchmark"
 	@echo "... benchmark_main"
@@ -648,8 +793,10 @@ help:
 	@echo "... concurrency_multi_client_test"
 	@echo "... concurrency_test"
 	@echo "... fixed_window_test"
+	@echo "... hiredis"
 	@echo "... rate_limiter"
 	@echo "... rate_limiter_benchmark"
+	@echo "... redis_token_bucket_test"
 	@echo "... sliding_window_counter_test"
 	@echo "... sliding_window_test"
 	@echo "... token_bucket_test"
@@ -665,6 +812,9 @@ help:
 	@echo "... src/main.o"
 	@echo "... src/main.i"
 	@echo "... src/main.s"
+	@echo "... src/redisTokenBucketLimiter.o"
+	@echo "... src/redisTokenBucketLimiter.i"
+	@echo "... src/redisTokenBucketLimiter.s"
 	@echo "... src/slidingWindowCounterLimiter.o"
 	@echo "... src/slidingWindowCounterLimiter.i"
 	@echo "... src/slidingWindowCounterLimiter.s"
@@ -686,6 +836,9 @@ help:
 	@echo "... tests/fixedWindowLimiterTest.o"
 	@echo "... tests/fixedWindowLimiterTest.i"
 	@echo "... tests/fixedWindowLimiterTest.s"
+	@echo "... tests/redisTokenBucketLimiterTest.o"
+	@echo "... tests/redisTokenBucketLimiterTest.i"
+	@echo "... tests/redisTokenBucketLimiterTest.s"
 	@echo "... tests/slidingWindowCounterLimiterTest.o"
 	@echo "... tests/slidingWindowCounterLimiterTest.i"
 	@echo "... tests/slidingWindowCounterLimiterTest.s"

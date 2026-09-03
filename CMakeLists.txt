@@ -120,3 +120,32 @@ target_link_libraries(rate_limiter_benchmark PRIVATE
     benchmark::benchmark
     pthread
 )
+
+
+# ── hiredis (Redis C Client) ─────────────────────────────────────────────────
+FetchContent_Declare(
+    hiredis
+    GIT_REPOSITORY https://github.com/redis/hiredis.git
+    GIT_TAG        v1.2.0
+)
+
+set(DISABLE_TESTS ON CACHE BOOL "" FORCE)
+set(ENABLE_SSL    OFF CACHE BOOL "" FORCE)
+
+FetchContent_MakeAvailable(hiredis)
+
+
+add_executable(redis_token_bucket_test
+    tests/redisTokenBucketLimiterTest.cpp
+    src/redisTokenBucketLimiter.cpp
+)
+
+target_include_directories(redis_token_bucket_test PRIVATE
+    include
+    ${hiredis_SOURCE_DIR}
+)
+
+target_link_libraries(redis_token_bucket_test PRIVATE
+    hiredis
+    pthread
+)
