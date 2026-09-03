@@ -42,28 +42,34 @@
 
 ```mermaid
 flowchart TD
-    Client[Incoming Client Request] --> Router{HTTP Server / Application}
+    Client[Client Request] --> Router[HTTP Server or Application]
 
-    Router -->|In-Memory Mode| InMemEngine[In-Memory Engine]
-    Router -->|Distributed Mode| DistEngine[Distributed Engine]
+    Router --> LocalRoute[In-Memory Route]
+    Router --> RedisRoute[Distributed Route]
 
-    subgraph InMemEngine [In-Memory Engine - 64 Shards]
-        direction TB
-        Hash[Hash Client ID % 64] --> Shard0["Shard 0 (Mutex + Map)"]
-        Hash --> Shard1["Shard 1 (Mutex + Map)"]
-        Hash --> ShardN["Shard 63 (Mutex + Map)"]
-        
-        Shard0 -.-> Alg["Algorithms: Fixed Window | Sliding Log | Sliding Counter | Token Bucket"]
-        Shard1 -.-> Alg
-        ShardN -.-> Alg
+    subgraph LocalEngine["In-Memory Engine - 64 Shards"]
+        LocalRoute --> Hash[Hash Client ID]
+        Hash --> Shard0[Shard 0]
+        Hash --> Shard1[Shard 1]
+        Hash --> Shard63[Shard 63]
+
+        Shard0 --> State0[Mutex and Client Map]
+        Shard1 --> State1[Mutex and Client Map]
+        Shard63 --> State63[Mutex and Client Map]
+
+        State0 -.-> Alg[Fixed Window / Sliding Log / Sliding Counter / Token Bucket]
+        State1 -.-> Alg
+        State63 -.-> Alg
     end
 
-    subgraph DistEngine [Distributed Engine - Redis]
-        direction TB
-        RedisClient[hiredis Client Connection] --> Lua[Atomic Lua Script]
-        Lua --> TimeSource[Redis Server TIME]
-        Lua --> StateHash["Redis Hash (tokens, last_refill)"]
-        Lua --> AutoTTL[Key TTL Refresh]
+    subgraph RedisEngine["Distributed Engine - Redis"]
+        RedisRoute --> RedisLimiter[Redis Token Bucket]
+        RedisLimiter --> RedisConn[hiredis Connection]
+        RedisConn --> Lua[Atomic Lua Script]
+
+        Lua --> RedisState[Redis Hash: tokens and last_refill]
+        Lua --> RedisTime[Redis Server TIME]
+        Lua --> TTL[Automatic Key TTL]
     end
 ```
 
@@ -90,7 +96,7 @@ flowchart LR
     ClientA[Client A] --> Mutex[Global Mutex]
     ClientB[Client B] --> Mutex
     ClientC[Client C] --> Mutex
-    Mutex --> Map[(Global Client Map)]
+    Mutex --> Map[Global Client Map]
 ```
 *All client threads contend for a single lock, serializing multi-threaded execution and degrading throughput.*
 
@@ -100,9 +106,14 @@ flowchart LR
 
 ```mermaid
 flowchart LR
-    ClientA[Client A] --> HashA[Hash % 64] --> Shard12["Shard 12 (Mutex + Map)"]
-    ClientB[Client B] --> HashB[Hash % 64] --> Shard37["Shard 37 (Mutex + Map)"]
-    ClientC[Client C] --> HashC[Hash % 64] --> Shard12
+    ClientA[Client A] --> HashA[Hash mod 64]
+    HashA --> Shard12[Shard 12: Mutex and Map]
+
+    ClientB[Client B] --> HashB[Hash mod 64]
+    HashB --> Shard37[Shard 37: Mutex and Map]
+
+    ClientC[Client C] --> HashC[Hash mod 64]
+    HashC --> Shard12
 ```
 
 - **Same-Client Requests**: Map to the same shard and remain safely serialized to prevent race conditions.
@@ -118,15 +129,15 @@ flowchart TD
     Req[New Request] --> ShardLock[Lock Shard Mutex]
     ShardLock --> Lookup[Find or Create Client State]
     Lookup --> UpdateTime[Update lastAccess Timestamp]
-    UpdateTime --> Decision{Allow Request?}
-    
-    Decision -->|Yes| Consume[Deduct Quota / Update State]
+    UpdateTime --> Decision[Allow Request?]
+
+    Decision -->|Yes| Consume[Deduct Quota and Update State]
     Decision -->|No| Reject[Compute Retry-After]
-    
-    Consume --> CleanupCheck{Cleanup Interval Elapsed?}
+
+    Consume --> CleanupCheck[Cleanup Interval Elapsed?]
     Reject --> CleanupCheck
-    
-    CleanupCheck -->|Yes| ScanExpired[Scan & Remove Expired Inactive Clients]
+
+    CleanupCheck -->|Yes| ScanExpired[Scan and Remove Expired Inactive Clients]
     CleanupCheck -->|No| Unlock[Unlock Shard Mutex]
     ScanExpired --> Unlock
     Unlock --> ReturnResult[Return RateLimitResult]
@@ -141,21 +152,22 @@ flowchart TD
 ## Distributed Redis Token Bucket
 
 ```mermaid
-flowchart LR
-    subgraph AppServers [Application Servers]
+flowchart TD
+    subgraph AppServers["Application Servers"]
         Server1[Server Instance 1]
         Server2[Server Instance 2]
     end
 
-    subgraph RedisCluster [Shared Redis Server]
-        RedisNode[(Redis 6.0+)]
+    subgraph RedisServer["Shared Redis Server"]
+        RedisNode[Redis 6.0]
         LuaScript[Atomic Lua Script]
         Clock[Redis Server TIME]
-        Storage["Key: ratelimit:tb:clientId<br/>Hash: tokens, last_refill"]
+        Storage["Redis Hash: ratelimit:tb:clientId
+Fields: tokens, last_refill"]
     end
 
-    Server1 -->|hiredis command| RedisNode
-    Server2 -->|hiredis command| RedisNode
+    Server1 -->|hiredis| RedisNode
+    Server2 -->|hiredis| RedisNode
     RedisNode --> LuaScript
     LuaScript --> Clock
     LuaScript --> Storage
@@ -308,11 +320,3 @@ rate-limiter/
 ```
 
 ---
-
-## Limitations
-
-- **Fixed Shard Count**: Configured at compile-time to 64 shards; does not dynamically resize with system CPU topology.
-- **Single Redis Node**: Targets a standalone Redis instance without Redis Cluster, Sentinel, or replication failover.
-- **Synchronous Connection**: The Redis client uses a single synchronous `redisContext` without connection pooling.
-- **Fail-Closed Default**: Requests are defensively denied on Redis failure, prioritizing system protection over availability.
-- **Hardware Variation**: Benchmark throughput and latency depend on host CPU cache, memory bandwidth, and kernel networking stack.
