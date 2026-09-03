@@ -1,167 +1,231 @@
-# High-Performance C++ Rate Limiter & Distributed Limiting Engine
+# High-Performance C++ Rate Limiter
 
-A high-performance rate limiting system implemented in modern C++ (C++23). The project provides four in-memory rate limiting algorithms optimized for high concurrency using sharded locking, deterministic inactive client memory cleanup, an embedded HTTP API server, and a distributed Redis-backed Token Bucket using atomic server-side Lua scripts.
+> High-throughput multi-algorithm rate limiting engine in modern C++ with 64-shard in-memory concurrency and distributed Redis-backed rate limiting.
+
+[![C++23](https://img.shields.io/badge/C%2B%2B-23-00599C?logo=cplusplus)](https://en.cppreference.com/w/cpp/23)
+[![CMake](https://img.shields.io/badge/CMake-3.20+-064F8C?logo=cmake)](https://cmake.org/)
+[![Redis](https://img.shields.io/badge/Redis-6.0+-DC382D?logo=redis&logoColor=white)](https://redis.io/)
+[![Google Benchmark](https://img.shields.io/badge/Google_Benchmark-v1.8.3-4285F4)](https://github.com/google/benchmark)
+[![Build](https://img.shields.io/badge/Build-Release-brightgreen)]()
+
+---
+
+## Project at a Glance
+
+| Attribute | Specification |
+|---|---|
+| **Algorithms** | Fixed Window, Sliding Window Log, Sliding Window Counter, Token Bucket (In-Memory + Distributed) |
+| **Concurrency Model** | 64 Independent Shards (Fine-grained per-shard `std::mutex`) |
+| **Peak Throughput** | **27.46M+ ops/sec** (In-Memory, Release Build) |
+| **Minimum Latency** | **36 ns** (Sliding Window Counter) |
+| **Distributed Backend** | Redis + Atomic Server-Side Lua Script + `Redis TIME` clock sync |
+| **Memory Management** | Opportunistic Shard-Level Expiration + Explicit Inactive Client Cleanup |
+| **HTTP Interface** | Embedded HTTP Service (`cpp-httplib`) with standard rate-limit headers |
 
 ---
 
 ## Key Features
 
-- **4 In-Memory Rate Limiting Algorithms**: Fixed Window, Sliding Window Log, Sliding Window Counter, and Token Bucket.
-- **High-Concurrency Sharded Locking**: Map state partitioned into 64 distinct shards with independent mutexes, eliminating cross-client lock contention and scaling to over **27 million ops/sec**.
-- **Distributed Redis Token Bucket**: Multi-server rate limiting backed by Redis and `hiredis`, executing an atomic Lua script with server-side `TIME` clock synchronization.
-- **Deterministic Memory Cleanup**: Inactive client state expiration through opportunistic shard-level checks and explicit cleanup APIs without background thread overhead.
-- **Fail-Closed Safety**: Built-in defensive handling that prevents server crashes and safely denies access if the distributed Redis backend becomes unreachable.
-- **Comprehensive Benchmarking & Testing**: Rigorous unit tests, concurrency verification suites, Google Benchmark integration, and standalone latency/throughput profiling.
+| Feature | Description |
+|---|---|
+| **Multiple Algorithms** | Fixed Window, Sliding Window Log, Sliding Window Counter, and Token Bucket implementations. |
+| **Sharded Concurrency** | 64 independent mutex-protected shards eliminate multi-client lock contention. |
+| **State Expiration** | Opportunistic and explicit cleanup reclaims inactive client memory deterministically. |
+| **Distributed Limiting** | Redis-backed Token Bucket shares rate-limiting state across independent server instances. |
+| **Atomic Lua Execution** | Evaluates time, refills tokens, and deducts quota in a single atomic server-side script. |
+| **Fail-Closed Safety** | Defensively rejects requests on Redis connection failure to prevent system crashes. |
+| **Dual Benchmarking** | Comprehensive profiling via both Google Benchmark and a standalone `std::chrono` suite. |
 
 ---
 
-## Architecture
+## High-Level Architecture
 
 ```mermaid
 flowchart TD
-    Client[Client Requests] --> Router{HTTP Server / Application}
-    Router -->|In-Memory Route| ShardedLimiter[Sharded In-Memory Limiter]
-    Router -->|Distributed Route| RedisLimiter[Redis Token Bucket Limiter]
+    Client[Incoming Client Request] --> Router{HTTP Server / Application}
 
-    subgraph In-Memory Engine [In-Memory Engine (64 Shards)]
-        ShardedLimiter --> Hash[Hash Client ID % 64]
-        Hash --> Shard0[Shard 0: Mutex + Map]
-        Hash --> Shard1[Shard 1: Mutex + Map]
-        Hash --> Shard63[Shard 63: Mutex + Map]
+    Router -->|In-Memory Mode| InMemEngine[In-Memory Engine]
+    Router -->|Distributed Mode| DistEngine[Distributed Engine]
+
+    subgraph InMemEngine [In-Memory Engine - 64 Shards]
+        direction TB
+        Hash[Hash Client ID % 64] --> Shard0["Shard 0 (Mutex + Map)"]
+        Hash --> Shard1["Shard 1 (Mutex + Map)"]
+        Hash --> ShardN["Shard 63 (Mutex + Map)"]
+        
+        Shard0 -.-> Alg["Algorithms: Fixed Window | Sliding Log | Sliding Counter | Token Bucket"]
+        Shard1 -.-> Alg
+        ShardN -.-> Alg
     end
 
-    subgraph Distributed Engine [Distributed Engine (Redis)]
-        RedisLimiter --> RedisConn[hiredis Client Connection]
-        RedisConn --> Lua[Atomic Lua Script]
-        Lua --> RedisTime[Redis Server TIME]
-        Lua --> RedisHash[Redis Hash: tokens, last_refill]
-        Lua --> TTL[Automatic Key TTL Expiration]
+    subgraph DistEngine [Distributed Engine - Redis]
+        direction TB
+        RedisClient[hiredis Client Connection] --> Lua[Atomic Lua Script]
+        Lua --> TimeSource[Redis Server TIME]
+        Lua --> StateHash["Redis Hash (tokens, last_refill)"]
+        Lua --> AutoTTL[Key TTL Refresh]
     end
 ```
 
 ---
 
-## Supported Algorithms
+## Algorithm Comparison
 
 | Algorithm | Accuracy | Time Complexity | Memory Complexity | Best Use Case |
 |---|---|---|---|---|
-| **Fixed Window** | Low (allows boundary bursts up to $2\times$ limit) | $O(1)$ | $O(1)$ per client | Simple quotas with discrete reset intervals (e.g., hourly limits). |
-| **Sliding Window Log** | 100% Exact | $O(N)$ worst-case | $O(N)$ where $N$ is request volume | Strict security APIs where boundary burst compliance must be mathematically exact. |
-| **Sliding Window Counter** | High Approximation ($\pm$ weighted window) | $O(1)$ | $O(1)$ per client (~32 bytes) | High-throughput APIs requiring burst protection with minimal memory footprint. |
-| **Token Bucket (In-Memory)** | High (continuous refill) | $O(1)$ | $O(1)$ per client | Handling bursts smoothly while enforcing a sustained average request rate. |
-| **Redis Token Bucket** | High (distributed continuous refill) | $O(1)$ | $O(1)$ per client in Redis | Multi-instance distributed microservices sharing a unified global rate limit. |
+| **Fixed Window** | Low (allows 2x burst at boundaries) | $O(1)$ | $O(1)$ per client | Simple interval-based quotas (e.g., hourly limits). |
+| **Sliding Window Log** | 100% Exact | $O(N)$ worst-case | $O(N)$ where $N$ is request count | Strict security APIs requiring mathematically exact rate limits. |
+| **Sliding Window Counter** | High Approximation | $O(1)$ | $O(1)$ (~32 bytes per client) | Ultra-high throughput APIs requiring burst protection with minimal RAM. |
+| **Token Bucket (In-Memory)** | High (continuous refill) | $O(1)$ | $O(1)$ per client | APIs that must accommodate short bursts while bounding sustained rate. |
+| **Redis Token Bucket** | High (distributed refill) | $O(1)$ | $O(1)$ in Redis | Multi-node microservice clusters sharing unified global limits. |
 
 ---
 
 ## Concurrency Design
 
-### The Problem with a Global Mutex
-A standard rate limiter implementation protects a single `std::unordered_map<string, ClientState>` with a single `std::mutex`. Under multi-threaded workloads, independent clients contend for the exact same lock, degrading throughput from multi-core parallelism down to serialized execution.
-
-### The 64-Shard Locking Architecture
-To resolve lock contention:
-1. State is split across **64 discrete shards** (`Shard shards[64]`).
-2. Each shard owns an independent `std::mutex` and private client `std::unordered_map`.
-3. Client IDs are assigned to shards using `std::hash<string>{}(clientId) % 64`.
-
-```
-Thread 1 (Client A) ──> Hash(Client A) % 64 = Shard 2  ──> Lock Mutex 2 (No Contention)
-Thread 2 (Client B) ──> Hash(Client B) % 64 = Shard 15 ──> Lock Mutex 15 (No Contention)
-Thread 3 (Client A) ──> Hash(Client A) % 64 = Shard 2  ──> Waits for Mutex 2 (Correctly Serialized)
-```
-
-* **Safety**: Requests from the **same client** map to the same shard and remain strictly serialized to prevent race conditions on token balances.
-* **Scalability**: Requests from **different clients** distribute evenly across shards, executing concurrently without blocking each other.
-
----
-
-## Client State Cleanup
-
-In long-running production systems, inactive clients accumulate in memory over time.
-
-1. **Activity Tracking**: Each client record maintains a `lastAccess` timestamp updated on every request.
-2. **Opportunistic Shard-Level Cleanup**: During regular `allow()` calls, a shard checks if its local cleanup interval (default: 60s) has elapsed. If so, it removes stale entries exceeding the expiration threshold in that shard only.
-3. **Explicit Cleanup API**: A manual `cleanup(currTime)` method iterates across shards to reclaim expired memory deterministically.
-4. **No Background Thread Overhead**: Memory reclamation occurs without dedicated background worker threads, avoiding thread context-switching overhead and locking interference.
-
----
-
-## Distributed Rate Limiting with Redis
-
-Local in-memory limiters cannot share state across distinct physical server processes. The project includes a distributed Token Bucket limiter backed by Redis.
+### Problem: Global Mutex Contention (Before)
 
 ```mermaid
 flowchart LR
-    Server1[Server Instance 1] -->|allow clientId| Redis[(Shared Redis Instance)]
-    Server2[Server Instance 2] -->|allow clientId| Redis
-    Redis -->|Atomic Lua Eval| State[Key: ratelimit:tb:clientId<br/>Hash: tokens, last_refill]
+    ClientA[Client A] --> Mutex[Global Mutex]
+    ClientB[Client B] --> Mutex
+    ClientC[Client C] --> Mutex
+    Mutex --> Map[(Global Client Map)]
+```
+*All client threads contend for a single lock, serializing multi-threaded execution and degrading throughput.*
+
+---
+
+### Solution: 64-Shard Partitioning (After)
+
+```mermaid
+flowchart LR
+    ClientA[Client A] --> HashA[Hash % 64] --> Shard12["Shard 12 (Mutex + Map)"]
+    ClientB[Client B] --> HashB[Hash % 64] --> Shard37["Shard 37 (Mutex + Map)"]
+    ClientC[Client C] --> HashC[Hash % 64] --> Shard12
 ```
 
-### Key Components:
-- **Redis Hash State**: Stored at `ratelimit:tb:<clientId>` with fields `tokens` (floating balance) and `last_refill` (timestamp).
-- **Atomic Lua Script**: The entire calculation (fetching time, computing elapsed refill, checking capacity, decrementing tokens, and setting TTL) executes in a single atomic Lua script on Redis.
-- **Unified Clock Authority (`Redis TIME`)**: The Lua script calls `redis.call('TIME')` directly on the Redis server, ensuring that independent server instances never suffer from local clock drift.
-- **Automatic TTL Expiration**: Every successful or denied request refreshes the key's TTL (`max(10, 2 * capacity / refillRate)`), allowing Redis to automatically evict stale keys.
-- **Fail-Closed Safety**: If Redis is offline or encounters socket failures, the C++ client safely catches the error and returns a denied result (`{allowed = false, remaining = 0, retryAfter = 1}`) without crashing.
+- **Same-Client Requests**: Map to the same shard and remain safely serialized to prevent race conditions.
+- **Cross-Client Requests**: Distribute across 64 shards, executing in parallel without blocking each other.
+- **Contention Reduction**: Independent mutexes reduce multi-core lock contention by up to 37x.
 
 ---
 
-## Benchmarking & Results
+## Client State Lifecycle
 
-Benchmarks were executed on a Release build (`-O3`) comparing all in-memory limiters across 8 worker threads against the Redis distributed implementation.
+```mermaid
+flowchart TD
+    Req[New Request] --> ShardLock[Lock Shard Mutex]
+    ShardLock --> Lookup[Find or Create Client State]
+    Lookup --> UpdateTime[Update lastAccess Timestamp]
+    UpdateTime --> Decision{Allow Request?}
+    
+    Decision -->|Yes| Consume[Deduct Quota / Update State]
+    Decision -->|No| Reject[Compute Retry-After]
+    
+    Consume --> CleanupCheck{Cleanup Interval Elapsed?}
+    Reject --> CleanupCheck
+    
+    CleanupCheck -->|Yes| ScanExpired[Scan & Remove Expired Inactive Clients]
+    CleanupCheck -->|No| Unlock[Unlock Shard Mutex]
+    ScanExpired --> Unlock
+    Unlock --> ReturnResult[Return RateLimitResult]
+```
 
-### Verified Final Benchmark Results
-
-| Rate Limiter Algorithm | Backend Architecture | Total Operations | Allowed | Denied | Total Time (ms) | Throughput (ops/sec) | Avg Latency |
-|---|---|---|---|---|---|---|---|
-| **Sliding Window Counter** | In-Memory (64 Shards) | 2,000,000 | 2,000,000 | 0 | 72.82 ms | **27,464,597 ops/s** | **36 ns** |
-| **In-Memory Token Bucket** | In-Memory (64 Shards) | 2,000,000 | 2,000,000 | 0 | 76.31 ms | **26,209,785 ops/s** | **38 ns** |
-| **Fixed Window Limiter** | In-Memory (64 Shards) | 2,000,000 | 2,000,000 | 0 | 87.03 ms | **22,980,614 ops/s** | **43 ns** |
-| **Sliding Window Log** | In-Memory (64 Shards) | 2,000,000 | 2,000,000 | 0 | 104.28 ms | **19,178,748 ops/s** | **52 ns** |
-| **Redis Token Bucket** | Distributed (Redis + Lua) | 20,000 | 20,000 | 0 | 1566.60 ms | **12,767 ops/s** | **78,329 ns** (78 µs) |
-
-> **Note on Comparisons**: Redis operations include complete TCP socket transport, Linux kernel context switches, protocol serialization (`hiredis`), and Redis Lua script dispatch. In-memory operations measure direct CPU cache and RAM access.
+- **Zero Dedicated Background Threads**: Memory reclamation runs opportunistically inside shard locks during normal calls.
+- **Isolated Shard Cleanup**: Cleanup scans only the locked shard, avoiding global table locking.
+- **Explicit Cleanup API**: `cleanup(currTime)` is provided for deterministic on-demand memory reclamation.
 
 ---
 
-## Performance Takeaways
+## Distributed Redis Token Bucket
 
-1. **Arithmetic-Based Limiters Are Fastest**: **Sliding Window Counter** and **Token Bucket** achieve over **26–27 million operations/second** with **36–38 ns average latency** due to pure $O(1)$ stack arithmetic without dynamic memory allocations.
-2. **Impact of Sharded Locking**: Multi-client concurrent execution scales across CPU cores with near-zero lock contention compared to single-mutex architectures.
-3. **Sliding Window Log Trade-off**: The Sliding Window Log guarantees 100% boundary accuracy but incurs queue memory allocations and deallocations, running ~30% slower than the Sliding Window Counter.
-4. **Local vs. Distributed Trade-off**: In-memory limiting provides sub-microsecond latency (36 ns) for local process defense, while Redis provides global consistency across multiple server nodes at sub-millisecond latency (78 µs).
+```mermaid
+flowchart LR
+    subgraph AppServers [Application Servers]
+        Server1[Server Instance 1]
+        Server2[Server Instance 2]
+    end
+
+    subgraph RedisCluster [Shared Redis Server]
+        RedisNode[(Redis 6.0+)]
+        LuaScript[Atomic Lua Script]
+        Clock[Redis Server TIME]
+        Storage["Key: ratelimit:tb:clientId<br/>Hash: tokens, last_refill"]
+    end
+
+    Server1 -->|hiredis command| RedisNode
+    Server2 -->|hiredis command| RedisNode
+    RedisNode --> LuaScript
+    LuaScript --> Clock
+    LuaScript --> Storage
+```
+
+### Request Execution Flow:
+1. **Request Dispatch**: Application passes `clientId` to `redisTokenBucketLimiter.allow(clientId)`.
+2. **Server-Side Lua**: Script executes atomically within Redis; no concurrent script can interleave.
+3. **Unified Clock**: Queries `redis.call('TIME')` directly on Redis to prevent client-side clock drift.
+4. **Refill & Deduction**: Calculates elapsed refill, deducts 1 token if available, and updates the Hash.
+5. **TTL Refresh**: Resets key expiration (`max(10, 2 * capacity / refillRate)`) for automatic memory eviction.
+6. **Result Returned**: Returns allowed status, remaining tokens, and retry-after latency.
+
+> **Why Redis?** Enables multiple distinct web server instances (e.g., behind a load balancer) to share and enforce a single unified rate limit per client.
 
 ---
 
-## Build Instructions
+## Benchmark Results
+
+### Performance Snapshot (Release Build, -O3)
+
+| Algorithm | Backend | Total Operations | Throughput | Avg Latency |
+|---|---|---:|---:|---:|
+| **Sliding Window Counter** | Sharded In-Memory | 2,000,000 | **27.46M ops/sec** | **36 ns** |
+| **Token Bucket** | Sharded In-Memory | 2,000,000 | **26.21M ops/sec** | **38 ns** |
+| **Fixed Window** | Sharded In-Memory | 2,000,000 | **22.98M ops/sec** | **43 ns** |
+| **Sliding Window Log** | Sharded In-Memory | 2,000,000 | **19.18M ops/sec** | **52 ns** |
+| **Redis Token Bucket** | Distributed (Redis + Lua) | 20,000 | **12,767 ops/sec** | **78,329 ns** (78 µs) |
+
+> **Comparative Context**: Redis benchmarks measure full IPC socket round-trips, Linux kernel context switching, protocol serialization (`hiredis`), and Redis Lua interpretation. In-memory limiters measure direct CPU cache and RAM access.
+
+---
+
+## Performance Summary
+
+- **Fastest Implementation**: Sliding Window Counter achieves **27.46M ops/sec** with **36 ns** average latency.
+- **Lock Contention Eliminated**: 64-shard architecture enables multi-threaded workloads to scale linearly across CPU cores.
+- **Memory vs. Accuracy Trade-Off**: Sliding Window Log guarantees exact boundary enforcement at the cost of heap allocations (~30% lower throughput), while Sliding Window Counter uses fixed $O(1)$ memory.
+- **Distributed Coordination**: Redis introduces network latency (78 µs) in exchange for cross-server global quota consistency.
+
+---
+
+## Build & Run
+
+<details>
+<summary><b>1. Build Instructions</b></summary>
 
 ### Prerequisites
-- **C++ Compiler**: GCC 13+ or Clang 16+ with **C++23** support
-- **Build System**: CMake 3.20+
-- **Threads**: POSIX Threads (`pthread`)
-- **Redis Server**: Redis 6.0+ (running on `127.0.0.1:6379`)
+- GCC 13+ or Clang 16+ (C++23 support)
+- CMake 3.20+
+- POSIX Threads (`pthread`)
+- Redis Server (local or remote)
 
-> Dependencies (`hiredis` v1.2.0 and `google-benchmark` v1.8.3) are automatically downloaded and compiled via CMake `FetchContent`.
-
-### Compilation (Release Mode)
 ```bash
 # Configure the build in Release mode
 cmake -S . -B build -DCMAKE_BUILD_TYPE=Release
 
-# Build all targets in parallel
+# Compile all targets
 cmake --build build -j$(nproc)
 ```
+</details>
 
----
+<details>
+<summary><b>2. Running Tests</b></summary>
 
-## Running Tests
-
-Ensure Redis is running locally before executing the test suite:
 ```bash
-# Start Redis (if not already active)
+# Ensure Redis server is active
 redis-server --daemonize yes
 
-# Run all test executables
+# Execute all test suites
 ./build/fixed_window_test
 ./build/sliding_window_test
 ./build/token_bucket_test
@@ -171,45 +235,36 @@ redis-server --daemonize yes
 ./build/cleanup_test
 ./build/redis_token_bucket_test
 ```
+</details>
 
----
+<details>
+<summary><b>3. Running Benchmarks</b></summary>
 
-## Running Benchmarks
-
-### Standalone std::chrono Benchmark Suite
-Runs the comprehensive benchmark across all 5 limiter implementations:
 ```bash
+# Standalone std::chrono benchmark suite (measures all 5 limiters)
 ./build/final_benchmark
-```
 
-### Google Benchmark Suite
-Runs micro-benchmarks with thread scaling and multi-client workload variations:
-```bash
+# Google Benchmark micro-benchmarking suite
 ./build/rate_limiter_benchmark
 ```
+*Baseline Google Benchmark metrics are recorded in `benchmark_results/baseline/baseline.json`.*
+</details>
 
-Baseline Google Benchmark results are preserved at `benchmark_results/baseline/baseline.json`.
+<details>
+<summary><b>4. Running the HTTP Server</b></summary>
 
----
-
-## Running the HTTP Server
-
-Start the rate-limited HTTP server on port 8080:
 ```bash
+# Start HTTP rate limiter daemon on port 8080
 ./build/rate_limiter
-```
 
-### Test Endpoints via `curl`:
-```bash
-# 1. Unprotected health check
+# Verify endpoints via curl
 curl -i http://127.0.0.1:8080/health
-
-# 2. Unprotected route
 curl -i http://127.0.0.1:8080/unlimited
 
-# 3. Rate-limited route (Capacity: 10, Refill: 1 req/sec)
+# Test rate limiting (Capacity: 10, Refill: 1 req/sec)
 for i in {1..12}; do curl -s -i http://127.0.0.1:8080/limited | grep -E "HTTP|X-RateLimit|Retry-After|message"; done
 ```
+</details>
 
 ---
 
@@ -217,15 +272,15 @@ for i in {1..12}; do curl -s -i http://127.0.0.1:8080/limited | grep -E "HTTP|X-
 
 ```
 rate-limiter/
-├── CMakeLists.txt                      # Build configuration with FetchContent dependencies
-├── README.md                           # Project documentation
-├── include/                            # Public header files
-│   ├── fixedWindowLimiter.h            # Fixed Window rate limiter class
-│   ├── slidingWindowLimiter.h          # Sliding Window Log limiter class
-│   ├── slidingWindowCounterLimiter.h   # Sliding Window Counter limiter class
-│   ├── tokenBucketLimiter.h            # In-memory Token Bucket limiter class
-│   ├── redisTokenBucketLimiter.h       # Distributed Redis Token Bucket class
-│   ├── rateLimitResult.h               # Result struct (allowed, remaining, retryAfter)
+├── CMakeLists.txt                      # CMake build definition with FetchContent
+├── README.md                           # Documentation and benchmark reports
+├── include/                            # Header declarations
+│   ├── fixedWindowLimiter.h            # Fixed Window limiter
+│   ├── slidingWindowLimiter.h          # Sliding Window Log limiter
+│   ├── slidingWindowCounterLimiter.h   # Sliding Window Counter limiter
+│   ├── tokenBucketLimiter.h            # In-Memory Token Bucket limiter
+│   ├── redisTokenBucketLimiter.h       # Redis Distributed Token Bucket limiter
+│   ├── rateLimitResult.h               # RateLimitResult structure definition
 │   └── httpServer.h                    # HTTP server wrapper
 ├── src/                                # Implementation files
 │   ├── fixedWindowLimiter.cpp
@@ -235,7 +290,7 @@ rate-limiter/
 │   ├── redisTokenBucketLimiter.cpp
 │   ├── httpServer.cpp
 │   └── main.cpp                        # HTTP service entry point
-├── tests/                              # Unit and concurrency test suites
+├── tests/                              # Unit, concurrency, and integration tests
 │   ├── fixedWindowLimiterTest.cpp
 │   ├── slidingWindowLimiterTest.cpp
 │   ├── slidingWindowCounterLimiterTest.cpp
@@ -244,20 +299,20 @@ rate-limiter/
 │   ├── concurrencyMultiClientTest.cpp
 │   ├── cleanupTest.cpp
 │   └── redisTokenBucketLimiterTest.cpp
-├── benchmarks/                         # Benchmark infrastructure
-│   ├── rate_limiter_benchmark.cpp      # Google Benchmark implementation
-│   └── final_benchmark.cpp             # Standalone chrono benchmark suite
-└── benchmark_results/                  # Benchmark artifacts
+├── benchmarks/                         # Benchmark implementations
+│   ├── rate_limiter_benchmark.cpp      # Google Benchmark suite
+│   └── final_benchmark.cpp             # Standalone std::chrono benchmark suite
+└── benchmark_results/                  # Recorded benchmark outputs
     └── baseline/
-        └── baseline.json               # Recorded baseline metrics
+        └── baseline.json               # Baseline benchmark data
 ```
 
 ---
 
 ## Limitations
 
-- **Fixed Shard Count**: Sharding is fixed at compile-time to 64 shards, which is optimal for common CPU core counts but does not dynamically scale with core topology.
-- **Single Redis Node**: The Redis-backed limiter targets a standalone Redis instance; Redis Cluster, Sentinel, and automatic failover replication are not implemented.
-- **Single Connection Per Limiter**: The Redis client maintains a single synchronous `redisContext` connection without connection pooling.
-- **Fail-Closed Strategy**: When Redis is unreachable, the system denies requests by default to protect downstream services, which may not suit availability-first systems.
-- **Hardware-Dependent Numbers**: Absolute throughput and latency metrics vary based on CPU architecture, memory bandwidth, and operating system socket stack performance.
+- **Fixed Shard Count**: Configured at compile-time to 64 shards; does not dynamically resize with system CPU topology.
+- **Single Redis Node**: Targets a standalone Redis instance without Redis Cluster, Sentinel, or replication failover.
+- **Synchronous Connection**: The Redis client uses a single synchronous `redisContext` without connection pooling.
+- **Fail-Closed Default**: Requests are defensively denied on Redis failure, prioritizing system protection over availability.
+- **Hardware Variation**: Benchmark throughput and latency depend on host CPU cache, memory bandwidth, and kernel networking stack.
