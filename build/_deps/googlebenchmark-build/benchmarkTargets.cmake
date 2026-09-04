@@ -60,18 +60,18 @@ set_target_properties(benchmark::benchmark_main PROPERTIES
   INTERFACE_LINK_LIBRARIES "benchmark::benchmark"
 )
 
-# Import target "benchmark::benchmark" for configuration "Release"
-set_property(TARGET benchmark::benchmark APPEND PROPERTY IMPORTED_CONFIGURATIONS RELEASE)
+# Import target "benchmark::benchmark" for configuration "Debug"
+set_property(TARGET benchmark::benchmark APPEND PROPERTY IMPORTED_CONFIGURATIONS DEBUG)
 set_target_properties(benchmark::benchmark PROPERTIES
-  IMPORTED_LOCATION_RELEASE "/home/dharmraj/projects/rate-limiter/build/_deps/googlebenchmark-build/src/libbenchmark.so.1.8.3"
-  IMPORTED_SONAME_RELEASE "libbenchmark.so.1"
+  IMPORTED_LOCATION_DEBUG "/home/dharmraj/projects/rate-limiter/build/_deps/googlebenchmark-build/src/libbenchmark.so.1.8.3"
+  IMPORTED_SONAME_DEBUG "libbenchmark.so.1"
   )
 
-# Import target "benchmark::benchmark_main" for configuration "Release"
-set_property(TARGET benchmark::benchmark_main APPEND PROPERTY IMPORTED_CONFIGURATIONS RELEASE)
+# Import target "benchmark::benchmark_main" for configuration "Debug"
+set_property(TARGET benchmark::benchmark_main APPEND PROPERTY IMPORTED_CONFIGURATIONS DEBUG)
 set_target_properties(benchmark::benchmark_main PROPERTIES
-  IMPORTED_LOCATION_RELEASE "/home/dharmraj/projects/rate-limiter/build/_deps/googlebenchmark-build/src/libbenchmark_main.so.1.8.3"
-  IMPORTED_SONAME_RELEASE "libbenchmark_main.so.1"
+  IMPORTED_LOCATION_DEBUG "/home/dharmraj/projects/rate-limiter/build/_deps/googlebenchmark-build/src/libbenchmark_main.so.1.8.3"
+  IMPORTED_SONAME_DEBUG "libbenchmark_main.so.1"
   )
 
 # This file does not depend on other imported targets which have

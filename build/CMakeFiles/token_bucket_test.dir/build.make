@@ -73,29 +73,29 @@ CMakeFiles/token_bucket_test.dir/tests/tokenBucketLimiterTest.cpp.o: CMakeFiles/
 CMakeFiles/token_bucket_test.dir/tests/tokenBucketLimiterTest.cpp.o: /home/dharmraj/projects/rate-limiter/tests/tokenBucketLimiterTest.cpp
 CMakeFiles/token_bucket_test.dir/tests/tokenBucketLimiterTest.cpp.o: CMakeFiles/token_bucket_test.dir/compiler_depend.ts
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/dharmraj/projects/rate-limiter/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/token_bucket_test.dir/tests/tokenBucketLimiterTest.cpp.o"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/token_bucket_test.dir/tests/tokenBucketLimiterTest.cpp.o -MF CMakeFiles/token_bucket_test.dir/tests/tokenBucketLimiterTest.cpp.o.d -o CMakeFiles/token_bucket_test.dir/tests/tokenBucketLimiterTest.cpp.o -c /home/dharmraj/projects/rate-limiter/tests/tokenBucketLimiterTest.cpp
+	/usr/bin/g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/token_bucket_test.dir/tests/tokenBucketLimiterTest.cpp.o -MF CMakeFiles/token_bucket_test.dir/tests/tokenBucketLimiterTest.cpp.o.d -o CMakeFiles/token_bucket_test.dir/tests/tokenBucketLimiterTest.cpp.o -c /home/dharmraj/projects/rate-limiter/tests/tokenBucketLimiterTest.cpp
 
 CMakeFiles/token_bucket_test.dir/tests/tokenBucketLimiterTest.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/token_bucket_test.dir/tests/tokenBucketLimiterTest.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/dharmraj/projects/rate-limiter/tests/tokenBucketLimiterTest.cpp > CMakeFiles/token_bucket_test.dir/tests/tokenBucketLimiterTest.cpp.i
+	/usr/bin/g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/dharmraj/projects/rate-limiter/tests/tokenBucketLimiterTest.cpp > CMakeFiles/token_bucket_test.dir/tests/tokenBucketLimiterTest.cpp.i
 
 CMakeFiles/token_bucket_test.dir/tests/tokenBucketLimiterTest.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/token_bucket_test.dir/tests/tokenBucketLimiterTest.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/dharmraj/projects/rate-limiter/tests/tokenBucketLimiterTest.cpp -o CMakeFiles/token_bucket_test.dir/tests/tokenBucketLimiterTest.cpp.s
+	/usr/bin/g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/dharmraj/projects/rate-limiter/tests/tokenBucketLimiterTest.cpp -o CMakeFiles/token_bucket_test.dir/tests/tokenBucketLimiterTest.cpp.s
 
 CMakeFiles/token_bucket_test.dir/src/tokenBucketLimiter.cpp.o: CMakeFiles/token_bucket_test.dir/flags.make
 CMakeFiles/token_bucket_test.dir/src/tokenBucketLimiter.cpp.o: /home/dharmraj/projects/rate-limiter/src/tokenBucketLimiter.cpp
 CMakeFiles/token_bucket_test.dir/src/tokenBucketLimiter.cpp.o: CMakeFiles/token_bucket_test.dir/compiler_depend.ts
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/dharmraj/projects/rate-limiter/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object CMakeFiles/token_bucket_test.dir/src/tokenBucketLimiter.cpp.o"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/token_bucket_test.dir/src/tokenBucketLimiter.cpp.o -MF CMakeFiles/token_bucket_test.dir/src/tokenBucketLimiter.cpp.o.d -o CMakeFiles/token_bucket_test.dir/src/tokenBucketLimiter.cpp.o -c /home/dharmraj/projects/rate-limiter/src/tokenBucketLimiter.cpp
+	/usr/bin/g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/token_bucket_test.dir/src/tokenBucketLimiter.cpp.o -MF CMakeFiles/token_bucket_test.dir/src/tokenBucketLimiter.cpp.o.d -o CMakeFiles/token_bucket_test.dir/src/tokenBucketLimiter.cpp.o -c /home/dharmraj/projects/rate-limiter/src/tokenBucketLimiter.cpp
 
 CMakeFiles/token_bucket_test.dir/src/tokenBucketLimiter.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/token_bucket_test.dir/src/tokenBucketLimiter.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/dharmraj/projects/rate-limiter/src/tokenBucketLimiter.cpp > CMakeFiles/token_bucket_test.dir/src/tokenBucketLimiter.cpp.i
+	/usr/bin/g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/dharmraj/projects/rate-limiter/src/tokenBucketLimiter.cpp > CMakeFiles/token_bucket_test.dir/src/tokenBucketLimiter.cpp.i
 
 CMakeFiles/token_bucket_test.dir/src/tokenBucketLimiter.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/token_bucket_test.dir/src/tokenBucketLimiter.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/dharmraj/projects/rate-limiter/src/tokenBucketLimiter.cpp -o CMakeFiles/token_bucket_test.dir/src/tokenBucketLimiter.cpp.s
+	/usr/bin/g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/dharmraj/projects/rate-limiter/src/tokenBucketLimiter.cpp -o CMakeFiles/token_bucket_test.dir/src/tokenBucketLimiter.cpp.s
 
 # Object files for target token_bucket_test
 token_bucket_test_OBJECTS = \

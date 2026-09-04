@@ -14,9 +14,9 @@ file(REMOVE_RECURSE
   "CMakeFiles/hiredis.dir/sds.c.o.d"
   "CMakeFiles/hiredis.dir/sockcompat.c.o"
   "CMakeFiles/hiredis.dir/sockcompat.c.o.d"
-  "libhiredis.pdb"
-  "libhiredis.so"
-  "libhiredis.so.1.1.0"
+  "libhiredisd.pdb"
+  "libhiredisd.so"
+  "libhiredisd.so.1.1.0"
 )
 
 # Per-language clean rules from dependency scanning.

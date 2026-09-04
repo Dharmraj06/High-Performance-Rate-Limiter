@@ -53,11 +53,11 @@ set_target_properties(hiredis::hiredis PROPERTIES
   INTERFACE_INCLUDE_DIRECTORIES "/home/dharmraj/projects/rate-limiter/build/_deps/hiredis-src"
 )
 
-# Import target "hiredis::hiredis" for configuration "Release"
-set_property(TARGET hiredis::hiredis APPEND PROPERTY IMPORTED_CONFIGURATIONS RELEASE)
+# Import target "hiredis::hiredis" for configuration "Debug"
+set_property(TARGET hiredis::hiredis APPEND PROPERTY IMPORTED_CONFIGURATIONS DEBUG)
 set_target_properties(hiredis::hiredis PROPERTIES
-  IMPORTED_LOCATION_RELEASE "/home/dharmraj/projects/rate-limiter/build/_deps/hiredis-build/libhiredis.so.1.1.0"
-  IMPORTED_SONAME_RELEASE "libhiredis.so.1.1.0"
+  IMPORTED_LOCATION_DEBUG "/home/dharmraj/projects/rate-limiter/build/_deps/hiredis-build/libhiredisd.so.1.1.0"
+  IMPORTED_SONAME_DEBUG "libhiredisd.so.1.1.0"
   )
 
 # This file does not depend on other imported targets which have

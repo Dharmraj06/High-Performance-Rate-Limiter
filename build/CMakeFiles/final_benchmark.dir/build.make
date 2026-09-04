@@ -73,85 +73,85 @@ CMakeFiles/final_benchmark.dir/benchmarks/final_benchmark.cpp.o: CMakeFiles/fina
 CMakeFiles/final_benchmark.dir/benchmarks/final_benchmark.cpp.o: /home/dharmraj/projects/rate-limiter/benchmarks/final_benchmark.cpp
 CMakeFiles/final_benchmark.dir/benchmarks/final_benchmark.cpp.o: CMakeFiles/final_benchmark.dir/compiler_depend.ts
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/dharmraj/projects/rate-limiter/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/final_benchmark.dir/benchmarks/final_benchmark.cpp.o"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/final_benchmark.dir/benchmarks/final_benchmark.cpp.o -MF CMakeFiles/final_benchmark.dir/benchmarks/final_benchmark.cpp.o.d -o CMakeFiles/final_benchmark.dir/benchmarks/final_benchmark.cpp.o -c /home/dharmraj/projects/rate-limiter/benchmarks/final_benchmark.cpp
+	/usr/bin/g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/final_benchmark.dir/benchmarks/final_benchmark.cpp.o -MF CMakeFiles/final_benchmark.dir/benchmarks/final_benchmark.cpp.o.d -o CMakeFiles/final_benchmark.dir/benchmarks/final_benchmark.cpp.o -c /home/dharmraj/projects/rate-limiter/benchmarks/final_benchmark.cpp
 
 CMakeFiles/final_benchmark.dir/benchmarks/final_benchmark.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/final_benchmark.dir/benchmarks/final_benchmark.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/dharmraj/projects/rate-limiter/benchmarks/final_benchmark.cpp > CMakeFiles/final_benchmark.dir/benchmarks/final_benchmark.cpp.i
+	/usr/bin/g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/dharmraj/projects/rate-limiter/benchmarks/final_benchmark.cpp > CMakeFiles/final_benchmark.dir/benchmarks/final_benchmark.cpp.i
 
 CMakeFiles/final_benchmark.dir/benchmarks/final_benchmark.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/final_benchmark.dir/benchmarks/final_benchmark.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/dharmraj/projects/rate-limiter/benchmarks/final_benchmark.cpp -o CMakeFiles/final_benchmark.dir/benchmarks/final_benchmark.cpp.s
+	/usr/bin/g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/dharmraj/projects/rate-limiter/benchmarks/final_benchmark.cpp -o CMakeFiles/final_benchmark.dir/benchmarks/final_benchmark.cpp.s
 
 CMakeFiles/final_benchmark.dir/src/fixedWindowLimiter.cpp.o: CMakeFiles/final_benchmark.dir/flags.make
 CMakeFiles/final_benchmark.dir/src/fixedWindowLimiter.cpp.o: /home/dharmraj/projects/rate-limiter/src/fixedWindowLimiter.cpp
 CMakeFiles/final_benchmark.dir/src/fixedWindowLimiter.cpp.o: CMakeFiles/final_benchmark.dir/compiler_depend.ts
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/dharmraj/projects/rate-limiter/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object CMakeFiles/final_benchmark.dir/src/fixedWindowLimiter.cpp.o"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/final_benchmark.dir/src/fixedWindowLimiter.cpp.o -MF CMakeFiles/final_benchmark.dir/src/fixedWindowLimiter.cpp.o.d -o CMakeFiles/final_benchmark.dir/src/fixedWindowLimiter.cpp.o -c /home/dharmraj/projects/rate-limiter/src/fixedWindowLimiter.cpp
+	/usr/bin/g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/final_benchmark.dir/src/fixedWindowLimiter.cpp.o -MF CMakeFiles/final_benchmark.dir/src/fixedWindowLimiter.cpp.o.d -o CMakeFiles/final_benchmark.dir/src/fixedWindowLimiter.cpp.o -c /home/dharmraj/projects/rate-limiter/src/fixedWindowLimiter.cpp
 
 CMakeFiles/final_benchmark.dir/src/fixedWindowLimiter.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/final_benchmark.dir/src/fixedWindowLimiter.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/dharmraj/projects/rate-limiter/src/fixedWindowLimiter.cpp > CMakeFiles/final_benchmark.dir/src/fixedWindowLimiter.cpp.i
+	/usr/bin/g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/dharmraj/projects/rate-limiter/src/fixedWindowLimiter.cpp > CMakeFiles/final_benchmark.dir/src/fixedWindowLimiter.cpp.i
 
 CMakeFiles/final_benchmark.dir/src/fixedWindowLimiter.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/final_benchmark.dir/src/fixedWindowLimiter.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/dharmraj/projects/rate-limiter/src/fixedWindowLimiter.cpp -o CMakeFiles/final_benchmark.dir/src/fixedWindowLimiter.cpp.s
+	/usr/bin/g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/dharmraj/projects/rate-limiter/src/fixedWindowLimiter.cpp -o CMakeFiles/final_benchmark.dir/src/fixedWindowLimiter.cpp.s
 
 CMakeFiles/final_benchmark.dir/src/slidingWindowLimiter.cpp.o: CMakeFiles/final_benchmark.dir/flags.make
 CMakeFiles/final_benchmark.dir/src/slidingWindowLimiter.cpp.o: /home/dharmraj/projects/rate-limiter/src/slidingWindowLimiter.cpp
 CMakeFiles/final_benchmark.dir/src/slidingWindowLimiter.cpp.o: CMakeFiles/final_benchmark.dir/compiler_depend.ts
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/dharmraj/projects/rate-limiter/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object CMakeFiles/final_benchmark.dir/src/slidingWindowLimiter.cpp.o"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/final_benchmark.dir/src/slidingWindowLimiter.cpp.o -MF CMakeFiles/final_benchmark.dir/src/slidingWindowLimiter.cpp.o.d -o CMakeFiles/final_benchmark.dir/src/slidingWindowLimiter.cpp.o -c /home/dharmraj/projects/rate-limiter/src/slidingWindowLimiter.cpp
+	/usr/bin/g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/final_benchmark.dir/src/slidingWindowLimiter.cpp.o -MF CMakeFiles/final_benchmark.dir/src/slidingWindowLimiter.cpp.o.d -o CMakeFiles/final_benchmark.dir/src/slidingWindowLimiter.cpp.o -c /home/dharmraj/projects/rate-limiter/src/slidingWindowLimiter.cpp
 
 CMakeFiles/final_benchmark.dir/src/slidingWindowLimiter.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/final_benchmark.dir/src/slidingWindowLimiter.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/dharmraj/projects/rate-limiter/src/slidingWindowLimiter.cpp > CMakeFiles/final_benchmark.dir/src/slidingWindowLimiter.cpp.i
+	/usr/bin/g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/dharmraj/projects/rate-limiter/src/slidingWindowLimiter.cpp > CMakeFiles/final_benchmark.dir/src/slidingWindowLimiter.cpp.i
 
 CMakeFiles/final_benchmark.dir/src/slidingWindowLimiter.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/final_benchmark.dir/src/slidingWindowLimiter.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/dharmraj/projects/rate-limiter/src/slidingWindowLimiter.cpp -o CMakeFiles/final_benchmark.dir/src/slidingWindowLimiter.cpp.s
+	/usr/bin/g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/dharmraj/projects/rate-limiter/src/slidingWindowLimiter.cpp -o CMakeFiles/final_benchmark.dir/src/slidingWindowLimiter.cpp.s
 
 CMakeFiles/final_benchmark.dir/src/slidingWindowCounterLimiter.cpp.o: CMakeFiles/final_benchmark.dir/flags.make
 CMakeFiles/final_benchmark.dir/src/slidingWindowCounterLimiter.cpp.o: /home/dharmraj/projects/rate-limiter/src/slidingWindowCounterLimiter.cpp
 CMakeFiles/final_benchmark.dir/src/slidingWindowCounterLimiter.cpp.o: CMakeFiles/final_benchmark.dir/compiler_depend.ts
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/dharmraj/projects/rate-limiter/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building CXX object CMakeFiles/final_benchmark.dir/src/slidingWindowCounterLimiter.cpp.o"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/final_benchmark.dir/src/slidingWindowCounterLimiter.cpp.o -MF CMakeFiles/final_benchmark.dir/src/slidingWindowCounterLimiter.cpp.o.d -o CMakeFiles/final_benchmark.dir/src/slidingWindowCounterLimiter.cpp.o -c /home/dharmraj/projects/rate-limiter/src/slidingWindowCounterLimiter.cpp
+	/usr/bin/g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/final_benchmark.dir/src/slidingWindowCounterLimiter.cpp.o -MF CMakeFiles/final_benchmark.dir/src/slidingWindowCounterLimiter.cpp.o.d -o CMakeFiles/final_benchmark.dir/src/slidingWindowCounterLimiter.cpp.o -c /home/dharmraj/projects/rate-limiter/src/slidingWindowCounterLimiter.cpp
 
 CMakeFiles/final_benchmark.dir/src/slidingWindowCounterLimiter.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/final_benchmark.dir/src/slidingWindowCounterLimiter.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/dharmraj/projects/rate-limiter/src/slidingWindowCounterLimiter.cpp > CMakeFiles/final_benchmark.dir/src/slidingWindowCounterLimiter.cpp.i
+	/usr/bin/g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/dharmraj/projects/rate-limiter/src/slidingWindowCounterLimiter.cpp > CMakeFiles/final_benchmark.dir/src/slidingWindowCounterLimiter.cpp.i
 
 CMakeFiles/final_benchmark.dir/src/slidingWindowCounterLimiter.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/final_benchmark.dir/src/slidingWindowCounterLimiter.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/dharmraj/projects/rate-limiter/src/slidingWindowCounterLimiter.cpp -o CMakeFiles/final_benchmark.dir/src/slidingWindowCounterLimiter.cpp.s
+	/usr/bin/g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/dharmraj/projects/rate-limiter/src/slidingWindowCounterLimiter.cpp -o CMakeFiles/final_benchmark.dir/src/slidingWindowCounterLimiter.cpp.s
 
 CMakeFiles/final_benchmark.dir/src/tokenBucketLimiter.cpp.o: CMakeFiles/final_benchmark.dir/flags.make
 CMakeFiles/final_benchmark.dir/src/tokenBucketLimiter.cpp.o: /home/dharmraj/projects/rate-limiter/src/tokenBucketLimiter.cpp
 CMakeFiles/final_benchmark.dir/src/tokenBucketLimiter.cpp.o: CMakeFiles/final_benchmark.dir/compiler_depend.ts
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/dharmraj/projects/rate-limiter/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building CXX object CMakeFiles/final_benchmark.dir/src/tokenBucketLimiter.cpp.o"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/final_benchmark.dir/src/tokenBucketLimiter.cpp.o -MF CMakeFiles/final_benchmark.dir/src/tokenBucketLimiter.cpp.o.d -o CMakeFiles/final_benchmark.dir/src/tokenBucketLimiter.cpp.o -c /home/dharmraj/projects/rate-limiter/src/tokenBucketLimiter.cpp
+	/usr/bin/g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/final_benchmark.dir/src/tokenBucketLimiter.cpp.o -MF CMakeFiles/final_benchmark.dir/src/tokenBucketLimiter.cpp.o.d -o CMakeFiles/final_benchmark.dir/src/tokenBucketLimiter.cpp.o -c /home/dharmraj/projects/rate-limiter/src/tokenBucketLimiter.cpp
 
 CMakeFiles/final_benchmark.dir/src/tokenBucketLimiter.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/final_benchmark.dir/src/tokenBucketLimiter.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/dharmraj/projects/rate-limiter/src/tokenBucketLimiter.cpp > CMakeFiles/final_benchmark.dir/src/tokenBucketLimiter.cpp.i
+	/usr/bin/g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/dharmraj/projects/rate-limiter/src/tokenBucketLimiter.cpp > CMakeFiles/final_benchmark.dir/src/tokenBucketLimiter.cpp.i
 
 CMakeFiles/final_benchmark.dir/src/tokenBucketLimiter.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/final_benchmark.dir/src/tokenBucketLimiter.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/dharmraj/projects/rate-limiter/src/tokenBucketLimiter.cpp -o CMakeFiles/final_benchmark.dir/src/tokenBucketLimiter.cpp.s
+	/usr/bin/g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/dharmraj/projects/rate-limiter/src/tokenBucketLimiter.cpp -o CMakeFiles/final_benchmark.dir/src/tokenBucketLimiter.cpp.s
 
 CMakeFiles/final_benchmark.dir/src/redisTokenBucketLimiter.cpp.o: CMakeFiles/final_benchmark.dir/flags.make
 CMakeFiles/final_benchmark.dir/src/redisTokenBucketLimiter.cpp.o: /home/dharmraj/projects/rate-limiter/src/redisTokenBucketLimiter.cpp
 CMakeFiles/final_benchmark.dir/src/redisTokenBucketLimiter.cpp.o: CMakeFiles/final_benchmark.dir/compiler_depend.ts
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/dharmraj/projects/rate-limiter/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Building CXX object CMakeFiles/final_benchmark.dir/src/redisTokenBucketLimiter.cpp.o"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/final_benchmark.dir/src/redisTokenBucketLimiter.cpp.o -MF CMakeFiles/final_benchmark.dir/src/redisTokenBucketLimiter.cpp.o.d -o CMakeFiles/final_benchmark.dir/src/redisTokenBucketLimiter.cpp.o -c /home/dharmraj/projects/rate-limiter/src/redisTokenBucketLimiter.cpp
+	/usr/bin/g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/final_benchmark.dir/src/redisTokenBucketLimiter.cpp.o -MF CMakeFiles/final_benchmark.dir/src/redisTokenBucketLimiter.cpp.o.d -o CMakeFiles/final_benchmark.dir/src/redisTokenBucketLimiter.cpp.o -c /home/dharmraj/projects/rate-limiter/src/redisTokenBucketLimiter.cpp
 
 CMakeFiles/final_benchmark.dir/src/redisTokenBucketLimiter.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/final_benchmark.dir/src/redisTokenBucketLimiter.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/dharmraj/projects/rate-limiter/src/redisTokenBucketLimiter.cpp > CMakeFiles/final_benchmark.dir/src/redisTokenBucketLimiter.cpp.i
+	/usr/bin/g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/dharmraj/projects/rate-limiter/src/redisTokenBucketLimiter.cpp > CMakeFiles/final_benchmark.dir/src/redisTokenBucketLimiter.cpp.i
 
 CMakeFiles/final_benchmark.dir/src/redisTokenBucketLimiter.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/final_benchmark.dir/src/redisTokenBucketLimiter.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/dharmraj/projects/rate-limiter/src/redisTokenBucketLimiter.cpp -o CMakeFiles/final_benchmark.dir/src/redisTokenBucketLimiter.cpp.s
+	/usr/bin/g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/dharmraj/projects/rate-limiter/src/redisTokenBucketLimiter.cpp -o CMakeFiles/final_benchmark.dir/src/redisTokenBucketLimiter.cpp.s
 
 # Object files for target final_benchmark
 final_benchmark_OBJECTS = \
@@ -172,7 +172,7 @@ final_benchmark: CMakeFiles/final_benchmark.dir/src/slidingWindowCounterLimiter.
 final_benchmark: CMakeFiles/final_benchmark.dir/src/tokenBucketLimiter.cpp.o
 final_benchmark: CMakeFiles/final_benchmark.dir/src/redisTokenBucketLimiter.cpp.o
 final_benchmark: CMakeFiles/final_benchmark.dir/build.make
-final_benchmark: _deps/hiredis-build/libhiredis.so.1.1.0
+final_benchmark: _deps/hiredis-build/libhiredisd.so.1.1.0
 final_benchmark: CMakeFiles/final_benchmark.dir/link.txt
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir=/home/dharmraj/projects/rate-limiter/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_7) "Linking CXX executable final_benchmark"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/final_benchmark.dir/link.txt --verbose=$(VERBOSE)

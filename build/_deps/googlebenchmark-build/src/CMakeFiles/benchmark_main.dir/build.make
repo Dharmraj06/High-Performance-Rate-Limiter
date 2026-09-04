@@ -73,15 +73,15 @@ _deps/googlebenchmark-build/src/CMakeFiles/benchmark_main.dir/benchmark_main.cc.
 _deps/googlebenchmark-build/src/CMakeFiles/benchmark_main.dir/benchmark_main.cc.o: _deps/googlebenchmark-src/src/benchmark_main.cc
 _deps/googlebenchmark-build/src/CMakeFiles/benchmark_main.dir/benchmark_main.cc.o: _deps/googlebenchmark-build/src/CMakeFiles/benchmark_main.dir/compiler_depend.ts
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/dharmraj/projects/rate-limiter/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object _deps/googlebenchmark-build/src/CMakeFiles/benchmark_main.dir/benchmark_main.cc.o"
-	cd /home/dharmraj/projects/rate-limiter/build/_deps/googlebenchmark-build/src && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT _deps/googlebenchmark-build/src/CMakeFiles/benchmark_main.dir/benchmark_main.cc.o -MF CMakeFiles/benchmark_main.dir/benchmark_main.cc.o.d -o CMakeFiles/benchmark_main.dir/benchmark_main.cc.o -c /home/dharmraj/projects/rate-limiter/build/_deps/googlebenchmark-src/src/benchmark_main.cc
+	cd /home/dharmraj/projects/rate-limiter/build/_deps/googlebenchmark-build/src && /usr/bin/g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT _deps/googlebenchmark-build/src/CMakeFiles/benchmark_main.dir/benchmark_main.cc.o -MF CMakeFiles/benchmark_main.dir/benchmark_main.cc.o.d -o CMakeFiles/benchmark_main.dir/benchmark_main.cc.o -c /home/dharmraj/projects/rate-limiter/build/_deps/googlebenchmark-src/src/benchmark_main.cc
 
 _deps/googlebenchmark-build/src/CMakeFiles/benchmark_main.dir/benchmark_main.cc.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/benchmark_main.dir/benchmark_main.cc.i"
-	cd /home/dharmraj/projects/rate-limiter/build/_deps/googlebenchmark-build/src && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/dharmraj/projects/rate-limiter/build/_deps/googlebenchmark-src/src/benchmark_main.cc > CMakeFiles/benchmark_main.dir/benchmark_main.cc.i
+	cd /home/dharmraj/projects/rate-limiter/build/_deps/googlebenchmark-build/src && /usr/bin/g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/dharmraj/projects/rate-limiter/build/_deps/googlebenchmark-src/src/benchmark_main.cc > CMakeFiles/benchmark_main.dir/benchmark_main.cc.i
 
 _deps/googlebenchmark-build/src/CMakeFiles/benchmark_main.dir/benchmark_main.cc.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/benchmark_main.dir/benchmark_main.cc.s"
-	cd /home/dharmraj/projects/rate-limiter/build/_deps/googlebenchmark-build/src && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/dharmraj/projects/rate-limiter/build/_deps/googlebenchmark-src/src/benchmark_main.cc -o CMakeFiles/benchmark_main.dir/benchmark_main.cc.s
+	cd /home/dharmraj/projects/rate-limiter/build/_deps/googlebenchmark-build/src && /usr/bin/g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/dharmraj/projects/rate-limiter/build/_deps/googlebenchmark-src/src/benchmark_main.cc -o CMakeFiles/benchmark_main.dir/benchmark_main.cc.s
 
 # Object files for target benchmark_main
 benchmark_main_OBJECTS = \

@@ -73,29 +73,29 @@ CMakeFiles/redis_token_bucket_test.dir/tests/redisTokenBucketLimiterTest.cpp.o: 
 CMakeFiles/redis_token_bucket_test.dir/tests/redisTokenBucketLimiterTest.cpp.o: /home/dharmraj/projects/rate-limiter/tests/redisTokenBucketLimiterTest.cpp
 CMakeFiles/redis_token_bucket_test.dir/tests/redisTokenBucketLimiterTest.cpp.o: CMakeFiles/redis_token_bucket_test.dir/compiler_depend.ts
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/dharmraj/projects/rate-limiter/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/redis_token_bucket_test.dir/tests/redisTokenBucketLimiterTest.cpp.o"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/redis_token_bucket_test.dir/tests/redisTokenBucketLimiterTest.cpp.o -MF CMakeFiles/redis_token_bucket_test.dir/tests/redisTokenBucketLimiterTest.cpp.o.d -o CMakeFiles/redis_token_bucket_test.dir/tests/redisTokenBucketLimiterTest.cpp.o -c /home/dharmraj/projects/rate-limiter/tests/redisTokenBucketLimiterTest.cpp
+	/usr/bin/g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/redis_token_bucket_test.dir/tests/redisTokenBucketLimiterTest.cpp.o -MF CMakeFiles/redis_token_bucket_test.dir/tests/redisTokenBucketLimiterTest.cpp.o.d -o CMakeFiles/redis_token_bucket_test.dir/tests/redisTokenBucketLimiterTest.cpp.o -c /home/dharmraj/projects/rate-limiter/tests/redisTokenBucketLimiterTest.cpp
 
 CMakeFiles/redis_token_bucket_test.dir/tests/redisTokenBucketLimiterTest.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/redis_token_bucket_test.dir/tests/redisTokenBucketLimiterTest.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/dharmraj/projects/rate-limiter/tests/redisTokenBucketLimiterTest.cpp > CMakeFiles/redis_token_bucket_test.dir/tests/redisTokenBucketLimiterTest.cpp.i
+	/usr/bin/g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/dharmraj/projects/rate-limiter/tests/redisTokenBucketLimiterTest.cpp > CMakeFiles/redis_token_bucket_test.dir/tests/redisTokenBucketLimiterTest.cpp.i
 
 CMakeFiles/redis_token_bucket_test.dir/tests/redisTokenBucketLimiterTest.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/redis_token_bucket_test.dir/tests/redisTokenBucketLimiterTest.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/dharmraj/projects/rate-limiter/tests/redisTokenBucketLimiterTest.cpp -o CMakeFiles/redis_token_bucket_test.dir/tests/redisTokenBucketLimiterTest.cpp.s
+	/usr/bin/g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/dharmraj/projects/rate-limiter/tests/redisTokenBucketLimiterTest.cpp -o CMakeFiles/redis_token_bucket_test.dir/tests/redisTokenBucketLimiterTest.cpp.s
 
 CMakeFiles/redis_token_bucket_test.dir/src/redisTokenBucketLimiter.cpp.o: CMakeFiles/redis_token_bucket_test.dir/flags.make
 CMakeFiles/redis_token_bucket_test.dir/src/redisTokenBucketLimiter.cpp.o: /home/dharmraj/projects/rate-limiter/src/redisTokenBucketLimiter.cpp
 CMakeFiles/redis_token_bucket_test.dir/src/redisTokenBucketLimiter.cpp.o: CMakeFiles/redis_token_bucket_test.dir/compiler_depend.ts
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/dharmraj/projects/rate-limiter/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object CMakeFiles/redis_token_bucket_test.dir/src/redisTokenBucketLimiter.cpp.o"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/redis_token_bucket_test.dir/src/redisTokenBucketLimiter.cpp.o -MF CMakeFiles/redis_token_bucket_test.dir/src/redisTokenBucketLimiter.cpp.o.d -o CMakeFiles/redis_token_bucket_test.dir/src/redisTokenBucketLimiter.cpp.o -c /home/dharmraj/projects/rate-limiter/src/redisTokenBucketLimiter.cpp
+	/usr/bin/g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/redis_token_bucket_test.dir/src/redisTokenBucketLimiter.cpp.o -MF CMakeFiles/redis_token_bucket_test.dir/src/redisTokenBucketLimiter.cpp.o.d -o CMakeFiles/redis_token_bucket_test.dir/src/redisTokenBucketLimiter.cpp.o -c /home/dharmraj/projects/rate-limiter/src/redisTokenBucketLimiter.cpp
 
 CMakeFiles/redis_token_bucket_test.dir/src/redisTokenBucketLimiter.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/redis_token_bucket_test.dir/src/redisTokenBucketLimiter.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/dharmraj/projects/rate-limiter/src/redisTokenBucketLimiter.cpp > CMakeFiles/redis_token_bucket_test.dir/src/redisTokenBucketLimiter.cpp.i
+	/usr/bin/g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/dharmraj/projects/rate-limiter/src/redisTokenBucketLimiter.cpp > CMakeFiles/redis_token_bucket_test.dir/src/redisTokenBucketLimiter.cpp.i
 
 CMakeFiles/redis_token_bucket_test.dir/src/redisTokenBucketLimiter.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/redis_token_bucket_test.dir/src/redisTokenBucketLimiter.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/dharmraj/projects/rate-limiter/src/redisTokenBucketLimiter.cpp -o CMakeFiles/redis_token_bucket_test.dir/src/redisTokenBucketLimiter.cpp.s
+	/usr/bin/g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/dharmraj/projects/rate-limiter/src/redisTokenBucketLimiter.cpp -o CMakeFiles/redis_token_bucket_test.dir/src/redisTokenBucketLimiter.cpp.s
 
 # Object files for target redis_token_bucket_test
 redis_token_bucket_test_OBJECTS = \
@@ -108,7 +108,7 @@ redis_token_bucket_test_EXTERNAL_OBJECTS =
 redis_token_bucket_test: CMakeFiles/redis_token_bucket_test.dir/tests/redisTokenBucketLimiterTest.cpp.o
 redis_token_bucket_test: CMakeFiles/redis_token_bucket_test.dir/src/redisTokenBucketLimiter.cpp.o
 redis_token_bucket_test: CMakeFiles/redis_token_bucket_test.dir/build.make
-redis_token_bucket_test: _deps/hiredis-build/libhiredis.so.1.1.0
+redis_token_bucket_test: _deps/hiredis-build/libhiredisd.so.1.1.0
 redis_token_bucket_test: CMakeFiles/redis_token_bucket_test.dir/link.txt
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir=/home/dharmraj/projects/rate-limiter/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Linking CXX executable redis_token_bucket_test"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/redis_token_bucket_test.dir/link.txt --verbose=$(VERBOSE)

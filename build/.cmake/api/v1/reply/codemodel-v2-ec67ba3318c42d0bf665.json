@@ -1,0 +1,255 @@
+{
+	"configurations" : 
+	[
+		{
+			"directories" : 
+			[
+				{
+					"build" : ".",
+					"childIndexes" : 
+					[
+						1,
+						2
+					],
+					"hasInstallRule" : true,
+					"jsonFile" : "directory-.-Debug-f5ebdc15457944623624.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.20"
+					},
+					"projectIndex" : 0,
+					"source" : ".",
+					"targetIndexes" : 
+					[
+						2,
+						3,
+						4,
+						5,
+						6,
+						8,
+						9,
+						10,
+						11,
+						12,
+						13
+					]
+				},
+				{
+					"build" : "_deps/hiredis-build",
+					"hasInstallRule" : true,
+					"jsonFile" : "directory-_deps.hiredis-build-Debug-25ca6d1471ddebe8bc69.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.0.0"
+					},
+					"parentIndex" : 0,
+					"projectIndex" : 1,
+					"source" : "build/_deps/hiredis-src",
+					"targetIndexes" : 
+					[
+						7
+					]
+				},
+				{
+					"build" : "_deps/googlebenchmark-build",
+					"childIndexes" : 
+					[
+						3
+					],
+					"jsonFile" : "directory-_deps.googlebenchmark-build-Debug-8758df84ff790c404fde.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.10"
+					},
+					"parentIndex" : 0,
+					"projectIndex" : 2,
+					"source" : "build/_deps/googlebenchmark-src"
+				},
+				{
+					"build" : "_deps/googlebenchmark-build/src",
+					"jsonFile" : "directory-_deps.googlebenchmark-build.src-Debug-108baca015be4514c6bc.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.10"
+					},
+					"parentIndex" : 2,
+					"projectIndex" : 2,
+					"source" : "build/_deps/googlebenchmark-src/src",
+					"targetIndexes" : 
+					[
+						0,
+						1
+					]
+				}
+			],
+			"name" : "Debug",
+			"projects" : 
+			[
+				{
+					"childIndexes" : 
+					[
+						1,
+						2
+					],
+					"directoryIndexes" : 
+					[
+						0
+					],
+					"name" : "rate_limiter",
+					"targetIndexes" : 
+					[
+						2,
+						3,
+						4,
+						5,
+						6,
+						8,
+						9,
+						10,
+						11,
+						12,
+						13
+					]
+				},
+				{
+					"directoryIndexes" : 
+					[
+						1
+					],
+					"name" : "hiredis",
+					"parentIndex" : 0,
+					"targetIndexes" : 
+					[
+						7
+					]
+				},
+				{
+					"directoryIndexes" : 
+					[
+						2,
+						3
+					],
+					"name" : "benchmark",
+					"parentIndex" : 0,
+					"targetIndexes" : 
+					[
+						0,
+						1
+					]
+				}
+			],
+			"targets" : 
+			[
+				{
+					"directoryIndex" : 3,
+					"id" : "benchmark::@a5e768fe43450e220d4b",
+					"jsonFile" : "target-benchmark-Debug-b116ac8f564cb85102e3.json",
+					"name" : "benchmark",
+					"projectIndex" : 2
+				},
+				{
+					"directoryIndex" : 3,
+					"id" : "benchmark_main::@a5e768fe43450e220d4b",
+					"jsonFile" : "target-benchmark_main-Debug-00e87065161fba465c71.json",
+					"name" : "benchmark_main",
+					"projectIndex" : 2
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "cleanup_test::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-cleanup_test-Debug-339e25a284cac5eef144.json",
+					"name" : "cleanup_test",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "concurrency_multi_client_test::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-concurrency_multi_client_test-Debug-4b3da0196b66efd923b4.json",
+					"name" : "concurrency_multi_client_test",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "concurrency_test::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-concurrency_test-Debug-888aeb1e1371e71a826b.json",
+					"name" : "concurrency_test",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "final_benchmark::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-final_benchmark-Debug-1ad49729551e5d9c2b09.json",
+					"name" : "final_benchmark",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "fixed_window_test::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-fixed_window_test-Debug-fad9f65e070107583573.json",
+					"name" : "fixed_window_test",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 1,
+					"id" : "hiredis::@6c4a0477402b20cd16c3",
+					"jsonFile" : "target-hiredis-Debug-d281410e19b00065f513.json",
+					"name" : "hiredis",
+					"projectIndex" : 1
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "rate_limiter::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-rate_limiter-Debug-75a04e4c4ffbae69b10a.json",
+					"name" : "rate_limiter",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "rate_limiter_benchmark::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-rate_limiter_benchmark-Debug-440f4fc78aa32ef8d7d9.json",
+					"name" : "rate_limiter_benchmark",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "redis_token_bucket_test::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-redis_token_bucket_test-Debug-b00d887cc7f5d65da852.json",
+					"name" : "redis_token_bucket_test",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "sliding_window_counter_test::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-sliding_window_counter_test-Debug-4bf28e2e7a878f0879a9.json",
+					"name" : "sliding_window_counter_test",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "sliding_window_test::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-sliding_window_test-Debug-425546bcfb0a67af0dda.json",
+					"name" : "sliding_window_test",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "token_bucket_test::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-token_bucket_test-Debug-1c9b39532648cbcba188.json",
+					"name" : "token_bucket_test",
+					"projectIndex" : 0
+				}
+			]
+		}
+	],
+	"kind" : "codemodel",
+	"paths" : 
+	{
+		"build" : "/home/dharmraj/projects/rate-limiter/build",
+		"source" : "/home/dharmraj/projects/rate-limiter"
+	},
+	"version" : 
+	{
+		"major" : 2,
+		"minor" : 6
+	}
+}

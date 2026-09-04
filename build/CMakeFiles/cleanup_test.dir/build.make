@@ -73,71 +73,71 @@ CMakeFiles/cleanup_test.dir/tests/cleanupTest.cpp.o: CMakeFiles/cleanup_test.dir
 CMakeFiles/cleanup_test.dir/tests/cleanupTest.cpp.o: /home/dharmraj/projects/rate-limiter/tests/cleanupTest.cpp
 CMakeFiles/cleanup_test.dir/tests/cleanupTest.cpp.o: CMakeFiles/cleanup_test.dir/compiler_depend.ts
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/dharmraj/projects/rate-limiter/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/cleanup_test.dir/tests/cleanupTest.cpp.o"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/cleanup_test.dir/tests/cleanupTest.cpp.o -MF CMakeFiles/cleanup_test.dir/tests/cleanupTest.cpp.o.d -o CMakeFiles/cleanup_test.dir/tests/cleanupTest.cpp.o -c /home/dharmraj/projects/rate-limiter/tests/cleanupTest.cpp
+	/usr/bin/g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/cleanup_test.dir/tests/cleanupTest.cpp.o -MF CMakeFiles/cleanup_test.dir/tests/cleanupTest.cpp.o.d -o CMakeFiles/cleanup_test.dir/tests/cleanupTest.cpp.o -c /home/dharmraj/projects/rate-limiter/tests/cleanupTest.cpp
 
 CMakeFiles/cleanup_test.dir/tests/cleanupTest.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/cleanup_test.dir/tests/cleanupTest.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/dharmraj/projects/rate-limiter/tests/cleanupTest.cpp > CMakeFiles/cleanup_test.dir/tests/cleanupTest.cpp.i
+	/usr/bin/g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/dharmraj/projects/rate-limiter/tests/cleanupTest.cpp > CMakeFiles/cleanup_test.dir/tests/cleanupTest.cpp.i
 
 CMakeFiles/cleanup_test.dir/tests/cleanupTest.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/cleanup_test.dir/tests/cleanupTest.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/dharmraj/projects/rate-limiter/tests/cleanupTest.cpp -o CMakeFiles/cleanup_test.dir/tests/cleanupTest.cpp.s
+	/usr/bin/g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/dharmraj/projects/rate-limiter/tests/cleanupTest.cpp -o CMakeFiles/cleanup_test.dir/tests/cleanupTest.cpp.s
 
 CMakeFiles/cleanup_test.dir/src/fixedWindowLimiter.cpp.o: CMakeFiles/cleanup_test.dir/flags.make
 CMakeFiles/cleanup_test.dir/src/fixedWindowLimiter.cpp.o: /home/dharmraj/projects/rate-limiter/src/fixedWindowLimiter.cpp
 CMakeFiles/cleanup_test.dir/src/fixedWindowLimiter.cpp.o: CMakeFiles/cleanup_test.dir/compiler_depend.ts
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/dharmraj/projects/rate-limiter/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object CMakeFiles/cleanup_test.dir/src/fixedWindowLimiter.cpp.o"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/cleanup_test.dir/src/fixedWindowLimiter.cpp.o -MF CMakeFiles/cleanup_test.dir/src/fixedWindowLimiter.cpp.o.d -o CMakeFiles/cleanup_test.dir/src/fixedWindowLimiter.cpp.o -c /home/dharmraj/projects/rate-limiter/src/fixedWindowLimiter.cpp
+	/usr/bin/g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/cleanup_test.dir/src/fixedWindowLimiter.cpp.o -MF CMakeFiles/cleanup_test.dir/src/fixedWindowLimiter.cpp.o.d -o CMakeFiles/cleanup_test.dir/src/fixedWindowLimiter.cpp.o -c /home/dharmraj/projects/rate-limiter/src/fixedWindowLimiter.cpp
 
 CMakeFiles/cleanup_test.dir/src/fixedWindowLimiter.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/cleanup_test.dir/src/fixedWindowLimiter.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/dharmraj/projects/rate-limiter/src/fixedWindowLimiter.cpp > CMakeFiles/cleanup_test.dir/src/fixedWindowLimiter.cpp.i
+	/usr/bin/g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/dharmraj/projects/rate-limiter/src/fixedWindowLimiter.cpp > CMakeFiles/cleanup_test.dir/src/fixedWindowLimiter.cpp.i
 
 CMakeFiles/cleanup_test.dir/src/fixedWindowLimiter.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/cleanup_test.dir/src/fixedWindowLimiter.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/dharmraj/projects/rate-limiter/src/fixedWindowLimiter.cpp -o CMakeFiles/cleanup_test.dir/src/fixedWindowLimiter.cpp.s
+	/usr/bin/g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/dharmraj/projects/rate-limiter/src/fixedWindowLimiter.cpp -o CMakeFiles/cleanup_test.dir/src/fixedWindowLimiter.cpp.s
 
 CMakeFiles/cleanup_test.dir/src/slidingWindowLimiter.cpp.o: CMakeFiles/cleanup_test.dir/flags.make
 CMakeFiles/cleanup_test.dir/src/slidingWindowLimiter.cpp.o: /home/dharmraj/projects/rate-limiter/src/slidingWindowLimiter.cpp
 CMakeFiles/cleanup_test.dir/src/slidingWindowLimiter.cpp.o: CMakeFiles/cleanup_test.dir/compiler_depend.ts
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/dharmraj/projects/rate-limiter/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object CMakeFiles/cleanup_test.dir/src/slidingWindowLimiter.cpp.o"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/cleanup_test.dir/src/slidingWindowLimiter.cpp.o -MF CMakeFiles/cleanup_test.dir/src/slidingWindowLimiter.cpp.o.d -o CMakeFiles/cleanup_test.dir/src/slidingWindowLimiter.cpp.o -c /home/dharmraj/projects/rate-limiter/src/slidingWindowLimiter.cpp
+	/usr/bin/g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/cleanup_test.dir/src/slidingWindowLimiter.cpp.o -MF CMakeFiles/cleanup_test.dir/src/slidingWindowLimiter.cpp.o.d -o CMakeFiles/cleanup_test.dir/src/slidingWindowLimiter.cpp.o -c /home/dharmraj/projects/rate-limiter/src/slidingWindowLimiter.cpp
 
 CMakeFiles/cleanup_test.dir/src/slidingWindowLimiter.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/cleanup_test.dir/src/slidingWindowLimiter.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/dharmraj/projects/rate-limiter/src/slidingWindowLimiter.cpp > CMakeFiles/cleanup_test.dir/src/slidingWindowLimiter.cpp.i
+	/usr/bin/g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/dharmraj/projects/rate-limiter/src/slidingWindowLimiter.cpp > CMakeFiles/cleanup_test.dir/src/slidingWindowLimiter.cpp.i
 
 CMakeFiles/cleanup_test.dir/src/slidingWindowLimiter.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/cleanup_test.dir/src/slidingWindowLimiter.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/dharmraj/projects/rate-limiter/src/slidingWindowLimiter.cpp -o CMakeFiles/cleanup_test.dir/src/slidingWindowLimiter.cpp.s
+	/usr/bin/g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/dharmraj/projects/rate-limiter/src/slidingWindowLimiter.cpp -o CMakeFiles/cleanup_test.dir/src/slidingWindowLimiter.cpp.s
 
 CMakeFiles/cleanup_test.dir/src/slidingWindowCounterLimiter.cpp.o: CMakeFiles/cleanup_test.dir/flags.make
 CMakeFiles/cleanup_test.dir/src/slidingWindowCounterLimiter.cpp.o: /home/dharmraj/projects/rate-limiter/src/slidingWindowCounterLimiter.cpp
 CMakeFiles/cleanup_test.dir/src/slidingWindowCounterLimiter.cpp.o: CMakeFiles/cleanup_test.dir/compiler_depend.ts
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/dharmraj/projects/rate-limiter/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building CXX object CMakeFiles/cleanup_test.dir/src/slidingWindowCounterLimiter.cpp.o"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/cleanup_test.dir/src/slidingWindowCounterLimiter.cpp.o -MF CMakeFiles/cleanup_test.dir/src/slidingWindowCounterLimiter.cpp.o.d -o CMakeFiles/cleanup_test.dir/src/slidingWindowCounterLimiter.cpp.o -c /home/dharmraj/projects/rate-limiter/src/slidingWindowCounterLimiter.cpp
+	/usr/bin/g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/cleanup_test.dir/src/slidingWindowCounterLimiter.cpp.o -MF CMakeFiles/cleanup_test.dir/src/slidingWindowCounterLimiter.cpp.o.d -o CMakeFiles/cleanup_test.dir/src/slidingWindowCounterLimiter.cpp.o -c /home/dharmraj/projects/rate-limiter/src/slidingWindowCounterLimiter.cpp
 
 CMakeFiles/cleanup_test.dir/src/slidingWindowCounterLimiter.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/cleanup_test.dir/src/slidingWindowCounterLimiter.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/dharmraj/projects/rate-limiter/src/slidingWindowCounterLimiter.cpp > CMakeFiles/cleanup_test.dir/src/slidingWindowCounterLimiter.cpp.i
+	/usr/bin/g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/dharmraj/projects/rate-limiter/src/slidingWindowCounterLimiter.cpp > CMakeFiles/cleanup_test.dir/src/slidingWindowCounterLimiter.cpp.i
 
 CMakeFiles/cleanup_test.dir/src/slidingWindowCounterLimiter.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/cleanup_test.dir/src/slidingWindowCounterLimiter.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/dharmraj/projects/rate-limiter/src/slidingWindowCounterLimiter.cpp -o CMakeFiles/cleanup_test.dir/src/slidingWindowCounterLimiter.cpp.s
+	/usr/bin/g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/dharmraj/projects/rate-limiter/src/slidingWindowCounterLimiter.cpp -o CMakeFiles/cleanup_test.dir/src/slidingWindowCounterLimiter.cpp.s
 
 CMakeFiles/cleanup_test.dir/src/tokenBucketLimiter.cpp.o: CMakeFiles/cleanup_test.dir/flags.make
 CMakeFiles/cleanup_test.dir/src/tokenBucketLimiter.cpp.o: /home/dharmraj/projects/rate-limiter/src/tokenBucketLimiter.cpp
 CMakeFiles/cleanup_test.dir/src/tokenBucketLimiter.cpp.o: CMakeFiles/cleanup_test.dir/compiler_depend.ts
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/dharmraj/projects/rate-limiter/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building CXX object CMakeFiles/cleanup_test.dir/src/tokenBucketLimiter.cpp.o"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/cleanup_test.dir/src/tokenBucketLimiter.cpp.o -MF CMakeFiles/cleanup_test.dir/src/tokenBucketLimiter.cpp.o.d -o CMakeFiles/cleanup_test.dir/src/tokenBucketLimiter.cpp.o -c /home/dharmraj/projects/rate-limiter/src/tokenBucketLimiter.cpp
+	/usr/bin/g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/cleanup_test.dir/src/tokenBucketLimiter.cpp.o -MF CMakeFiles/cleanup_test.dir/src/tokenBucketLimiter.cpp.o.d -o CMakeFiles/cleanup_test.dir/src/tokenBucketLimiter.cpp.o -c /home/dharmraj/projects/rate-limiter/src/tokenBucketLimiter.cpp
 
 CMakeFiles/cleanup_test.dir/src/tokenBucketLimiter.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/cleanup_test.dir/src/tokenBucketLimiter.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/dharmraj/projects/rate-limiter/src/tokenBucketLimiter.cpp > CMakeFiles/cleanup_test.dir/src/tokenBucketLimiter.cpp.i
+	/usr/bin/g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/dharmraj/projects/rate-limiter/src/tokenBucketLimiter.cpp > CMakeFiles/cleanup_test.dir/src/tokenBucketLimiter.cpp.i
 
 CMakeFiles/cleanup_test.dir/src/tokenBucketLimiter.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/cleanup_test.dir/src/tokenBucketLimiter.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/dharmraj/projects/rate-limiter/src/tokenBucketLimiter.cpp -o CMakeFiles/cleanup_test.dir/src/tokenBucketLimiter.cpp.s
+	/usr/bin/g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/dharmraj/projects/rate-limiter/src/tokenBucketLimiter.cpp -o CMakeFiles/cleanup_test.dir/src/tokenBucketLimiter.cpp.s
 
 # Object files for target cleanup_test
 cleanup_test_OBJECTS = \

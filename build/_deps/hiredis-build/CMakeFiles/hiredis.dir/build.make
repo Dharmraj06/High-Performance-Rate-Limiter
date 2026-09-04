@@ -73,99 +73,99 @@ _deps/hiredis-build/CMakeFiles/hiredis.dir/alloc.c.o: _deps/hiredis-build/CMakeF
 _deps/hiredis-build/CMakeFiles/hiredis.dir/alloc.c.o: _deps/hiredis-src/alloc.c
 _deps/hiredis-build/CMakeFiles/hiredis.dir/alloc.c.o: _deps/hiredis-build/CMakeFiles/hiredis.dir/compiler_depend.ts
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/dharmraj/projects/rate-limiter/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building C object _deps/hiredis-build/CMakeFiles/hiredis.dir/alloc.c.o"
-	cd /home/dharmraj/projects/rate-limiter/build/_deps/hiredis-build && /usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT _deps/hiredis-build/CMakeFiles/hiredis.dir/alloc.c.o -MF CMakeFiles/hiredis.dir/alloc.c.o.d -o CMakeFiles/hiredis.dir/alloc.c.o -c /home/dharmraj/projects/rate-limiter/build/_deps/hiredis-src/alloc.c
+	cd /home/dharmraj/projects/rate-limiter/build/_deps/hiredis-build && /usr/bin/gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT _deps/hiredis-build/CMakeFiles/hiredis.dir/alloc.c.o -MF CMakeFiles/hiredis.dir/alloc.c.o.d -o CMakeFiles/hiredis.dir/alloc.c.o -c /home/dharmraj/projects/rate-limiter/build/_deps/hiredis-src/alloc.c
 
 _deps/hiredis-build/CMakeFiles/hiredis.dir/alloc.c.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing C source to CMakeFiles/hiredis.dir/alloc.c.i"
-	cd /home/dharmraj/projects/rate-limiter/build/_deps/hiredis-build && /usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/dharmraj/projects/rate-limiter/build/_deps/hiredis-src/alloc.c > CMakeFiles/hiredis.dir/alloc.c.i
+	cd /home/dharmraj/projects/rate-limiter/build/_deps/hiredis-build && /usr/bin/gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/dharmraj/projects/rate-limiter/build/_deps/hiredis-src/alloc.c > CMakeFiles/hiredis.dir/alloc.c.i
 
 _deps/hiredis-build/CMakeFiles/hiredis.dir/alloc.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling C source to assembly CMakeFiles/hiredis.dir/alloc.c.s"
-	cd /home/dharmraj/projects/rate-limiter/build/_deps/hiredis-build && /usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/dharmraj/projects/rate-limiter/build/_deps/hiredis-src/alloc.c -o CMakeFiles/hiredis.dir/alloc.c.s
+	cd /home/dharmraj/projects/rate-limiter/build/_deps/hiredis-build && /usr/bin/gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/dharmraj/projects/rate-limiter/build/_deps/hiredis-src/alloc.c -o CMakeFiles/hiredis.dir/alloc.c.s
 
 _deps/hiredis-build/CMakeFiles/hiredis.dir/async.c.o: _deps/hiredis-build/CMakeFiles/hiredis.dir/flags.make
 _deps/hiredis-build/CMakeFiles/hiredis.dir/async.c.o: _deps/hiredis-src/async.c
 _deps/hiredis-build/CMakeFiles/hiredis.dir/async.c.o: _deps/hiredis-build/CMakeFiles/hiredis.dir/compiler_depend.ts
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/dharmraj/projects/rate-limiter/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building C object _deps/hiredis-build/CMakeFiles/hiredis.dir/async.c.o"
-	cd /home/dharmraj/projects/rate-limiter/build/_deps/hiredis-build && /usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT _deps/hiredis-build/CMakeFiles/hiredis.dir/async.c.o -MF CMakeFiles/hiredis.dir/async.c.o.d -o CMakeFiles/hiredis.dir/async.c.o -c /home/dharmraj/projects/rate-limiter/build/_deps/hiredis-src/async.c
+	cd /home/dharmraj/projects/rate-limiter/build/_deps/hiredis-build && /usr/bin/gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT _deps/hiredis-build/CMakeFiles/hiredis.dir/async.c.o -MF CMakeFiles/hiredis.dir/async.c.o.d -o CMakeFiles/hiredis.dir/async.c.o -c /home/dharmraj/projects/rate-limiter/build/_deps/hiredis-src/async.c
 
 _deps/hiredis-build/CMakeFiles/hiredis.dir/async.c.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing C source to CMakeFiles/hiredis.dir/async.c.i"
-	cd /home/dharmraj/projects/rate-limiter/build/_deps/hiredis-build && /usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/dharmraj/projects/rate-limiter/build/_deps/hiredis-src/async.c > CMakeFiles/hiredis.dir/async.c.i
+	cd /home/dharmraj/projects/rate-limiter/build/_deps/hiredis-build && /usr/bin/gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/dharmraj/projects/rate-limiter/build/_deps/hiredis-src/async.c > CMakeFiles/hiredis.dir/async.c.i
 
 _deps/hiredis-build/CMakeFiles/hiredis.dir/async.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling C source to assembly CMakeFiles/hiredis.dir/async.c.s"
-	cd /home/dharmraj/projects/rate-limiter/build/_deps/hiredis-build && /usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/dharmraj/projects/rate-limiter/build/_deps/hiredis-src/async.c -o CMakeFiles/hiredis.dir/async.c.s
+	cd /home/dharmraj/projects/rate-limiter/build/_deps/hiredis-build && /usr/bin/gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/dharmraj/projects/rate-limiter/build/_deps/hiredis-src/async.c -o CMakeFiles/hiredis.dir/async.c.s
 
 _deps/hiredis-build/CMakeFiles/hiredis.dir/hiredis.c.o: _deps/hiredis-build/CMakeFiles/hiredis.dir/flags.make
 _deps/hiredis-build/CMakeFiles/hiredis.dir/hiredis.c.o: _deps/hiredis-src/hiredis.c
 _deps/hiredis-build/CMakeFiles/hiredis.dir/hiredis.c.o: _deps/hiredis-build/CMakeFiles/hiredis.dir/compiler_depend.ts
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/dharmraj/projects/rate-limiter/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building C object _deps/hiredis-build/CMakeFiles/hiredis.dir/hiredis.c.o"
-	cd /home/dharmraj/projects/rate-limiter/build/_deps/hiredis-build && /usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT _deps/hiredis-build/CMakeFiles/hiredis.dir/hiredis.c.o -MF CMakeFiles/hiredis.dir/hiredis.c.o.d -o CMakeFiles/hiredis.dir/hiredis.c.o -c /home/dharmraj/projects/rate-limiter/build/_deps/hiredis-src/hiredis.c
+	cd /home/dharmraj/projects/rate-limiter/build/_deps/hiredis-build && /usr/bin/gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT _deps/hiredis-build/CMakeFiles/hiredis.dir/hiredis.c.o -MF CMakeFiles/hiredis.dir/hiredis.c.o.d -o CMakeFiles/hiredis.dir/hiredis.c.o -c /home/dharmraj/projects/rate-limiter/build/_deps/hiredis-src/hiredis.c
 
 _deps/hiredis-build/CMakeFiles/hiredis.dir/hiredis.c.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing C source to CMakeFiles/hiredis.dir/hiredis.c.i"
-	cd /home/dharmraj/projects/rate-limiter/build/_deps/hiredis-build && /usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/dharmraj/projects/rate-limiter/build/_deps/hiredis-src/hiredis.c > CMakeFiles/hiredis.dir/hiredis.c.i
+	cd /home/dharmraj/projects/rate-limiter/build/_deps/hiredis-build && /usr/bin/gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/dharmraj/projects/rate-limiter/build/_deps/hiredis-src/hiredis.c > CMakeFiles/hiredis.dir/hiredis.c.i
 
 _deps/hiredis-build/CMakeFiles/hiredis.dir/hiredis.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling C source to assembly CMakeFiles/hiredis.dir/hiredis.c.s"
-	cd /home/dharmraj/projects/rate-limiter/build/_deps/hiredis-build && /usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/dharmraj/projects/rate-limiter/build/_deps/hiredis-src/hiredis.c -o CMakeFiles/hiredis.dir/hiredis.c.s
+	cd /home/dharmraj/projects/rate-limiter/build/_deps/hiredis-build && /usr/bin/gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/dharmraj/projects/rate-limiter/build/_deps/hiredis-src/hiredis.c -o CMakeFiles/hiredis.dir/hiredis.c.s
 
 _deps/hiredis-build/CMakeFiles/hiredis.dir/net.c.o: _deps/hiredis-build/CMakeFiles/hiredis.dir/flags.make
 _deps/hiredis-build/CMakeFiles/hiredis.dir/net.c.o: _deps/hiredis-src/net.c
 _deps/hiredis-build/CMakeFiles/hiredis.dir/net.c.o: _deps/hiredis-build/CMakeFiles/hiredis.dir/compiler_depend.ts
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/dharmraj/projects/rate-limiter/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building C object _deps/hiredis-build/CMakeFiles/hiredis.dir/net.c.o"
-	cd /home/dharmraj/projects/rate-limiter/build/_deps/hiredis-build && /usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT _deps/hiredis-build/CMakeFiles/hiredis.dir/net.c.o -MF CMakeFiles/hiredis.dir/net.c.o.d -o CMakeFiles/hiredis.dir/net.c.o -c /home/dharmraj/projects/rate-limiter/build/_deps/hiredis-src/net.c
+	cd /home/dharmraj/projects/rate-limiter/build/_deps/hiredis-build && /usr/bin/gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT _deps/hiredis-build/CMakeFiles/hiredis.dir/net.c.o -MF CMakeFiles/hiredis.dir/net.c.o.d -o CMakeFiles/hiredis.dir/net.c.o -c /home/dharmraj/projects/rate-limiter/build/_deps/hiredis-src/net.c
 
 _deps/hiredis-build/CMakeFiles/hiredis.dir/net.c.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing C source to CMakeFiles/hiredis.dir/net.c.i"
-	cd /home/dharmraj/projects/rate-limiter/build/_deps/hiredis-build && /usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/dharmraj/projects/rate-limiter/build/_deps/hiredis-src/net.c > CMakeFiles/hiredis.dir/net.c.i
+	cd /home/dharmraj/projects/rate-limiter/build/_deps/hiredis-build && /usr/bin/gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/dharmraj/projects/rate-limiter/build/_deps/hiredis-src/net.c > CMakeFiles/hiredis.dir/net.c.i
 
 _deps/hiredis-build/CMakeFiles/hiredis.dir/net.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling C source to assembly CMakeFiles/hiredis.dir/net.c.s"
-	cd /home/dharmraj/projects/rate-limiter/build/_deps/hiredis-build && /usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/dharmraj/projects/rate-limiter/build/_deps/hiredis-src/net.c -o CMakeFiles/hiredis.dir/net.c.s
+	cd /home/dharmraj/projects/rate-limiter/build/_deps/hiredis-build && /usr/bin/gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/dharmraj/projects/rate-limiter/build/_deps/hiredis-src/net.c -o CMakeFiles/hiredis.dir/net.c.s
 
 _deps/hiredis-build/CMakeFiles/hiredis.dir/read.c.o: _deps/hiredis-build/CMakeFiles/hiredis.dir/flags.make
 _deps/hiredis-build/CMakeFiles/hiredis.dir/read.c.o: _deps/hiredis-src/read.c
 _deps/hiredis-build/CMakeFiles/hiredis.dir/read.c.o: _deps/hiredis-build/CMakeFiles/hiredis.dir/compiler_depend.ts
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/dharmraj/projects/rate-limiter/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building C object _deps/hiredis-build/CMakeFiles/hiredis.dir/read.c.o"
-	cd /home/dharmraj/projects/rate-limiter/build/_deps/hiredis-build && /usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT _deps/hiredis-build/CMakeFiles/hiredis.dir/read.c.o -MF CMakeFiles/hiredis.dir/read.c.o.d -o CMakeFiles/hiredis.dir/read.c.o -c /home/dharmraj/projects/rate-limiter/build/_deps/hiredis-src/read.c
+	cd /home/dharmraj/projects/rate-limiter/build/_deps/hiredis-build && /usr/bin/gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT _deps/hiredis-build/CMakeFiles/hiredis.dir/read.c.o -MF CMakeFiles/hiredis.dir/read.c.o.d -o CMakeFiles/hiredis.dir/read.c.o -c /home/dharmraj/projects/rate-limiter/build/_deps/hiredis-src/read.c
 
 _deps/hiredis-build/CMakeFiles/hiredis.dir/read.c.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing C source to CMakeFiles/hiredis.dir/read.c.i"
-	cd /home/dharmraj/projects/rate-limiter/build/_deps/hiredis-build && /usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/dharmraj/projects/rate-limiter/build/_deps/hiredis-src/read.c > CMakeFiles/hiredis.dir/read.c.i
+	cd /home/dharmraj/projects/rate-limiter/build/_deps/hiredis-build && /usr/bin/gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/dharmraj/projects/rate-limiter/build/_deps/hiredis-src/read.c > CMakeFiles/hiredis.dir/read.c.i
 
 _deps/hiredis-build/CMakeFiles/hiredis.dir/read.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling C source to assembly CMakeFiles/hiredis.dir/read.c.s"
-	cd /home/dharmraj/projects/rate-limiter/build/_deps/hiredis-build && /usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/dharmraj/projects/rate-limiter/build/_deps/hiredis-src/read.c -o CMakeFiles/hiredis.dir/read.c.s
+	cd /home/dharmraj/projects/rate-limiter/build/_deps/hiredis-build && /usr/bin/gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/dharmraj/projects/rate-limiter/build/_deps/hiredis-src/read.c -o CMakeFiles/hiredis.dir/read.c.s
 
 _deps/hiredis-build/CMakeFiles/hiredis.dir/sds.c.o: _deps/hiredis-build/CMakeFiles/hiredis.dir/flags.make
 _deps/hiredis-build/CMakeFiles/hiredis.dir/sds.c.o: _deps/hiredis-src/sds.c
 _deps/hiredis-build/CMakeFiles/hiredis.dir/sds.c.o: _deps/hiredis-build/CMakeFiles/hiredis.dir/compiler_depend.ts
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/dharmraj/projects/rate-limiter/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Building C object _deps/hiredis-build/CMakeFiles/hiredis.dir/sds.c.o"
-	cd /home/dharmraj/projects/rate-limiter/build/_deps/hiredis-build && /usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT _deps/hiredis-build/CMakeFiles/hiredis.dir/sds.c.o -MF CMakeFiles/hiredis.dir/sds.c.o.d -o CMakeFiles/hiredis.dir/sds.c.o -c /home/dharmraj/projects/rate-limiter/build/_deps/hiredis-src/sds.c
+	cd /home/dharmraj/projects/rate-limiter/build/_deps/hiredis-build && /usr/bin/gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT _deps/hiredis-build/CMakeFiles/hiredis.dir/sds.c.o -MF CMakeFiles/hiredis.dir/sds.c.o.d -o CMakeFiles/hiredis.dir/sds.c.o -c /home/dharmraj/projects/rate-limiter/build/_deps/hiredis-src/sds.c
 
 _deps/hiredis-build/CMakeFiles/hiredis.dir/sds.c.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing C source to CMakeFiles/hiredis.dir/sds.c.i"
-	cd /home/dharmraj/projects/rate-limiter/build/_deps/hiredis-build && /usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/dharmraj/projects/rate-limiter/build/_deps/hiredis-src/sds.c > CMakeFiles/hiredis.dir/sds.c.i
+	cd /home/dharmraj/projects/rate-limiter/build/_deps/hiredis-build && /usr/bin/gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/dharmraj/projects/rate-limiter/build/_deps/hiredis-src/sds.c > CMakeFiles/hiredis.dir/sds.c.i
 
 _deps/hiredis-build/CMakeFiles/hiredis.dir/sds.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling C source to assembly CMakeFiles/hiredis.dir/sds.c.s"
-	cd /home/dharmraj/projects/rate-limiter/build/_deps/hiredis-build && /usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/dharmraj/projects/rate-limiter/build/_deps/hiredis-src/sds.c -o CMakeFiles/hiredis.dir/sds.c.s
+	cd /home/dharmraj/projects/rate-limiter/build/_deps/hiredis-build && /usr/bin/gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/dharmraj/projects/rate-limiter/build/_deps/hiredis-src/sds.c -o CMakeFiles/hiredis.dir/sds.c.s
 
 _deps/hiredis-build/CMakeFiles/hiredis.dir/sockcompat.c.o: _deps/hiredis-build/CMakeFiles/hiredis.dir/flags.make
 _deps/hiredis-build/CMakeFiles/hiredis.dir/sockcompat.c.o: _deps/hiredis-src/sockcompat.c
 _deps/hiredis-build/CMakeFiles/hiredis.dir/sockcompat.c.o: _deps/hiredis-build/CMakeFiles/hiredis.dir/compiler_depend.ts
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/dharmraj/projects/rate-limiter/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_7) "Building C object _deps/hiredis-build/CMakeFiles/hiredis.dir/sockcompat.c.o"
-	cd /home/dharmraj/projects/rate-limiter/build/_deps/hiredis-build && /usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT _deps/hiredis-build/CMakeFiles/hiredis.dir/sockcompat.c.o -MF CMakeFiles/hiredis.dir/sockcompat.c.o.d -o CMakeFiles/hiredis.dir/sockcompat.c.o -c /home/dharmraj/projects/rate-limiter/build/_deps/hiredis-src/sockcompat.c
+	cd /home/dharmraj/projects/rate-limiter/build/_deps/hiredis-build && /usr/bin/gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT _deps/hiredis-build/CMakeFiles/hiredis.dir/sockcompat.c.o -MF CMakeFiles/hiredis.dir/sockcompat.c.o.d -o CMakeFiles/hiredis.dir/sockcompat.c.o -c /home/dharmraj/projects/rate-limiter/build/_deps/hiredis-src/sockcompat.c
 
 _deps/hiredis-build/CMakeFiles/hiredis.dir/sockcompat.c.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing C source to CMakeFiles/hiredis.dir/sockcompat.c.i"
-	cd /home/dharmraj/projects/rate-limiter/build/_deps/hiredis-build && /usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/dharmraj/projects/rate-limiter/build/_deps/hiredis-src/sockcompat.c > CMakeFiles/hiredis.dir/sockcompat.c.i
+	cd /home/dharmraj/projects/rate-limiter/build/_deps/hiredis-build && /usr/bin/gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/dharmraj/projects/rate-limiter/build/_deps/hiredis-src/sockcompat.c > CMakeFiles/hiredis.dir/sockcompat.c.i
 
 _deps/hiredis-build/CMakeFiles/hiredis.dir/sockcompat.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling C source to assembly CMakeFiles/hiredis.dir/sockcompat.c.s"
-	cd /home/dharmraj/projects/rate-limiter/build/_deps/hiredis-build && /usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/dharmraj/projects/rate-limiter/build/_deps/hiredis-src/sockcompat.c -o CMakeFiles/hiredis.dir/sockcompat.c.s
+	cd /home/dharmraj/projects/rate-limiter/build/_deps/hiredis-build && /usr/bin/gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/dharmraj/projects/rate-limiter/build/_deps/hiredis-src/sockcompat.c -o CMakeFiles/hiredis.dir/sockcompat.c.s
 
 # Object files for target hiredis
 hiredis_OBJECTS = \
@@ -180,24 +180,24 @@ hiredis_OBJECTS = \
 # External object files for target hiredis
 hiredis_EXTERNAL_OBJECTS =
 
-_deps/hiredis-build/libhiredis.so.1.1.0: _deps/hiredis-build/CMakeFiles/hiredis.dir/alloc.c.o
-_deps/hiredis-build/libhiredis.so.1.1.0: _deps/hiredis-build/CMakeFiles/hiredis.dir/async.c.o
-_deps/hiredis-build/libhiredis.so.1.1.0: _deps/hiredis-build/CMakeFiles/hiredis.dir/hiredis.c.o
-_deps/hiredis-build/libhiredis.so.1.1.0: _deps/hiredis-build/CMakeFiles/hiredis.dir/net.c.o
-_deps/hiredis-build/libhiredis.so.1.1.0: _deps/hiredis-build/CMakeFiles/hiredis.dir/read.c.o
-_deps/hiredis-build/libhiredis.so.1.1.0: _deps/hiredis-build/CMakeFiles/hiredis.dir/sds.c.o
-_deps/hiredis-build/libhiredis.so.1.1.0: _deps/hiredis-build/CMakeFiles/hiredis.dir/sockcompat.c.o
-_deps/hiredis-build/libhiredis.so.1.1.0: _deps/hiredis-build/CMakeFiles/hiredis.dir/build.make
-_deps/hiredis-build/libhiredis.so.1.1.0: _deps/hiredis-build/CMakeFiles/hiredis.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir=/home/dharmraj/projects/rate-limiter/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_8) "Linking C shared library libhiredis.so"
+_deps/hiredis-build/libhiredisd.so.1.1.0: _deps/hiredis-build/CMakeFiles/hiredis.dir/alloc.c.o
+_deps/hiredis-build/libhiredisd.so.1.1.0: _deps/hiredis-build/CMakeFiles/hiredis.dir/async.c.o
+_deps/hiredis-build/libhiredisd.so.1.1.0: _deps/hiredis-build/CMakeFiles/hiredis.dir/hiredis.c.o
+_deps/hiredis-build/libhiredisd.so.1.1.0: _deps/hiredis-build/CMakeFiles/hiredis.dir/net.c.o
+_deps/hiredis-build/libhiredisd.so.1.1.0: _deps/hiredis-build/CMakeFiles/hiredis.dir/read.c.o
+_deps/hiredis-build/libhiredisd.so.1.1.0: _deps/hiredis-build/CMakeFiles/hiredis.dir/sds.c.o
+_deps/hiredis-build/libhiredisd.so.1.1.0: _deps/hiredis-build/CMakeFiles/hiredis.dir/sockcompat.c.o
+_deps/hiredis-build/libhiredisd.so.1.1.0: _deps/hiredis-build/CMakeFiles/hiredis.dir/build.make
+_deps/hiredis-build/libhiredisd.so.1.1.0: _deps/hiredis-build/CMakeFiles/hiredis.dir/link.txt
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir=/home/dharmraj/projects/rate-limiter/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_8) "Linking C shared library libhiredisd.so"
 	cd /home/dharmraj/projects/rate-limiter/build/_deps/hiredis-build && $(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/hiredis.dir/link.txt --verbose=$(VERBOSE)
-	cd /home/dharmraj/projects/rate-limiter/build/_deps/hiredis-build && $(CMAKE_COMMAND) -E cmake_symlink_library libhiredis.so.1.1.0 libhiredis.so.1.1.0 libhiredis.so
+	cd /home/dharmraj/projects/rate-limiter/build/_deps/hiredis-build && $(CMAKE_COMMAND) -E cmake_symlink_library libhiredisd.so.1.1.0 libhiredisd.so.1.1.0 libhiredisd.so
 
-_deps/hiredis-build/libhiredis.so: _deps/hiredis-build/libhiredis.so.1.1.0
-	@$(CMAKE_COMMAND) -E touch_nocreate _deps/hiredis-build/libhiredis.so
+_deps/hiredis-build/libhiredisd.so: _deps/hiredis-build/libhiredisd.so.1.1.0
+	@$(CMAKE_COMMAND) -E touch_nocreate _deps/hiredis-build/libhiredisd.so
 
 # Rule to build all files generated by this target.
-_deps/hiredis-build/CMakeFiles/hiredis.dir/build: _deps/hiredis-build/libhiredis.so
+_deps/hiredis-build/CMakeFiles/hiredis.dir/build: _deps/hiredis-build/libhiredisd.so
 .PHONY : _deps/hiredis-build/CMakeFiles/hiredis.dir/build
 
 _deps/hiredis-build/CMakeFiles/hiredis.dir/clean:
