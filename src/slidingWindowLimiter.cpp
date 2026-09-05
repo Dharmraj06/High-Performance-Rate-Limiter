@@ -4,7 +4,7 @@ slidingWindowLimiter::slidingWindowLimiter(int limit, seconds winDuration)
 {
     this->limit = limit;
     this->winDuration = winDuration;
-    this->cleanupInterval = max(seconds(10), winDuration);
+    this->deleteInterval = max(seconds(10), winDuration);
 }
 
 size_t slidingWindowLimiter::getShard(const string &clientId) const
@@ -12,7 +12,7 @@ size_t slidingWindowLimiter::getShard(const string &clientId) const
     return hash<string>{}(clientId) % numShards;
 }
 
-void slidingWindowLimiter::cleanupShard(Shard &shard, steady_clock::time_point currTime)
+void slidingWindowLimiter::deleteShard(Shard &shard, steady_clock::time_point currTime)
 {
     for (auto it = shard.clients.begin(); it != shard.clients.end(); )
     {
@@ -37,14 +37,14 @@ RateLimitResult slidingWindowLimiter::allow(const string &clientId, steady_clock
     Shard &shard = shards[getShard(clientId)];
     lock_guard<mutex> lock(shard.mtx);
 
-    if (shard.lastCleanup.time_since_epoch().count() == 0)
+    if (shard.lastDelete.time_since_epoch().count() == 0)
     {
-        shard.lastCleanup = currTime;
+        shard.lastDelete = currTime;
     }
-    else if (currTime - shard.lastCleanup >= cleanupInterval)
+    else if (currTime - shard.lastDelete >= deleteInterval)
     {
-        cleanupShard(shard, currTime);
-        shard.lastCleanup = currTime;
+        deleteShard(shard, currTime);
+        shard.lastDelete = currTime;
     }
 
     auto it = shard.clients.find(clientId);
@@ -80,13 +80,13 @@ RateLimitResult slidingWindowLimiter::allow(const string &clientId, steady_clock
     return {1, limit - (int)timeWindow.reqTime.size(), 0};
 }
 
-void slidingWindowLimiter::cleanup(steady_clock::time_point currTime)
+void slidingWindowLimiter::deleteOldClients(steady_clock::time_point currTime)
 {
     for (int i = 0; i < numShards; i++)
     {
         lock_guard<mutex> lock(shards[i].mtx);
-        cleanupShard(shards[i], currTime);
-        shards[i].lastCleanup = currTime;
+        deleteShard(shards[i], currTime);
+        shards[i].lastDelete = currTime;
     }
 }
 

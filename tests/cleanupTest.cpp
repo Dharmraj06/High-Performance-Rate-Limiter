@@ -30,11 +30,11 @@ int main()
         assert(limiter.allow("client1", start + chrono::seconds(4)).allowed);
 
         // Run cleanup at t=6s (client2, client3 are inactive since t=0s, but window*2=10s has not passed yet)
-        limiter.cleanup(start + chrono::seconds(6));
+        limiter.deleteOldClients(start + chrono::seconds(6));
         assert(limiter.getClientCount() == 3);
 
         // Run cleanup at t=11s (client2 and client3 inactive for > 10s -> removed; client1 inactive for 7s < 10s -> kept)
-        limiter.cleanup(start + chrono::seconds(11));
+        limiter.deleteOldClients(start + chrono::seconds(11));
         assert(limiter.getClientCount() == 1);
 
         // Client2 comes back after cleanup, works correctly
@@ -137,7 +137,7 @@ int main()
         thread cleaner([&limiter, &running]() {
             while (running)
             {
-                limiter.cleanup(Clock::now());
+                limiter.deleteOldClients(Clock::now());
                 this_thread::sleep_for(chrono::milliseconds(2));
             }
         });

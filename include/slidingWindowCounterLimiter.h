@@ -1,10 +1,7 @@
 #pragma once
 
 #include <chrono>
-#include <string>
-#include <unordered_map>
-#include <mutex>
-#include <functional>
+#include<bits/stdc++.h>
 
 #include "rateLimitResult.h"
 
@@ -26,7 +23,7 @@ private:
     {
         mutex mtx;
         unordered_map<string, clientState> clients;
-        steady_clock::time_point lastCleanup;
+        steady_clock::time_point lastDelete;
     };
 
     static const int numShards = 64;
@@ -34,17 +31,17 @@ private:
 
     int limit;
     seconds winDuration;
-    seconds cleanupInterval;
+    seconds deleteInterval;
 
     size_t getShard(const string &clientId) const;
-    void cleanupShard(Shard &shard, steady_clock::time_point currTime);
+    void deleteShard(Shard &shard, steady_clock::time_point currTime);
 
 public:
     slidingWindowCounterLimiter(int limit, seconds winDuration);
 
     RateLimitResult allow(const string &clientId, steady_clock::time_point currTime);
 
-    void cleanup(steady_clock::time_point currTime);
+    void deleteOldClients(steady_clock::time_point currTime);
 
     int getClientCount() const;
 };

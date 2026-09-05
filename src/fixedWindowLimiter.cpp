@@ -4,17 +4,17 @@ fixedWindowLimiter::fixedWindowLimiter(int limit, chrono::seconds winDuration)
 {
     this->limit = limit;
     this->winDuration = winDuration;
-    this->cleanupInterval = max(chrono::seconds(10), winDuration);
+    this->deleteInterval = max(chrono::seconds(10), winDuration);
 }
 
 size_t fixedWindowLimiter::getShard(const string &clientId) const
 {
-    return hash<string>{}(clientId) % numShards;
+    return hash<string>{}(clientId) % numShards; // hash has return value of size_t
 }
 
-void fixedWindowLimiter::cleanupShard(Shard &shard, chrono::steady_clock::time_point currTime)
+void fixedWindowLimiter::deleteShard(Shard &shard, chrono::steady_clock::time_point currTime)
 {
-    for (auto it = shard.clients.begin(); it != shard.clients.end(); )
+    for (auto it = shard.clients.begin(); it != shard.clients.end();)
     {
         if (currTime - it->second.lastAccess >= winDuration * 2)
         {
@@ -22,7 +22,7 @@ void fixedWindowLimiter::cleanupShard(Shard &shard, chrono::steady_clock::time_p
         }
         else
         {
-            ++it;
+            it++;
         }
     }
 }
@@ -32,14 +32,14 @@ RateLimitResult fixedWindowLimiter::allow(const string &clientId, chrono::steady
     Shard &shard = shards[getShard(clientId)];
     lock_guard<mutex> lock(shard.mtx);
 
-    if (shard.lastCleanup.time_since_epoch().count() == 0)
+    if (shard.lastDelete.time_since_epoch().count() == 0)
     {
-        shard.lastCleanup = currTime;
+        shard.lastDelete = currTime;
     }
-    else if (currTime - shard.lastCleanup >= cleanupInterval)
+    else if (currTime - shard.lastDelete >= deleteInterval)
     {
-        cleanupShard(shard, currTime);
-        shard.lastCleanup = currTime;
+        deleteShard(shard, currTime);
+        shard.lastDelete = currTime;
     }
 
     auto it = shard.clients.find(clientId);
@@ -62,9 +62,7 @@ RateLimitResult fixedWindowLimiter::allow(const string &clientId, chrono::steady
 
     if (client.reqCount >= limit)
     {
-        auto retryAfter = chrono::duration_cast<chrono::seconds>(
-            client.winStart + winDuration - currTime
-        ).count();
+        auto retryAfter = chrono::duration_cast<chrono::seconds>(client.winStart + winDuration - currTime).count();
 
         return {0, 0, (int)retryAfter};
     }
@@ -74,13 +72,13 @@ RateLimitResult fixedWindowLimiter::allow(const string &clientId, chrono::steady
     return {1, limit - client.reqCount, 0};
 }
 
-void fixedWindowLimiter::cleanup(chrono::steady_clock::time_point currTime)
+void fixedWindowLimiter::deleteOldClients(chrono::steady_clock::time_point currTime)
 {
     for (int i = 0; i < numShards; i++)
     {
         lock_guard<mutex> lock(shards[i].mtx);
-        cleanupShard(shards[i], currTime);
-        shards[i].lastCleanup = currTime;
+        deleteShard(shards[i], currTime);
+        shards[i].lastDelete = currTime;
     }
 }
 
@@ -89,7 +87,7 @@ int fixedWindowLimiter::getClientCount() const
     int count = 0;
     for (int i = 0; i < numShards; i++)
     {
-        lock_guard<mutex> lock(const_cast<mutex&>(shards[i].mtx));
+        lock_guard<mutex> lock(const_cast<mutex &>(shards[i].mtx));
         count += (int)shards[i].clients.size();
     }
     return count;

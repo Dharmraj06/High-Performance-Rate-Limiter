@@ -5,7 +5,7 @@ tokenBucketLimiter::tokenBucketLimiter(double capacity, double refillRate)
 {
     this->capacity = capacity;
     this->refillRate = refillRate;
-    this->cleanupInterval = max(seconds(10), seconds((int)ceil(capacity / refillRate)));
+    this->deleteInterval = max(seconds(10), seconds((int)ceil(capacity / refillRate)));
 }
 
 size_t tokenBucketLimiter::getShard(const string &clientId) const
@@ -13,7 +13,7 @@ size_t tokenBucketLimiter::getShard(const string &clientId) const
     return hash<string>{}(clientId) % numShards;
 }
 
-void tokenBucketLimiter::cleanupShard(Shard &shard, steady_clock::time_point currTime)
+void tokenBucketLimiter::deleteShard(Shard &shard, steady_clock::time_point currTime)
 {
     auto ttl = max(seconds(10), seconds((int)ceil(capacity / refillRate)));
     for (auto it = shard.clients.begin(); it != shard.clients.end(); )
@@ -34,14 +34,14 @@ RateLimitResult tokenBucketLimiter::allow(const string &clientId, steady_clock::
     Shard &shard = shards[getShard(clientId)];
     lock_guard<mutex> lock(shard.mtx);
 
-    if (shard.lastCleanup.time_since_epoch().count() == 0)
+    if (shard.lastDelete.time_since_epoch().count() == 0)
     {
-        shard.lastCleanup = currTime;
+        shard.lastDelete = currTime;
     }
-    else if (currTime - shard.lastCleanup >= cleanupInterval)
+    else if (currTime - shard.lastDelete >= deleteInterval)
     {
-        cleanupShard(shard, currTime);
-        shard.lastCleanup = currTime;
+        deleteShard(shard, currTime);
+        shard.lastDelete = currTime;
     }
 
     auto it = shard.clients.find(clientId);
@@ -81,13 +81,13 @@ RateLimitResult tokenBucketLimiter::allow(const string &clientId, steady_clock::
     return {1, (int)client.tokens, 0};
 }
 
-void tokenBucketLimiter::cleanup(steady_clock::time_point currTime)
+void tokenBucketLimiter::deleteOldClients(steady_clock::time_point currTime)
 {
     for (int i = 0; i < numShards; i++)
     {
         lock_guard<mutex> lock(shards[i].mtx);
-        cleanupShard(shards[i], currTime);
-        shards[i].lastCleanup = currTime;
+        deleteShard(shards[i], currTime);
+        shards[i].lastDelete = currTime;
     }
 }
 

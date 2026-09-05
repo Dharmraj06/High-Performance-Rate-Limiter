@@ -1,11 +1,9 @@
 #pragma once
 
 #include <chrono>
-#include <string>
-#include <unordered_map>
-#include <mutex>
+#include<bits/stdc++.h>
 #include <cmath>
-#include <functional>
+
 
 #include "rateLimitResult.h"
 
@@ -37,14 +35,14 @@ private:
     seconds cleanupInterval;
 
     size_t getShard(const string &clientId) const;
-    void cleanupShard(Shard &shard, steady_clock::time_point currTime);
+    void deleteShard(Shard &shard, steady_clock::time_point currTime);
 
 public:
     tokenBucketLimiter(double capacity, double refillRate);
 
     RateLimitResult allow(const string &clientId, steady_clock::time_point currTime);
 
-    void cleanup(steady_clock::time_point currTime);
+    void deleteOldClients(steady_clock::time_point currTime);
 
     int getClientCount() const;
 };
