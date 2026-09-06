@@ -88,7 +88,7 @@ int fixedWindowLimiter::getClientCount() const
     for (int i = 0; i < numShards; i++)
     {
         lock_guard<mutex> lock(const_cast<mutex &>(shards[i].mtx));
-        count += (int)shards[i].clients.size();
+        count += shards[i].clients.size();
     }
     return count;
 }
