@@ -35,9 +35,10 @@ RateLimitResult fixedWindowLimiter::allow(const string &clientId, chrono::steady
     if (shard.lastDelete.time_since_epoch().count() == 0)
     {
         shard.lastDelete = currTime;
-    }
-    else if (currTime - shard.lastDelete >= deleteInterval)
+        
+    } else if (currTime - shard.lastDelete >= deleteInterval)
     {
+
         deleteShard(shard, currTime);
         shard.lastDelete = currTime;
     }
@@ -57,6 +58,7 @@ RateLimitResult fixedWindowLimiter::allow(const string &clientId, chrono::steady
     {
         client.reqCount = 1;
         client.winStart = currTime;
+
         return {1, limit - 1, 0};
     }
 
@@ -77,6 +79,7 @@ void fixedWindowLimiter::deleteOldClients(chrono::steady_clock::time_point currT
     for (int i = 0; i < numShards; i++)
     {
         lock_guard<mutex> lock(shards[i].mtx);
+
         deleteShard(shards[i], currTime);
         shards[i].lastDelete = currTime;
     }

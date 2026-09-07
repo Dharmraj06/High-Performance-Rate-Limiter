@@ -24,7 +24,7 @@ private:
     {
         mutex mtx;
         unordered_map<string, clientState> clients;
-        steady_clock::time_point lastCleanup;
+        steady_clock::time_point lastDelete;
     };
 
     static const int numShards = 64;
@@ -32,7 +32,7 @@ private:
 
     double capacity;
     double refillRate;
-    seconds cleanupInterval;
+    seconds deleteInterval;
 
     size_t getShard(const string &clientId) const;
     void deleteShard(Shard &shard, steady_clock::time_point currTime);

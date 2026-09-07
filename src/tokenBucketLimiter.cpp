@@ -1,29 +1,26 @@
 #include "tokenBucketLimiter.h"
 #include <cmath>
 
-tokenBucketLimiter::tokenBucketLimiter(double capacity, double refillRate)
-{
+tokenBucketLimiter::tokenBucketLimiter(double capacity, double refillRate){
+
     this->capacity = capacity;
     this->refillRate = refillRate;
+    
     this->deleteInterval = max(seconds(10), seconds((int)ceil(capacity / refillRate)));
 }
 
-size_t tokenBucketLimiter::getShard(const string &clientId) const
-{
+size_t tokenBucketLimiter::getShard(const string &clientId) const{
     return hash<string>{}(clientId) % numShards;
 }
 
-void tokenBucketLimiter::deleteShard(Shard &shard, steady_clock::time_point currTime)
-{
+void tokenBucketLimiter::deleteShard(Shard &shard, steady_clock::time_point currTime){
     auto ttl = max(seconds(10), seconds((int)ceil(capacity / refillRate)));
     for (auto it = shard.clients.begin(); it != shard.clients.end(); )
     {
-        if (currTime - it->second.lastAccess >= ttl)
-        {
+        if (currTime - it->second.lastAccess >= ttl){
             it = shard.clients.erase(it);
         }
-        else
-        {
+        else{
             ++it;
         }
     }
@@ -34,12 +31,10 @@ RateLimitResult tokenBucketLimiter::allow(const string &clientId, steady_clock::
     Shard &shard = shards[getShard(clientId)];
     lock_guard<mutex> lock(shard.mtx);
 
-    if (shard.lastDelete.time_since_epoch().count() == 0)
-    {
+    if (shard.lastDelete.time_since_epoch().count() == 0){
         shard.lastDelete = currTime;
     }
-    else if (currTime - shard.lastDelete >= deleteInterval)
-    {
+    else if (currTime - shard.lastDelete >= deleteInterval){
         deleteShard(shard, currTime);
         shard.lastDelete = currTime;
     }
@@ -47,8 +42,7 @@ RateLimitResult tokenBucketLimiter::allow(const string &clientId, steady_clock::
     auto it = shard.clients.find(clientId);
 
     //new client
-    if (it == shard.clients.end())
-    {
+    if (it == shard.clients.end()){
         shard.clients[clientId] = {capacity - 1, currTime, currTime};
         return {1, (int)(capacity - 1), 0};
     }
@@ -60,16 +54,14 @@ RateLimitResult tokenBucketLimiter::allow(const string &clientId, steady_clock::
 
     client.tokens += elapsed.count() * refillRate;
 
-    if (client.tokens > capacity)
-    {
+    if (client.tokens > capacity){
         client.tokens = capacity;
     }
 
     client.lastRefill = currTime;
 
     //no token
-    if (client.tokens < 1)
-    {
+    if (client.tokens < 1){
         int retryAfter = (int)ceil((1 - client.tokens) / refillRate);
 
         return {0, 0, retryAfter};
