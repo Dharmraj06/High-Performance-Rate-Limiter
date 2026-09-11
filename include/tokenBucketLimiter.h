@@ -43,6 +43,5 @@ public:
     RateLimitResult allow(const string &clientId, steady_clock::time_point currTime);
 
     void deleteOldClients(steady_clock::time_point currTime);
-
     int getClientCount() const;
 };

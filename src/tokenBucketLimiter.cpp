@@ -5,7 +5,7 @@ tokenBucketLimiter::tokenBucketLimiter(double capacity, double refillRate){
 
     this->capacity = capacity;
     this->refillRate = refillRate;
-    
+
     this->deleteInterval = max(seconds(10), seconds((int)ceil(capacity / refillRate)));
 }
 
@@ -14,9 +14,11 @@ size_t tokenBucketLimiter::getShard(const string &clientId) const{
 }
 
 void tokenBucketLimiter::deleteShard(Shard &shard, steady_clock::time_point currTime){
+
     auto ttl = max(seconds(10), seconds((int)ceil(capacity / refillRate)));
-    for (auto it = shard.clients.begin(); it != shard.clients.end(); )
-    {
+
+    for (auto it = shard.clients.begin(); it != shard.clients.end(); ){
+
         if (currTime - it->second.lastAccess >= ttl){
             it = shard.clients.erase(it);
         }
@@ -32,9 +34,11 @@ RateLimitResult tokenBucketLimiter::allow(const string &clientId, steady_clock::
     lock_guard<mutex> lock(shard.mtx);
 
     if (shard.lastDelete.time_since_epoch().count() == 0){
+
         shard.lastDelete = currTime;
     }
     else if (currTime - shard.lastDelete >= deleteInterval){
+        
         deleteShard(shard, currTime);
         shard.lastDelete = currTime;
     }
@@ -75,8 +79,8 @@ RateLimitResult tokenBucketLimiter::allow(const string &clientId, steady_clock::
 
 void tokenBucketLimiter::deleteOldClients(steady_clock::time_point currTime)
 {
-    for (int i = 0; i < numShards; i++)
-    {
+    for (int i = 0; i < numShards; i++){
+
         lock_guard<mutex> lock(shards[i].mtx);
         deleteShard(shards[i], currTime);
         shards[i].lastDelete = currTime;
@@ -86,8 +90,8 @@ void tokenBucketLimiter::deleteOldClients(steady_clock::time_point currTime)
 int tokenBucketLimiter::getClientCount() const
 {
     int count = 0;
-    for (int i = 0; i < numShards; i++)
-    {
+    for (int i = 0; i < numShards; i++){
+
         lock_guard<mutex> lock(const_cast<mutex&>(shards[i].mtx));
         count += (int)shards[i].clients.size();
     }

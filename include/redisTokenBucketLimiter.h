@@ -13,12 +13,14 @@ using namespace chrono;
 class redisTokenBucketLimiter
 {
 private:
+    //redis server info 
     string host;
     int port;
-    double capacity;
-    double refillRate;
     seconds ttl;
     string luaScript;
+
+    double capacity;
+    double refillRate;
 
     mutex mtx;
     redisContext *ctx;

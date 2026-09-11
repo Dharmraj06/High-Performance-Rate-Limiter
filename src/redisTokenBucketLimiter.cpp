@@ -46,23 +46,19 @@ redisTokenBucketLimiter::redisTokenBucketLimiter(double capacity, double refillR
     connect();
 }
 
-redisTokenBucketLimiter::~redisTokenBucketLimiter()
-{
+redisTokenBucketLimiter::~redisTokenBucketLimiter(){
     disconnect();
 }
 
-bool redisTokenBucketLimiter::connect()
-{
-    if (ctx)
-    {
+bool redisTokenBucketLimiter::connect(){
+    if (ctx){
         return true;
     }
 
     struct timeval timeout = {1, 500000}; // 1.5 seconds timeout
     ctx = redisConnectWithTimeout(host.c_str(), port, timeout);
 
-    if (!ctx || ctx->err)
-    {
+    if (!ctx || ctx->err){
         disconnect();
         return false;
     }
@@ -72,8 +68,7 @@ bool redisTokenBucketLimiter::connect()
 
 void redisTokenBucketLimiter::disconnect()
 {
-    if (ctx)
-    {
+    if (ctx){
         redisFree(ctx);
         ctx = nullptr;
     }
@@ -89,8 +84,7 @@ RateLimitResult redisTokenBucketLimiter::allow(const string &clientId)
 {
     lock_guard<mutex> lock(mtx);
 
-    if (!ctx && !connect())
-    {
+    if (!ctx && !connect()){
         return {0, 0, 1};
     }
 
@@ -108,18 +102,21 @@ RateLimitResult redisTokenBucketLimiter::allow(const string &clientId)
         rateStr.c_str(),
         ttlStr.c_str());
 
-    if (!reply)
-    {
+    if (!reply){
+        
         disconnect();
         return {0, 0, 1};
     }
 
-    if (reply->type == REDIS_REPLY_ARRAY && reply->elements >= 3)
-    {
+    if (reply->type == REDIS_REPLY_ARRAY && reply->elements >= 3){
+
         bool allowed = (reply->element[0]->integer == 1);
+
         int remaining = (int)reply->element[1]->integer;
         int retryAfter = (int)reply->element[2]->integer;
+
         freeReplyObject(reply);
+
         return {allowed, remaining, retryAfter};
     }
 
