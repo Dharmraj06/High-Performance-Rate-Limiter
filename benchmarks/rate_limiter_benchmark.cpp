@@ -9,247 +9,197 @@
 
 using namespace std;
 
-const int limit = (int)1e9;//1e9
-const chrono::seconds winDuration(60);
-
-const double capacity = 1e9;
-const double refillRate = 1e9;
-
-
-// shared limiters
-fixedWindowLimiter *fixedLimiter = nullptr;
-slidingWindowLimiter *slidingLimiter = nullptr;
-slidingWindowCounterLimiter *counterLimiter = nullptr;
-tokenBucketLimiter *tokenLimiter = nullptr;
+// Limit large enough that no benchmark run saturates it, so every
+// iteration exercises the allowed path.
+static const int             winLimit    = 1000000000;
+static const chrono::seconds winDuration = chrono::seconds(60);
+static const double          bucketCap   = 1000000000.0;
+static const double          fillRate    = 1000000000.0;
 
 
-// fixed findow
-void setupFixed(const benchmark::State &state)
+// Shared limiter pointers for concurrent benchmarks.
+//
+// Setup callbacks construct a fresh instance before each benchmark
+// configuration (thread count × repetition) starts. Teardown destroys it
+// afterward. This means different thread-count variants never share state,
+// and setup cost is excluded from the measured region.
+
+
+static fixedWindowLimiter*          fwLimiter  = nullptr;
+static slidingWindowLimiter*        swLimiter  = nullptr;
+static slidingWindowCounterLimiter* swcLimiter = nullptr;
+static tokenBucketLimiter*          tbLimiter  = nullptr;
+
+static void setupFW(const benchmark::State&)
 {
-    fixedLimiter = new fixedWindowLimiter(limit, winDuration);
+    delete fwLimiter;
+    fwLimiter = new fixedWindowLimiter(winLimit, winDuration);
+}
+static void teardownFW(const benchmark::State&)
+{
+    delete fwLimiter;
+    fwLimiter = nullptr;
 }
 
-void cleanupFixed(const benchmark::State &state)
+static void setupSW(const benchmark::State&)
 {
-    delete fixedLimiter;
-    fixedLimiter = nullptr;
+    delete swLimiter;
+    swLimiter = new slidingWindowLimiter(winLimit, winDuration);
+}
+static void teardownSW(const benchmark::State&)
+{
+    delete swLimiter;
+    swLimiter = nullptr;
 }
 
-
-// sliding window
-
-void setupSliding(const benchmark::State &state)
+static void setupSWC(const benchmark::State&)
 {
-    slidingLimiter = new slidingWindowLimiter(limit, winDuration);
+    delete swcLimiter;
+    swcLimiter = new slidingWindowCounterLimiter(winLimit, winDuration);
+}
+static void teardownSWC(const benchmark::State&)
+{
+    delete swcLimiter;
+    swcLimiter = nullptr;
 }
 
-void deleteSliding(const benchmark::State &state)
+static void setupTB(const benchmark::State&)
 {
-    delete slidingLimiter;
-    slidingLimiter = nullptr;
+    delete tbLimiter;
+    tbLimiter = new tokenBucketLimiter(bucketCap, fillRate);
+}
+static void teardownTB(const benchmark::State&)
+{
+    delete tbLimiter;
+    tbLimiter = nullptr;
 }
 
+// ---------------------------------------------------------------------------
+// Workload A - single-thread baseline
+// ---------------------------------------------------------------------------
 
-// sliding window counter
-
-void setupCounter(const benchmark::State &state)
+static void BM_FixedWindow_Single(benchmark::State& state)
 {
-    counterLimiter = new slidingWindowCounterLimiter(limit, winDuration);
-}
-
-void deleteCounter(const benchmark::State &state)
-{
-    delete counterLimiter;
-    counterLimiter = nullptr;
-}
-
-
-// token bucket
-
-void setupTokenBucket(const benchmark::State &state)
-{
-    tokenLimiter = new tokenBucketLimiter(capacity, refillRate);
-}
-
-void deleteTokenBucket(const benchmark::State &state)
-{
-    delete tokenLimiter;
-    tokenLimiter = nullptr;
-}
-
-
-// ---------------- single thread benchmarks ----------------
-
-static void BM_FixedWindow_Single(benchmark::State &state)
-{
-    fixedWindowLimiter limiter(limit, winDuration);
-
-    for(auto _ : state)
-    {
+    fixedWindowLimiter limiter(winLimit, winDuration);
+    for (auto _ : state)
         limiter.allow("client0", chrono::steady_clock::now());
-    }
 }
-
 BENCHMARK(BM_FixedWindow_Single);
 
-
-static void BM_SlidingWindowLog_Single(benchmark::State &state)
+static void BM_SlidingWindowLog_Single(benchmark::State& state)
 {
-    slidingWindowLimiter limiter(limit, winDuration);
-
-    for(auto _ : state)
-    {
+    slidingWindowLimiter limiter(winLimit, winDuration);
+    for (auto _ : state)
         limiter.allow("client0", chrono::steady_clock::now());
-    }
 }
-
 BENCHMARK(BM_SlidingWindowLog_Single);
 
-
-static void BM_SlidingWindowCounter_Single(benchmark::State &state)
+static void BM_SlidingWindowCounter_Single(benchmark::State& state)
 {
-    slidingWindowCounterLimiter limiter(limit, winDuration);
-
-    for(auto _ : state)
-    {
+    slidingWindowCounterLimiter limiter(winLimit, winDuration);
+    for (auto _ : state)
         limiter.allow("client0", chrono::steady_clock::now());
-    }
 }
-
 BENCHMARK(BM_SlidingWindowCounter_Single);
 
-
-static void BM_TokenBucket_Single(benchmark::State &state)
+static void BM_TokenBucket_Single(benchmark::State& state)
 {
-    tokenBucketLimiter limiter(capacity, refillRate);
-
-    for(auto _ : state)
-    {
+    tokenBucketLimiter limiter(bucketCap, fillRate);
+    for (auto _ : state)
         limiter.allow("client0", chrono::steady_clock::now());
-    }
 }
-
 BENCHMARK(BM_TokenBucket_Single);
 
+// ---------------------------------------------------------------------------
+// Workload B - concurrent same-client
+// ---------------------------------------------------------------------------
 
-// ---------------- Same Client Benchmarks ----------------
-
-static void BM_FixedWindow_SameClient(benchmark::State &state)
+static void BM_FixedWindow_SameClient(benchmark::State& state)
 {
-    for(auto _ : state)
-    {
-        fixedLimiter->allow("client0", chrono::steady_clock::now());
-    }
+    for (auto _ : state)
+        fwLimiter->allow("client0", chrono::steady_clock::now());
 }
+BENCHMARK(BM_FixedWindow_SameClient)
+    ->ThreadRange(1, 16)
+    ->Setup(setupFW)->Teardown(teardownFW)
+    ->UseRealTime();
 
-BENCHMARK(BM_FixedWindow_SameClient)->ThreadRange(1, 16)->Setup(setupFixed)->Teardown(cleanupFixed)->UseRealTime();
-
-
-static void BM_SlidingWindowLog_SameClient(benchmark::State &state)
+static void BM_SlidingWindowLog_SameClient(benchmark::State& state)
 {
-    for(auto _ : state)
-    {
-        slidingLimiter->allow("client0", chrono::steady_clock::now());
-    }
+    for (auto _ : state)
+        swLimiter->allow("client0", chrono::steady_clock::now());
 }
+BENCHMARK(BM_SlidingWindowLog_SameClient)
+    ->ThreadRange(1, 16)
+    ->Setup(setupSW)->Teardown(teardownSW)
+    ->UseRealTime();
 
-BENCHMARK(BM_SlidingWindowLog_SameClient)->ThreadRange(1, 16)->Setup(setupSliding)->Teardown(deleteSliding)->UseRealTime();
-
-
-static void BM_SlidingWindowCounter_SameClient(benchmark::State &state)
+static void BM_SlidingWindowCounter_SameClient(benchmark::State& state)
 {
-    for(auto _ : state)
-    {
-        counterLimiter->allow("client0", chrono::steady_clock::now());
-    }
+    for (auto _ : state)
+        swcLimiter->allow("client0", chrono::steady_clock::now());
 }
-
 BENCHMARK(BM_SlidingWindowCounter_SameClient)
     ->ThreadRange(1, 16)
-    ->Setup(setupCounter)
-    ->Teardown(deleteCounter)
+    ->Setup(setupSWC)->Teardown(teardownSWC)
     ->UseRealTime();
 
-
-static void BM_TokenBucket_SameClient(benchmark::State &state)
+static void BM_TokenBucket_SameClient(benchmark::State& state)
 {
-    for(auto _ : state)
-    {
-        tokenLimiter->allow("client0", chrono::steady_clock::now());
-    }
+    for (auto _ : state)
+        tbLimiter->allow("client0", chrono::steady_clock::now());
 }
-
 BENCHMARK(BM_TokenBucket_SameClient)
     ->ThreadRange(1, 16)
-    ->Setup(setupTokenBucket)
-    ->Teardown(deleteTokenBucket)
+    ->Setup(setupTB)->Teardown(teardownTB)
     ->UseRealTime();
 
+// ---------------------------------------------------------------------------
+// Workload C - concurrent multi-client
+// ---------------------------------------------------------------------------
 
-// ---------------- multi client b-enchmarks ----------------
-
-static void BM_FixedWindow_MultiClient(benchmark::State &state)
+static void BM_FixedWindow_MultiClient(benchmark::State& state)
 {
     string clientId = "client" + to_string(state.thread_index());
-
-    for(auto _ : state)
-    {
-        fixedLimiter->allow(clientId, chrono::steady_clock::now());
-    }
+    for (auto _ : state)
+        fwLimiter->allow(clientId, chrono::steady_clock::now());
 }
-
 BENCHMARK(BM_FixedWindow_MultiClient)
     ->ThreadRange(1, 16)
-    ->Setup(setupFixed)
-    ->Teardown(cleanupFixed)
+    ->Setup(setupFW)->Teardown(teardownFW)
     ->UseRealTime();
 
-
-static void BM_SlidingWindowLog_MultiClient(benchmark::State &state)
+static void BM_SlidingWindowLog_MultiClient(benchmark::State& state)
 {
     string clientId = "client" + to_string(state.thread_index());
-
-    for(auto _ : state)
-    {
-        slidingLimiter->allow(clientId, chrono::steady_clock::now());
-    }
+    for (auto _ : state)
+        swLimiter->allow(clientId, chrono::steady_clock::now());
 }
-
 BENCHMARK(BM_SlidingWindowLog_MultiClient)
     ->ThreadRange(1, 16)
-    ->Setup(setupSliding)
-    ->Teardown(deleteSliding)
+    ->Setup(setupSW)->Teardown(teardownSW)
     ->UseRealTime();
 
-
-static void BM_SlidingWindowCounter_MultiClient(benchmark::State &state)
+static void BM_SlidingWindowCounter_MultiClient(benchmark::State& state)
 {
     string clientId = "client" + to_string(state.thread_index());
-
-    for(auto _ : state)
-    {
-        counterLimiter->allow(clientId, chrono::steady_clock::now());
-    }
+    for (auto _ : state)
+        swcLimiter->allow(clientId, chrono::steady_clock::now());
 }
-
 BENCHMARK(BM_SlidingWindowCounter_MultiClient)
     ->ThreadRange(1, 16)
-    ->Setup(setupCounter)
-    ->Teardown(deleteCounter)
+    ->Setup(setupSWC)->Teardown(teardownSWC)
     ->UseRealTime();
 
-
-static void BM_TokenBucket_MultiClient(benchmark::State &state)
+static void BM_TokenBucket_MultiClient(benchmark::State& state)
 {
     string clientId = "client" + to_string(state.thread_index());
-
-    for(auto _ : state)
-    {
-        tokenLimiter->allow(clientId, chrono::steady_clock::now());
-    }
+    for (auto _ : state)
+        tbLimiter->allow(clientId, chrono::steady_clock::now());
 }
-
-BENCHMARK(BM_TokenBucket_MultiClient)->ThreadRange(1, 16)->Setup(setupTokenBucket)->Teardown(deleteTokenBucket)->UseRealTime();
-
+BENCHMARK(BM_TokenBucket_MultiClient)
+    ->ThreadRange(1, 16)
+    ->Setup(setupTB)->Teardown(teardownTB)
+    ->UseRealTime();
 
 BENCHMARK_MAIN();

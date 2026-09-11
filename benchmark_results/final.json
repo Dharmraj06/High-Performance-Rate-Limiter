@@ -1,0 +1,154 @@
+{
+  "benchmark": {
+    "single_thread_operations": 250000,
+    "threads": 8,
+    "operations_per_thread": 250000,
+    "multi_thread_total_operations": 2000000,
+    "redis_operations": 20000
+  },
+  "results": [
+    {
+      "name": "Fixed Window Limiter",
+      "type": "In-Memory",
+      "scenario": "Single Thread",
+      "total_ops": 250000,
+      "allowed_ops": 250000,
+      "denied_ops": 0,
+      "duration_ms": 77.75,
+      "throughput_ops_sec": 3215541,
+      "avg_latency_ns": 311.0
+    },
+    {
+      "name": "Sliding Window Log",
+      "type": "In-Memory",
+      "scenario": "Single Thread",
+      "total_ops": 250000,
+      "allowed_ops": 250000,
+      "denied_ops": 0,
+      "duration_ms": 67.96,
+      "throughput_ops_sec": 3678510,
+      "avg_latency_ns": 271.8
+    },
+    {
+      "name": "Sliding Window Counter",
+      "type": "In-Memory",
+      "scenario": "Single Thread",
+      "total_ops": 250000,
+      "allowed_ops": 250000,
+      "denied_ops": 0,
+      "duration_ms": 64.89,
+      "throughput_ops_sec": 3852896,
+      "avg_latency_ns": 259.5
+    },
+    {
+      "name": "In-Memory Token Bucket",
+      "type": "In-Memory",
+      "scenario": "Single Thread",
+      "total_ops": 250000,
+      "allowed_ops": 250000,
+      "denied_ops": 0,
+      "duration_ms": 76.38,
+      "throughput_ops_sec": 3273111,
+      "avg_latency_ns": 305.5
+    },
+    {
+      "name": "Fixed Window Limiter",
+      "type": "In-Memory",
+      "scenario": "Same Client",
+      "total_ops": 2000000,
+      "allowed_ops": 2000000,
+      "denied_ops": 0,
+      "duration_ms": 1332.21,
+      "throughput_ops_sec": 1501268,
+      "avg_latency_ns": 666.1
+    },
+    {
+      "name": "Sliding Window Log",
+      "type": "In-Memory",
+      "scenario": "Same Client",
+      "total_ops": 2000000,
+      "allowed_ops": 2000000,
+      "denied_ops": 0,
+      "duration_ms": 2107.05,
+      "throughput_ops_sec": 949194,
+      "avg_latency_ns": 1053.5
+    },
+    {
+      "name": "Sliding Window Counter",
+      "type": "In-Memory",
+      "scenario": "Same Client",
+      "total_ops": 2000000,
+      "allowed_ops": 2000000,
+      "denied_ops": 0,
+      "duration_ms": 1778.20,
+      "throughput_ops_sec": 1124731,
+      "avg_latency_ns": 889.1
+    },
+    {
+      "name": "In-Memory Token Bucket",
+      "type": "In-Memory",
+      "scenario": "Same Client",
+      "total_ops": 2000000,
+      "allowed_ops": 2000000,
+      "denied_ops": 0,
+      "duration_ms": 1557.50,
+      "throughput_ops_sec": 1284113,
+      "avg_latency_ns": 778.7
+    },
+    {
+      "name": "Fixed Window Limiter",
+      "type": "In-Memory",
+      "scenario": "Multiple Clients",
+      "total_ops": 2000000,
+      "allowed_ops": 2000000,
+      "denied_ops": 0,
+      "duration_ms": 63.01,
+      "throughput_ops_sec": 31739012,
+      "avg_latency_ns": 31.5
+    },
+    {
+      "name": "Sliding Window Log",
+      "type": "In-Memory",
+      "scenario": "Multiple Clients",
+      "total_ops": 2000000,
+      "allowed_ops": 2000000,
+      "denied_ops": 0,
+      "duration_ms": 93.00,
+      "throughput_ops_sec": 21506468,
+      "avg_latency_ns": 46.5
+    },
+    {
+      "name": "Sliding Window Counter",
+      "type": "In-Memory",
+      "scenario": "Multiple Clients",
+      "total_ops": 2000000,
+      "allowed_ops": 2000000,
+      "denied_ops": 0,
+      "duration_ms": 86.97,
+      "throughput_ops_sec": 22996599,
+      "avg_latency_ns": 43.5
+    },
+    {
+      "name": "In-Memory Token Bucket",
+      "type": "In-Memory",
+      "scenario": "Multiple Clients",
+      "total_ops": 2000000,
+      "allowed_ops": 2000000,
+      "denied_ops": 0,
+      "duration_ms": 95.07,
+      "throughput_ops_sec": 21036604,
+      "avg_latency_ns": 47.5
+    },
+    {
+      "name": "Redis Token Bucket",
+      "type": "Distributed",
+      "scenario": "Redis",
+      "total_ops": 20000,
+      "allowed_ops": 20000,
+      "denied_ops": 0,
+      "duration_ms": 1628.12,
+      "throughput_ops_sec": 12284,
+      "avg_latency_ns": 81405.9
+    }
+  ]
+}
