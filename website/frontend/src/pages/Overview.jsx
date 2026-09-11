@@ -16,7 +16,7 @@ const PROSE = { maxWidth: '680px' }
 function StatCard({ value, label, detail }) {
   return (
     <div
-      className="rounded p-5"
+      className="flex flex-col h-full rounded p-5"
       style={{ border: '1px solid var(--border)', backgroundColor: 'var(--bg-surface)' }}
     >
       <span
@@ -28,7 +28,7 @@ function StatCard({ value, label, detail }) {
       <p className="mt-1 text-xs uppercase tracking-wider" style={{ color: 'var(--text-secondary)' }}>
         {label}
       </p>
-      <p className="mt-2 text-xs leading-relaxed" style={{ color: 'var(--text-muted)' }}>
+      <p className="mt-auto pt-3 text-xs leading-relaxed" style={{ color: 'var(--text-muted)' }}>
         {detail}
       </p>
     </div>
@@ -39,10 +39,10 @@ function StatCard({ value, label, detail }) {
 function AlgoCard({ name, tags, description, tradeOff }) {
   return (
     <div
-      className="rounded p-5"
+      className="flex flex-col h-full rounded p-6"
       style={{ border: '1px solid var(--border)', backgroundColor: 'var(--bg-surface)' }}
     >
-      <div className="mb-2 flex flex-wrap items-baseline justify-between gap-2">
+      <div className="mb-3 flex flex-wrap items-baseline justify-between gap-2">
         <h3 className="text-sm font-medium" style={{ color: 'var(--text-primary)' }}>
           {name}
         </h3>
@@ -50,7 +50,7 @@ function AlgoCard({ name, tags, description, tradeOff }) {
           {tags.map(tag => (
             <span
               key={tag}
-              className="rounded px-1.5 py-0.5 text-xs"
+              className="rounded px-2 py-0.5 text-xs"
               style={{ fontFamily: 'var(--font-mono)', color: 'var(--text-muted)', backgroundColor: 'var(--bg-subtle)', border: '1px solid var(--border)' }}
             >
               {tag}
@@ -58,11 +58,11 @@ function AlgoCard({ name, tags, description, tradeOff }) {
           ))}
         </div>
       </div>
-      <p className="text-sm leading-relaxed" style={{ color: 'var(--text-secondary)' }}>
+      <p className="text-sm leading-relaxed mb-4" style={{ color: 'var(--text-secondary)' }}>
         {description}
       </p>
-      <p className="mt-2 text-xs leading-relaxed" style={{ color: 'var(--text-muted)', borderTop: '1px solid var(--border)', paddingTop: '0.5rem' }}>
-        <span style={{ color: 'var(--text-secondary)' }}>Trade-off: </span>{tradeOff}
+      <p className="mt-auto text-xs leading-relaxed pt-3" style={{ color: 'var(--text-muted)', borderTop: '1px solid var(--border)' }}>
+        <span style={{ color: 'var(--text-primary)' }}>Trade-off: </span>{tradeOff}
       </p>
     </div>
   )
@@ -71,17 +71,17 @@ function AlgoCard({ name, tags, description, tradeOff }) {
 /* ─── Flow Step ──────────────────────────────────────────────────── */
 function FlowStep({ number, title, detail }) {
   return (
-    <div className="flex gap-3 p-4 rounded" style={{ border: '1px solid var(--border)', backgroundColor: 'var(--bg-surface)' }}>
-      <div
-        className="flex h-6 w-6 shrink-0 items-center justify-center rounded text-xs font-semibold mt-0.5"
-        style={{ backgroundColor: 'var(--bg-subtle)', border: '1px solid var(--border-strong)', color: 'var(--text-primary)', fontFamily: 'var(--font-mono)' }}
-      >
-        {number}
+    <div className="flex flex-col h-full p-5 rounded" style={{ border: '1px solid var(--border)', backgroundColor: 'var(--bg-surface)' }}>
+      <div className="flex items-center gap-3 mb-2">
+        <div
+          className="flex h-6 w-6 shrink-0 items-center justify-center rounded text-xs font-semibold"
+          style={{ backgroundColor: 'var(--bg-subtle)', border: '1px solid var(--border-strong)', color: 'var(--text-primary)', fontFamily: 'var(--font-mono)' }}
+        >
+          {number}
+        </div>
+        <h4 className="text-sm font-medium" style={{ color: 'var(--text-primary)' }}>{title}</h4>
       </div>
-      <div>
-        <h4 className="text-sm font-medium mb-0.5" style={{ color: 'var(--text-primary)' }}>{title}</h4>
-        <p className="text-sm leading-relaxed" style={{ color: 'var(--text-muted)' }}>{detail}</p>
-      </div>
+      <p className="text-sm leading-relaxed mt-auto" style={{ color: 'var(--text-muted)' }}>{detail}</p>
     </div>
   )
 }
@@ -124,9 +124,9 @@ export default function Overview() {
       <Section id="algorithms">
         <div style={MAX_W}>
           <SectionLabel>Algorithms</SectionLabel>
-          <SectionHeading className="mb-3">Rate-Limiting Strategies</SectionHeading>
+          <SectionHeading className="mb-4">Rate-Limiting Strategies</SectionHeading>
           <div style={PROSE}>
-            <BodyText className="mb-7">
+            <BodyText className="mb-8">
               Four in-memory algorithms with distinct accuracy and memory trade-offs, plus a Redis-backed
               distributed implementation for cross-server quota enforcement.
             </BodyText>
@@ -192,7 +192,7 @@ export default function Overview() {
       <Section id="architecture" border>
         <div style={MAX_W}>
           <SectionLabel>Architecture</SectionLabel>
-          <SectionHeading className="mb-3">64-Shard Partitioned Concurrency</SectionHeading>
+          <SectionHeading className="mb-4">64-Shard Partitioned Concurrency</SectionHeading>
           <div style={PROSE}>
             <BodyText className="mb-8">
               A single global mutex serializes all requests under concurrent load. Instead, each limiter
@@ -319,19 +319,19 @@ export default function Overview() {
             ].map(({ title, badge, detail }) => (
               <div
                 key={title}
-                className="rounded p-4"
+                className="flex flex-col h-full rounded p-5"
                 style={{ border: '1px solid var(--border)', backgroundColor: 'var(--bg-surface)' }}
               >
-                <div className="flex items-center justify-between mb-1.5">
+                <div className="flex items-center justify-between gap-3 mb-3">
                   <h4 className="text-sm font-medium" style={{ color: 'var(--text-primary)' }}>{title}</h4>
                   <span
-                    className="rounded px-1.5 py-0.5 text-xs"
+                    className="rounded px-2 py-0.5 text-xs whitespace-nowrap"
                     style={{ fontFamily: 'var(--font-mono)', color: 'var(--text-muted)', backgroundColor: 'var(--bg-subtle)', border: '1px solid var(--border)' }}
                   >
                     {badge}
                   </span>
                 </div>
-                <p className="text-sm leading-relaxed" style={{ color: 'var(--text-secondary)' }}>{detail}</p>
+                <p className="text-sm leading-relaxed mt-auto" style={{ color: 'var(--text-secondary)' }}>{detail}</p>
               </div>
             ))}
           </div>
@@ -342,23 +342,23 @@ export default function Overview() {
       <Section id="benchmarks-link" border>
         <div style={MAX_W}>
           <div
-            className="rounded p-7 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-5"
+            className="rounded p-8 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-6"
             style={{ backgroundColor: 'var(--bg-surface)', border: '1px solid var(--border-strong)' }}
           >
             <div>
               <SectionLabel>Performance Validation</SectionLabel>
-              <h3 className="text-xl font-semibold mb-2" style={{ color: 'var(--text-primary)' }}>
+              <h3 className="text-xl font-semibold mb-3" style={{ color: 'var(--text-primary)' }}>
                 Empirical Benchmark Results
               </h3>
-              <p className="text-sm" style={{ color: 'var(--text-secondary)' }}>
+              <p className="text-sm max-w-xl leading-relaxed" style={{ color: 'var(--text-secondary)' }}>
                 Baseline unsharded measurements vs. 64-shard architecture across concurrency scenarios,
                 with Redis distributed latency context.
               </p>
             </div>
-            <div className="shrink-0">
+            <div className="shrink-0 flex sm:block justify-start mt-2 sm:mt-0">
               <Link
                 to="/benchmarks"
-                className="inline-flex items-center gap-2 rounded px-5 py-2.5 text-sm font-medium no-underline"
+                className="inline-flex items-center gap-2 rounded px-6 py-3 text-sm font-medium no-underline transition-opacity hover:opacity-90"
                 style={{ color: '#000000', backgroundColor: '#ffffff', border: '1px solid #ffffff' }}
               >
                 View benchmarks <span aria-hidden="true">&rarr;</span>

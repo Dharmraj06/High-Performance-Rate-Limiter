@@ -27,8 +27,8 @@ function fmtLatency(ns) {
 function Th({ children, right }) {
   return (
     <th
-      className={`px-4 py-3 text-xs font-medium uppercase tracking-wider ${right ? 'text-right' : ''}`}
-      style={{ color: 'var(--text-muted)', whiteSpace: 'nowrap' }}
+      className={`px-5 py-4 text-xs font-semibold uppercase tracking-wider ${right ? 'text-right' : 'text-left'}`}
+      style={{ color: 'var(--text-primary)', whiteSpace: 'nowrap' }}
     >
       {children}
     </th>
@@ -38,7 +38,7 @@ function Th({ children, right }) {
 function Td({ children, right, mono, primary, dim }) {
   return (
     <td
-      className={`px-4 py-3 text-sm ${right ? 'text-right tabular-nums' : ''}`}
+      className={`px-5 py-3.5 text-sm ${right ? 'text-right tabular-nums' : 'text-left'}`}
       style={{
         fontFamily: mono ? 'var(--font-mono)' : 'inherit',
         color: dim ? 'var(--text-muted)' : primary ? 'var(--text-primary)' : 'var(--text-secondary)',
@@ -53,10 +53,10 @@ function Td({ children, right, mono, primary, dim }) {
 function TableWrap({ children }) {
   return (
     <div
-      className="overflow-x-auto rounded"
+      className="overflow-x-auto rounded mt-8 mb-8"
       style={{ border: '1px solid var(--border)', backgroundColor: 'var(--bg-surface)' }}
     >
-      <table className="w-full text-left border-collapse">
+      <table className="w-full border-collapse">
         {children}
       </table>
     </div>
@@ -202,7 +202,7 @@ export default function Benchmarks() {
 
               <TableWrap>
                 <thead>
-                  <tr style={{ borderBottom: '1px solid var(--border-strong)' }}>
+                  <tr style={{ borderBottom: '2px solid var(--border-strong)' }}>
                     <Th>Algorithm</Th>
                     <Th>Scenario</Th>
                     <Th right>Threads</Th>
@@ -241,7 +241,7 @@ export default function Benchmarks() {
 
               <TableWrap>
                 <thead>
-                  <tr style={{ borderBottom: '1px solid var(--border-strong)' }}>
+                  <tr style={{ borderBottom: '2px solid var(--border-strong)' }}>
                     <Th>Algorithm</Th>
                     <Th>Scenario</Th>
                     <Th right>Total Ops</Th>
@@ -297,7 +297,7 @@ export default function Benchmarks() {
 
               <TableWrap>
                 <thead>
-                  <tr style={{ borderBottom: '1px solid var(--border-strong)' }}>
+                  <tr style={{ borderBottom: '2px solid var(--border-strong)' }}>
                     <Th>Algorithm</Th>
                     <Th>Scenario</Th>
                     <Th right>Baseline (ops/s)</Th>
@@ -324,7 +324,7 @@ export default function Benchmarks() {
                         <Td right mono>{fmtInt(baseline.throughput_ops_sec)}</Td>
                         <Td right mono primary>{fmtInt(fin.throughput_ops_sec)}</Td>
                         <td
-                          className="px-4 py-3 text-right tabular-nums text-sm font-semibold"
+                          className="px-5 py-3.5 text-right tabular-nums text-sm font-semibold"
                           style={{ fontFamily: 'var(--font-mono)', color: 'var(--text-primary)', whiteSpace: 'nowrap' }}
                         >
                           {fmtPct(cmp.throughput_change_pct)}
@@ -332,7 +332,7 @@ export default function Benchmarks() {
                         <Td right mono dim>{fmtLatency(baseline.avg_latency_ns)}</Td>
                         <Td right mono>{fmtLatency(fin.avg_latency_ns)}</Td>
                         <td
-                          className="px-4 py-3 text-right tabular-nums text-sm font-bold"
+                          className="px-5 py-3.5 text-right tabular-nums text-sm font-bold"
                           style={{ fontFamily: 'var(--font-mono)', color: 'var(--text-primary)', whiteSpace: 'nowrap' }}
                         >
                           {fmtX(cmp.speedup_factor)}
@@ -405,12 +405,12 @@ export default function Benchmarks() {
               <SectionLabel>Analysis</SectionLabel>
               <SectionHeading className="mb-6">Key Observations</SectionHeading>
 
-              <div className="grid gap-4 sm:grid-cols-2">
-                <div className="rounded p-5" style={{ border: '1px solid var(--border)', backgroundColor: 'var(--bg-surface)' }}>
-                  <h4 className="text-sm font-semibold mb-2" style={{ color: 'var(--text-primary)' }}>
+              <div className="grid gap-4 sm:grid-cols-2 mt-8">
+                <div className="flex flex-col h-full rounded p-6" style={{ border: '1px solid var(--border)', backgroundColor: 'var(--bg-surface)' }}>
+                  <h4 className="text-sm font-semibold mb-3" style={{ color: 'var(--text-primary)' }}>
                     Multi-Client Concurrency Scaling
                   </h4>
-                  <p className="text-sm leading-relaxed" style={{ color: 'var(--text-secondary)' }}>
+                  <p className="text-sm leading-relaxed mt-auto" style={{ color: 'var(--text-secondary)' }}>
                     {maxSpeedup ? (
                       <>
                         Sharding delivers up to{' '}
@@ -423,22 +423,22 @@ export default function Benchmarks() {
                   </p>
                 </div>
 
-                <div className="rounded p-5" style={{ border: '1px solid var(--border)', backgroundColor: 'var(--bg-surface)' }}>
-                  <h4 className="text-sm font-semibold mb-2" style={{ color: 'var(--text-primary)' }}>
+                <div className="flex flex-col h-full rounded p-6" style={{ border: '1px solid var(--border)', backgroundColor: 'var(--bg-surface)' }}>
+                  <h4 className="text-sm font-semibold mb-3" style={{ color: 'var(--text-primary)' }}>
                     Same-Client Serialization
                   </h4>
-                  <p className="text-sm leading-relaxed" style={{ color: 'var(--text-secondary)' }}>
+                  <p className="text-sm leading-relaxed mt-auto" style={{ color: 'var(--text-secondary)' }}>
                     When all 8 threads target the same client ID, all requests route to one shard and serialize
                     on that mutex. Throughput plateaus at ~949K–1.5M ops/sec. This is correct behavior —
                     same-client state must be accessed sequentially to preserve consistency.
                   </p>
                 </div>
 
-                <div className="rounded p-5" style={{ border: '1px solid var(--border)', backgroundColor: 'var(--bg-surface)' }}>
-                  <h4 className="text-sm font-semibold mb-2" style={{ color: 'var(--text-primary)' }}>
+                <div className="flex flex-col h-full rounded p-6" style={{ border: '1px solid var(--border)', backgroundColor: 'var(--bg-surface)' }}>
+                  <h4 className="text-sm font-semibold mb-3" style={{ color: 'var(--text-primary)' }}>
                     Algorithm Trade-offs
                   </h4>
-                  <p className="text-sm leading-relaxed" style={{ color: 'var(--text-secondary)' }}>
+                  <p className="text-sm leading-relaxed mt-auto" style={{ color: 'var(--text-secondary)' }}>
                     Fixed Window reaches the highest throughput (31.7M ops/s in multi-client) due to simple
                     integer arithmetic. Sliding Window Counter achieves 23.0M ops/s with O(1) memory and no
                     boundary burst anomaly. Sliding Window Log runs ~32% slower due to per-request timestamp
@@ -446,11 +446,11 @@ export default function Benchmarks() {
                   </p>
                 </div>
 
-                <div className="rounded p-5" style={{ border: '1px solid var(--border)', backgroundColor: 'var(--bg-surface)' }}>
-                  <h4 className="text-sm font-semibold mb-2" style={{ color: 'var(--text-primary)' }}>
+                <div className="flex flex-col h-full rounded p-6" style={{ border: '1px solid var(--border)', backgroundColor: 'var(--bg-surface)' }}>
+                  <h4 className="text-sm font-semibold mb-3" style={{ color: 'var(--text-primary)' }}>
                     Redis vs. In-Memory
                   </h4>
-                  <p className="text-sm leading-relaxed" style={{ color: 'var(--text-secondary)' }}>
+                  <p className="text-sm leading-relaxed mt-auto" style={{ color: 'var(--text-secondary)' }}>
                     Redis latency (~81 µs) is roughly 1,700× higher than in-memory execution (~47 ns). The
                     overhead comes from IPC and socket round-trips, not from the token bucket algorithm itself.
                     Redis enables cross-server quota enforcement that in-memory limiters cannot provide.
