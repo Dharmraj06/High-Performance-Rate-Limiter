@@ -3,17 +3,17 @@
 /* ─── Design Tokens ─────────────────────────────────────────────── */
 :root {
   /* Backgrounds */
-  --bg-base:    #000000;
+  --bg-base: #000000;
   --bg-surface: #0a0a0a;
-  --bg-subtle:  #111111;
+  --bg-subtle: #111111;
 
   /* Text — pure white/gray scale only */
-  --text-primary:   #ffffff;
+  --text-primary: #ffffff;
   --text-secondary: #999999;
-  --text-muted:     #555555;
+  --text-muted: #555555;
 
   /* Borders — neutral grays */
-  --border:        #222222;
+  --border: #222222;
   --border-strong: #333333;
 
   /* Typography */
@@ -22,7 +22,9 @@
 }
 
 /* ─── Base Reset ─────────────────────────────────────────────────── */
-*, *::before, *::after {
+*,
+*::before,
+*::after {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
@@ -44,9 +46,18 @@ body {
 }
 
 /* ─── Scrollbar ──────────────────────────────────────────────────── */
-::-webkit-scrollbar        { width: 5px; }
-::-webkit-scrollbar-track  { background: var(--bg-base); }
-::-webkit-scrollbar-thumb  { background: var(--border); border-radius: 3px; }
+::-webkit-scrollbar {
+  width: 5px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--bg-base);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--border);
+  border-radius: 3px;
+}
 
 /* ─── Selection ──────────────────────────────────────────────────── */
 ::selection {

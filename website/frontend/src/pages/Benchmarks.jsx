@@ -12,10 +12,10 @@ const MAX_W = {
 const PROSE = { maxWidth: '680px' }
 
 /* ─── Formatting Helpers ─────────────────────────────────────────── */
-function fmtInt(v)  { return (v == null || isNaN(v)) ? '—' : Math.round(v).toLocaleString() }
+function fmtInt(v) { return (v == null || isNaN(v)) ? '—' : Math.round(v).toLocaleString() }
 function fmtDec(v, d = 2) { return (v == null || isNaN(v)) ? '—' : Number(v).toFixed(d) }
-function fmtPct(v)  { if (v == null || isNaN(v)) return '—'; const s = v > 0 ? '+' : ''; return `${s}${v.toFixed(1)}%` }
-function fmtX(v)    { return (v == null || isNaN(v)) ? '—' : `${Number(v).toFixed(1)}×` }
+function fmtPct(v) { if (v == null || isNaN(v)) return '—'; const s = v > 0 ? '+' : ''; return `${s}${v.toFixed(1)}%` }
+function fmtX(v) { return (v == null || isNaN(v)) ? '—' : `${Number(v).toFixed(1)}×` }
 
 function fmtLatency(ns) {
   if (ns == null || isNaN(ns)) return '—'
@@ -65,11 +65,11 @@ function TableWrap({ children }) {
 
 /* ─── Benchmarks Page ────────────────────────────────────────────── */
 export default function Benchmarks() {
-  const [loading, setLoading]         = useState(true)
-  const [error, setError]             = useState(null)
+  const [loading, setLoading] = useState(true)
+  const [error, setError] = useState(null)
   const [baselineData, setBaselineData] = useState(null)
-  const [finalData, setFinalData]     = useState(null)
-  const [compData, setCompData]       = useState(null)
+  const [finalData, setFinalData] = useState(null)
+  const [compData, setCompData] = useState(null)
 
   const load = async () => {
     setLoading(true)
@@ -96,16 +96,16 @@ export default function Benchmarks() {
   useEffect(() => { load() }, [])
 
   /* Derived data */
-  const env      = compData?.summary?.baseline_environment ?? baselineData?.context ?? {}
-  const cfg      = compData?.summary?.final_config ?? finalData?.benchmark ?? {}
-  const comps    = compData?.comparisons ?? []
-  const comparable    = comps.filter(c => c.comparable)
+  const env = compData?.summary?.baseline_environment ?? baselineData?.context ?? {}
+  const cfg = compData?.summary?.final_config ?? finalData?.benchmark ?? {}
+  const comps = compData?.comparisons ?? []
+  const comparable = comps.filter(c => c.comparable)
   const nonComparable = comps.filter(c => !c.comparable)
   const redis = finalData?.results?.find(r => r.type === 'Distributed' || r.scenario === 'Redis')
 
   /* Key stats for observations */
-  const multiComps  = comparable.filter(c => c.scenario === 'Multiple Clients')
-  const maxSpeedup  = multiComps.reduce((m, c) => c.comparison.speedup_factor > (m?.comparison?.speedup_factor ?? 0) ? c : m, null)
+  const multiComps = comparable.filter(c => c.scenario === 'Multiple Clients')
+  const maxSpeedup = multiComps.reduce((m, c) => c.comparison.speedup_factor > (m?.comparison?.speedup_factor ?? 0) ? c : m, null)
 
   return (
     <main>
