@@ -53,7 +53,7 @@ function Td({ children, right, mono, primary, dim }) {
 function TableWrap({ children }) {
   return (
     <div
-      className="overflow-x-auto rounded mt-8 mb-8"
+      className="w-full overflow-x-auto rounded mt-6 mb-6"
       style={{ border: '1px solid var(--border)', backgroundColor: 'var(--bg-surface)' }}
     >
       <table className="w-full border-collapse">
@@ -114,7 +114,7 @@ export default function Benchmarks() {
       <Section id="benchmarks-intro">
         <div style={MAX_W}>
           <SectionLabel>Benchmarks</SectionLabel>
-          <PageHeading className="mb-5">Performance Analysis</PageHeading>
+          <PageHeading className="mb-3">Performance Analysis</PageHeading>
           <div style={PROSE}>
             <BodyText>
               Two benchmark suites: a Google Benchmark micro-benchmarking harness for nanosecond-precision
@@ -167,7 +167,7 @@ export default function Benchmarks() {
           <Section id="conditions" border>
             <div style={MAX_W}>
               <SectionLabel>Conditions</SectionLabel>
-              <SectionHeading className="mb-6">Benchmark Environment</SectionHeading>
+              <SectionHeading className="mb-5">Benchmark Environment</SectionHeading>
               <div className="grid gap-4 sm:grid-cols-2 md:grid-cols-4">
                 {[
                   ['Build', `-O3 / Release · C++23 · GCC 13+`],
@@ -192,7 +192,7 @@ export default function Benchmarks() {
           <Section id="baseline" border>
             <div style={MAX_W}>
               <SectionLabel>Baseline</SectionLabel>
-              <SectionHeading className="mb-3">Baseline Measurements — Google Benchmark</SectionHeading>
+              <SectionHeading className="mb-2">Baseline Measurements — Google Benchmark</SectionHeading>
               <div style={PROSE}>
                 <BodyText className="mb-6">
                   Unsharded implementations, measured before the 64-shard architecture. All values are
@@ -231,7 +231,7 @@ export default function Benchmarks() {
           <Section id="final" border>
             <div style={MAX_W}>
               <SectionLabel>Final</SectionLabel>
-              <SectionHeading className="mb-3">Final Measurements — 64-Shard Architecture</SectionHeading>
+              <SectionHeading className="mb-2">Final Measurements — 64-Shard Architecture</SectionHeading>
               <div style={PROSE}>
                 <BodyText className="mb-6">
                   Standalone <Mono>std::chrono</Mono> measurements after sharding. Redis Token Bucket is
@@ -286,7 +286,7 @@ export default function Benchmarks() {
           <Section id="comparison" border>
             <div style={MAX_W}>
               <SectionLabel>Comparison</SectionLabel>
-              <SectionHeading className="mb-3">Baseline vs. Final</SectionHeading>
+              <SectionHeading className="mb-2">Baseline vs. Final</SectionHeading>
               <div style={PROSE}>
                 <BodyText className="mb-6">
                   Throughput and latency change between the unsharded baseline and the 64-shard architecture.
@@ -356,7 +356,7 @@ export default function Benchmarks() {
           <Section id="distributed" border>
             <div style={MAX_W}>
               <SectionLabel>Distributed</SectionLabel>
-              <SectionHeading className="mb-3">Redis Token Bucket</SectionHeading>
+              <SectionHeading className="mb-2">Redis Token Bucket</SectionHeading>
               <div style={PROSE}>
                 <BodyText className="mb-6">
                   The Redis Token Bucket executes over IPC sockets and runs an atomic server-side Lua script
@@ -403,9 +403,9 @@ export default function Benchmarks() {
           <Section id="observations" border>
             <div style={MAX_W}>
               <SectionLabel>Analysis</SectionLabel>
-              <SectionHeading className="mb-6">Key Observations</SectionHeading>
+              <SectionHeading className="mb-5">Key Observations</SectionHeading>
 
-              <div className="grid gap-4 sm:grid-cols-2 mt-8">
+              <div className="grid gap-4 sm:grid-cols-2 mt-6">
                 <div className="flex flex-col h-full rounded p-6" style={{ border: '1px solid var(--border)', backgroundColor: 'var(--bg-surface)' }}>
                   <h4 className="text-sm font-semibold mb-3" style={{ color: 'var(--text-primary)' }}>
                     Multi-Client Concurrency Scaling

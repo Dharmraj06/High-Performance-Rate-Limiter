@@ -7,7 +7,7 @@
 export function SectionLabel({ children }) {
   return (
     <p
-      className="mb-4 text-xs font-medium uppercase tracking-widest"
+      className="mb-1.5 text-xs font-medium uppercase tracking-widest"
       style={{
         color: 'var(--text-muted)',
         fontFamily: 'var(--font-mono)',

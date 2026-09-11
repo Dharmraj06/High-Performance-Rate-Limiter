@@ -95,7 +95,7 @@ export default function Overview() {
       <Section id="hero">
         <div style={MAX_W}>
           <SectionLabel>C++ · Performance Engineering</SectionLabel>
-          <PageHeading className="mb-5">C++ Rate Limiter</PageHeading>
+          <PageHeading className="mb-3">C++ Rate Limiter</PageHeading>
           <div style={PROSE}>
             <p
               className="text-base leading-relaxed"
@@ -124,9 +124,9 @@ export default function Overview() {
       <Section id="algorithms">
         <div style={MAX_W}>
           <SectionLabel>Algorithms</SectionLabel>
-          <SectionHeading className="mb-4">Rate-Limiting Strategies</SectionHeading>
+          <SectionHeading className="mb-2">Rate-Limiting Strategies</SectionHeading>
           <div style={PROSE}>
-            <BodyText className="mb-8">
+            <BodyText className="mb-6">
               Four in-memory algorithms with distinct accuracy and memory trade-offs, plus a Redis-backed
               distributed implementation for cross-server quota enforcement.
             </BodyText>
@@ -192,9 +192,9 @@ export default function Overview() {
       <Section id="architecture" border>
         <div style={MAX_W}>
           <SectionLabel>Architecture</SectionLabel>
-          <SectionHeading className="mb-4">64-Shard Partitioned Concurrency</SectionHeading>
+          <SectionHeading className="mb-2">64-Shard Partitioned Concurrency</SectionHeading>
           <div style={PROSE}>
-            <BodyText className="mb-8">
+            <BodyText className="mb-6">
               A single global mutex serializes all requests under concurrent load. Instead, each limiter
               partitions its client state across 64 shards. Each shard owns its client map and its own
               <Mono> std::mutex</Mono>. A client ID hashes deterministically to one shard; locking that
@@ -291,7 +291,7 @@ export default function Overview() {
       <Section id="request-flow" border>
         <div style={MAX_W}>
           <SectionLabel>Execution Path</SectionLabel>
-          <SectionHeading className="mb-6">Per-Request Flow</SectionHeading>
+          <SectionHeading className="mb-5">Per-Request Flow</SectionHeading>
           <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
             <FlowStep number="1" title="Hash to Shard" detail="Client ID is hashed modulo 64 to select the owning shard — no lock taken yet." />
             <FlowStep number="2" title="Acquire Shard Mutex" detail="Only the selected shard's mutex is locked. All other shards remain unblocked." />
@@ -307,7 +307,7 @@ export default function Overview() {
       <Section id="implementation" border>
         <div style={MAX_W}>
           <SectionLabel>Implementation</SectionLabel>
-          <SectionHeading className="mb-6">Project Components</SectionHeading>
+          <SectionHeading className="mb-5">Project Components</SectionHeading>
           <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
             {[
               { title: 'Core C++ Library', badge: 'C++23', detail: 'Four sharded in-memory rate limiters with a unified interface.' },
@@ -342,23 +342,23 @@ export default function Overview() {
       <Section id="benchmarks-link" border>
         <div style={MAX_W}>
           <div
-            className="rounded p-8 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-6"
+            className="rounded p-6 sm:p-8 flex flex-col md:flex-row md:items-center justify-between gap-6 md:gap-8"
             style={{ backgroundColor: 'var(--bg-surface)', border: '1px solid var(--border-strong)' }}
           >
-            <div>
+            <div className="flex-1 min-w-0">
               <SectionLabel>Performance Validation</SectionLabel>
               <h3 className="text-xl font-semibold mb-3" style={{ color: 'var(--text-primary)' }}>
                 Empirical Benchmark Results
               </h3>
-              <p className="text-sm max-w-xl leading-relaxed" style={{ color: 'var(--text-secondary)' }}>
+              <p className="text-sm leading-relaxed" style={{ color: 'var(--text-secondary)', maxWidth: '36rem' }}>
                 Baseline unsharded measurements vs. 64-shard architecture across concurrency scenarios,
                 with Redis distributed latency context.
               </p>
             </div>
-            <div className="shrink-0 flex sm:block justify-start mt-2 sm:mt-0">
+            <div className="shrink-0">
               <Link
                 to="/benchmarks"
-                className="inline-flex items-center gap-2 rounded px-6 py-3 text-sm font-medium no-underline transition-opacity hover:opacity-90"
+                className="inline-flex items-center justify-center gap-2 rounded px-6 py-3 text-sm font-medium no-underline transition-opacity hover:opacity-90"
                 style={{ color: '#000000', backgroundColor: '#ffffff', border: '1px solid #ffffff' }}
               >
                 View benchmarks <span aria-hidden="true">&rarr;</span>

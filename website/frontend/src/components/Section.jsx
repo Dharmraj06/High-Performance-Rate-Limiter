@@ -16,8 +16,8 @@ export default function Section({ children, id, border = false, className = '' }
       id={id}
       className={className}
       style={{
-        paddingTop: '5rem',
-        paddingBottom: '5rem',
+        paddingTop: '3rem',
+        paddingBottom: '3rem',
         borderTop: border ? `1px solid var(--border)` : 'none',
       }}
     >

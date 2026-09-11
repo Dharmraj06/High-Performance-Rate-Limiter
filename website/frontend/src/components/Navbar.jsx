@@ -5,18 +5,26 @@ const navLinks = [
   { to: '/benchmarks', label: 'Benchmarks' },
 ]
 
+const MAX_W = {
+  maxWidth: '1100px',
+  marginLeft: 'auto',
+  marginRight: 'auto',
+  paddingLeft: '1.5rem',
+  paddingRight: '1.5rem',
+}
+
 export default function Navbar() {
   return (
     <header
-      className="sticky top-0 z-50 border-b"
+      className="border-b"
       style={{
         backgroundColor: '#000000',
         borderColor: 'var(--border)',
       }}
     >
       <div
-        className="mx-auto flex items-center justify-between px-6 py-4"
-        style={{ maxWidth: '1100px' }}
+        className="flex items-center justify-between py-4"
+        style={MAX_W}
       >
         {/* Wordmark */}
         <NavLink
