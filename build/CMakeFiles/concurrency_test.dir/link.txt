@@ -1,1 +1,0 @@
-/usr/bin/g++ -g CMakeFiles/concurrency_test.dir/tests/concurrencyTest.cpp.o CMakeFiles/concurrency_test.dir/src/slidingWindowCounterLimiter.cpp.o -o concurrency_test  -lpthread 
