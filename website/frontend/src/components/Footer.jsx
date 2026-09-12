@@ -20,7 +20,7 @@ export default function Footer() {
       style={{ borderColor: 'var(--border)' }}
     >
       <div
-        className="flex flex-col items-center justify-between gap-3 py-8 sm:flex-row"
+        className="flex flex-col items-start justify-between gap-3 py-8 sm:flex-row sm:items-center"
         style={MAX_W}
       >
         <p

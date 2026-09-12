@@ -10,6 +10,11 @@ const MAX_W = {
   paddingRight: '1.5rem',
 }
 const PROSE = { maxWidth: '680px' }
+const API_BASE_URL = (import.meta.env.VITE_API_URL ?? '').replace(/\/$/, '')
+
+function apiUrl(path) {
+  return `${API_BASE_URL}${path}`
+}
 
 /* ─── Formatting Helpers ─────────────────────────────────────────── */
 function fmtInt(v) { return (v == null || isNaN(v)) ? '—' : Math.round(v).toLocaleString() }
@@ -76,9 +81,9 @@ export default function Benchmarks() {
     setError(null)
     try {
       const [bRes, fRes, cRes] = await Promise.all([
-        fetch('/api/benchmark/baseline'),
-        fetch('/api/benchmark/final'),
-        fetch('/api/benchmark/comparison'),
+        fetch(apiUrl('/api/benchmark/baseline')),
+        fetch(apiUrl('/api/benchmark/final')),
+        fetch(apiUrl('/api/benchmark/comparison')),
       ])
       if (!bRes.ok) throw new Error(`/api/benchmark/baseline → HTTP ${bRes.status}`)
       if (!fRes.ok) throw new Error(`/api/benchmark/final → HTTP ${fRes.status}`)

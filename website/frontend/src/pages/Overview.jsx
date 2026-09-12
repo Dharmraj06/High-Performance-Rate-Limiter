@@ -355,7 +355,7 @@ export default function Overview() {
                 with Redis distributed latency context.
               </p>
             </div>
-            <div className="shrink-0">
+            <div className="shrink-0 self-center md:self-auto">
               <Link
                 to="/benchmarks"
                 className="inline-flex items-center justify-center gap-2 rounded px-6 py-3 text-sm font-medium no-underline transition-opacity hover:opacity-90"

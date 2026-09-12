@@ -1,3 +1,5 @@
+import os
+
 from fastapi import FastAPI, HTTPException, status
 from fastapi.middleware.cors import CORSMiddleware
 
@@ -13,16 +15,20 @@ app = FastAPI(
     version="1.0.0",
 )
 
-# Enable CORS for frontend development server (Vite defaults to port 5173)
+def configured_frontend_origins() -> list[str]:
+    """Return the comma-separated frontend origins permitted by CORS."""
+    configured = os.getenv(
+        "FRONTEND_URL",
+        "http://localhost:5173,http://127.0.0.1:5173",
+    )
+    return [origin.strip().rstrip("/") for origin in configured.split(",") if origin.strip()]
+
+
+# Set FRONTEND_URL to the deployed frontend origin in production. Multiple
+# comma-separated origins are supported for deployments with a preview domain.
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=[
-        "http://localhost:5173",
-        "http://127.0.0.1:5173",
-        "http://localhost:3000",
-        "http://127.0.0.1:3000",
-        "*",  # Permissive for local development
-    ],
+    allow_origins=configured_frontend_origins(),
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
@@ -112,4 +118,4 @@ def get_comparison():
 if __name__ == "__main__":
     import uvicorn
 
-    uvicorn.run("main:app", host="127.0.0.1", port=8000, reload=True)
+    uvicorn.run("main:app", host="0.0.0.0", port=int(os.getenv("PORT", "8000")))
