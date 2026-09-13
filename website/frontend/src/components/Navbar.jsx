@@ -5,14 +5,6 @@ const navLinks = [
   { to: '/benchmarks', label: 'Benchmarks' },
 ]
 
-const MAX_W = {
-  maxWidth: '1100px',
-  marginLeft: 'auto',
-  marginRight: 'auto',
-  paddingLeft: '1.5rem',
-  paddingRight: '1.5rem',
-}
-
 export default function Navbar() {
   return (
     <header
@@ -23,8 +15,7 @@ export default function Navbar() {
       }}
     >
       <div
-        className="flex items-center justify-between py-4"
-        style={MAX_W}
+        className="page-container flex items-center justify-between py-4"
       >
         {/* Wordmark */}
         <NavLink

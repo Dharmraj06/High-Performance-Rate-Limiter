@@ -3,14 +3,6 @@
  *
  * Minimal footer with project attribution and current year.
  */
-const MAX_W = {
-  maxWidth: '1100px',
-  marginLeft: 'auto',
-  marginRight: 'auto',
-  paddingLeft: '1.5rem',
-  paddingRight: '1.5rem',
-}
-
 export default function Footer() {
   const year = new Date().getFullYear()
 
@@ -20,8 +12,7 @@ export default function Footer() {
       style={{ borderColor: 'var(--border)' }}
     >
       <div
-        className="flex flex-col items-start justify-between gap-3 py-8 sm:flex-row sm:items-center"
-        style={MAX_W}
+        className="page-container flex flex-col items-start justify-between gap-3 py-8 sm:flex-row sm:items-center"
       >
         <p
           className="text-xs"

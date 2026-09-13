@@ -2,14 +2,6 @@ import { useState, useEffect } from 'react'
 import Section from '../components/Section.jsx'
 import { SectionLabel, PageHeading, SectionHeading, BodyText, Mono } from '../components/Typography.jsx'
 
-const MAX_W = {
-  maxWidth: '1100px',
-  marginLeft: 'auto',
-  marginRight: 'auto',
-  paddingLeft: '1.5rem',
-  paddingRight: '1.5rem',
-}
-const PROSE = { maxWidth: '680px' }
 const API_BASE_URL = (import.meta.env.VITE_API_URL ?? '').replace(/\/$/, '')
 
 function apiUrl(path) {
@@ -58,8 +50,7 @@ function Td({ children, right, mono, primary, dim }) {
 function TableWrap({ children }) {
   return (
     <div
-      className="w-full overflow-x-auto rounded mt-6 mb-6"
-      style={{ border: '1px solid var(--border)', backgroundColor: 'var(--bg-surface)' }}
+      className="surface-card mb-7 mt-6 w-full overflow-x-auto"
     >
       <table className="w-full border-collapse">
         {children}
@@ -117,10 +108,10 @@ export default function Benchmarks() {
 
       {/* ── Intro ───────────────────────────────────────────────────── */}
       <Section id="benchmarks-intro">
-        <div style={MAX_W}>
+        <div className="page-container">
           <SectionLabel>Benchmarks</SectionLabel>
           <PageHeading className="mb-3">Performance Analysis</PageHeading>
-          <div style={PROSE}>
+          <div className="prose-narrow">
             <BodyText>
               Two benchmark suites: a Google Benchmark micro-benchmarking harness for nanosecond-precision
               baseline measurements, and a standalone <Mono>std::chrono</Mono> harness measuring the
@@ -133,10 +124,9 @@ export default function Benchmarks() {
       {/* ── Loading / Error ─────────────────────────────────────────── */}
       {loading && (
         <Section id="loading">
-          <div style={MAX_W}>
+          <div className="page-container">
             <div
-              className="rounded p-8 text-center"
-              style={{ border: '1px solid var(--border)', backgroundColor: 'var(--bg-surface)' }}
+              className="surface-card card-pad-lg text-center"
             >
               <span className="text-xs uppercase tracking-widest" style={{ color: 'var(--text-muted)', fontFamily: 'var(--font-mono)' }}>
                 Loading benchmark data…
@@ -148,9 +138,9 @@ export default function Benchmarks() {
 
       {!loading && error && (
         <Section id="error">
-          <div style={MAX_W}>
-            <div className="rounded p-6" style={{ border: '1px solid var(--border-strong)', backgroundColor: 'var(--bg-surface)' }}>
-              <span className="text-xs font-semibold uppercase tracking-wider block mb-2" style={{ color: 'var(--text-primary)', fontFamily: 'var(--font-mono)' }}>
+          <div className="page-container">
+            <div className="surface-card surface-card-strong card-pad-lg">
+              <span className="mb-3 block text-xs font-semibold uppercase tracking-wider" style={{ color: 'var(--text-primary)', fontFamily: 'var(--font-mono)' }}>
                 API Error
               </span>
               <p className="text-sm mb-4" style={{ color: 'var(--text-secondary)' }}>{error}</p>
@@ -170,9 +160,9 @@ export default function Benchmarks() {
         <>
           {/* ── Conditions ──────────────────────────────────────────── */}
           <Section id="conditions" border>
-            <div style={MAX_W}>
+            <div className="page-container">
               <SectionLabel>Conditions</SectionLabel>
-              <SectionHeading className="mb-5">Benchmark Environment</SectionHeading>
+              <SectionHeading className="mb-6">Benchmark Environment</SectionHeading>
               <div className="grid gap-4 sm:grid-cols-2 md:grid-cols-4">
                 {[
                   ['Build', `-O3 / Release · C++23 · GCC 13+`],
@@ -180,13 +170,13 @@ export default function Benchmarks() {
                   ['Single-Thread', `${fmtInt(cfg.single_thread_operations)} operations per limiter`],
                   ['Multi-Thread', `${fmtInt(cfg.multi_thread_total_operations)} ops · ${cfg.threads ?? 8} threads · same-client & multi-client`],
                 ].map(([label, val]) => (
-                  <div key={label} className="rounded p-4" style={{ border: '1px solid var(--border)', backgroundColor: 'var(--bg-surface)' }}>
-                    <span className="text-xs uppercase tracking-wider block mb-1" style={{ color: 'var(--text-muted)' }}>{label}</span>
-                    <span className="text-sm" style={{ color: 'var(--text-secondary)' }}>{val}</span>
+                  <div key={label} className="surface-card card-pad-sm">
+                    <span className="mb-2 block text-xs uppercase tracking-wider" style={{ color: 'var(--text-muted)' }}>{label}</span>
+                    <span className="block text-sm leading-relaxed" style={{ color: 'var(--text-secondary)' }}>{val}</span>
                   </div>
                 ))}
               </div>
-              <p className="mt-4 text-xs" style={{ color: 'var(--text-muted)' }}>
+              <p className="mt-5 text-xs leading-relaxed" style={{ color: 'var(--text-muted)' }}>
                 Baseline: Google Benchmark aggregate mean across 3 repetitions.
                 Final: wall-clock <Mono>std::chrono</Mono> harness across {cfg.threads ?? 8} worker threads.
               </p>
@@ -195,11 +185,11 @@ export default function Benchmarks() {
 
           {/* ── Baseline Results ────────────────────────────────────── */}
           <Section id="baseline" border>
-            <div style={MAX_W}>
+            <div className="page-container">
               <SectionLabel>Baseline</SectionLabel>
               <SectionHeading className="mb-2">Baseline Measurements — Google Benchmark</SectionHeading>
-              <div style={PROSE}>
-                <BodyText className="mb-6">
+              <div className="prose-narrow">
+                <BodyText className="mb-7">
                   Unsharded implementations, measured before the 64-shard architecture. All values are
                   mean aggregates across 3 repetitions.
                 </BodyText>
@@ -234,11 +224,11 @@ export default function Benchmarks() {
 
           {/* ── Final Results ────────────────────────────────────────── */}
           <Section id="final" border>
-            <div style={MAX_W}>
+            <div className="page-container">
               <SectionLabel>Final</SectionLabel>
               <SectionHeading className="mb-2">Final Measurements — 64-Shard Architecture</SectionHeading>
-              <div style={PROSE}>
-                <BodyText className="mb-6">
+              <div className="prose-narrow">
+                <BodyText className="mb-7">
                   Standalone <Mono>std::chrono</Mono> measurements after sharding. Redis Token Bucket is
                   shown separately; its latency reflects IPC and network round-trip cost, not algorithmic overhead.
                 </BodyText>
@@ -269,7 +259,7 @@ export default function Benchmarks() {
                         <Td primary>
                           {item.name}
                           {isDist && (
-                            <span className="ml-2 rounded px-1.5 py-0.5 text-xs" style={{ fontFamily: 'var(--font-mono)', border: '1px solid var(--border)', color: 'var(--text-muted)' }}>
+                            <span className="ml-2 rounded px-2 py-0.5 text-xs" style={{ fontFamily: 'var(--font-mono)', border: '1px solid var(--border)', color: 'var(--text-muted)' }}>
                               distributed
                             </span>
                           )}
@@ -289,11 +279,11 @@ export default function Benchmarks() {
 
           {/* ── Comparison ──────────────────────────────────────────── */}
           <Section id="comparison" border>
-            <div style={MAX_W}>
+            <div className="page-container">
               <SectionLabel>Comparison</SectionLabel>
               <SectionHeading className="mb-2">Baseline vs. Final</SectionHeading>
-              <div style={PROSE}>
-                <BodyText className="mb-6">
+              <div className="prose-narrow">
+                <BodyText className="mb-7">
                   Throughput and latency change between the unsharded baseline and the 64-shard architecture.
                   Multi-client workloads show the largest gains because requests for distinct clients execute
                   on independent shard mutexes concurrently.
@@ -350,7 +340,7 @@ export default function Benchmarks() {
 
               {/* Redis non-comparable notice */}
               {nonComparable.length > 0 && (
-                <p className="mt-3 text-xs" style={{ color: 'var(--text-muted)' }}>
+                <p className="mt-4 text-xs leading-relaxed" style={{ color: 'var(--text-muted)' }}>
                   Redis Token Bucket is excluded from this table — see the Distributed section below.
                 </p>
               )}
@@ -359,11 +349,11 @@ export default function Benchmarks() {
 
           {/* ── Redis Distributed ───────────────────────────────────── */}
           <Section id="distributed" border>
-            <div style={MAX_W}>
+            <div className="page-container">
               <SectionLabel>Distributed</SectionLabel>
               <SectionHeading className="mb-2">Redis Token Bucket</SectionHeading>
-              <div style={PROSE}>
-                <BodyText className="mb-6">
+              <div className="prose-narrow">
+                <BodyText className="mb-7">
                   The Redis Token Bucket executes over IPC sockets and runs an atomic server-side Lua script
                   on Redis. Latency reflects socket round-trips, kernel scheduling, and Redis execution — not
                   the rate-limiting algorithm itself. It is not a direct performance alternative to in-memory
@@ -373,10 +363,9 @@ export default function Benchmarks() {
 
               {redis && (
                 <div
-                  className="rounded p-6"
-                  style={{ border: '1px solid var(--border)', backgroundColor: 'var(--bg-surface)' }}
+                  className="surface-card card-pad-lg"
                 >
-                  <div className="grid grid-cols-2 gap-4 sm:grid-cols-3 lg:grid-cols-6 mb-5">
+                  <div className="mb-6 grid grid-cols-2 gap-5 sm:grid-cols-3 lg:grid-cols-6">
                     {[
                       ['Total Ops', fmtInt(redis.total_ops)],
                       ['Allowed', fmtInt(redis.allowed_ops)],
@@ -386,8 +375,8 @@ export default function Benchmarks() {
                       ['Avg Latency', fmtLatency(redis.avg_latency_ns)],
                     ].map(([k, v]) => (
                       <div key={k}>
-                        <span className="text-xs uppercase tracking-wider block" style={{ color: 'var(--text-muted)' }}>{k}</span>
-                        <span className="text-base font-semibold tabular-nums block mt-1" style={{ color: 'var(--text-primary)', fontFamily: 'var(--font-mono)' }}>{v}</span>
+                        <span className="block text-xs uppercase tracking-wider" style={{ color: 'var(--text-muted)' }}>{k}</span>
+                        <span className="mt-2 block text-base font-semibold tabular-nums" style={{ color: 'var(--text-primary)', fontFamily: 'var(--font-mono)' }}>{v}</span>
                       </div>
                     ))}
                   </div>
@@ -406,16 +395,16 @@ export default function Benchmarks() {
 
           {/* ── Observations ────────────────────────────────────────── */}
           <Section id="observations" border>
-            <div style={MAX_W}>
+            <div className="page-container">
               <SectionLabel>Analysis</SectionLabel>
-              <SectionHeading className="mb-5">Key Observations</SectionHeading>
+              <SectionHeading className="mb-6">Key Observations</SectionHeading>
 
-              <div className="grid gap-4 sm:grid-cols-2 mt-6">
-                <div className="flex flex-col h-full rounded p-6" style={{ border: '1px solid var(--border)', backgroundColor: 'var(--bg-surface)' }}>
+              <div className="grid gap-4 sm:grid-cols-2">
+                <div className="surface-card card-pad-lg flex h-full flex-col">
                   <h4 className="text-sm font-semibold mb-3" style={{ color: 'var(--text-primary)' }}>
                     Multi-Client Concurrency Scaling
                   </h4>
-                  <p className="text-sm leading-relaxed mt-auto" style={{ color: 'var(--text-secondary)' }}>
+                  <p className="text-sm leading-relaxed" style={{ color: 'var(--text-secondary)' }}>
                     {maxSpeedup ? (
                       <>
                         Sharding delivers up to{' '}
@@ -428,22 +417,22 @@ export default function Benchmarks() {
                   </p>
                 </div>
 
-                <div className="flex flex-col h-full rounded p-6" style={{ border: '1px solid var(--border)', backgroundColor: 'var(--bg-surface)' }}>
+                <div className="surface-card card-pad-lg flex h-full flex-col">
                   <h4 className="text-sm font-semibold mb-3" style={{ color: 'var(--text-primary)' }}>
                     Same-Client Serialization
                   </h4>
-                  <p className="text-sm leading-relaxed mt-auto" style={{ color: 'var(--text-secondary)' }}>
+                  <p className="text-sm leading-relaxed" style={{ color: 'var(--text-secondary)' }}>
                     When all 8 threads target the same client ID, all requests route to one shard and serialize
                     on that mutex. Throughput plateaus at ~949K–1.5M ops/sec. This is correct behavior —
                     same-client state must be accessed sequentially to preserve consistency.
                   </p>
                 </div>
 
-                <div className="flex flex-col h-full rounded p-6" style={{ border: '1px solid var(--border)', backgroundColor: 'var(--bg-surface)' }}>
+                <div className="surface-card card-pad-lg flex h-full flex-col">
                   <h4 className="text-sm font-semibold mb-3" style={{ color: 'var(--text-primary)' }}>
                     Algorithm Trade-offs
                   </h4>
-                  <p className="text-sm leading-relaxed mt-auto" style={{ color: 'var(--text-secondary)' }}>
+                  <p className="text-sm leading-relaxed" style={{ color: 'var(--text-secondary)' }}>
                     Fixed Window reaches the highest throughput (31.7M ops/s in multi-client) due to simple
                     integer arithmetic. Sliding Window Counter achieves 23.0M ops/s with O(1) memory and no
                     boundary burst anomaly. Sliding Window Log runs ~32% slower due to per-request timestamp
@@ -451,11 +440,11 @@ export default function Benchmarks() {
                   </p>
                 </div>
 
-                <div className="flex flex-col h-full rounded p-6" style={{ border: '1px solid var(--border)', backgroundColor: 'var(--bg-surface)' }}>
+                <div className="surface-card card-pad-lg flex h-full flex-col">
                   <h4 className="text-sm font-semibold mb-3" style={{ color: 'var(--text-primary)' }}>
                     Redis vs. In-Memory
                   </h4>
-                  <p className="text-sm leading-relaxed mt-auto" style={{ color: 'var(--text-secondary)' }}>
+                  <p className="text-sm leading-relaxed" style={{ color: 'var(--text-secondary)' }}>
                     Redis latency (~81 µs) is roughly 1,700× higher than in-memory execution (~47 ns). The
                     overhead comes from IPC and socket round-trips, not from the token bucket algorithm itself.
                     Redis enables cross-server quota enforcement that in-memory limiters cannot provide.

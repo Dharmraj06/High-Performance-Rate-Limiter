@@ -13,15 +13,16 @@
 export function ArchNode({ label, sub, highlight = false, mono = false, className = '' }) {
   return (
     <div
-      className={`flex flex-col items-center justify-center rounded px-4 py-2.5 text-center transition-colors ${className}`}
+      className={`flex flex-col items-center justify-center rounded px-3.5 py-3 text-center ${className}`}
       style={{
         backgroundColor: 'var(--bg-surface)',
         border: `1px solid ${highlight ? 'var(--border-strong)' : 'var(--border)'}`,
-        minWidth: '120px',
+        minWidth: '6rem',
+        maxWidth: '8.5rem',
       }}
     >
       <span
-        className="text-xs sm:text-sm font-medium"
+        className="text-xs sm:text-sm font-medium leading-snug"
         style={{
           color: 'var(--text-primary)',
           fontFamily: mono ? 'var(--font-mono)' : 'inherit',
@@ -31,7 +32,7 @@ export function ArchNode({ label, sub, highlight = false, mono = false, classNam
       </span>
       {sub && (
         <span
-          className="mt-0.5 text-[11px] sm:text-xs"
+          className="mt-1.5 text-[11px] sm:text-xs leading-snug"
           style={{ color: 'var(--text-muted)', fontFamily: 'var(--font-mono)' }}
         >
           {sub}
@@ -54,10 +55,10 @@ export function ArchNode({ label, sub, highlight = false, mono = false, classNam
 export function ArchArrow({ label, direction = 'right' }) {
   if (direction === 'down') {
     return (
-      <div className="flex flex-col items-center justify-center py-1">
+      <div className="flex flex-col items-center justify-center py-2">
         {label && (
           <span
-            className="mb-1 text-[11px] sm:text-xs"
+            className="mb-2 text-[11px] sm:text-xs leading-none"
             style={{ color: 'var(--text-muted)', fontFamily: 'var(--font-mono)' }}
           >
             {label}
@@ -90,10 +91,10 @@ export function ArchArrow({ label, direction = 'right' }) {
   }
 
   return (
-    <div className="flex flex-col items-center justify-center gap-0.5 px-1.5 sm:px-2">
+    <div className="flex flex-col items-center justify-center gap-2 px-2 sm:px-2.5">
       {label && (
         <span
-          className="text-[11px] sm:text-xs"
+          className="text-[11px] sm:text-xs leading-none whitespace-nowrap"
           style={{ color: 'var(--text-muted)', fontFamily: 'var(--font-mono)' }}
         >
           {label}
@@ -101,7 +102,7 @@ export function ArchArrow({ label, direction = 'right' }) {
       )}
       <div className="flex items-center">
         <div
-          className="h-px w-6 sm:w-9"
+          className="h-px w-4 sm:w-6"
           style={{ backgroundColor: 'var(--border)' }}
         />
         <svg
@@ -133,7 +134,7 @@ export function ArchArrow({ label, direction = 'right' }) {
 export function ArchDiagram({ children, className = '', direction = 'row' }) {
   return (
     <div
-      className={`flex ${direction === 'column' ? 'flex-col' : 'flex-wrap sm:flex-nowrap'} items-center justify-center gap-1.5 sm:gap-2 ${className}`}
+      className={`flex ${direction === 'column' ? 'flex-col gap-3' : 'flex-wrap items-stretch justify-center gap-x-0 gap-y-5'} ${direction === 'column' ? 'items-center justify-center' : ''} ${className}`}
       role="img"
       aria-label="Architecture diagram"
     >

@@ -19,6 +19,68 @@
   /* Typography */
   --font-sans: 'Inter', system-ui, -apple-system, sans-serif;
   --font-mono: 'Geist Mono', 'Fira Code', ui-monospace, monospace;
+
+  /* Layout */
+  --container-max: 1100px;
+  --container-pad: 1rem;
+  --section-y: 3rem;
+  --card-pad-sm: 1rem;
+  --card-pad-md: 1.25rem;
+  --card-pad-lg: 1.5rem;
+}
+
+@media (min-width: 640px) {
+  :root {
+    --container-pad: 1.5rem;
+    --card-pad-sm: 1.125rem;
+    --card-pad-md: 1.5rem;
+    --card-pad-lg: 1.75rem;
+  }
+}
+
+/* ─── Layout Utilities ───────────────────────────────────────────── */
+.page-container {
+  width: 100%;
+  max-width: var(--container-max);
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: var(--container-pad);
+  padding-right: var(--container-pad);
+}
+
+.prose-narrow {
+  max-width: 680px;
+}
+
+.site-section {
+  padding-top: var(--section-y);
+  padding-bottom: var(--section-y);
+}
+
+.site-section-border {
+  border-top: 1px solid var(--border);
+}
+
+.surface-card {
+  border: 1px solid var(--border);
+  background-color: var(--bg-surface);
+  border-radius: 0.25rem;
+}
+
+.surface-card-strong {
+  border-color: var(--border-strong);
+}
+
+.card-pad-sm {
+  padding: var(--card-pad-sm);
+}
+
+.card-pad-md {
+  padding: var(--card-pad-md);
+}
+
+.card-pad-lg {
+  padding: var(--card-pad-lg);
 }
 
 /* ─── Base Reset ─────────────────────────────────────────────────── */
