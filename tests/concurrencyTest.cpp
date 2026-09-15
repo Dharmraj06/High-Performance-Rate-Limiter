@@ -11,8 +11,8 @@ using namespace std;
 int main(){
     slidingWindowCounterLimiter limiter(100,chrono::seconds(10));
 
-    int threadCount = 10;
-    int requestsPerThread = 1000;
+    int threadCnt = 10;
+    int reqsPerThread = 1000;
 
     atomic<int> allowed(0);
 
@@ -20,9 +20,10 @@ int main(){
 
     auto currTime = chrono::steady_clock::now();
 
-    for(int i = 0;i<threadCount;i++){
+    for(int i = 0;i<threadCnt;i++){
         threads.emplace_back([&](){
-            for(int j = 0;j<requestsPerThread;j++){
+            for(int j = 0;j<reqsPerThread;j++){
+                
                if(limiter.allow("clientA",currTime).allowed){
                     allowed++;
                 }
@@ -34,14 +35,14 @@ int main(){
         t.join();
     }
 
-    cout<<"Allowed requests: "<<allowed<<endl;
-    cout<<"Expected maximum: 100"<<endl;
+    cout<<"allowed req's: "<<allowed<<endl;
+    cout<<"expected max: 100"<<endl;
 
     if(allowed <= 100){
-        cout<<"Concurrency test passed"<<endl;
+        cout<<"concurrency test passed"<<endl;
     }
     else{
-        cout<<"Concurrency test failed"<<endl;
+        cout<<"concurrency test failed"<<endl;
     }
 
     return 0;

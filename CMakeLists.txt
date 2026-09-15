@@ -96,7 +96,6 @@ target_link_libraries(concurrency_multi_client_test PRIVATE pthread)
 
 
 add_executable(cleanup_test
-    tests/cleanupTest.cpp
     src/fixedWindowLimiter.cpp
     src/slidingWindowLimiter.cpp
     src/slidingWindowCounterLimiter.cpp

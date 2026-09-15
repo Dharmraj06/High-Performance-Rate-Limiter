@@ -95,12 +95,7 @@ RateLimitResult redisTokenBucketLimiter::allow(const string &clientId)
 
     redisReply *reply = (redisReply *)redisCommand(
         ctx,
-        "EVAL %s 1 %s %s %s %s",
-        luaScript.c_str(),
-        key.c_str(),
-        capStr.c_str(),
-        rateStr.c_str(),
-        ttlStr.c_str());
+        "EVAL %s 1 %s %s %s %s", luaScript.c_str(), key.c_str(), capStr.c_str(), rateStr.c_str(), ttlStr.c_str());
 
     if (!reply){
         
