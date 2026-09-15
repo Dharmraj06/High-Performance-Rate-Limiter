@@ -16,8 +16,8 @@
 |---|---|
 | **Algorithms** | Fixed Window, Sliding Window Log, Sliding Window Counter, Token Bucket (In-Memory + Distributed) |
 | **Concurrency Model** | 64 Independent Shards (Fine-grained per-shard `std::mutex`) |
-| **Peak Throughput** | **27.46M+ ops/sec** (In-Memory, Release Build) |
-| **Minimum Latency** | **36 ns** (Sliding Window Counter) |
+| **Peak Throughput** | **31.74M+ ops/sec** (In-Memory, Release Build) |
+| **Minimum Latency** | **31.5 ns** (Fixed Window, Multi-Client) |
 | **Distributed Backend** | Redis + Atomic Server-Side Lua Script + `Redis TIME` clock sync |
 | **Memory Management** | Opportunistic Shard-Level Expiration + Explicit Inactive Client Cleanup |
 | **HTTP Interface** | Embedded HTTP Service (`cpp-httplib`) with standard rate-limit headers |
@@ -118,7 +118,7 @@ flowchart LR
 
 - **Same-Client Requests**: Map to the same shard and remain safely serialized to prevent race conditions.
 - **Cross-Client Requests**: Distribute across 64 shards, executing in parallel without blocking each other.
-- **Contention Reduction**: Independent mutexes reduce multi-core lock contention by up to 37x.
+- **Contention Reduction**: Independent mutexes reduce multi-core lock contention significantly (Fixed Window sees 8.8x improvement; Sliding Window Counter sees 7.6x).
 
 ---
 
@@ -191,11 +191,11 @@ Fields: tokens, last_refill"]
 
 | Algorithm | Backend | Total Operations | Throughput | Avg Latency |
 |---|---|---:|---:|---:|
-| **Sliding Window Counter** | Sharded In-Memory | 2,000,000 | **27.46M ops/sec** | **36 ns** |
-| **Token Bucket** | Sharded In-Memory | 2,000,000 | **26.21M ops/sec** | **38 ns** |
-| **Fixed Window** | Sharded In-Memory | 2,000,000 | **22.98M ops/sec** | **43 ns** |
-| **Sliding Window Log** | Sharded In-Memory | 2,000,000 | **19.18M ops/sec** | **52 ns** |
-| **Redis Token Bucket** | Distributed (Redis + Lua) | 20,000 | **12,767 ops/sec** | **78,329 ns** (78 µs) |
+| **Fixed Window** | Sharded In-Memory | 2,000,000 | **31.74M ops/sec** | **31.5 ns** |
+| **Sliding Window Counter** | Sharded In-Memory | 2,000,000 | **22.99M ops/sec** | **43.5 ns** |
+| **Sliding Window Log** | Sharded In-Memory | 2,000,000 | **21.51M ops/sec** | **46.5 ns** |
+| **Token Bucket** | Sharded In-Memory | 2,000,000 | **21.04M ops/sec** | **47.5 ns** |
+| **Redis Token Bucket** | Distributed (Redis + Lua) | 20,000 | **12,284 ops/sec** | **81.4 µs** |
 
 > **Comparative Context**: Redis benchmarks measure full IPC socket round-trips, Linux kernel context switching, protocol serialization (`hiredis`), and Redis Lua interpretation. In-memory limiters measure direct CPU cache and RAM access.
 
@@ -203,10 +203,10 @@ Fields: tokens, last_refill"]
 
 ## Performance Summary
 
-- **Fastest Implementation**: Sliding Window Counter achieves **27.46M ops/sec** with **36 ns** average latency.
-- **Lock Contention Eliminated**: 64-shard architecture enables multi-threaded workloads to scale linearly across CPU cores.
-- **Memory vs. Accuracy Trade-Off**: Sliding Window Log guarantees exact boundary enforcement at the cost of heap allocations (~30% lower throughput), while Sliding Window Counter uses fixed $O(1)$ memory.
-- **Distributed Coordination**: Redis introduces network latency (78 µs) in exchange for cross-server global quota consistency.
+- **Fastest Multi-Client Implementation**: Fixed Window achieves **31.74M ops/sec** with **31.5 ns** average latency in the multi-client benchmark.
+- **Lock Contention Significantly Reduced**: 64-shard architecture allows threads serving different clients to execute concurrently without contending on a shared lock.
+- **Memory vs. Accuracy Trade-Off**: Sliding Window Log guarantees exact boundary enforcement but stores a timestamp per request (O(N) memory); Sliding Window Counter uses O(1) memory with high approximation accuracy and achieves 22.99M ops/sec.
+- **Distributed Coordination**: Redis introduces network latency (~81.4 µs per operation) in exchange for cross-server global quota consistency.
 
 ---
 
@@ -259,7 +259,7 @@ redis-server --daemonize yes
 # Google Benchmark micro-benchmarking suite
 ./build/rate_limiter_benchmark
 ```
-*Baseline Google Benchmark metrics are recorded in `benchmark_results/baseline/baseline.json`.*
+*Baseline Google Benchmark metrics are recorded in `benchmark_results/baseline.json`. Final 64-shard results are in `benchmark_results/final.json`.*
 </details>
 
 <details>
@@ -320,3 +320,9 @@ rate-limiter/
 ```
 
 ---
+
+## Live Demo
+
+An interactive benchmark visualization and project overview is available at:
+
+**[https://high-performance-rate-limiter.vercel.app/](https://high-performance-rate-limiter.vercel.app/)**
