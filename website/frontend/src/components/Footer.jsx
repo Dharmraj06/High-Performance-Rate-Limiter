@@ -42,13 +42,6 @@ export default function Footer() {
               GitHub
             </a>
             <Link
-              to="/"
-              className="text-sm no-underline transition-opacity hover:opacity-75"
-              style={{ color: 'var(--text-secondary)' }}
-            >
-              Live Demo
-            </Link>
-            <Link
               to="/benchmarks"
               className="text-sm no-underline transition-opacity hover:opacity-75"
               style={{ color: 'var(--text-secondary)' }}
