@@ -286,7 +286,7 @@ export default function Overview() {
             <div className="shrink-0">
               <Link
                 to="/benchmarks"
-                className="inline-flex items-center justify-center gap-2 rounded px-6 py-2.5 text-sm font-medium no-underline transition-opacity hover:opacity-90"
+                className="inline-flex items-center justify-center gap-2 rounded px-6 py-2.5 text-sm font-medium no-underline transition-opacity hover:opacity-90 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-black"
                 style={{ color: '#000000', backgroundColor: '#ffffff', border: '1px solid #ffffff' }}
               >
                 View benchmarks <span aria-hidden="true">&rarr;</span>

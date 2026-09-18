@@ -36,14 +36,14 @@ export default function Footer() {
               href="https://github.com/Dharmraj06/rate-limiter"
               target="_blank"
               rel="noopener noreferrer"
-              className="text-sm no-underline transition-opacity hover:opacity-75"
+              className="text-sm no-underline transition-opacity hover:opacity-75 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-black rounded-sm"
               style={{ color: 'var(--text-secondary)' }}
             >
               GitHub
             </a>
             <Link
               to="/benchmarks"
-              className="text-sm no-underline transition-opacity hover:opacity-75"
+              className="text-sm no-underline transition-opacity hover:opacity-75 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-black rounded-sm"
               style={{ color: 'var(--text-secondary)' }}
             >
               Benchmarks

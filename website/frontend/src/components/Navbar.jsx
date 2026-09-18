@@ -8,7 +8,7 @@ const navLinks = [
 export default function Navbar() {
   return (
     <header
-      className="border-b"
+      className="sticky top-0 z-50 border-b"
       style={{
         backgroundColor: '#000000',
         borderColor: 'var(--border)',
@@ -20,7 +20,7 @@ export default function Navbar() {
         {/* Wordmark */}
         <NavLink
           to="/"
-          className="flex items-center gap-2.5 no-underline transition-opacity hover:opacity-75"
+          className="flex items-center gap-2.5 no-underline transition-opacity hover:opacity-75 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-black rounded-sm"
           style={{ textDecoration: 'none' }}
         >
           <span
@@ -50,7 +50,7 @@ export default function Navbar() {
                 <NavLink
                   to={to}
                   end={to === '/'}
-                  className="px-3 py-1.5 text-sm transition-colors no-underline block"
+                  className="px-3 py-1.5 text-sm transition-colors no-underline block focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-black rounded-sm"
                   style={({ isActive }) => ({
                     color: isActive ? 'var(--text-primary)' : 'var(--text-secondary)',
                     borderBottom: isActive ? '1px solid var(--text-primary)' : '1px solid transparent',

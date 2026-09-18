@@ -21,25 +21,26 @@ function fmtLatency(ns) {
 }
 
 /* ─── Table Primitives ───────────────────────────────────────────── */
-function Th({ children, right }) {
+function Th({ children, right, sticky }) {
   return (
     <th
-      className={`px-6 py-5 text-xs font-semibold uppercase tracking-wider ${right ? 'text-right' : 'text-left'}`}
-      style={{ color: 'var(--text-primary)', whiteSpace: 'nowrap' }}
+      className={`px-6 py-5 text-xs font-semibold uppercase tracking-wider ${right ? 'text-right' : 'text-left'} ${sticky ? 'sticky left-0 z-10' : ''}`}
+      style={{ color: 'var(--text-primary)', whiteSpace: 'nowrap', backgroundColor: sticky ? 'var(--bg-subtle)' : undefined }}
     >
       {children}
     </th>
   )
 }
 
-function Td({ children, right, mono, primary, dim }) {
+function Td({ children, right, mono, primary, dim, sticky }) {
   return (
     <td
-      className={`px-6 py-4 text-sm ${right ? 'text-right tabular-nums' : 'text-left'}`}
+      className={`px-6 py-4 text-sm ${right ? 'text-right tabular-nums' : 'text-left'} ${sticky ? 'sticky left-0 z-10' : ''}`}
       style={{
         fontFamily: mono ? 'var(--font-mono)' : 'inherit',
         color: dim ? 'var(--text-muted)' : primary ? 'var(--text-primary)' : 'var(--text-secondary)',
         whiteSpace: 'nowrap',
+        backgroundColor: sticky ? 'inherit' : undefined,
       }}
     >
       {children}
@@ -146,7 +147,7 @@ export default function Benchmarks() {
               <p className="text-sm mb-4" style={{ color: 'var(--text-secondary)' }}>{error}</p>
               <button
                 type="button" onClick={load}
-                className="cursor-pointer rounded px-4 py-2 text-xs font-medium uppercase tracking-wide"
+                className="cursor-pointer rounded px-4 py-2 text-xs font-medium uppercase tracking-wide focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-black"
                 style={{ backgroundColor: '#ffffff', color: '#000000', border: '1px solid #ffffff', fontFamily: 'var(--font-mono)' }}
               >
                 Retry
@@ -198,7 +199,7 @@ export default function Benchmarks() {
               <TableWrap>
                 <thead>
                   <tr style={{ borderBottom: '2px solid var(--border-strong)', backgroundColor: 'var(--bg-subtle)' }}>
-                    <Th>Algorithm</Th>
+                    <Th sticky>Algorithm</Th>
                     <Th>Scenario</Th>
                     <Th right>Threads</Th>
                     <Th right>Throughput (ops/s)</Th>
@@ -208,8 +209,8 @@ export default function Benchmarks() {
                 </thead>
                 <tbody>
                   {comparable.map(({ name, scenario, baseline }, i) => (
-                    <tr key={i} style={{ borderBottom: '1px solid var(--border)' }}>
-                      <Td primary>{name}</Td>
+                    <tr key={i} style={{ borderBottom: '1px solid var(--border)', backgroundColor: 'var(--bg-surface)' }}>
+                      <Td primary sticky>{name}</Td>
                       <Td>{scenario}</Td>
                       <Td right mono>{baseline.threads}</Td>
                       <Td right mono primary>{fmtInt(baseline.throughput_ops_sec)}</Td>
@@ -237,7 +238,7 @@ export default function Benchmarks() {
               <TableWrap>
                 <thead>
                   <tr style={{ borderBottom: '2px solid var(--border-strong)', backgroundColor: 'var(--bg-subtle)' }}>
-                    <Th>Algorithm</Th>
+                    <Th sticky>Algorithm</Th>
                     <Th>Scenario</Th>
                     <Th right>Total Ops</Th>
                     <Th right>Duration</Th>
@@ -253,10 +254,10 @@ export default function Benchmarks() {
                         key={i}
                         style={{
                           borderBottom: '1px solid var(--border)',
-                          backgroundColor: isDist ? 'rgba(255,255,255,0.02)' : 'transparent',
+                          backgroundColor: isDist ? 'var(--bg-subtle)' : 'var(--bg-surface)',
                         }}
                       >
-                        <Td primary>
+                        <Td primary sticky>
                           {item.name}
                           {isDist && (
                             <span className="ml-2 rounded px-2 py-0.5 text-xs" style={{ fontFamily: 'var(--font-mono)', border: '1px solid var(--border)', color: 'var(--text-muted)' }}>
@@ -293,7 +294,7 @@ export default function Benchmarks() {
               <TableWrap>
                 <thead>
                   <tr style={{ borderBottom: '2px solid var(--border-strong)', backgroundColor: 'var(--bg-subtle)' }}>
-                    <Th>Algorithm</Th>
+                    <Th sticky>Algorithm</Th>
                     <Th>Scenario</Th>
                     <Th right>Baseline (ops/s)</Th>
                     <Th right>Final (ops/s)</Th>
@@ -311,10 +312,10 @@ export default function Benchmarks() {
                         key={i}
                         style={{
                           borderBottom: '1px solid var(--border)',
-                          backgroundColor: highGain ? 'rgba(255,255,255,0.025)' : 'transparent',
+                          backgroundColor: highGain ? 'var(--bg-subtle)' : 'var(--bg-surface)',
                         }}
                       >
-                        <Td primary>{name}</Td>
+                        <Td primary sticky>{name}</Td>
                         <Td>{scenario}</Td>
                         <Td right mono>{fmtInt(baseline.throughput_ops_sec)}</Td>
                         <Td right mono primary>{fmtInt(fin.throughput_ops_sec)}</Td>
