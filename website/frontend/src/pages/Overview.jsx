@@ -31,7 +31,7 @@ function AlgoCard({ name, tags, description, tradeOff }) {
     <div
       className="surface-card card-pad-lg flex h-full flex-col"
     >
-      <div className="mb-4 flex flex-wrap items-start justify-between gap-3">
+      <div className="mb-5 flex flex-wrap items-start justify-between gap-4">
         <h3 className="text-sm font-medium" style={{ color: 'var(--text-primary)' }}>
           {name}
         </h3>
@@ -47,10 +47,10 @@ function AlgoCard({ name, tags, description, tradeOff }) {
           ))}
         </div>
       </div>
-      <p className="mb-5 text-sm leading-relaxed" style={{ color: 'var(--text-secondary)' }}>
+      <p className="mb-6 text-sm leading-relaxed" style={{ color: 'var(--text-secondary)' }}>
         {description}
       </p>
-      <p className="mt-auto pt-4 text-xs leading-relaxed" style={{ color: 'var(--text-muted)', borderTop: '1px solid var(--border)' }}>
+      <p className="mt-auto pt-5 text-xs leading-relaxed" style={{ color: 'var(--text-muted)', borderTop: '1px solid var(--border)' }}>
         <span style={{ color: 'var(--text-primary)' }}>Trade-off: </span>{tradeOff}
       </p>
     </div>
@@ -60,8 +60,8 @@ function AlgoCard({ name, tags, description, tradeOff }) {
 /* ─── Flow Step ──────────────────────────────────────────────────── */
 function FlowStep({ number, title, detail }) {
   return (
-    <div className="surface-card card-pad-md flex h-full flex-col">
-      <div className="mb-3 flex items-center gap-3">
+    <div className="surface-card card-pad-lg flex h-full flex-col">
+      <div className="mb-4 flex items-center gap-4">
         <div
           className="flex h-6 w-6 shrink-0 items-center justify-center rounded text-xs font-semibold"
           style={{ backgroundColor: 'var(--bg-subtle)', border: '1px solid var(--border-strong)', color: 'var(--text-primary)', fontFamily: 'var(--font-mono)' }}
@@ -115,13 +115,13 @@ export default function Overview() {
           <SectionLabel>Algorithms</SectionLabel>
           <SectionHeading className="mb-2">Rate-Limiting Strategies</SectionHeading>
           <div className="prose-narrow">
-            <BodyText className="mb-7">
+            <BodyText className="mb-8">
               Four in-memory algorithms with distinct accuracy and memory trade-offs, plus a Redis-backed
               distributed implementation for cross-server quota enforcement.
             </BodyText>
           </div>
 
-          <div className="grid gap-4 md:grid-cols-2">
+          <div className="grid gap-6 md:grid-cols-2">
             <AlgoCard
               name="Fixed Window"
               tags={['O(1) memory', 'Approximate']}
@@ -150,9 +150,9 @@ export default function Overview() {
 
           {/* Redis distributed block */}
           <div
-            className="surface-card surface-card-strong card-pad-lg mt-5"
+            className="surface-card surface-card-strong card-pad-lg mt-6"
           >
-            <div className="mb-4 flex flex-wrap items-center gap-3">
+            <div className="mb-5 flex flex-wrap items-center gap-4">
               <h3 className="text-sm font-semibold" style={{ color: 'var(--text-primary)' }}>
                 Redis Token Bucket
               </h3>
@@ -182,7 +182,7 @@ export default function Overview() {
           <SectionLabel>Architecture</SectionLabel>
           <SectionHeading className="mb-2">64-Shard Partitioned Concurrency</SectionHeading>
           <div className="prose-narrow">
-            <BodyText className="mb-7">
+            <BodyText className="mb-8">
               A single global mutex serializes all requests under concurrent load. Instead, each limiter
               partitions its client state across 64 shards. Each shard owns its client map and its own
               <Mono> std::mutex</Mono>. A client ID hashes deterministically to one shard; locking that
@@ -279,7 +279,7 @@ export default function Overview() {
         <div className="page-container">
           <SectionLabel>Execution Path</SectionLabel>
           <SectionHeading className="mb-6">Per-Request Flow</SectionHeading>
-          <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+          <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
             <FlowStep number="1" title="Hash to Shard" detail="Client ID is hashed modulo 64 to select the owning shard — no lock taken yet." />
             <FlowStep number="2" title="Acquire Shard Mutex" detail="Only the selected shard's mutex is locked. All other shards remain unblocked." />
             <FlowStep number="3" title="Find or Create State" detail="Client state is looked up in the shard's hash map, or initialized on first access." />
@@ -295,7 +295,7 @@ export default function Overview() {
         <div className="page-container">
           <SectionLabel>Implementation</SectionLabel>
           <SectionHeading className="mb-6">Project Components</SectionHeading>
-          <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+          <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
             {[
               { title: 'Core C++ Library', badge: 'C++23', detail: 'Four sharded in-memory rate limiters with a unified interface.' },
               { title: 'Redis Distributed Limiter', badge: 'hiredis', detail: 'Token bucket backed by Redis with atomic Lua evaluation and server-side TIME.' },
@@ -306,9 +306,9 @@ export default function Overview() {
             ].map(({ title, badge, detail }) => (
               <div
                 key={title}
-                className="surface-card card-pad-md flex h-full flex-col"
+                className="surface-card card-pad-lg flex h-full flex-col"
               >
-                <div className="flex items-center justify-between gap-3 mb-3">
+                <div className="flex items-start justify-between gap-4 mb-4">
                   <h4 className="text-sm font-medium" style={{ color: 'var(--text-primary)' }}>{title}</h4>
                   <span
                     className="rounded px-2 py-0.5 text-xs whitespace-nowrap"
@@ -328,11 +328,11 @@ export default function Overview() {
       <Section id="benchmarks-link" border>
         <div className="page-container">
           <div
-            className="surface-card surface-card-strong card-pad-lg flex flex-col justify-between gap-6 md:flex-row md:items-center md:gap-8"
+            className="surface-card surface-card-strong card-pad-lg flex flex-col justify-between gap-8 md:flex-row md:items-center"
           >
             <div className="flex-1 min-w-0">
               <SectionLabel>Performance Validation</SectionLabel>
-              <h3 className="text-xl font-semibold mb-3" style={{ color: 'var(--text-primary)' }}>
+              <h3 className="text-xl font-semibold mb-4" style={{ color: 'var(--text-primary)' }}>
                 Empirical Benchmark Results
               </h3>
               <p className="text-sm leading-relaxed" style={{ color: 'var(--text-secondary)', maxWidth: '36rem' }}>

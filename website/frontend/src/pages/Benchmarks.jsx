@@ -24,7 +24,7 @@ function fmtLatency(ns) {
 function Th({ children, right }) {
   return (
     <th
-      className={`px-5 py-4 text-xs font-semibold uppercase tracking-wider ${right ? 'text-right' : 'text-left'}`}
+      className={`px-6 py-5 text-xs font-semibold uppercase tracking-wider ${right ? 'text-right' : 'text-left'}`}
       style={{ color: 'var(--text-primary)', whiteSpace: 'nowrap' }}
     >
       {children}
@@ -35,7 +35,7 @@ function Th({ children, right }) {
 function Td({ children, right, mono, primary, dim }) {
   return (
     <td
-      className={`px-5 py-3.5 text-sm ${right ? 'text-right tabular-nums' : 'text-left'}`}
+      className={`px-6 py-4 text-sm ${right ? 'text-right tabular-nums' : 'text-left'}`}
       style={{
         fontFamily: mono ? 'var(--font-mono)' : 'inherit',
         color: dim ? 'var(--text-muted)' : primary ? 'var(--text-primary)' : 'var(--text-secondary)',
@@ -50,7 +50,7 @@ function Td({ children, right, mono, primary, dim }) {
 function TableWrap({ children }) {
   return (
     <div
-      className="surface-card mb-7 mt-6 w-full overflow-x-auto"
+      className="surface-card mb-8 mt-6 w-full overflow-x-auto"
     >
       <table className="w-full border-collapse">
         {children}
@@ -163,15 +163,15 @@ export default function Benchmarks() {
             <div className="page-container">
               <SectionLabel>Conditions</SectionLabel>
               <SectionHeading className="mb-6">Benchmark Environment</SectionHeading>
-              <div className="grid gap-4 sm:grid-cols-2 md:grid-cols-4">
+              <div className="grid gap-6 sm:grid-cols-2 md:grid-cols-4">
                 {[
                   ['Build', `-O3 / Release · C++23 · GCC 13+`],
                   ['CPU', `${env.num_cpus ?? 12} cores · ${env.mhz_per_cpu ?? 2496} MHz · scaling disabled`],
                   ['Single-Thread', `${fmtInt(cfg.single_thread_operations)} operations per limiter`],
                   ['Multi-Thread', `${fmtInt(cfg.multi_thread_total_operations)} ops · ${cfg.threads ?? 8} threads · same-client & multi-client`],
                 ].map(([label, val]) => (
-                  <div key={label} className="surface-card card-pad-sm">
-                    <span className="mb-2 block text-xs uppercase tracking-wider" style={{ color: 'var(--text-muted)' }}>{label}</span>
+                  <div key={label} className="surface-card card-pad-md">
+                    <span className="mb-3 block text-xs uppercase tracking-wider" style={{ color: 'var(--text-muted)' }}>{label}</span>
                     <span className="block text-sm leading-relaxed" style={{ color: 'var(--text-secondary)' }}>{val}</span>
                   </div>
                 ))}
@@ -189,7 +189,7 @@ export default function Benchmarks() {
               <SectionLabel>Baseline</SectionLabel>
               <SectionHeading className="mb-2">Baseline Measurements — Google Benchmark</SectionHeading>
               <div className="prose-narrow">
-                <BodyText className="mb-7">
+                <BodyText className="mb-8">
                   Unsharded implementations, measured before the 64-shard architecture. All values are
                   mean aggregates across 3 repetitions.
                 </BodyText>
@@ -228,7 +228,7 @@ export default function Benchmarks() {
               <SectionLabel>Final</SectionLabel>
               <SectionHeading className="mb-2">Final Measurements — 64-Shard Architecture</SectionHeading>
               <div className="prose-narrow">
-                <BodyText className="mb-7">
+                <BodyText className="mb-8">
                   Standalone <Mono>std::chrono</Mono> measurements after sharding. Redis Token Bucket is
                   shown separately; its latency reflects IPC and network round-trip cost, not algorithmic overhead.
                 </BodyText>
@@ -283,7 +283,7 @@ export default function Benchmarks() {
               <SectionLabel>Comparison</SectionLabel>
               <SectionHeading className="mb-2">Baseline vs. Final</SectionHeading>
               <div className="prose-narrow">
-                <BodyText className="mb-7">
+                <BodyText className="mb-8">
                   Throughput and latency change between the unsharded baseline and the 64-shard architecture.
                   Multi-client workloads show the largest gains because requests for distinct clients execute
                   on independent shard mutexes concurrently.
@@ -319,7 +319,7 @@ export default function Benchmarks() {
                         <Td right mono>{fmtInt(baseline.throughput_ops_sec)}</Td>
                         <Td right mono primary>{fmtInt(fin.throughput_ops_sec)}</Td>
                         <td
-                          className="px-5 py-3.5 text-right tabular-nums text-sm font-semibold"
+                          className="px-6 py-4 text-right tabular-nums text-sm font-semibold"
                           style={{ fontFamily: 'var(--font-mono)', color: 'var(--text-primary)', whiteSpace: 'nowrap' }}
                         >
                           {fmtPct(cmp.throughput_change_pct)}
@@ -327,7 +327,7 @@ export default function Benchmarks() {
                         <Td right mono dim>{fmtLatency(baseline.avg_latency_ns)}</Td>
                         <Td right mono>{fmtLatency(fin.avg_latency_ns)}</Td>
                         <td
-                          className="px-5 py-3.5 text-right tabular-nums text-sm font-bold"
+                          className="px-6 py-4 text-right tabular-nums text-sm font-bold"
                           style={{ fontFamily: 'var(--font-mono)', color: 'var(--text-primary)', whiteSpace: 'nowrap' }}
                         >
                           {fmtX(cmp.speedup_factor)}
@@ -353,7 +353,7 @@ export default function Benchmarks() {
               <SectionLabel>Distributed</SectionLabel>
               <SectionHeading className="mb-2">Redis Token Bucket</SectionHeading>
               <div className="prose-narrow">
-                <BodyText className="mb-7">
+                <BodyText className="mb-8">
                   The Redis Token Bucket executes over IPC sockets and runs an atomic server-side Lua script
                   on Redis. Latency reflects socket round-trips, kernel scheduling, and Redis execution — not
                   the rate-limiting algorithm itself. It is not a direct performance alternative to in-memory
@@ -365,7 +365,7 @@ export default function Benchmarks() {
                 <div
                   className="surface-card card-pad-lg"
                 >
-                  <div className="mb-6 grid grid-cols-2 gap-5 sm:grid-cols-3 lg:grid-cols-6">
+                  <div className="mb-8 grid grid-cols-2 gap-6 sm:grid-cols-3 lg:grid-cols-6">
                     {[
                       ['Total Ops', fmtInt(redis.total_ops)],
                       ['Allowed', fmtInt(redis.allowed_ops)],
@@ -399,9 +399,9 @@ export default function Benchmarks() {
               <SectionLabel>Analysis</SectionLabel>
               <SectionHeading className="mb-6">Key Observations</SectionHeading>
 
-              <div className="grid gap-4 sm:grid-cols-2">
+              <div className="grid gap-6 sm:grid-cols-2">
                 <div className="surface-card card-pad-lg flex h-full flex-col">
-                  <h4 className="text-sm font-semibold mb-3" style={{ color: 'var(--text-primary)' }}>
+                  <h4 className="text-sm font-semibold mb-4" style={{ color: 'var(--text-primary)' }}>
                     Multi-Client Concurrency Scaling
                   </h4>
                   <p className="text-sm leading-relaxed" style={{ color: 'var(--text-secondary)' }}>
@@ -418,7 +418,7 @@ export default function Benchmarks() {
                 </div>
 
                 <div className="surface-card card-pad-lg flex h-full flex-col">
-                  <h4 className="text-sm font-semibold mb-3" style={{ color: 'var(--text-primary)' }}>
+                  <h4 className="text-sm font-semibold mb-4" style={{ color: 'var(--text-primary)' }}>
                     Same-Client Serialization
                   </h4>
                   <p className="text-sm leading-relaxed" style={{ color: 'var(--text-secondary)' }}>
@@ -429,7 +429,7 @@ export default function Benchmarks() {
                 </div>
 
                 <div className="surface-card card-pad-lg flex h-full flex-col">
-                  <h4 className="text-sm font-semibold mb-3" style={{ color: 'var(--text-primary)' }}>
+                  <h4 className="text-sm font-semibold mb-4" style={{ color: 'var(--text-primary)' }}>
                     Algorithm Trade-offs
                   </h4>
                   <p className="text-sm leading-relaxed" style={{ color: 'var(--text-secondary)' }}>
@@ -441,7 +441,7 @@ export default function Benchmarks() {
                 </div>
 
                 <div className="surface-card card-pad-lg flex h-full flex-col">
-                  <h4 className="text-sm font-semibold mb-3" style={{ color: 'var(--text-primary)' }}>
+                  <h4 className="text-sm font-semibold mb-4" style={{ color: 'var(--text-primary)' }}>
                     Redis vs. In-Memory
                   </h4>
                   <p className="text-sm leading-relaxed" style={{ color: 'var(--text-secondary)' }}>
