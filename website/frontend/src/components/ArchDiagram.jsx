@@ -6,18 +6,19 @@
  * Props:
  *   label     — main label text
  *   sub       — small secondary line below label
- *   highlight — if true, uses stronger border contrast
+ *   highlight — if true, uses stronger border contrast + subtle bg
  *   mono      — if true, renders label in monospace
  *   className — additional class names
+ *   width     — optional explicit width class (e.g. 'w-40')
  */
-export function ArchNode({ label, sub, highlight = false, mono = false, className = '' }) {
+export function ArchNode({ label, sub, highlight = false, mono = false, className = '', width = '' }) {
   return (
     <div
-      className={`flex flex-col items-center justify-center rounded px-4 py-3.5 text-center ${className}`}
+      className={`flex flex-col items-center justify-center rounded px-5 py-3.5 text-center ${width} ${className}`}
       style={{
         backgroundColor: highlight ? 'var(--bg-subtle)' : 'var(--bg-surface)',
         border: `1px solid ${highlight ? 'var(--border-strong)' : 'var(--border)'}`,
-        minWidth: '8rem',
+        minWidth: '9rem',
       }}
     >
       <span
@@ -31,7 +32,7 @@ export function ArchNode({ label, sub, highlight = false, mono = false, classNam
       </span>
       {sub && (
         <span
-          className="mt-1.5 text-[11px] sm:text-xs leading-snug"
+          className="mt-1.5 text-xs leading-snug"
           style={{ color: 'var(--text-muted)', fontFamily: 'var(--font-mono)' }}
         >
           {sub}
@@ -45,19 +46,18 @@ export function ArchNode({ label, sub, highlight = false, mono = false, classNam
  * ArchArrow
  *
  * A directional arrow connector between ArchNodes.
- * Supports horizontal ('right') and vertical ('down') orientations.
  *
  * Props:
- *   label     — optional small label above or beside arrow
+ *   label     — optional small label above (horizontal) or before (vertical) the arrow
  *   direction — 'right' | 'down' (default: 'right')
  */
 export function ArchArrow({ label, direction = 'right' }) {
   if (direction === 'down') {
     return (
-      <div className="flex flex-col items-center justify-center py-2">
+      <div className="flex flex-col items-center py-1.5">
         {label && (
           <span
-            className="mb-2 text-[11px] sm:text-xs leading-none"
+            className="mb-1.5 text-xs leading-none"
             style={{ color: 'var(--text-muted)', fontFamily: 'var(--font-mono)' }}
           >
             {label}
@@ -65,18 +65,18 @@ export function ArchArrow({ label, direction = 'right' }) {
         )}
         <div className="flex flex-col items-center">
           <div
-            className="w-px h-5 sm:h-6"
-            style={{ backgroundColor: 'var(--border)' }}
+            className="w-px h-6"
+            style={{ backgroundColor: 'var(--border-strong)' }}
           />
           <svg
-            width="8"
-            height="8"
-            viewBox="0 0 8 8"
+            width="9"
+            height="7"
+            viewBox="0 0 9 7"
             aria-hidden="true"
             style={{ color: 'var(--text-muted)', marginTop: '-1px' }}
           >
             <path
-              d="M4 0 L4 8 M1 5 L4 8 L7 5"
+              d="M4.5 0 L4.5 7 M1.5 4 L4.5 7 L7.5 4"
               stroke="currentColor"
               strokeWidth="1.2"
               fill="none"
@@ -90,10 +90,10 @@ export function ArchArrow({ label, direction = 'right' }) {
   }
 
   return (
-    <div className="flex flex-col items-center justify-center gap-2 px-2 sm:px-4">
+    <div className="flex flex-col items-center justify-center gap-1.5 px-3">
       {label && (
         <span
-          className="text-[11px] sm:text-xs leading-none whitespace-nowrap"
+          className="text-xs leading-none whitespace-nowrap"
           style={{ color: 'var(--text-muted)', fontFamily: 'var(--font-mono)' }}
         >
           {label}
@@ -101,18 +101,18 @@ export function ArchArrow({ label, direction = 'right' }) {
       )}
       <div className="flex items-center">
         <div
-          className="h-px w-4 sm:w-6"
-          style={{ backgroundColor: 'var(--border)' }}
+          className="h-px w-8"
+          style={{ backgroundColor: 'var(--border-strong)' }}
         />
         <svg
-          width="8"
-          height="8"
-          viewBox="0 0 8 8"
+          width="9"
+          height="7"
+          viewBox="0 0 9 7"
           aria-hidden="true"
           style={{ color: 'var(--text-muted)', flexShrink: 0 }}
         >
           <path
-            d="M0 4 L8 4 M5 1 L8 4 L5 7"
+            d="M0 3.5 L9 3.5 M5.5 0.5 L9 3.5 L5.5 6.5"
             stroke="currentColor"
             strokeWidth="1.2"
             fill="none"
@@ -126,18 +126,51 @@ export function ArchArrow({ label, direction = 'right' }) {
 }
 
 /**
- * ArchDiagram
+ * ArchPipeline
  *
- * Wrapper that lays out ArchNodes and ArchArrows horizontally or vertically.
+ * Lays out ArchNodes + ArchArrows in a single vertical column.
+ * Used for both the mobile fallback and for vertical-layout diagrams.
+ * Children should be ArchNode and ArchArrow elements.
  */
-export function ArchDiagram({ children, className = '', direction = 'row' }) {
+export function ArchPipeline({ children, className = '' }) {
   return (
     <div
-      className={`flex ${direction === 'column' ? 'flex-col gap-4' : 'flex-wrap items-center justify-center gap-y-6 gap-x-0'} ${direction === 'column' ? 'items-center justify-center' : ''} ${className}`}
+      className={`flex flex-col items-center ${className}`}
       role="img"
       aria-label="Architecture diagram"
     >
       {children}
     </div>
+  )
+}
+
+/**
+ * ArchRow
+ *
+ * Lays out ArchNodes + ArchArrows in a single horizontal row.
+ * Content that overflows will NOT wrap — use this only when you know
+ * the total width fits. For responsive use, hide/show with Tailwind.
+ */
+export function ArchRow({ children, className = '' }) {
+  return (
+    <div
+      className={`flex items-center justify-center ${className}`}
+      role="img"
+      aria-label="Architecture diagram"
+    >
+      {children}
+    </div>
+  )
+}
+
+/**
+ * ArchDiagram — kept for backward compat, renders a horizontal row.
+ * @deprecated Use ArchRow or ArchPipeline directly.
+ */
+export function ArchDiagram({ children, className = '' }) {
+  return (
+    <ArchRow className={className}>
+      {children}
+    </ArchRow>
   )
 }
