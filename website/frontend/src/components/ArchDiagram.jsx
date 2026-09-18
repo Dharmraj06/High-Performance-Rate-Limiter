@@ -13,18 +13,17 @@
 export function ArchNode({ label, sub, highlight = false, mono = false, className = '' }) {
   return (
     <div
-      className={`flex flex-col items-center justify-center rounded px-3.5 py-3 text-center ${className}`}
+      className={`flex flex-col items-center justify-center rounded px-4 py-3.5 text-center ${className}`}
       style={{
-        backgroundColor: 'var(--bg-surface)',
+        backgroundColor: highlight ? 'var(--bg-subtle)' : 'var(--bg-surface)',
         border: `1px solid ${highlight ? 'var(--border-strong)' : 'var(--border)'}`,
-        minWidth: '6rem',
-        maxWidth: '8.5rem',
+        minWidth: '8rem',
       }}
     >
       <span
-        className="text-xs sm:text-sm font-medium leading-snug"
+        className="text-sm font-medium leading-snug"
         style={{
-          color: 'var(--text-primary)',
+          color: highlight ? 'var(--text-primary)' : 'var(--text-secondary)',
           fontFamily: mono ? 'var(--font-mono)' : 'inherit',
         }}
       >
@@ -91,7 +90,7 @@ export function ArchArrow({ label, direction = 'right' }) {
   }
 
   return (
-    <div className="flex flex-col items-center justify-center gap-2 px-2 sm:px-2.5">
+    <div className="flex flex-col items-center justify-center gap-2 px-2 sm:px-4">
       {label && (
         <span
           className="text-[11px] sm:text-xs leading-none whitespace-nowrap"
@@ -134,7 +133,7 @@ export function ArchArrow({ label, direction = 'right' }) {
 export function ArchDiagram({ children, className = '', direction = 'row' }) {
   return (
     <div
-      className={`flex ${direction === 'column' ? 'flex-col gap-3' : 'flex-wrap items-stretch justify-center gap-x-0 gap-y-5'} ${direction === 'column' ? 'items-center justify-center' : ''} ${className}`}
+      className={`flex ${direction === 'column' ? 'flex-col gap-4' : 'flex-wrap items-center justify-center gap-y-6 gap-x-0'} ${direction === 'column' ? 'items-center justify-center' : ''} ${className}`}
       role="img"
       aria-label="Architecture diagram"
     >

@@ -204,26 +204,30 @@ export default function Overview() {
 
             <div className="hidden lg:block">
               <ArchDiagram>
-                <ArchNode label="allow(clientId)" mono />
-                <ArchArrow label="hash % 64" />
-                <ArchNode label="One of 64 Shards" sub="Shard index" highlight />
+                <ArchNode label="Application Request" sub="allow(clientId)" />
+                <ArchArrow label="hash client ID" />
+                <ArchNode label="One of 64 Shards" highlight />
                 <ArchArrow label="lock" />
-                <ArchNode label="Shard Mutex + State" sub="std::mutex + map" highlight />
+                <ArchNode label="Shard-local Mutex" sub="std::mutex + state" highlight />
                 <ArchArrow label="eval" />
-                <ArchNode label="Algorithm" sub="Fixed / Sliding / Token" />
-                <ArchArrow />
-                <ArchNode label="RateLimitResult" sub="allow / deny" mono />
+                <ArchNode label="Rate-limit Algorithm" sub="Fixed/Sliding/Token" />
+                <ArchArrow label="return" />
+                <ArchNode label="Allow / Deny Result" mono />
               </ArchDiagram>
             </div>
-            <div className="flex flex-col items-center gap-3 lg:hidden">
-              <ArchNode label="allow(clientId)" mono />
-              <ArchArrow direction="down" label="hash % 64" />
-              <ArchNode label="One of 64 Shards" sub="Shard Mutex + State" highlight />
-              <ArchArrow direction="down" label="eval algorithm" />
-              <ArchNode label="RateLimitResult" sub="allow / deny" mono />
+            <div className="flex flex-col items-center gap-2 lg:hidden">
+              <ArchNode label="Application Request" sub="allow(clientId)" />
+              <ArchArrow direction="down" label="hash client ID" />
+              <ArchNode label="One of 64 Shards" highlight />
+              <ArchArrow direction="down" label="lock" />
+              <ArchNode label="Shard-local Mutex" sub="std::mutex + state" highlight />
+              <ArchArrow direction="down" label="eval" />
+              <ArchNode label="Rate-limit Algorithm" sub="Fixed/Sliding/Token" />
+              <ArchArrow direction="down" label="return" />
+              <ArchNode label="Allow / Deny Result" mono />
             </div>
 
-            <div className="my-7 h-px" style={{ backgroundColor: 'var(--border)' }} />
+            <div className="my-8 h-px" style={{ backgroundColor: 'var(--border)' }} />
 
             {/* Diagram 2: Multi-Client Isolation */}
             <p
@@ -232,11 +236,11 @@ export default function Overview() {
             >
               Concurrent Multi-Client Isolation
             </p>
-            <div className="flex flex-col gap-3">
+            <div className="flex flex-col gap-4">
               <ArchDiagram>
                 <ArchNode label='Client A' sub='Thread 1' mono />
-                <ArchArrow label="hash % 64" />
-                <ArchNode label="Shard 12" sub="Mutex 12" highlight />
+                <ArchArrow label="hash" />
+                <ArchNode label="Shard X" sub="Mutex X" highlight />
                 <ArchArrow />
                 <ArchNode label="Allow / Deny" sub="Result A" mono />
               </ArchDiagram>
@@ -245,31 +249,74 @@ export default function Overview() {
               </p>
               <ArchDiagram>
                 <ArchNode label='Client B' sub='Thread 2' mono />
-                <ArchArrow label="hash % 64" />
-                <ArchNode label="Shard 37" sub="Mutex 37" highlight />
+                <ArchArrow label="hash" />
+                <ArchNode label="Shard Y" sub="Mutex Y" highlight />
                 <ArchArrow />
                 <ArchNode label="Allow / Deny" sub="Result B" mono />
               </ArchDiagram>
             </div>
 
-            <div className="my-7 h-px" style={{ backgroundColor: 'var(--border)' }} />
+            <div className="my-8 h-px" style={{ backgroundColor: 'var(--border)' }} />
 
-            {/* Diagram 3: Distributed Path */}
+            {/* Diagram 3: Same-Client Serialization */}
+            <p
+              className="mb-5 text-center text-xs uppercase tracking-widest"
+              style={{ color: 'var(--text-secondary)', fontFamily: 'var(--font-mono)' }}
+            >
+              Same-Client Serialization
+            </p>
+            <div className="flex flex-col gap-4">
+              <ArchDiagram>
+                <div className="flex flex-col gap-3">
+                  <ArchNode label='Client C' sub='Thread 3' mono />
+                  <ArchNode label='Client C' sub='Thread 4' mono />
+                </div>
+                <div className="flex flex-col justify-center">
+                   <ArchArrow label="hash" />
+                </div>
+                <ArchNode label="Shard Z" sub="Mutex Z" highlight />
+                <div className="flex flex-col justify-center">
+                   <ArchArrow label="serialize" />
+                </div>
+                <div className="flex flex-col gap-3">
+                  <ArchNode label="Allow / Deny" sub="Result C1" mono />
+                  <ArchNode label="Allow / Deny" sub="Result C2" mono />
+                </div>
+              </ArchDiagram>
+              <p className="text-center text-xs" style={{ color: 'var(--text-muted)', fontFamily: 'var(--font-mono)' }}>
+                — same shard, sequential locking —
+              </p>
+            </div>
+
+            <div className="my-8 h-px" style={{ backgroundColor: 'var(--border)' }} />
+
+            {/* Diagram 4: Distributed Path */}
             <p
               className="mb-5 text-center text-xs uppercase tracking-widest"
               style={{ color: 'var(--text-secondary)', fontFamily: 'var(--font-mono)' }}
             >
               Distributed Redis Path
             </p>
-            <ArchDiagram>
-              <ArchNode label="Application Host" mono />
-              <ArchArrow label="hiredis" />
+            <div className="hidden lg:block">
+              <ArchDiagram>
+                <ArchNode label="Application Host" />
+                <ArchArrow label="network" />
+                <ArchNode label="Atomic Lua Script" sub="Redis TIME" highlight />
+                <ArchArrow label="eval" />
+                <ArchNode label="Redis State" sub="Shared keys" highlight />
+                <ArchArrow label="return" />
+                <ArchNode label="Allow / Deny Result" mono />
+              </ArchDiagram>
+            </div>
+            <div className="flex flex-col items-center gap-2 lg:hidden">
+              <ArchNode label="Application Host" />
+              <ArchArrow direction="down" label="network" />
               <ArchNode label="Atomic Lua Script" sub="Redis TIME" highlight />
-              <ArchArrow />
+              <ArchArrow direction="down" label="eval" />
               <ArchNode label="Redis State" sub="Shared keys" highlight />
-              <ArchArrow />
-              <ArchNode label="Allow / Deny" mono />
-            </ArchDiagram>
+              <ArchArrow direction="down" label="return" />
+              <ArchNode label="Allow / Deny Result" mono />
+            </div>
           </div>
         </div>
       </Section>
