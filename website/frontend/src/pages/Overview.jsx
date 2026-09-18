@@ -60,8 +60,8 @@ function AlgoCard({ name, tags, description, tradeOff }) {
 /* ─── Flow Step ──────────────────────────────────────────────────── */
 function FlowStep({ number, title, detail }) {
   return (
-    <div className="surface-card card-pad-lg flex h-full flex-col">
-      <div className="mb-4 flex items-center gap-4">
+    <div className="surface-card card-pad-lg">
+      <div className="mb-3 flex items-center gap-3">
         <div
           className="flex h-6 w-6 shrink-0 items-center justify-center rounded text-xs font-semibold"
           style={{ backgroundColor: 'var(--bg-subtle)', border: '1px solid var(--border-strong)', color: 'var(--text-primary)', fontFamily: 'var(--font-mono)' }}
@@ -70,7 +70,7 @@ function FlowStep({ number, title, detail }) {
         </div>
         <h4 className="text-sm font-medium" style={{ color: 'var(--text-primary)' }}>{title}</h4>
       </div>
-      <p className="text-sm leading-relaxed" style={{ color: 'var(--text-muted)' }}>{detail}</p>
+      <p className="text-sm leading-relaxed" style={{ color: 'var(--text-secondary)' }}>{detail}</p>
     </div>
   )
 }
@@ -249,18 +249,18 @@ export default function Overview() {
             ].map(({ title, badge, detail }) => (
               <div
                 key={title}
-                className="surface-card card-pad-lg flex h-full flex-col"
+                className="surface-card card-pad-lg"
               >
-                <div className="flex items-start justify-between gap-4 mb-4">
+                <div className="flex items-start justify-between gap-4 mb-3">
                   <h4 className="text-sm font-medium" style={{ color: 'var(--text-primary)' }}>{title}</h4>
                   <span
-                    className="rounded px-2 py-0.5 text-xs whitespace-nowrap"
+                    className="rounded px-2 py-0.5 text-xs whitespace-nowrap shrink-0"
                     style={{ fontFamily: 'var(--font-mono)', color: 'var(--text-muted)', backgroundColor: 'var(--bg-subtle)', border: '1px solid var(--border)' }}
                   >
                     {badge}
                   </span>
                 </div>
-                <p className="text-sm leading-relaxed mt-auto" style={{ color: 'var(--text-secondary)' }}>{detail}</p>
+                <p className="text-sm leading-relaxed" style={{ color: 'var(--text-secondary)' }}>{detail}</p>
               </div>
             ))}
           </div>
@@ -271,11 +271,11 @@ export default function Overview() {
       <Section id="benchmarks-link" border>
         <div className="page-container">
           <div
-            className="surface-card surface-card-strong card-pad-lg flex flex-col justify-between gap-8 md:flex-row md:items-center"
+            className="surface-card surface-card-strong card-pad-lg flex flex-col gap-6 md:flex-row md:items-center md:justify-between"
           >
-            <div className="flex-1 min-w-0">
+            <div className="min-w-0">
               <SectionLabel>Performance Validation</SectionLabel>
-              <h3 className="text-xl font-semibold mb-4" style={{ color: 'var(--text-primary)' }}>
+              <h3 className="text-xl font-semibold mb-3" style={{ color: 'var(--text-primary)' }}>
                 Empirical Benchmark Results
               </h3>
               <p className="text-sm leading-relaxed" style={{ color: 'var(--text-secondary)', maxWidth: '36rem' }}>
@@ -283,10 +283,10 @@ export default function Overview() {
                 with Redis distributed latency context.
               </p>
             </div>
-            <div className="shrink-0 self-center md:self-auto">
+            <div className="shrink-0">
               <Link
                 to="/benchmarks"
-                className="inline-flex items-center justify-center gap-2 rounded px-6 py-3 text-sm font-medium no-underline transition-opacity hover:opacity-90"
+                className="inline-flex items-center justify-center gap-2 rounded px-6 py-2.5 text-sm font-medium no-underline transition-opacity hover:opacity-90"
                 style={{ color: '#000000', backgroundColor: '#ffffff', border: '1px solid #ffffff' }}
               >
                 View benchmarks <span aria-hidden="true">&rarr;</span>

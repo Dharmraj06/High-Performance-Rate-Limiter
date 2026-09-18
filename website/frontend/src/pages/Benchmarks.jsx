@@ -197,7 +197,7 @@ export default function Benchmarks() {
 
               <TableWrap>
                 <thead>
-                  <tr style={{ borderBottom: '2px solid var(--border-strong)' }}>
+                  <tr style={{ borderBottom: '2px solid var(--border-strong)', backgroundColor: 'var(--bg-subtle)' }}>
                     <Th>Algorithm</Th>
                     <Th>Scenario</Th>
                     <Th right>Threads</Th>
@@ -236,7 +236,7 @@ export default function Benchmarks() {
 
               <TableWrap>
                 <thead>
-                  <tr style={{ borderBottom: '2px solid var(--border-strong)' }}>
+                  <tr style={{ borderBottom: '2px solid var(--border-strong)', backgroundColor: 'var(--bg-subtle)' }}>
                     <Th>Algorithm</Th>
                     <Th>Scenario</Th>
                     <Th right>Total Ops</Th>
@@ -292,7 +292,7 @@ export default function Benchmarks() {
 
               <TableWrap>
                 <thead>
-                  <tr style={{ borderBottom: '2px solid var(--border-strong)' }}>
+                  <tr style={{ borderBottom: '2px solid var(--border-strong)', backgroundColor: 'var(--bg-subtle)' }}>
                     <Th>Algorithm</Th>
                     <Th>Scenario</Th>
                     <Th right>Baseline (ops/s)</Th>
@@ -375,13 +375,13 @@ export default function Benchmarks() {
                       ['Avg Latency', fmtLatency(redis.avg_latency_ns)],
                     ].map(([k, v]) => (
                       <div key={k}>
-                        <span className="block text-xs uppercase tracking-wider" style={{ color: 'var(--text-muted)' }}>{k}</span>
-                        <span className="mt-2 block text-base font-semibold tabular-nums" style={{ color: 'var(--text-primary)', fontFamily: 'var(--font-mono)' }}>{v}</span>
+                        <span className="mb-1.5 block text-xs uppercase tracking-wider" style={{ color: 'var(--text-muted)' }}>{k}</span>
+                        <span className="block text-base font-semibold tabular-nums" style={{ color: 'var(--text-primary)', fontFamily: 'var(--font-mono)' }}>{v}</span>
                       </div>
                     ))}
                   </div>
                   <p
-                    className="text-xs leading-relaxed pt-4"
+                    className="text-xs leading-relaxed pt-5"
                     style={{ borderTop: '1px solid var(--border)', color: 'var(--text-secondary)' }}
                   >
                     At {fmtLatency(redis.avg_latency_ns)} average latency, execution is dominated by socket IPC and Redis
