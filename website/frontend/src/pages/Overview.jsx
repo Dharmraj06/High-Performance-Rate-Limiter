@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom'
 import Section from '../components/Section.jsx'
 import { SectionLabel, PageHeading, SectionHeading, BodyText, Mono } from '../components/Typography.jsx'
-import { ArchRow, ArchPipeline, ArchNode, ArchArrow } from '../components/ArchDiagram.jsx'
+import { InMemoryPipeline, ConcurrentClientsDiagram, SameClientDiagram, RedisDiagram } from '../components/ArchDiagram.jsx'
 
 /* ─── Stat Card ──────────────────────────────────────────────────── */
 function StatCard({ value, label, detail }) {
@@ -192,160 +192,26 @@ export default function Overview() {
           </div>
 
 
-          {/* ── Diagram card ─────────────────────────────────────────── */}
-          <div className="surface-card card-pad-lg">
+          {/* ── Architecture diagram card ─────────────────────────── */}
+          <div className="surface-card" style={{ padding: '32px 28px' }}>
 
-            {/* ── 1: In-Memory Sharded Pipeline ───────────────────── */}
-            <p className="mb-6 text-center text-xs uppercase tracking-widest"
-               style={{ color: 'var(--text-secondary)', fontFamily: 'var(--font-mono)' }}>
-              In-Memory Sharded Pipeline
-            </p>
+            {/* A: In-memory request pipeline */}
+            <InMemoryPipeline />
 
-            {/* Desktop: horizontal row */}
-            <div className="hidden lg:flex lg:items-center lg:justify-center">
-              <ArchRow>
-                <ArchNode label="Application Request" sub="allow(clientId)" />
-                <ArchArrow label="hash(clientId) % 64" />
-                <ArchNode label="One of 64 Shards" highlight />
-                <ArchArrow label="lock" />
-                <ArchNode label="Shard Mutex" sub="std::mutex + state map" highlight />
-                <ArchArrow label="eval" />
-                <ArchNode label="Rate-Limit Algorithm" sub="Fixed / Sliding / Token" />
-                <ArchArrow label="return" />
-                <ArchNode label="Allow / Deny" mono />
-              </ArchRow>
-            </div>
+            <div style={{ margin: '32px 0', height: '1px', backgroundColor: 'var(--border)' }} />
 
-            {/* Mobile + tablet: vertical pipeline */}
-            <div className="lg:hidden">
-              <ArchPipeline>
-                <ArchNode label="Application Request" sub="allow(clientId)" />
-                <ArchArrow direction="down" label="hash(clientId) % 64" />
-                <ArchNode label="One of 64 Shards" highlight />
-                <ArchArrow direction="down" label="lock" />
-                <ArchNode label="Shard Mutex" sub="std::mutex + state map" highlight />
-                <ArchArrow direction="down" label="eval" />
-                <ArchNode label="Rate-Limit Algorithm" sub="Fixed / Sliding / Token" />
-                <ArchArrow direction="down" label="return" />
-                <ArchNode label="Allow / Deny" mono />
-              </ArchPipeline>
-            </div>
+            {/* B: Concurrent multi-client isolation */}
+            <ConcurrentClientsDiagram />
 
-            <div className="my-8 h-px" style={{ backgroundColor: 'var(--border)' }} />
+            <div style={{ margin: '32px 0', height: '1px', backgroundColor: 'var(--border)' }} />
 
-            {/* ── 2: Concurrent Multi-Client Isolation ────────────── */}
-            <p className="mb-6 text-center text-xs uppercase tracking-widest"
-               style={{ color: 'var(--text-secondary)', fontFamily: 'var(--font-mono)' }}>
-              Concurrent Multi-Client Isolation
-            </p>
+            {/* C: Same-client serialization */}
+            <SameClientDiagram />
 
-            <div className="flex flex-col items-center gap-3">
-              <ArchRow>
-                <ArchNode label="Client A" sub="Thread 1" mono />
-                <ArchArrow label="hash" />
-                <ArchNode label="Shard X" sub="Mutex X" highlight />
-                <ArchArrow />
-                <ArchNode label="Allow / Deny" sub="Result A" mono />
-              </ArchRow>
+            <div style={{ margin: '32px 0', height: '1px', backgroundColor: 'var(--border)' }} />
 
-              <p className="text-xs" style={{ color: 'var(--text-muted)', fontFamily: 'var(--font-mono)' }}>
-                — parallel, no blocking —
-              </p>
-
-              <ArchRow>
-                <ArchNode label="Client B" sub="Thread 2" mono />
-                <ArchArrow label="hash" />
-                <ArchNode label="Shard Y" sub="Mutex Y" highlight />
-                <ArchArrow />
-                <ArchNode label="Allow / Deny" sub="Result B" mono />
-              </ArchRow>
-            </div>
-
-            <div className="my-8 h-px" style={{ backgroundColor: 'var(--border)' }} />
-
-            {/* ── 3: Same-Client Serialization ────────────────────── */}
-            <p className="mb-6 text-center text-xs uppercase tracking-widest"
-               style={{ color: 'var(--text-secondary)', fontFamily: 'var(--font-mono)' }}>
-              Same-Client Serialization
-            </p>
-
-            {/* This diagram is inherently different: two threads collapse to one shard.
-                We show it as two parallel pipelines merging, which needs a
-                purpose-built layout rather than ArchRow. */}
-            <div className="flex flex-col items-center">
-              {/* Two input threads */}
-              <div className="flex items-center justify-center gap-10">
-                <ArchNode label="Client C" sub="Thread 3" mono />
-                <ArchNode label="Client C" sub="Thread 4" mono />
-              </div>
-
-              {/* Converging lines: both point down to same shard */}
-              <div className="flex items-end justify-center gap-10 mt-1.5" style={{ height: '2.25rem' }}>
-                {/* left branch */}
-                <div className="flex flex-col items-end" style={{ width: '9rem' }}>
-                  <div className="flex flex-col items-center" style={{ width: '1px', height: '1.25rem', backgroundColor: 'var(--border-strong)', marginLeft: 'auto', marginRight: 'auto' }} />
-                  <div className="h-px" style={{ width: '50%', backgroundColor: 'var(--border-strong)', marginLeft: 'auto' }} />
-                </div>
-                {/* center drop */}
-                <div className="flex flex-col items-center" style={{ position: 'relative' }}>
-                  <div style={{ width: '1px', height: '2.25rem', backgroundColor: 'var(--border-strong)' }} />
-                  <svg width="9" height="7" viewBox="0 0 9 7" aria-hidden="true" style={{ color: 'var(--text-muted)', marginTop: '-1px' }}>
-                    <path d="M4.5 0 L4.5 7 M1.5 4 L4.5 7 L7.5 4" stroke="currentColor" strokeWidth="1.2" fill="none" strokeLinecap="round" strokeLinejoin="round" />
-                  </svg>
-                </div>
-                {/* right branch */}
-                <div className="flex flex-col items-start" style={{ width: '9rem' }}>
-                  <div className="flex flex-col items-center" style={{ width: '1px', height: '1.25rem', backgroundColor: 'var(--border-strong)', marginLeft: 'auto', marginRight: 'auto' }} />
-                  <div className="h-px" style={{ width: '50%', backgroundColor: 'var(--border-strong)', marginRight: 'auto' }} />
-                </div>
-              </div>
-
-              {/* Single shared shard */}
-              <ArchNode label="Shard Z" sub="Mutex Z — one lock, sequential" highlight />
-
-              {/* Label */}
-              <p className="mt-3 text-xs" style={{ color: 'var(--text-muted)', fontFamily: 'var(--font-mono)' }}>
-                — same shard, requests serialize on Mutex Z —
-              </p>
-
-              {/* Output */}
-              <ArchArrow direction="down" />
-              <ArchNode label="Allow / Deny" sub="sequential results" mono />
-            </div>
-
-            <div className="my-8 h-px" style={{ backgroundColor: 'var(--border)' }} />
-
-            {/* ── 4: Distributed Redis Path ────────────────────────── */}
-            <p className="mb-6 text-center text-xs uppercase tracking-widest"
-               style={{ color: 'var(--text-secondary)', fontFamily: 'var(--font-mono)' }}>
-              Distributed Redis Path
-            </p>
-
-            {/* Desktop: horizontal */}
-            <div className="hidden lg:flex lg:items-center lg:justify-center">
-              <ArchRow>
-                <ArchNode label="Application Host" />
-                <ArchArrow label="hiredis / network" />
-                <ArchNode label="Atomic Lua Script" sub="Redis TIME" highlight />
-                <ArchArrow label="eval" />
-                <ArchNode label="Shared Redis State" sub="cross-server keys" highlight />
-                <ArchArrow label="return" />
-                <ArchNode label="Allow / Deny" mono />
-              </ArchRow>
-            </div>
-
-            {/* Mobile + tablet: vertical */}
-            <div className="lg:hidden">
-              <ArchPipeline>
-                <ArchNode label="Application Host" />
-                <ArchArrow direction="down" label="hiredis / network" />
-                <ArchNode label="Atomic Lua Script" sub="Redis TIME" highlight />
-                <ArchArrow direction="down" label="eval" />
-                <ArchNode label="Shared Redis State" sub="cross-server keys" highlight />
-                <ArchArrow direction="down" label="return" />
-                <ArchNode label="Allow / Deny" mono />
-              </ArchPipeline>
-            </div>
+            {/* D: Distributed Redis path */}
+            <RedisDiagram />
 
           </div>
         </div>
